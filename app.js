@@ -5,7 +5,7 @@
   var VERSION = window.HG_VERSION || '?';
   var D = null;                 // contenu
   var INDEX = {};               // id -> {type, classe, disc, theme, lecon|annexe}
-  var ORDRE = {};               // classe -> [ids des leçons dans l'ordre]
+  var ORDRE = {}, ORDRE_X = {};               // classe -> [ids des leçons dans l'ordre]
   var RECH = [];                // index de recherche
   var vue = document.getElementById('vue');
   var swReg = null, majEnAttente = null;
@@ -53,19 +53,21 @@
 
   function indexer() {
     D.classes.forEach(function (c) {
-      ORDRE[c.id] = [];
+      ORDRE[c.id] = []; ORDRE_X[c.id] = [];
       c.disciplines.forEach(function (d) {
         d.themes.forEach(function (t) {
           t.lecons.forEach(function (l) {
             INDEX[l.id] = { type: 'lecon', classe: c, disc: d, theme: t, lecon: l };
             ORDRE[c.id].push(l.id);
-            RECH.push({ id: l.id, classe: c.id, disc: d.id, titre: l.titre, ctx: c.id + ' · ' + d.nom + ' · ' + nomTheme(t), t: norm(l.titre + ' ' + t.titre), x: l.texte, nx: norm(l.texte) });
+            RECH.push({ id: l.id, href: '#l-' + l.id, classe: c.id, disc: d.id, titre: l.titre, ctx: c.id + ' · ' + d.nom + ' · ' + nomTheme(t), t: norm(l.titre + ' ' + t.titre), x: l.texte, nx: norm(l.texte) });
+            if (l.banque) { ORDRE_X[c.id].push(l.id); RECH.push({ id: l.id, href: '#e-' + l.id, classe: c.id, disc: d.id, titre: 'Exercices : ' + l.titre, ctx: c.id + ' · Banque d\'exercices', t: norm('exercices ' + l.titre), x: l.texteBanque, nx: norm(l.texteBanque) }); }
           });
         });
       });
+      (c.schemas || []).forEach(function (sc) { RECH.push({ id: sc.id, href: '#s-' + c.id, classe: c.id, disc: 'g', titre: 'Schéma : ' + sc.titre, ctx: c.id + ' · Schémas', t: norm(sc.titre), x: sc.texte, nx: norm(sc.texte) }); });
       c.annexes.forEach(function (a) {
         INDEX[a.id] = { type: 'annexe', classe: c, annexe: a };
-        RECH.push({ id: a.id, classe: c.id, disc: '', titre: a.titre, ctx: c.id + ' · Annexe', t: norm(a.titre), x: a.texte, nx: norm(a.texte) });
+        RECH.push({ id: a.id, href: '#l-' + a.id, classe: c.id, disc: '', titre: a.titre, ctx: c.id + ' · Annexe', t: norm(a.titre), x: a.texte, nx: norm(a.texte) });
       });
     });
   }
@@ -97,12 +99,19 @@
     return '<a class="reprendre" href="#l-' + id + '"><div><small>Reprendre · ' + e.classe.id + '</small><strong>' + esc(titre) + '</strong></div><span class="fleche" aria-hidden="true">→</span></a>';
   }
 
+  function ongletsClasse(c, actif) {
+    var nbS = (c.schemas || []).length;
+    return '<nav class="onglets-classe" aria-label="Espaces de la classe">' +
+      '<a href="#c-' + c.id + '"' + (actif === 'c' ? ' aria-current="page"' : '') + '>Cours</a>' +
+      '<a href="#x-' + c.id + '"' + (actif === 'x' ? ' aria-current="page"' : '') + '>Exercices' + (c.nbBanque ? ' <span>' + c.nbBanque + '</span>' : '') + '</a>' +
+      '<a href="#s-' + c.id + '"' + (actif === 's' ? ' aria-current="page"' : '') + '>Schémas' + (nbS ? ' <span>' + nbS + '</span>' : '') + '</a></nav>';
+  }
   function vueClasse(c) {
     barreClasses(c.id);
     var n = nbLecons(c), f = nbFaites(c), nbT = 0;
     c.disciplines.forEach(function (d) { nbT += d.themes.filter(function (t) { return t.n; }).length; });
     var h = '<p class="eyebrow">Classe de ' + c.id + '</p><h1 class="titre-vue">' + esc(c.nom) + '</h1>' +
-      '<p class="chapo">' + n + ' leçons réparties en ' + nbT + ' thèmes.</p>' +
+      '<p class="chapo">' + n + ' leçons réparties en ' + nbT + ' thèmes.</p>' + ongletsClasse(c, 'c') +
       '<div class="barre-progres"><span>' + f + ' / ' + n + ' traitées</span><span class="piste"><i style="width:' + Math.round(100 * f / n) + '%"></i></span></div>';
     var der = lire('derniere', null);
     if (der && INDEX[der] && INDEX[der].classe === c) h += carteReprendre(der);
@@ -149,7 +158,7 @@
       '<nav class="fil" aria-label="Emplacement"><a href="#c-' + c.id + '">' + c.id + '</a><span>›</span><span>' + esc(d.nom) + '</span><span>›</span><span>' + nomTheme(t) + (t.n ? ' · ' + esc(t.titre) : '') + '</span></nav>' +
       '<h1 class="lecon-titre">' + esc(l.titre) + '</h1>' +
       '<div class="puces"><span class="puce">Leçon ' + l.n + '</span>' + (l.duree ? '<span class="puce">' + l.duree + ' h</span>' : '') + '<span class="puce">' + esc(d.nom) + '</span></div>' +
-      '<div class="sommaire" role="navigation" aria-label="Parties de la leçon"><button type="button" data-aller="b-sit">Situation</button><button type="button" data-aller="b-cours">Cours</button><button type="button" data-aller="b-exo">Exercices</button></div>' +
+      '<div class="sommaire" role="navigation" aria-label="Parties de la leçon"><button type="button" data-aller="b-sit">Situation</button><button type="button" data-aller="b-cours">Cours</button><button type="button" data-aller="b-exo">Exercices</button>' + (l.banque ? '<a class="chip-lien" href="#e-' + l.id + '">Banque : ' + l.nbBanque + ' exercices</a>' : '') + '</div>' +
       '<section class="bloc" id="b-sit"><h2>Compétence, situation et habiletés</h2><div class="situation"><div class="texte">' + l.situation + '</div></div></section>' +
       '<section class="bloc" id="b-cours"><h2>Cours · trace écrite</h2><div class="texte">' + l.cours + '</div></section>' +
       '<section class="bloc" id="b-exo"><h2>Exercices traités et corrigés</h2>' +
@@ -179,6 +188,66 @@
     });
   }
   function ouvrirCorriges(o) { vue.querySelectorAll('details.corrige').forEach(function (x) { x.open = o; }); }
+
+  function vueExercicesClasse(c) {
+    barreClasses(c.id);
+    var h = '<p class="eyebrow">Classe de ' + c.id + '</p><h1 class="titre-vue">' + esc(c.nom) + '</h1>' + ongletsClasse(c, 'x') +
+      '<p class="chapo">' + (c.nbBanque || 0) + ' exercices classés par leçon, chacun avec son corrigé détaillé. Les corrigés restent masqués jusqu\'à ce qu\'on les ouvre.</p>';
+    if (!c.nbBanque) h += '<p class="vide">La banque d\'exercices de cette classe est en préparation : elle arrivera avec une prochaine mise à jour.</p>';
+    c.disciplines.forEach(function (d) {
+      h += '<section class="discipline d-' + d.id + '"><div class="discipline-tete"><h2>' + esc(d.nom) + '</h2></div>';
+      d.themes.forEach(function (t) {
+        h += '<div class="theme"><div class="theme-tete"><p class="eyebrow">' + nomTheme(t) + '</p><h3>' + esc(t.titre) + '</h3></div><ul class="lecons">' +
+          t.lecons.map(function (l) {
+            return '<li><a href="' + (l.banque ? '#e-' + l.id : '#l-' + l.id) + '"><span class="num">L' + l.n + '</span><span class="t">' + esc(l.titre) + '</span><span class="meta">' + (l.nbBanque ? l.nbBanque + ' exercices' : '—') + '</span></a></li>';
+          }).join('') + '</ul></div>';
+      });
+      h += '</section>';
+    });
+    afficher(h, 'Exercices ' + c.id);
+  }
+
+  function vueBanque(e) {
+    var c = e.classe, d = e.disc, l = e.lecon;
+    barreClasses(c.id);
+    var ord = ORDRE_X[c.id], i = ord.indexOf(l.id);
+    var prev = i > 0 ? INDEX[ord[i - 1]].lecon : null, next = i < ord.length - 1 ? INDEX[ord[i + 1]].lecon : null;
+    var h = '<article class="d-' + d.id + '"><nav class="fil"><a href="#x-' + c.id + '">' + c.id + ' · Exercices</a><span>›</span><span>' + esc(d.nom) + '</span></nav>' +
+      '<h1 class="lecon-titre">' + esc(l.titre) + '</h1>' +
+      '<div class="puces"><span class="puce">' + l.nbBanque + ' exercices</span><a class="puce puce-lien" href="#l-' + l.id + '">Revoir le cours</a></div>' +
+      '<div class="outils-exo"><button type="button" class="btn" id="tous-corriges" aria-pressed="' + (reglages.corriges ? 'true' : 'false') + '">' + (reglages.corriges ? 'Masquer les corrigés' : 'Afficher tous les corrigés') + '</button></div>' +
+      '<div class="texte">' + l.banque + '</div>' +
+      '<nav class="suivants" aria-label="Banques voisines">' +
+      (prev ? '<a class="avant" href="#e-' + prev.id + '"><small>← Précédente</small><span>' + esc(prev.titre) + '</span></a>' : '') +
+      (next ? '<a class="apres" href="#e-' + next.id + '"><small>Suivante →</small><span>' + esc(next.titre) + '</span></a>' : '') +
+      '</nav></article>';
+    afficher(h, 'Exercices · ' + l.titre);
+    if (reglages.corriges) ouvrirCorriges(true);
+    document.getElementById('tous-corriges').addEventListener('click', function () {
+      reglages.corriges = !reglages.corriges; ecrire('reglages', reglages);
+      this.setAttribute('aria-pressed', reglages.corriges ? 'true' : 'false');
+      this.textContent = reglages.corriges ? 'Masquer les corrigés' : 'Afficher tous les corrigés';
+      ouvrirCorriges(reglages.corriges);
+    });
+  }
+
+  function vueSchemas(c) {
+    barreClasses(c.id);
+    var sch = c.schemas || [];
+    var h = '<div class="d-g"><p class="eyebrow">Classe de ' + c.id + '</p><h1 class="titre-vue">' + esc(c.nom) + '</h1>' + ongletsClasse(c, 's') +
+      '<p class="chapo">Les cartes, frises, diagrammes et schémas de l\'année, avec la méthode pas à pas sur papier millimétré ou sur feuille de dessin ordinaire.</p>';
+    if ((D.methode || []).length) {
+      h += '<section class="bloc"><h2>Méthode générale</h2>' + D.methode.map(function (m) {
+        return '<details class="schema"><summary><span><b>' + esc(m.titre) + '</b></span></summary><div class="texte">' + m.html + '</div></details>';
+      }).join('') + '</section>';
+    }
+    h += '<section class="bloc"><h2>Les schémas de la ' + c.id + '</h2>';
+    if (!sch.length) h += '<p class="vide">Les schémas de cette classe sont en préparation : ils arriveront avec une prochaine mise à jour.</p>';
+    h += sch.map(function (s, i) {
+      return '<details class="schema" id="' + s.id + '"><summary><span class="sch-num">' + (i + 1) + '</span><span><b>' + esc(s.titre) + '</b>' + (s.lecon ? '<small>' + esc(s.lecon) + '</small>' : '') + '</span></summary><div class="texte">' + s.html + '</div></details>';
+    }).join('') + '</section></div>';
+    afficher(h, 'Schémas ' + c.id);
+  }
 
   var rechEtat = { q: lire('recherche', ''), classe: '' };
   function vueRecherche() {
@@ -222,7 +291,7 @@
     res.innerHTML = trouves.slice(0, 60).map(function (o) {
       var r = o.r, p = r.nx.indexOf(mots[0]), deb = Math.max(0, p - 70);
       var ext = (deb > 0 ? '… ' : '') + r.x.slice(deb, deb + 190) + ' …';
-      return '<li class="d-' + (r.disc || 'h') + '"><a href="#l-' + r.id + '"><span class="r-meta">' + esc(r.ctx) + '</span><span class="r-titre">' + surligner(r.titre, mots) + '</span><span class="r-extrait">' + surligner(ext, mots) + '</span></a></li>';
+      return '<li class="d-' + (r.disc || 'h') + '"><a href="' + r.href + '"><span class="r-meta">' + esc(r.ctx) + '</span><span class="r-titre">' + surligner(r.titre, mots) + '</span><span class="r-extrait">' + surligner(ext, mots) + '</span></a></li>';
     }).join('') + (trouves.length > 60 ? '<li class="vide">' + (trouves.length - 60) + ' autres résultats : précise ta recherche.</li>' : '');
   }
   function surligner(txt, mots) {
@@ -320,6 +389,9 @@
     if (h === 'apropos') return vueReglages();
     if (h.indexOf('c-') === 0 && (c = trouverClasse(h.slice(2)))) { ecrire('classe', c.id); return vueClasse(c); }
     if (h.indexOf('p-') === 0 && (c = trouverClasse(h.slice(2)))) return vueProgramme(c);
+    if (h.indexOf('x-') === 0 && (c = trouverClasse(h.slice(2)))) return vueExercicesClasse(c);
+    if (h.indexOf('s-') === 0 && (c = trouverClasse(h.slice(2)))) return vueSchemas(c);
+    if (h.indexOf('e-') === 0 && (e = INDEX[h.slice(2)]) && e.lecon && e.lecon.banque) return vueBanque(e);
     if (h.indexOf('l-') === 0 && (e = INDEX[h.slice(2)])) return e.type === 'lecon' ? vueLecon(e) : vueAnnexe(e);
     vueAccueil();
   }
