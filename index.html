@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Histoire géographie premier cycle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Cours d'Histoire-Géographie de la 6e à la 3e (programme ivoirien) avec exercices corrigés, utilisables hors ligne.">
+<meta name="theme-color" content="#1f3b33">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="HG 1er cycle">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#accueil" aria-label="Accueil">
+      <span class="brand-mark" aria-hidden="true">HG</span>
+      <span class="brand-text"><b>Histoire géographie</b><span>premier cycle</span></span>
+    </a>
+    <nav class="tools" aria-label="Outils">
+      <a class="tool" href="#recherche" aria-label="Rechercher">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+      </a>
+      <a class="tool" href="#apropos" aria-label="Réglages et mises à jour">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/></svg>
+        <span class="dot" id="maj-dot" hidden></span>
+      </a>
+    </nav>
+  </div>
+  <nav class="classes" id="classes" aria-label="Classes"></nav>
+</header>
+<main id="vue" class="vue" tabindex="-1">
+  <p class="chargement">Chargement des cours…</p>
+</main>
+<div class="bandeau" id="bandeau" hidden>
+  <div class="bandeau-in">
+    <p id="bandeau-texte">Une nouvelle version est prête.</p>
+    <div class="bandeau-btns">
+      <button type="button" id="bandeau-ok" class="btn btn-plein">Mettre à jour</button>
+      <button type="button" id="bandeau-plus-tard" class="btn">Plus tard</button>
+    </div>
+  </div>
+</div>
+<script>window.HG_MODE="pwa";window.HG_VERSION="1.0.0";</script>
+<script src="app.js" defer></script>
+</body>
+</html>
