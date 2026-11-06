@@ -1,7 +1,8 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "date": "2026-11-06",
   "notes": [
+    "Chaque fiche (cours, exercices, schémas, programme) peut être téléchargée, partagée et imprimée en PDF, avec le nom de l'auteur en filigrane",
     "3e : activités d'application après chaque partie, 108 exercices corrigés, 20 schémas ; organigrammes plus lisibles",
     "4e : activités d'application après chaque partie, 108 exercices corrigés, 23 schémas",
     "5e : exercice d'application corrigé à la fin de chaque partie des cours ; espace Exercices (108 exercices corrigés) ; espace Schémas (13 schémas avec méthode pas à pas et modèles).",

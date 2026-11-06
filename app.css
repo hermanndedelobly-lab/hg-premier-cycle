@@ -277,3 +277,22 @@ figure.graphe figcaption { font-family: var(--font-ui); font-size: 12.5px; color
 .g-periode, .g-part { stroke: var(--bg); stroke-width: 1; }
 .p0 { fill: var(--geo); } .p1 { fill: var(--hist); } .p2 { fill: #d6a234; } .p3 { fill: #6c8f4e; } .p4 { fill: #8a6bb0; } .p5 { fill: #9aa4a0; }
 .g-periode { fill-opacity: .55; }
+
+/* ---------- Export PDF ---------- */
+.btn-pdf { display: inline-flex; align-items: center; gap: 6px; margin: 4px 0 12px; }
+.panneau-pdf { position: fixed; inset: 0; z-index: 60; display: flex; align-items: flex-end; justify-content: center; }
+.pp-fond { position: absolute; inset: 0; background: rgba(10, 16, 14, .45); }
+.pp-boite { position: relative; width: min(520px, 100%); background: var(--surface); color: var(--ink); border-radius: 16px 16px 0 0;
+  padding: 16px max(18px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(18px, env(safe-area-inset-left, 0px));
+  box-shadow: 0 -8px 30px rgba(0,0,0,.2); font-family: var(--font-ui); }
+.pp-tete { display: flex; justify-content: space-between; align-items: center; font-size: 1.05rem; }
+.pp-x { border: 0; background: none; font-size: 1.6rem; line-height: 1; color: var(--muted); cursor: pointer; padding: 0 4px; }
+.pp-titre { margin: 4px 0 10px; color: var(--muted); font-size: .9rem; }
+.pp-case { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; font-size: .95rem; }
+.pp-case input { width: 18px; height: 18px; accent-color: var(--brand); }
+.pp-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.pp-actions .btn { justify-content: center; text-align: center; }
+.pp-note { margin: 10px 0 0; font-size: .8rem; color: var(--muted); }
+.pp-msg { margin: 6px 0 0; font-size: .9rem; min-height: 1.2em; }
+.panneau-pdf.occupe .pp-actions { opacity: .5; pointer-events: none; }
+@media (min-width: 700px) { .panneau-pdf { align-items: center; } .pp-boite { border-radius: 16px; } }

@@ -136,16 +136,16 @@
   function vueProgramme(c) {
     barreClasses(c.id);
     var h = '<div class="d-h"><nav class="fil"><a href="#c-' + c.id + '">' + c.id + '</a><span>›</span><span>Programme</span></nav>' +
-      '<h1 class="lecon-titre">Programme et progression de ' + c.id + '</h1><div class="texte">' + c.programme + '</div></div>';
-    afficher(h, 'Programme ' + c.id);
+      '<h1 class="lecon-titre">Programme et progression de ' + c.id + '</h1>' + BOUTON_PDF + '<div class="texte">' + c.programme + '</div></div>';
+    afficher(h, 'Programme ' + c.id, { titre: 'Programme et progression de ' + c.id, surtitre: 'CLASSE DE ' + c.id.toUpperCase(), disc: 'h', fichier: c.id + ' programme', sections: [{ html: c.programme }] });
   }
 
   function vueAnnexe(e) {
     barreClasses(e.classe.id);
     ecrire('derniere', e.annexe.id);
     var h = '<div class="d-h"><nav class="fil"><a href="#c-' + e.classe.id + '">' + e.classe.id + '</a><span>›</span><span>Annexe</span></nav>' +
-      '<h1 class="lecon-titre">' + esc(e.annexe.titre) + '</h1><div class="texte">' + e.annexe.html + '</div></div>';
-    afficher(h, e.annexe.titre);
+      '<h1 class="lecon-titre">' + esc(e.annexe.titre) + '</h1>' + BOUTON_PDF + '<div class="texte">' + e.annexe.html + '</div></div>';
+    afficher(h, e.annexe.titre, { titre: e.annexe.titre, surtitre: 'CLASSE DE ' + e.classe.id.toUpperCase(), disc: 'h', fichier: e.classe.id + ' ' + e.annexe.titre, sections: [{ html: e.annexe.html }] });
   }
 
   function vueLecon(e) {
@@ -157,7 +157,7 @@
     var h = '<article class="d-' + d.id + '">' +
       '<nav class="fil" aria-label="Emplacement"><a href="#c-' + c.id + '">' + c.id + '</a><span>›</span><span>' + esc(d.nom) + '</span><span>›</span><span>' + nomTheme(t) + (t.n ? ' · ' + esc(t.titre) : '') + '</span></nav>' +
       '<h1 class="lecon-titre">' + esc(l.titre) + '</h1>' +
-      '<div class="puces"><span class="puce">Leçon ' + l.n + '</span>' + (l.duree ? '<span class="puce">' + l.duree + ' h</span>' : '') + '<span class="puce">' + esc(d.nom) + '</span></div>' +
+      '<div class="puces"><span class="puce">Leçon ' + l.n + '</span>' + (l.duree ? '<span class="puce">' + l.duree + ' h</span>' : '') + '<span class="puce">' + esc(d.nom) + '</span></div>' + BOUTON_PDF +
       '<div class="sommaire" role="navigation" aria-label="Parties de la leçon"><button type="button" data-aller="b-sit">Situation</button><button type="button" data-aller="b-cours">Cours</button><button type="button" data-aller="b-exo">Exercices</button>' + (l.banque ? '<a class="chip-lien" href="#e-' + l.id + '">Banque : ' + l.nbBanque + ' exercices</a>' : '') + '</div>' +
       '<section class="bloc" id="b-sit"><h2>Compétence, situation et habiletés</h2><div class="situation"><div class="texte">' + l.situation + '</div></div></section>' +
       '<section class="bloc" id="b-cours"><h2>Cours · trace écrite</h2><div class="texte">' + l.cours + '</div></section>' +
@@ -169,7 +169,10 @@
       (prev ? '<a class="avant" href="#l-' + prev.id + '"><small>← Précédente</small><span>' + esc(prev.titre) + '</span></a>' : '') +
       (next ? '<a class="apres" href="#l-' + next.id + '"><small>Suivante →</small><span>' + esc(next.titre) + '</span></a>' : '') +
       '</nav></article>';
-    afficher(h, l.titre);
+    afficher(h, l.titre, { titre: l.titre, disc: d.id, fichier: c.id + ' ' + d.id + ' lecon ' + l.n + ' ' + l.titre,
+      surtitre: ('Classe de ' + c.id + ' · ' + d.nom + ' · ' + nomTheme(t)).toUpperCase(),
+      meta: (t.n ? nomTheme(t) + ' : ' + t.titre + ' · ' : '') + 'Leçon ' + l.n + (l.duree ? ' · ' + l.duree + ' h' : ''),
+      sections: [{ titre: 'Compétence, situation et habiletés', html: l.situation }, { titre: 'Cours · trace écrite', html: l.cours }, { titre: 'Exercices traités et corrigés', html: l.exercices }] });
     if (reglages.corriges) ouvrirCorriges(true);
     vue.querySelectorAll('[data-aller]').forEach(function (b) {
       b.addEventListener('click', function () { var cible = document.getElementById(b.getAttribute('data-aller')); if (cible) cible.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
@@ -214,14 +217,16 @@
     var prev = i > 0 ? INDEX[ord[i - 1]].lecon : null, next = i < ord.length - 1 ? INDEX[ord[i + 1]].lecon : null;
     var h = '<article class="d-' + d.id + '"><nav class="fil"><a href="#x-' + c.id + '">' + c.id + ' · Exercices</a><span>›</span><span>' + esc(d.nom) + '</span></nav>' +
       '<h1 class="lecon-titre">' + esc(l.titre) + '</h1>' +
-      '<div class="puces"><span class="puce">' + l.nbBanque + ' exercices</span><a class="puce puce-lien" href="#l-' + l.id + '">Revoir le cours</a></div>' +
+      '<div class="puces"><span class="puce">' + l.nbBanque + ' exercices</span><a class="puce puce-lien" href="#l-' + l.id + '">Revoir le cours</a></div>' + BOUTON_PDF +
       '<div class="outils-exo"><button type="button" class="btn" id="tous-corriges" aria-pressed="' + (reglages.corriges ? 'true' : 'false') + '">' + (reglages.corriges ? 'Masquer les corrigés' : 'Afficher tous les corrigés') + '</button></div>' +
       '<div class="texte">' + l.banque + '</div>' +
       '<nav class="suivants" aria-label="Banques voisines">' +
       (prev ? '<a class="avant" href="#e-' + prev.id + '"><small>← Précédente</small><span>' + esc(prev.titre) + '</span></a>' : '') +
       (next ? '<a class="apres" href="#e-' + next.id + '"><small>Suivante →</small><span>' + esc(next.titre) + '</span></a>' : '') +
       '</nav></article>';
-    afficher(h, 'Exercices · ' + l.titre);
+    afficher(h, 'Exercices · ' + l.titre, { titre: 'Exercices : ' + l.titre, disc: d.id, fichier: c.id + ' ' + d.id + ' exercices lecon ' + l.n + ' ' + l.titre,
+      surtitre: ('Classe de ' + c.id + ' · ' + d.nom + ' · Banque d\'exercices').toUpperCase(), meta: l.nbBanque + ' exercices avec corrigés détaillés',
+      sections: [{ html: l.banque }] });
     if (reglages.corriges) ouvrirCorriges(true);
     document.getElementById('tous-corriges').addEventListener('click', function () {
       reglages.corriges = !reglages.corriges; ecrire('reglages', reglages);
@@ -235,7 +240,7 @@
     barreClasses(c.id);
     var sch = c.schemas || [];
     var h = '<div class="d-g"><p class="eyebrow">Classe de ' + c.id + '</p><h1 class="titre-vue">' + esc(c.nom) + '</h1>' + ongletsClasse(c, 's') +
-      '<p class="chapo">Les cartes, frises, diagrammes et schémas de l\'année, avec la méthode pas à pas sur papier millimétré ou sur feuille de dessin ordinaire.</p>';
+      '<p class="chapo">Les cartes, frises, diagrammes et schémas de l\'année, avec la méthode pas à pas sur papier millimétré ou sur feuille de dessin ordinaire.</p>' + (sch.length ? BOUTON_PDF : '');
     if ((D.methode || []).length) {
       h += '<section class="bloc"><h2>Méthode générale</h2>' + D.methode.map(function (m) {
         return '<details class="schema"><summary><span><b>' + esc(m.titre) + '</b></span></summary><div class="texte">' + m.html + '</div></details>';
@@ -246,7 +251,10 @@
     h += sch.map(function (s, i) {
       return '<details class="schema" id="' + s.id + '"><summary><span class="sch-num">' + (i + 1) + '</span><span><b>' + esc(s.titre) + '</b>' + (s.lecon ? '<small>' + esc(s.lecon) + '</small>' : '') + '</span></summary><div class="texte">' + s.html + '</div></details>';
     }).join('') + '</section></div>';
-    afficher(h, 'Schémas ' + c.id);
+    var secs = [];
+    if ((D.methode || []).length) secs.push({ titre: 'Méthode générale', html: D.methode.map(function (m) { return '<h3>' + esc(m.titre) + '</h3>' + m.html; }).join('') });
+    if (sch.length) secs.push({ titre: 'Les schémas de la ' + c.id, html: sch.map(function (s, i) { return '<h3>' + (i + 1) + '. ' + esc(s.titre) + '</h3>' + (s.lecon ? '<p><em>' + esc(s.lecon) + '</em></p>' : '') + s.html; }).join('') });
+    afficher(h, 'Schémas ' + c.id, { titre: 'Schémas et méthodes de la ' + c.id, disc: 'g', fichier: c.id + ' schemas', surtitre: ('Classe de ' + c.id + ' · Schémas').toUpperCase(), sections: secs });
   }
 
   var rechEtat = { q: lire('recherche', ''), classe: '' };
@@ -366,8 +374,13 @@
     var p = (iso || '').split('-'); return p.length === 3 ? (+p[2]) + ' ' + m[+p[1] - 1] + ' ' + p[0] : iso;
   }
 
-  function afficher(h, titre) {
+  var PDF_SPEC = null;
+  var BOUTON_PDF = '<button type="button" class="btn btn-pdf" data-pdf><span aria-hidden="true">⤓</span> PDF · Partager · Imprimer</button>';
+  function afficher(h, titre, spec) {
+    PDF_SPEC = spec || null;
     vue.innerHTML = h;
+    var bp = vue.querySelector('[data-pdf]');
+    if (bp) bp.addEventListener('click', function () { if (window.HGPDF && PDF_SPEC) window.HGPDF.ouvrir(PDF_SPEC); });
     document.title = titre === 'Histoire géographie premier cycle' ? titre : titre + ' · HG premier cycle';
     window.scrollTo(0, 0);
     mesurerEntete();
@@ -487,4 +500,318 @@
   }).catch(function () {
     vue.innerHTML = '<h1 class="titre-vue">Cours introuvables</h1><p>Le contenu n\'a pas pu être chargé. Connecte le téléphone une fois et rouvre l\'application pour enregistrer les cours.</p>';
   });
+})();
+
+/* Histoire géographie premier cycle — export PDF (télécharger, partager, imprimer)
+   Chaque fiche est mise en page en PDF A4 avec le nom de l'auteur en filigrane discret.
+   Bibliothèque : pdfmake (chargée à la demande depuis lib/). */
+(function () {
+  'use strict';
+  var AUTEUR = 'Gnomblesson Hermann Vallès';
+  var SITE = 'https://hermanndedelobly-lab.github.io/hg-premier-cycle/';
+  var C = { ink: '#1c2522', muted: '#5b6660', line: '#d8d8cd', brand: '#1f3b33', hist: '#a9501c', histSoft: '#f7ece3', geo: '#1c6573', geoSoft: '#e4f0f2', ok: '#2f7a4a', bg: '#f3f2ec', surface: '#fbfaf6' };
+
+  // ---------- chargement de pdfmake ----------
+  var chargement = null;
+  function script(src) {
+    return new Promise(function (ok, ko) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = function () { ko(new Error('chargement ' + src)); }; document.head.appendChild(s); });
+  }
+  function charger() {
+    if (window.pdfMake && window.pdfMake.vfs) return Promise.resolve();
+    if (chargement) return chargement;
+    var base = (window.HG_MODE === 'single') ? SITE + 'lib/' : 'lib/';
+    chargement = script(base + 'pdfmake.min.js').then(function () { return script(base + 'vfs_fonts.js'); })
+      .catch(function (e) { chargement = null; throw e; });
+    return chargement;
+  }
+
+  // ---------- conversion HTML -> pdfmake ----------
+  var SVG_STYLE = {
+    'g-mm': { stroke: '#d68034', 'stroke-opacity': '0.14', 'stroke-width': '0.6' },
+    'g-cm': { 'stroke-opacity': '0.3', 'stroke-width': '0.9' },
+    'g-axe': { stroke: C.ink, 'stroke-width': '1.6' },
+    'g-fleche': { fill: C.ink },
+    'g-rappel': { stroke: C.muted, 'stroke-width': '1', 'stroke-dasharray': '3 3', fill: 'none' },
+    'g-point': { fill: C.hist },
+    'g-txt': { fill: C.ink, 'font-size': '13' },
+    'g-petit': { fill: C.ink, 'font-size': '11' },
+    'g-pluie': { fill: C.geo }, 'g-temp': { fill: C.hist },
+    'g-barre-pluie': { fill: C.geo, 'fill-opacity': '0.75' }, 'g-barre': { fill: C.geo, 'fill-opacity': '0.75' },
+    'g-courbe-temp': { fill: 'none', stroke: C.hist, 'stroke-width': '2.4' }, 'g-courbe': { fill: 'none', stroke: C.hist, 'stroke-width': '2.4' },
+    'g-point-temp': { fill: C.hist },
+    'g-h': { fill: C.geo, 'fill-opacity': '0.8' }, 'g-f': { fill: C.hist, 'fill-opacity': '0.8' },
+    'g-boite': { fill: C.surface, stroke: C.brand, 'stroke-width': '1.6' },
+    'g-periode': { stroke: '#ffffff', 'stroke-width': '1', 'fill-opacity': '0.55' }, 'g-part': { stroke: '#ffffff', 'stroke-width': '1' },
+    p0: { fill: C.geo }, p1: { fill: C.hist }, p2: { fill: '#d6a234' }, p3: { fill: '#6c8f4e' }, p4: { fill: '#8a6bb0' }, p5: { fill: '#9aa4a0' }
+  };
+  function svgPdf(svg) {
+    var s = svg.cloneNode(true);
+    s.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    s.querySelectorAll('*').forEach(function (el) {
+      var cl = (el.getAttribute('class') || '').split(/\s+/);
+      cl.forEach(function (k) { var st = SVG_STYLE[k]; if (st) Object.keys(st).forEach(function (a) { el.setAttribute(a, st[a]); }); });
+      var style = el.getAttribute('style');
+      if (style) { var m = style.match(/font-size:\s*([\d.]+)px/); if (m) el.setAttribute('font-size', m[1]); el.removeAttribute('style'); }
+      if (el.tagName.toLowerCase() === 'text') el.setAttribute('font-family', 'Roboto');
+      if (/^(text|tspan)$/i.test(el.tagName) && !el.children.length && FLECHE.test(el.textContent)) {
+        var parts = el.textContent.split(FLECHE); el.textContent = '';
+        parts.forEach(function (x) { if (!x) return; var ts = document.createElementNS('http://www.w3.org/2000/svg', 'tspan'); if (FLECHE.test(x)) ts.setAttribute('font-family', 'Fleches'); ts.textContent = x; el.appendChild(ts); });
+      }
+      el.removeAttribute('class');
+    });
+    s.removeAttribute('class'); s.removeAttribute('style');
+    var vb = (s.getAttribute('viewBox') || '0 0 640 300').split(/\s+/).map(Number);
+    s.setAttribute('width', vb[2]); s.setAttribute('height', vb[3]);
+    return { svg: new XMLSerializer().serializeToString(s), width: Math.min(480, vb[2] * 0.75), alignment: 'center', margin: [0, 4, 0, 2] };
+  }
+
+  function nettoie(t) { return t.replace(/\s+/g, ' '); }
+  // Les flèches (→ ↓ ↔…) absentes de Roboto sont écrites avec la petite police « Fleches ».
+  var FLECHE = /([\u2190-\u21ff\u27f5\u27f6\u25b2\u25bc\u2713])/;
+  function morceaux(t, st) {
+    return t.split(FLECHE).filter(function (x) { return x !== ''; }).map(function (x) {
+      var r = Object.assign({ text: x }, st); if (FLECHE.test(x)) r.font = 'Fleches'; return r;
+    });
+  }
+  function enLigne(node, st) {
+    // renvoie une liste de fragments de texte {text, bold, italics}
+    st = st || {};
+    var out = [];
+    node.childNodes.forEach(function (n) {
+      if (n.nodeType === 3) { var t = nettoie(n.nodeValue); if (t) out = out.concat(morceaux(t, st)); return; }
+      if (n.nodeType !== 1) return;
+      var tag = n.tagName.toLowerCase();
+      if (tag === 'br') { out.push({ text: '\n' }); return; }
+      if (tag === 'strong' || tag === 'b') { out = out.concat(enLigne(n, Object.assign({}, st, { bold: true }))); return; }
+      if (tag === 'em' || tag === 'i') { out = out.concat(enLigne(n, Object.assign({}, st, { italics: true }))); return; }
+      if (tag === 'mark') { out = out.concat(enLigne(n, st)); return; }
+      if (tag === 'svg') return;
+      out = out.concat(enLigne(n, st));
+    });
+    return out;
+  }
+  function rogne(frag) {
+    while (frag.length && /^\s*$/.test(frag[0].text) && frag[0].text !== '\n') frag.shift();
+    if (frag.length) frag[0].text = frag[0].text.replace(/^\s+/, '');
+    while (frag.length && /^\s*$/.test(frag[frag.length - 1].text)) frag.pop();
+    if (frag.length) frag[frag.length - 1].text = frag[frag.length - 1].text.replace(/\s+$/, '');
+    return frag;
+  }
+  function aDesBlocs(n) {
+    for (var i = 0; i < n.children.length; i++) if (/^(p|ul|ol|table|div|h[1-6]|figure|aside|section|details)$/i.test(n.children[i].tagName)) return true;
+    return false;
+  }
+
+  function blocs(node, o) {
+    var out = [];
+    var tampon = [];
+    function vider() { rogne(tampon); if (tampon.length) out.push({ text: tampon, margin: [0, 0, 0, 5] }); tampon = []; }
+    node.childNodes.forEach(function (n) {
+      if (n.nodeType === 3) { if (n.nodeValue.trim()) tampon = tampon.concat(morceaux(nettoie(n.nodeValue), {})); return; }
+      if (n.nodeType !== 1) return;
+      var tag = n.tagName.toLowerCase(), cls = n.getAttribute('class') || '';
+      if (/^(strong|b|em|i|a|span|br|mark)$/.test(tag)) { tampon = tampon.concat(enLigne({ childNodes: [n] })); return; }
+      vider();
+      if (tag === 'p') {
+        if (/appli-tete/.test(cls)) { out.push({ text: n.textContent.trim().toUpperCase(), style: 'appliTete' }); return; }
+        var f = rogne(enLigne(n)); if (f.length) out.push({ text: f, margin: [0, 0, 0, 5] }); return;
+      }
+      if (/^h[1-6]$/.test(tag)) { out.push({ text: rogne(enLigne(n)), style: tag, headlineLevel: 1 }); return; }
+      if (tag === 'ul' || tag === 'ol') {
+        var items = [];
+        Array.prototype.forEach.call(n.children, function (li) {
+          if (aDesBlocs(li)) items.push({ stack: blocs(li, o) }); else items.push({ text: rogne(enLigne(li)), margin: [0, 0, 0, 2] });
+        });
+        var l = {}; l[tag] = items; l.margin = [0, 0, 0, 6]; out.push(l); return;
+      }
+      if (tag === 'table') { out.push(tableau(n)); return; }
+      if (tag === 'figure') {
+        var svg = n.querySelector('svg'); if (svg) out.push(svgPdf(svg));
+        var cap = n.querySelector('figcaption'); if (cap) out.push({ text: cap.textContent.trim(), style: 'legende' });
+        return;
+      }
+      if (tag === 'svg') { out.push(svgPdf(n)); return; }
+      if (tag === 'details') {
+        if (/corrige/.test(cls)) {
+          if (!o.corriges) return;
+          var corps = n.querySelector('.corrige-body') || n;
+          out.push({ table: { widths: ['*'], body: [[{ stack: [{ text: 'Corrigé', style: 'corrigeTete' }].concat(blocs(corps, o)), margin: [6, 4, 6, 2] }]] }, layout: cadre(null, C.ok, true), margin: [0, 0, 0, 8] });
+          return;
+        }
+        var sum = n.querySelector('summary');
+        if (sum) out.push({ text: rogne(enLigne(sum)), style: 'h3' });
+        var tmp = n.cloneNode(true); var s2 = tmp.querySelector('summary'); if (s2) s2.remove();
+        out = out.concat(blocs(tmp, o)); return;
+      }
+      if (tag === 'summary') return;
+      if (tag === 'aside' && /appli/.test(cls)) {
+        out.push({ table: { widths: ['*'], body: [[{ stack: blocs(n, o), margin: [8, 6, 8, 2] }]] }, layout: cadre(o.soft, o.accent), margin: [0, 2, 0, 10] });
+        return;
+      }
+      if (tag === 'section' && /exo/.test(cls)) { out.push({ stack: blocs(n, o), margin: [0, 0, 0, 6] }); return; }
+      out = out.concat(blocs(n, o));
+    });
+    vider();
+    return out;
+  }
+  function cadre(fond, trait, gauche) {
+    return {
+      hLineWidth: function () { return gauche ? 0 : 0.8; }, vLineWidth: function (i) { return gauche ? (i === 0 ? 2.5 : 0) : 0.8; },
+      hLineColor: function () { return trait; }, vLineColor: function () { return trait; },
+      fillColor: function () { return fond || null; }, paddingLeft: function () { return 0; }, paddingRight: function () { return 0; },
+      paddingTop: function () { return 0; }, paddingBottom: function () { return 0; }
+    };
+  }
+  function tableau(t) {
+    var rows = [], max = 0, entete = 0;
+    t.querySelectorAll('tr').forEach(function (tr) {
+      var row = [];
+      tr.querySelectorAll('th,td').forEach(function (c) {
+        var th = c.tagName.toLowerCase() === 'th';
+        row.push({ text: rogne(enLigne(c)), bold: th, fillColor: th ? '#e8ebe4' : null, fontSize: 9.5 });
+      });
+      if (tr.parentNode.tagName.toLowerCase() === 'thead') entete++;
+      max = Math.max(max, row.length); rows.push(row);
+    });
+    rows.forEach(function (r) { while (r.length < max) r.push(''); });
+    if (!rows.length) return { text: '' };
+    return { table: { headerRows: entete, widths: Array(max).fill('*'), body: rows, dontBreakRows: true },
+      layout: { hLineColor: function () { return C.line; }, vLineColor: function () { return C.line; }, hLineWidth: function () { return 0.6; }, vLineWidth: function () { return 0.6; },
+        paddingLeft: function () { return 4; }, paddingRight: function () { return 4; }, paddingTop: function () { return 3; }, paddingBottom: function () { return 3; } },
+      margin: [0, 2, 0, 8] };
+  }
+
+  // ---------- filigrane discret, répété en diagonale sur toute la page ----------
+  function filigrane(w, h) {
+    var lignes = '';
+    for (var y = -h; y < h * 1.6; y += 120) {
+      for (var x = -w; x < w * 1.6; x += 330) lignes += '<text x="' + x + '" y="' + y + '">' + AUTEUR + '</text>';
+    }
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">' +
+      '<g transform="rotate(-32 ' + (w / 2) + ' ' + (h / 2) + ')" font-family="Roboto" font-size="20" font-weight="bold" fill="' + C.brand + '" fill-opacity="0.055">' + lignes + '</g></svg>';
+  }
+
+  function documentPdf(spec, o) {
+    var accent = spec.disc === 'h' ? C.hist : spec.disc === 'g' ? C.geo : C.brand;
+    o.accent = accent; o.soft = spec.disc === 'g' ? C.geoSoft : C.histSoft;
+    var parseur = new DOMParser();
+    var contenu = [
+      { text: spec.surtitre || '', style: 'surtitre' },
+      { text: spec.titre, style: 'titre' }
+    ];
+    if (spec.meta) contenu.push({ text: spec.meta, style: 'meta' });
+    contenu.push({ canvas: [{ type: 'line', x1: 0, y1: 0, x2: 515, y2: 0, lineWidth: 1.2, lineColor: accent }], margin: [0, 2, 0, 10] });
+    spec.sections.forEach(function (s) {
+      if (s.titre) contenu.push({ text: s.titre, style: 'section', color: accent, headlineLevel: 1 });
+      var doc = parseur.parseFromString('<div id="r">' + s.html + '</div>', 'text/html');
+      contenu = contenu.concat(blocs(doc.getElementById('r'), o));
+    });
+    return {
+      pageSize: 'A4', pageMargins: [40, 46, 40, 50],
+      info: { title: spec.titre, author: AUTEUR, subject: 'Histoire-Géographie, premier cycle', creator: 'Histoire géographie premier cycle' },
+      background: function (page, size) { return { svg: filigrane(size.width, size.height), absolutePosition: { x: 0, y: 0 } }; },
+      header: function (p) { if (p === 1) return null; return { text: 'Histoire-Géographie · ' + (spec.surtitre || ''), style: 'entete', margin: [40, 20, 40, 0] }; },
+      footer: function (p, n) {
+        return { columns: [{ text: 'Document de ' + AUTEUR, style: 'pied' }, { text: p + ' / ' + n, style: 'pied', alignment: 'right' }], margin: [40, 16, 40, 0] };
+      },
+      pageBreakBefore: function (node, suivants) { return node.headlineLevel === 1 && suivants.length === 0; },
+      content: contenu,
+      defaultStyle: { font: 'Roboto', fontSize: 10.5, lineHeight: 1.22, color: C.ink },
+      styles: {
+        surtitre: { fontSize: 9, color: C.muted, bold: true, characterSpacing: 0.6 },
+        titre: { fontSize: 17, bold: true, color: C.brand, margin: [0, 2, 0, 4], lineHeight: 1.1 },
+        meta: { fontSize: 9.5, color: C.muted, margin: [0, 0, 0, 2] },
+        section: { fontSize: 13.5, bold: true, margin: [0, 10, 0, 6] },
+        h1: { fontSize: 15, bold: true, color: C.brand, margin: [0, 10, 0, 5] },
+        h2: { fontSize: 13, bold: true, color: C.brand, margin: [0, 10, 0, 5] },
+        h3: { fontSize: 12, bold: true, color: C.brand, margin: [0, 8, 0, 4] },
+        h4: { fontSize: 11.5, bold: true, color: accent, margin: [0, 9, 0, 4] },
+        h5: { fontSize: 10.8, bold: true, margin: [0, 6, 0, 3] },
+        h6: { fontSize: 10.5, bold: true, italics: true, margin: [0, 4, 0, 2] },
+        appliTete: { fontSize: 8.5, bold: true, color: accent, characterSpacing: 0.8, margin: [0, 0, 0, 4] },
+        corrigeTete: { fontSize: 9, bold: true, color: C.ok, margin: [0, 0, 0, 3] },
+        legende: { fontSize: 8.5, italics: true, color: C.muted, alignment: 'center', margin: [0, 0, 0, 10] },
+        entete: { fontSize: 8, color: C.muted },
+        pied: { fontSize: 8, color: C.muted }
+      }
+    };
+  }
+
+  function nomFichier(spec) {
+    var base = ('HG ' + (spec.fichier || spec.titre)).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return base.slice(0, 80) + '.pdf';
+  }
+
+  // ---------- actions ----------
+  var POLICES = {
+    Roboto: { normal: 'Roboto-Regular.ttf', bold: 'Roboto-Medium.ttf', italics: 'Roboto-Italic.ttf', bolditalics: 'Roboto-MediumItalic.ttf' },
+    Fleches: { normal: 'Fleches.ttf', bold: 'Fleches.ttf', italics: 'Fleches.ttf', bolditalics: 'Fleches.ttf' }
+  };
+  function fabriquer(spec, o) { return charger().then(function () { return window.pdfMake.createPdf(documentPdf(spec, o), null, POLICES); }); }
+  function base64(pdf) { return new Promise(function (ok) { pdf.getBase64(ok); }); }
+  function blob(pdf) { return new Promise(function (ok) { pdf.getBlob(ok); }); }
+  var android = window.HGAndroid;
+
+  function agir(action, spec, o, msg) {
+    var nom = nomFichier(spec);
+    msg('Préparation du PDF…');
+    return fabriquer(spec, o).then(function (pdf) {
+      if (android) {
+        return base64(pdf).then(function (b) {
+          var r;
+          if (action === 'telecharger') {
+            r = android.telecharger(nom, b);
+            if (r === 'partager') { r = android.partager(nom, b); return msg(r === 'ok' ? 'Choisis « Enregistrer » ou une application pour garder le PDF.' : 'Erreur : ' + r); }
+            return msg(r === 'ok' ? 'PDF enregistré dans Téléchargements › Histoire-geographie (' + nom + ').' : 'Erreur : ' + r);
+          }
+          r = action === 'partager' ? android.partager(nom, b) : android.imprimer(nom, b);
+          msg(r === 'ok' ? (action === 'partager' ? 'Choisis l\'application de partage.' : 'Choisis l\'imprimante ou « Enregistrer au format PDF ».') : 'Erreur : ' + r);
+        });
+      }
+      if (action === 'partager') {
+        return blob(pdf).then(function (bl) {
+          var f = null; try { f = new File([bl], nom, { type: 'application/pdf' }); } catch (e) { /* ancien navigateur */ }
+          if (f && navigator.canShare && navigator.canShare({ files: [f] })) {
+            return navigator.share({ files: [f], title: spec.titre }).then(function () { msg('PDF partagé.'); }, function () { msg(''); });
+          }
+          pdf.download(nom); msg('Le partage direct n\'est pas disponible ici : le PDF a été téléchargé, tu peux l\'envoyer depuis tes fichiers.');
+        });
+      }
+      if (action === 'imprimer') { pdf.print(); return msg('Le PDF s\'ouvre pour l\'impression.'); }
+      pdf.download(nom); msg('PDF téléchargé : ' + nom);
+    }).catch(function (e) {
+      msg(/chargement/.test(String(e)) ? 'Impossible de charger le module PDF. Connecte-toi une première fois à Internet puis réessaie.' : 'Erreur pendant la création du PDF : ' + e);
+    });
+  }
+
+  // ---------- panneau ----------
+  function ouvrir(spec) {
+    window.HGPDF._dernier = spec;
+    var ancien = document.getElementById('panneau-pdf'); if (ancien) ancien.remove();
+    var avecCorr = /class="corrige"/.test(spec.sections.map(function (s) { return s.html; }).join(''));
+    var p = document.createElement('div');
+    p.id = 'panneau-pdf'; p.className = 'panneau-pdf'; p.setAttribute('role', 'dialog'); p.setAttribute('aria-label', 'Exporter en PDF');
+    p.innerHTML = '<div class="pp-fond" data-fermer></div><div class="pp-boite">' +
+      '<div class="pp-tete"><b>Exporter en PDF</b><button type="button" class="pp-x" data-fermer aria-label="Fermer">×</button></div>' +
+      '<p class="pp-titre">' + spec.titre.replace(/[<&]/g, '') + '</p>' +
+      (avecCorr ? '<label class="pp-case"><input type="checkbox" id="pp-corr" checked> Inclure les corrigés</label>' : '') +
+      '<div class="pp-actions"><button type="button" class="btn btn-plein" data-act="telecharger">Télécharger</button>' +
+      '<button type="button" class="btn" data-act="partager">Partager</button><button type="button" class="btn" data-act="imprimer">Imprimer</button></div>' +
+      '<p class="pp-note">A4, nom « ' + AUTEUR + ' » en filigrane.</p><p class="pp-msg" role="status" id="pp-msg"></p></div>';
+    document.body.appendChild(p);
+    var occupe = false;
+    function msg(t) { document.getElementById('pp-msg').textContent = t || ''; }
+    p.addEventListener('click', function (ev) {
+      if (ev.target.hasAttribute('data-fermer')) { p.remove(); return; }
+      var b = ev.target.closest('[data-act]'); if (!b || occupe) return;
+      occupe = true; p.classList.add('occupe');
+      var c = document.getElementById('pp-corr');
+      setTimeout(function () {
+        agir(b.getAttribute('data-act'), spec, { corriges: c ? c.checked : true }, msg).then(function () { occupe = false; p.classList.remove('occupe'); });
+      }, 30);
+    });
+  }
+
+  window.addEventListener('hashchange', function () { var p = document.getElementById('panneau-pdf'); if (p) p.remove(); });
+  window.HGPDF = { ouvrir: ouvrir, _fabriquer: fabriquer, _document: documentPdf, _charger: charger, _nom: nomFichier };
 })();
