@@ -228,3 +228,8 @@ mark { background: #f2c48f; color: #1c1a14; border-radius: 3px; padding: 0 2px; 
   .lecons a { grid-template-columns: 2rem 1fr auto; padding: 11px 12px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* Intertitres du cours : I. (h4) et 1. (h5) */
+.texte h4 { font-family: var(--font-ui); font-size: calc(17px * var(--fs)); font-weight: 800; letter-spacing: .01em; color: var(--c); margin: 1.5em 0 .5em; padding-bottom: 4px; border-bottom: 1px solid var(--line); line-height: 1.3; }
+.texte h5 { font-family: var(--font-ui); font-size: calc(16px * var(--fs)); font-weight: 700; color: var(--ink); margin: 1.1em 0 .35em; line-height: 1.3; }
+.situation .tbl { margin-top: .4em; }
