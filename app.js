@@ -83,7 +83,9 @@
   function vueAccueil() {
     barreClasses(null);
     var der = lire('derniere', null);
-    var h = '<p class="eyebrow">Programme ivoirien · APC</p><h1 class="titre-vue">Choisis une classe</h1>' +
+    var h = '<div class="hero"><img src="' + (window.HG_LOGO || 'icons/icon-192.png') + '" alt="Logo de l\'application" width="104" height="104"><div><b>Histoire <em>géographie</em></b>' +
+      '<p>L\'histoire pour comprendre le passé, la géographie pour maîtriser le monde.</p><small>6e – 3e · ENSEIGNANTS</small></div></div>' +
+      '<p class="eyebrow">Programme ivoirien · APC</p><h1 class="titre-vue">Choisis une classe</h1>' +
       '<p class="chapo">' + D.nbLecons + ' leçons de la 6e à la 3e, chacune avec sa situation d\'apprentissage, le cours et des exercices corrigés. Tout fonctionne sans connexion.</p>';
     if (der && INDEX[der]) h += carteReprendre(der);
     h += '<div class="accueil-grille">' + D.classes.map(function (c) {
@@ -509,7 +511,7 @@
   'use strict';
   var AUTEUR = 'Gnomblesson Hermann Vallès';
   var SITE = 'https://hermanndedelobly-lab.github.io/hg-premier-cycle/';
-  var C = { ink: '#1c2522', muted: '#5b6660', line: '#d8d8cd', brand: '#1f3b33', hist: '#a9501c', histSoft: '#f7ece3', geo: '#1c6573', geoSoft: '#e4f0f2', ok: '#2f7a4a', bg: '#f3f2ec', surface: '#fbfaf6' };
+  var C = { ink: '#0f1a33', muted: '#55607a', line: '#d8deeb', brand: '#081b54', hist: '#b8540a', histSoft: '#fdf1e4', geo: '#0b7a3e', geoSoft: '#e6f4eb', ok: '#1f7a45', bg: '#f4f6fb', surface: '#ffffff' };
 
   // ---------- chargement de pdfmake ----------
   var chargement = null;
