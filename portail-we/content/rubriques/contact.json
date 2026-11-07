@@ -2,6 +2,7 @@
   "label": "Contact",
   "court": "Contact",
   "intro": "Nous écrire, devenir partenaire ou partager vos connaissances.",
+  "image": "assets/photos/coiffe-cauris.webp",
   "pages": [
     {
       "id": "a-propos",

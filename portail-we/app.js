@@ -74,20 +74,63 @@
     nav.querySelectorAll("li.open").forEach(function (o) { o.classList.remove("open"); });
   }
 
+  /* ---------- Icônes ---------- */
+  var ICO = {
+    pin: '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+    cal: '<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    mail: '<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m4 7 8 6 8-6"/>',
+    phone: '<path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/>',
+    chat: '<path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1z"/><path d="M9 10.5c.5 2 2 3.5 4.5 4.3"/>',
+    grid: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
+    prev: '<path d="M15 5l-7 7 7 7"/>', next: '<path d="M9 5l7 7-7 7"/>'
+  };
+  function ico(n) { return '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + ICO[n] + "</svg>"; }
+  function dateFr(iso) { var d = new Date(iso + "T12:00:00"); return d.getDate() + " " + MOIS[d.getMonth()] + " " + d.getFullYear(); }
+  function lecture(t) { return Math.max(1, Math.round(String(t || "").split(/\s+/).length / 200)) + " min de lecture"; }
+
   function buildFooter() {
     document.getElementById("year").textContent = new Date().getFullYear();
     document.getElementById("footer-links").innerHTML = S.sections.map(function (s) {
       return '<a href="' + href(s.pages.length ? s.id : "") + '">' + esc(s.label) + "</a>";
     }).join("");
+    var R = S.reseaux || {}, tel = (S.telephone || "").trim(), wa = (S.whatsapp || "").trim();
+    function bloc(icon, label, valeur, lien) {
+      return '<div class="contactbar__item"><span class="contactbar__ico">' + ico(icon) + "</span><div><small>" + label + "</small>" +
+        (lien ? '<a href="' + esc(lien) + '">' + esc(valeur) + "</a>" : "<b>" + esc(valeur) + "</b>") + "</div></div>";
+    }
+    var reseaux = [["facebook", "Facebook", "f"], ["instagram", "Instagram", "ig"], ["youtube", "YouTube", "▶"], ["tiktok", "TikTok", "♪"]]
+      .filter(function (r) { return R[r[0]]; })
+      .map(function (r) { return '<a class="social" href="' + esc(R[r[0]]) + '" target="_blank" rel="noopener" aria-label="' + r[1] + '">' + r[2] + "</a>"; }).join("");
+    document.getElementById("contactbar").innerHTML =
+      (wa ? bloc("chat", "WhatsApp", wa, "https://wa.me/" + wa.replace(/\D/g, "")) : "") +
+      bloc("mail", "E-mail", S.emailContact, "mailto:" + S.emailContact) +
+      (tel ? bloc("phone", "Téléphone", tel, "tel:" + tel.replace(/\s/g, "")) : "") +
+      '<form class="newsletter" name="newsletter" id="newsletter"><label for="nl-email">Recevez les nouvelles de la culture wê par e-mail</label>' +
+      '<input type="hidden" name="form-name" value="newsletter"><p class="hp" aria-hidden="true"><input name="bot-field" tabindex="-1" autocomplete="off"></p>' +
+      '<div class="newsletter__row"><input class="input" id="nl-email" name="email" type="email" required placeholder="Votre e-mail" autocomplete="email">' +
+      '<button class="btn btn--brand btn--sm" type="submit">S’inscrire</button></div><small class="newsletter__msg" role="status"></small></form>' +
+      (reseaux ? '<div class="contactbar__social"><small>Suivez-nous</small><div>' + reseaux + "</div></div>" : "");
+    var nl = document.getElementById("newsletter");
+    nl.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var msg = nl.querySelector(".newsletter__msg");
+      if (!nl.reportValidity()) return;
+      fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(nl)).toString() })
+        .then(function (r) { if (!r.ok) throw 0; nl.reset(); msg.textContent = "Merci, votre inscription est enregistrée."; })
+        .catch(function () { msg.textContent = "L’inscription n’a pas abouti. Écrivez-nous à " + S.emailContact + "."; });
+    });
   }
 
   /* ---------- Briques ---------- */
-  function sectionCard(s, i) {
-    return '<a class="card" href="' + href(s.id) + '"><span class="card__num">' + (i + 2) + "</span><h3>" + esc(s.label) +
-      "</h3><p>" + esc(s.intro) + '</p><div class="chips">' +
-      s.pages.slice(0, 4).map(function (p) { return '<span class="chip">' + esc(p.titre) + "</span>"; }).join("") +
-      (s.pages.length > 4 ? '<span class="chip">+' + (s.pages.length - 4) + "</span>" : "") +
-      '</div><span class="card__more">Explorer →</span></a>';
+  function sectionCard(s) {
+    return '<a class="card card--rubrique" href="' + href(s.id) + '">' +
+      '<span class="card__media">' + (s.image ? '<img src="' + esc(s.image) + '" alt="" loading="lazy">' : '<span class="card__motif" aria-hidden="true"></span>') + "</span>" +
+      '<span class="card__body"><h3>' + esc(s.label) + "</h3><p>" + esc(s.intro) + '</p><span class="chips">' +
+      s.pages.slice(0, 3).map(function (p) { return '<span class="chip">' + esc(p.titre) + "</span>"; }).join("") +
+      (s.pages.length > 3 ? '<span class="chip">+' + (s.pages.length - 3) + "</span>" : "") +
+      '</span><span class="card__more">Explorer ' + ico("arrow") + "</span></span></a>";
   }
   function newsItem(n) {
     var d = new Date(n.date + "T12:00:00");
@@ -103,32 +146,139 @@
   var aCompleter = '<div class="notice"><p><strong>Rubrique en construction</strong>Cette page attend vos contributions : textes, photos, enregistrements, corrections. ' +
     '<a href="#contact--proposer">Proposer un contenu</a></p></div>';
 
+  /* Publications : actualités d'abord, puis pages illustrées */
+  function publications() {
+    var news = newsSorted().map(function (n) {
+      return { image: n.image, tag: n.categorie, titre: n.titre, lien: n.lien || "#actualites", date: n.date, meta: lecture(n.resume) };
+    });
+    var pages = [];
+    rubriques.forEach(function (s) {
+      s.pages.forEach(function (p) {
+        if (p.image) pages.push({ image: p.image, tag: s.court || s.label, titre: p.titre, lien: href(s.id, p.id), meta: lecture(p.texte) });
+      });
+    });
+    return { news: news, pages: pages };
+  }
+  function pubCard(x) {
+    return '<a class="pub" href="' + esc(x.lien) + '"><span class="pub__media">' +
+      (x.image ? '<img src="' + esc(x.image) + '" alt="" loading="lazy">' : "") + '<span class="pill">' + esc(x.tag) + "</span></span>" +
+      '<span class="pub__body"><h3>' + esc(x.titre) + '</h3><span class="pub__meta">' +
+      (x.date ? "<span>" + ico("cal") + dateFr(x.date) + "</span>" : "") + "<span>" + ico("clock") + esc(x.meta) + "</span></span></span></a>";
+  }
+
+  /* ---------- Carrousel ---------- */
+  var timer = null;
+  function carousel(slides) {
+    if (!slides.length) return '<div class="slider slider--logo"><img src="assets/logo.webp" alt="Logo MW+"></div>';
+    return '<div class="slider" id="slider" aria-roledescription="carrousel" aria-label="À la une">' +
+      slides.map(function (d, i) {
+        return '<a class="slide' + (i ? "" : " is-active") + '" href="' + esc(d.lien || "#accueil") + '" aria-roledescription="diapositive" aria-label="' + (i + 1) + " sur " + slides.length + '"' + (i ? ' tabindex="-1" aria-hidden="true"' : "") + ">" +
+          '<img src="' + esc(d.image) + '" alt="" ' + (i ? 'loading="lazy"' : "") + '><span class="slide__shade"></span><span class="slide__text">' +
+          '<span class="pill pill--light">' + esc(d.etiquette) + "</span><h2>" + esc(d.titre) + "</h2><p>" + esc(d.texte) + "</p></span>" +
+          (d.credit ? '<small class="slide__credit">' + esc(d.credit) + "</small>" : "") + "</a>";
+      }).join("") +
+      (slides.length > 1 ? '<button class="slider__nav slider__nav--prev" type="button" aria-label="Diapositive précédente">' + ico("prev") + "</button>" +
+        '<button class="slider__nav slider__nav--next" type="button" aria-label="Diapositive suivante">' + ico("next") + "</button>" +
+        '<div class="slider__dots">' + slides.map(function (d, i) {
+          return '<button type="button" aria-label="Afficher : ' + esc(d.titre) + '"' + (i ? "" : ' aria-current="true"') + "></button>";
+        }).join("") + "</div>" : "") + "</div>";
+  }
+  function startCarousel() {
+    clearInterval(timer);
+    var el = document.getElementById("slider");
+    if (!el) return;
+    var slides = el.querySelectorAll(".slide"), dots = el.querySelectorAll(".slider__dots button"), cur = 0;
+    if (slides.length < 2) return;
+    function show(n) {
+      cur = (n + slides.length) % slides.length;
+      slides.forEach(function (s, i) {
+        var on = i === cur;
+        s.classList.toggle("is-active", on);
+        on ? s.removeAttribute("aria-hidden") : s.setAttribute("aria-hidden", "true");
+        s.tabIndex = on ? 0 : -1;
+      });
+      dots.forEach(function (d, i) { i === cur ? d.setAttribute("aria-current", "true") : d.removeAttribute("aria-current"); });
+    }
+    dots.forEach(function (d, i) { d.addEventListener("click", function () { show(i); }); });
+    el.querySelector(".slider__nav--prev").addEventListener("click", function () { show(cur - 1); });
+    el.querySelector(".slider__nav--next").addEventListener("click", function () { show(cur + 1); });
+    var calme = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function play() { if (!calme) { clearInterval(timer); timer = setInterval(function () { show(cur + 1); }, 6000); } }
+    el.addEventListener("mouseenter", function () { clearInterval(timer); });
+    el.addEventListener("mouseleave", play);
+    el.addEventListener("focusin", function () { clearInterval(timer); });
+    var x0 = null;
+    el.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    el.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) { show(cur + (dx < 0 ? 1 : -1)); play(); }
+    });
+    play();
+  }
+
   /* ---------- Pages ---------- */
   function renderHome() {
     document.title = "MW+ · Portail culturel wê";
-    var news = newsSorted().slice(0, 3);
+    var A = S.accueil || {}, P = publications();
+    var cartes = P.news.concat(P.pages).slice(0, 4);
+    var forts = P.pages.slice(0, 4);
     main.innerHTML =
-      '<section class="hero"><div class="hero__inner"><div><p class="eyebrow" style="color:var(--gold-2)">Portail culturel du peuple wê</p>' +
-      "<h1>La Culture Wê,<br><em>notre fierté</em></h1>" +
-      '<p class="lead">' + esc(S.accueil.texte) + "</p>" +
-      '<div class="hero__actions"><a class="btn btn--gold" href="#histoire">Découvrir notre histoire</a><a class="btn btn--ghost" href="#langue--apprendre">Apprendre le wê</a></div></div>' +
-      '<img class="hero__logo" src="assets/logo.webp" alt="Logo MW+ : statue wê sculptée devant une montagne boisée, avec la devise La Culture Wê, notre fierté" width="720" height="720"></div></section>' +
+      '<section class="hero2"><div class="wrap hero2__grid"><div class="hero2__text">' +
+      '<span class="pill">' + esc(A.etiquette || "Culture wê") + "</span>" +
+      "<h1>" + esc(A.titre) + (A.titreAccent ? " <em>" + esc(A.titreAccent) + "</em>" : "") + "</h1>" +
+      '<p class="lead">' + esc(A.texte) + "</p>" +
+      '<div class="hero__actions"><a class="btn btn--brand" href="#culture">Découvrir la culture ' + ico("arrow") + '</a>' +
+      '<a class="btn btn--line" href="#tourisme--villages">Explorer nos villages ' + ico("pin") + "</a></div></div>" +
+      carousel(S.une || []) + "</div></section>" +
 
-      '<section class="section"><div class="wrap"><div class="section__head"><div><p class="eyebrow">Explorer le portail</p><h2>Toutes les rubriques du portail</h2></div></div>' +
-      '<div class="grid">' + rubriques.map(sectionCard).join("") + "</div></div></section>" +
+      '<section class="villes"><div class="wrap villes__row"><ul class="villes__list" aria-label="Villes du pays wê">' +
+      (A.villes || []).map(function (v) {
+        return '<li><a href="#tourisme--villages"><span class="villes__pin">' + ico("pin") + "</span>" + esc(v) + "</a></li>";
+      }).join("") + '</ul><div class="villes__links"><a href="#tourisme--villages">' + ico("grid") + "<span>Tous les villages</span></a>" +
+      '<a href="#actualites--evenements">' + ico("cal") + "<span>Agenda</span></a></div></div></section>" +
 
-      '<section class="section" style="padding-top:0"><div class="wrap split"><div><div class="section__head"><div><p class="eyebrow">Actualités</p><h2>À la une</h2></div>' +
-      '<a class="btn btn--line" href="#actualites">Toutes les actualités</a></div><div class="news">' +
-      (news.length ? news.map(newsItem).join("") : '<div class="empty">Aucune actualité pour le moment.</div>') + "</div></div>" +
-      '<div><div class="section__head"><div><p class="eyebrow">Accès rapides</p><h2>Commencer ici</h2></div></div><div class="grid" style="grid-template-columns:1fr 1fr">' +
-      [["langue", "dictionnaire", "Dictionnaire français-wê"], ["langue", "proverbes", "Proverbes et expressions"], ["tourisme", "villages", "Nos villages"],
-        ["culture", "danses", "Danses traditionnelles"], ["musique", "artistes", "Artistes wê"], ["business", "annuaire", "Annuaire des entreprises"]]
-        .map(function (q) { return '<a class="card" href="' + href(q[0], q[1]) + '"><h3 style="font-size:1.02rem">' + esc(q[2]) + '</h3><span class="card__more">Ouvrir →</span></a>'; }).join("") +
-      "</div></div></div></section>" +
+      '<section class="section section--tight"><div class="wrap layout2"><div class="layout2__main">' +
+      '<div class="section__head"><h2>Dernières publications</h2><a class="link-more" href="#actualites">Voir tout ' + ico("arrow") + "</a></div>" +
+      '<div class="pubs">' + cartes.map(pubCard).join("") + "</div></div>" +
+      '<aside class="forts" aria-labelledby="forts-titre"><h2 id="forts-titre">Temps forts</h2><ul>' +
+      forts.map(function (x) {
+        return '<li><a href="' + esc(x.lien) + '"><img src="' + esc(x.image) + '" alt="" loading="lazy"><span><span class="tag">' + esc(x.tag) +
+          "</span><b>" + esc(x.titre) + "</b><small>" + ico("clock") + esc(x.meta) + "</small></span></a></li>";
+      }).join("") + '</ul><a class="link-more" href="#culture">Plus de culture ' + ico("arrow") + "</a></aside></div></section>" +
 
-      '<section class="section" style="padding-top:0"><div class="wrap"><div class="cta"><div><h2>Gardiens de la mémoire, à vous la parole</h2>' +
+      '<section class="section section--tight"><div class="wrap"><div class="section__head"><h2>Toutes les rubriques</h2></div>' +
+      '<div class="grid grid--rubriques">' + rubriques.map(sectionCard).join("") + "</div></div></section>" +
+
+      '<section class="section section--tight"><div class="wrap"><div class="cta"><div><h2>Gardiens de la mémoire, à vous la parole</h2>' +
       "<p>Un conte, un proverbe, une photo d’archive, un mot wê, l’histoire de votre village : chaque contribution enrichit le patrimoine commun.</p></div>" +
       '<a class="btn btn--gold" href="#contact--proposer">Proposer un contenu</a></div></div></section>';
+    startCarousel();
+  }
+
+  /* ---------- Recherche ---------- */
+  function renderSearch() {
+    document.title = "Rechercher · MW+";
+    main.innerHTML = pageHead("Recherche", "Rechercher sur le portail", "Une page, une actualité, un mot du dictionnaire, une entreprise…") +
+      '<section class="section section--tight"><div class="wrap" style="max-width:820px"><div class="search" role="search">' +
+      '<input class="input" id="q" type="search" placeholder="Ex. : masques, Duékoué, proverbes…" aria-label="Rechercher"></div><div id="results"></div></div></section>';
+    var q = document.getElementById("q"), out = document.getElementById("results");
+    var index = [];
+    rubriques.forEach(function (s) {
+      s.pages.forEach(function (p) { index.push({ t: p.titre, d: p.chapo, x: p.texte, l: href(s.id, p.id), g: s.label }); });
+    });
+    S.actualites.forEach(function (n) { index.push({ t: n.titre, d: n.resume, x: n.lieu, l: n.lien || "#actualites", g: "Actualité · " + dateFr(n.date) }); });
+    S.dictionnaire.forEach(function (e) { index.push({ t: e.fr + " → " + e.we, d: e.exemple, x: e.categorie, l: "#langue--dictionnaire", g: "Dictionnaire" }); });
+    S.annuaire.forEach(function (e) { index.push({ t: e.nom, d: e.activite + " · " + e.ville, x: e.description, l: "#business--annuaire", g: "Annuaire" }); });
+    function run() {
+      var t = norm(q.value).trim();
+      if (t.length < 2) { out.innerHTML = '<p class="muted">Tapez au moins deux lettres.</p>'; return; }
+      var r = index.filter(function (i) { return norm([i.t, i.d, i.x].join(" ")).indexOf(t) > -1; });
+      out.innerHTML = r.length ? '<p class="muted">' + r.length + " résultat" + (r.length > 1 ? "s" : "") + '</p><ul class="results">' + r.map(function (i) {
+        return '<li><a href="' + i.l + '"><span class="tag">' + esc(i.g) + "</span><b>" + esc(i.t) + "</b>" + (i.d ? "<span>" + esc(i.d) + "</span>" : "") + "</a></li>";
+      }).join("") + "</ul>" : '<div class="empty">Aucun résultat pour « ' + esc(q.value) + ' ».</div>';
+    }
+    q.addEventListener("input", run); run(); q.focus();
   }
 
   function renderSection(s) {
@@ -310,7 +460,9 @@
     if (location.hash === "#main") return;
     var parts = location.hash.replace(/^#\/?/, "").split(/--|\//).filter(Boolean);
     var s = parts[0] ? section(parts[0]) : null;
+    clearInterval(timer);
     if (!parts.length || (s && s.id === "accueil")) renderHome();
+    else if (parts[0] === "recherche") renderSearch();
     else if (!s) renderNotFound();
     else if (!parts[1]) renderSection(s);
     else {
@@ -334,15 +486,16 @@
       if (!r.ok) throw new Error(f); return r.json();
     });
   }
-  Promise.all([lire("site.json"), lire("actualites.json"), lire("dictionnaire.json"), lire("annuaire.json")]
+  Promise.all([lire("site.json"), lire("actualites.json"), lire("dictionnaire.json"), lire("annuaire.json"), lire("une.json")]
     .concat(RUBRIQUES.map(function (id) { return lire("rubriques/" + id + ".json"); })))
     .then(function (r) {
       S = r[0];
       S.actualites = (r[1].articles || []).filter(function (a) { return a.date && a.titre; });
       S.dictionnaire = r[2].entrees || [];
       S.annuaire = r[3].entreprises || [];
+      S.une = (r[4].diapositives || []).filter(function (d) { return d.image && d.titre; });
       rubriques = RUBRIQUES.map(function (id, i) {
-        var x = r[4 + i]; x.id = id; x.pages = x.pages || []; return x;
+        var x = r[5 + i]; x.id = id; x.pages = x.pages || []; return x;
       });
       S.sections = [{ id: "accueil", label: "Accueil", pages: [] }].concat(rubriques);
       buildNav();

@@ -2,6 +2,7 @@
   "label": "Tourisme & Découverte",
   "court": "Tourisme",
   "intro": "Partir à la découverte du pays wê : villages, forêts, montagnes et hospitalité.",
+  "image": "assets/photos/ceremonie-raphia.webp",
   "pages": [
     {
       "id": "villages",

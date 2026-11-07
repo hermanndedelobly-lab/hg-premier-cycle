@@ -2,6 +2,7 @@
   "label": "Musique & Artistes",
   "court": "Musique",
   "intro": "Les voix d'hier et d'aujourd'hui : artistes, sorties, clips et entretiens.",
+  "image": "assets/photos/danse-acrobatique.webp",
   "pages": [
     {
       "id": "artistes",

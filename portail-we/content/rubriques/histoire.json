@@ -2,6 +2,7 @@
   "label": "Histoire & Civilisation",
   "court": "Histoire",
   "intro": "D'où vient le peuple wê, comment il s'est organisé et ce qu'il a transmis de génération en génération.",
+  "image": "assets/photos/hommes-panthere.webp",
   "pages": [
     {
       "id": "origines",
@@ -36,7 +37,7 @@
       "type": "texte",
       "chapo": "Croyances, rites de passage, règles de vie et savoirs transmis par les anciens.",
       "texte": "Chez les Wê, le masque occupe une place centrale : il n'est pas un simple objet mais une puissance qui intervient dans la vie de la communauté, pour divertir, enseigner, juger ou apaiser les conflits.\n\nRites de naissance, d'initiation, de mariage et de funérailles, respect des aînés, solidarité du lignage : cette rubrique décrira ces traditions avec l'accord et l'aide des gardiens de la coutume.",
-      "image": "",
+      "image": "assets/photos/hommes-panthere.webp",
       "aCompleter": true
     },
     {

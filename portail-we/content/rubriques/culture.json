@@ -2,6 +2,7 @@
   "label": "Culture & Traditions",
   "court": "Culture",
   "intro": "Danses, musiques, saveurs, tenues et cérémonies qui font vivre la culture wê.",
+  "image": "assets/photos/danse-village.webp",
   "pages": [
     {
       "id": "danses",
@@ -9,7 +10,7 @@
       "type": "texte",
       "chapo": "Danses de réjouissance, danses de masques, danses des femmes et des jeunes.",
       "texte": "Chaque danse a son occasion, ses pas, ses tambours et ses chants. Les fiches préciseront l'origine, le sens et les moments où elle est exécutée.",
-      "image": "",
+      "image": "assets/photos/danse-village.webp",
       "aCompleter": true
     },
     {
@@ -18,7 +19,7 @@
       "type": "texte",
       "chapo": "Chants de travail, chants de veillée, chants funéraires et chants de masques.",
       "texte": "La musique accompagne tous les moments de la vie wê. Cette rubrique présentera les grands genres, leurs paroles et leurs interprètes.",
-      "image": "",
+      "image": "assets/photos/danse-acrobatique.webp",
       "aCompleter": true
     },
     {
@@ -45,7 +46,7 @@
       "type": "texte",
       "chapo": "Pagnes, parures, coiffures et tenues de cérémonie.",
       "texte": "Les tenues disent l'âge, le rang et l'occasion. Cette rubrique décrira les tenues d'hier et leurs réinterprétations par les créateurs d'aujourd'hui.",
-      "image": "",
+      "image": "assets/photos/coiffe-cauris.webp",
       "aCompleter": true
     },
     {
@@ -54,7 +55,7 @@
       "type": "texte",
       "chapo": "Fêtes de génération, sorties de masques, intronisations, funérailles et fêtes des récoltes.",
       "texte": "Un calendrier des cérémonies, village par village, sera tenu à jour dans la rubrique Événements.",
-      "image": "",
+      "image": "assets/photos/ceremonie-raphia.webp",
       "aCompleter": true
     }
   ]

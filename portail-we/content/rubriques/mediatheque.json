@@ -2,6 +2,7 @@
   "label": "Médiathèque",
   "court": "Médiathèque",
   "intro": "Livres, documents, photos, vidéos et archives à consulter et télécharger.",
+  "image": "assets/photos/visages-peints.webp",
   "pages": [
     {
       "id": "telechargements",
@@ -27,7 +28,7 @@
       "type": "texte",
       "chapo": "Galeries : villages, cérémonies, portraits, paysages.",
       "texte": "Envoyez vos photos en précisant le lieu, la date et l'auteur.",
-      "image": "",
+      "image": "assets/photos/visages-peints.webp",
       "aCompleter": true
     },
     {

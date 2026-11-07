@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MW+ · Portail culturel wê</title>
   <meta name="description" content="MW+ — La Culture Wê, notre fierté. Histoire, langue, traditions, musique, tourisme, médiathèque, actualités et annuaire du peuple wê de Côte d'Ivoire.">
-  <meta name="theme-color" content="#0d2416">
+  <meta name="theme-color" content="#17703a">
   <meta property="og:title" content="MW+ · Portail culturel wê">
   <meta property="og:description" content="La Culture Wê, notre fierté.">
   <meta property="og:image" content="assets/logo-512.png">
@@ -22,22 +22,25 @@
 
   <header class="topbar">
     <div class="topbar__inner">
-      <a class="brand" href="#accueil" aria-label="MW+ — accueil">
-        <img src="assets/logo-96.png" alt="" width="48" height="48">
+      <a class="brand" href="#accueil" aria-label="MW+, retour à l’accueil">
+        <img src="assets/logo-96.png" alt="" width="52" height="52">
         <span class="brand__text"><strong>MW+</strong><small>La Culture Wê, notre fierté</small></span>
       </a>
-      <button class="menu-btn" aria-expanded="false" aria-controls="nav" type="button">
-        <span class="menu-btn__bars" aria-hidden="true"></span><span class="menu-btn__label">Menu</span>
-      </button>
       <nav id="nav" class="nav" aria-label="Menu principal"></nav>
+      <div class="topbar__actions">
+        <a class="icon-btn" href="#recherche" aria-label="Rechercher sur le site"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></a>
+        <a class="btn btn--brand btn--sm topbar__cta" href="#contact--proposer">Contribuer</a>
+        <button class="menu-btn" aria-expanded="false" aria-controls="nav" type="button">
+          <span class="menu-btn__bars" aria-hidden="true"></span><span class="menu-btn__label">Menu</span>
+        </button>
+      </div>
     </div>
-    <div class="band" aria-hidden="true"></div>
   </header>
 
   <main id="main" tabindex="-1"></main>
 
   <footer class="footer">
-    <div class="band" aria-hidden="true"></div>
+    <div class="wrap"><div class="contactbar" id="contactbar"></div></div>
     <div class="footer__inner">
       <div class="footer__brand">
         <img src="assets/logo-192.png" alt="Logo MW+" width="96" height="96" loading="lazy">
@@ -45,7 +48,7 @@
       </div>
       <div class="footer__links" id="footer-links"></div>
     </div>
-    <p class="footer__copy">© <span id="year"></span> MW+ · Contenus partagés par la communauté wê</p>
+    <p class="footer__copy">© <span id="year"></span> MW+ · Contenus partagés par la communauté wê · <a href="admin/">Administration</a></p>
   </footer>
 
   <!-- Déclaration des formulaires pour Netlify Forms (les vrais formulaires sont affichés par app.js) -->
@@ -53,6 +56,7 @@
     <form name="contact" data-netlify="true" netlify-honeypot="bot-field"><input name="bot-field"><input name="nom"><input name="email"><input name="sujet"><textarea name="message"></textarea></form>
     <form name="partenaire" data-netlify="true" netlify-honeypot="bot-field"><input name="bot-field"><input name="structure"><input name="contact"><input name="email"><input name="telephone"><input name="partenariat"><input name="ville"><textarea name="projet"></textarea></form>
     <form name="contenu" data-netlify="true" netlify-honeypot="bot-field"><input name="bot-field"><input name="nom"><input name="contact"><input name="sujet"><input name="rubrique"><input name="village"><input name="source"><textarea name="contribution"></textarea><input name="accord"></form>
+    <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field"><input name="bot-field"><input name="email"></form>
   </div>
 
   <script src="app.js"></script>
