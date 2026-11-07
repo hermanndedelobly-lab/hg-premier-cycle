@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MW+ · Portail culturel wê</title>
+  <meta name="description" content="MW+ — La Culture Wê, notre fierté. Histoire, langue, traditions, musique, tourisme, médiathèque, actualités et annuaire du peuple wê de Côte d'Ivoire.">
+  <meta name="theme-color" content="#0d2416">
+  <meta property="og:title" content="MW+ · Portail culturel wê">
+  <meta property="og:description" content="La Culture Wê, notre fierté.">
+  <meta property="og:image" content="assets/logo-512.png">
+  <link rel="icon" type="image/png" href="assets/logo-96.png">
+  <link rel="apple-touch-icon" href="assets/logo-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Aller au contenu</a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="#/" aria-label="MW+ — accueil">
+        <img src="assets/logo-96.png" alt="" width="48" height="48">
+        <span class="brand__text"><strong>MW+</strong><small>La Culture Wê, notre fierté</small></span>
+      </a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav" type="button">
+        <span class="menu-btn__bars" aria-hidden="true"></span><span class="menu-btn__label">Menu</span>
+      </button>
+      <nav id="nav" class="nav" aria-label="Menu principal"></nav>
+    </div>
+    <div class="band" aria-hidden="true"></div>
+  </header>
+
+  <main id="main" tabindex="-1"></main>
+
+  <footer class="footer">
+    <div class="band" aria-hidden="true"></div>
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo-192.png" alt="Logo MW+" width="96" height="96" loading="lazy">
+        <p><strong>MW+</strong><br>La Culture Wê, notre fierté.<br><span class="muted">Portail de valorisation et de transmission de la culture du peuple wê, ouest de la Côte d'Ivoire.</span></p>
+      </div>
+      <div class="footer__links" id="footer-links"></div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> MW+ · Contenus partagés par la communauté wê</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

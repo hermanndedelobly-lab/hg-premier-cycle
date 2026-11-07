@@ -26,6 +26,8 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+  // le portail culturel wê est un site distinct : jamais servi par ce cache
+  if (url.pathname.indexOf('/portail-we/') !== -1) return;
   // version.json : toujours demandé au serveur (pour savoir s'il existe une mise à jour)
   if (url.pathname.endsWith('/version.json')) {
     e.respondWith(fetch(req, { cache: 'no-store' }).catch(function () { return caches.match('version.json'); }));
