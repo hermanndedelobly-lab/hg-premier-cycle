@@ -59,7 +59,7 @@ h1, h2, h3 { font-family: var(--serif); line-height: 1.15; margin: 0 0 .5em; let
 }
 
 /* ---------- En-tête ---------- */
-.topbar { position: sticky; top: 0; z-index: 50; background: var(--forest); color: #fff; }
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--forest); color: #fff; }
 .topbar__inner {
   max-width: var(--maxw); margin: 0 auto; padding: 8px 16px;
   display: flex; align-items: center; gap: 16px;
@@ -287,3 +287,9 @@ a.card:hover { transform: translateY(-3px); border-color: var(--gold); }
 .footer__links a:hover { color: var(--gold-2); }
 .footer__copy { text-align: center; font-size: .82rem; color: #a8b0a2; padding: 16px; margin: 0; border-top: 1px solid rgba(255,255,255,.08); }
 @media (max-width: 760px) { .footer__inner { grid-template-columns: 1fr; } }
+.form__ok { display: grid; gap: 12px; }
+.form__ok p { margin: 0; }
+.form__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.sel { user-select: all; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+[hidden] { display: none !important; }

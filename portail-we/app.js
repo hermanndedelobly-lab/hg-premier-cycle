@@ -14,7 +14,7 @@
   }
   function norm(s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
   function section(id) { return S.sections.find(function (s) { return s.id === id; }); }
-  function href(sec, page) { return "#/" + sec + (page ? "/" + page : ""); }
+  function href(sec, page) { return "#" + (sec || "accueil") + (page ? "--" + page : ""); }
   var rubriques = S.sections.filter(function (s) { return s.pages.length; });
 
   /* ---------- Menu ---------- */
@@ -22,7 +22,7 @@
     var html = "<ul>";
     S.sections.forEach(function (s) {
       if (!s.pages.length) {
-        html += '<li><a class="nav__top" data-sec="' + s.id + '" href="#/">' + esc(s.label) + "</a></li>";
+        html += '<li><a class="nav__top" data-sec="' + s.id + '" href="#accueil">' + esc(s.label) + "</a></li>";
         return;
       }
       html += '<li><button class="nav__top" type="button" data-sec="' + s.id + '" aria-expanded="false">' +
@@ -92,7 +92,7 @@
       '<p class="eyebrow">' + esc(eyebrow) + "</p><h1>" + esc(title) + "</h1>" + (intro ? "<p>" + esc(intro) + "</p>" : "") + "</div></header>";
   }
   var aCompleter = '<div class="notice"><p><strong>Rubrique en construction</strong>Cette page attend vos contributions : textes, photos, enregistrements, corrections. ' +
-    '<a href="#/contact/proposer">Proposer un contenu</a></p></div>';
+    '<a href="#contact--proposer">Proposer un contenu</a></p></div>';
 
   /* ---------- Pages ---------- */
   function renderHome() {
@@ -102,14 +102,14 @@
       '<section class="hero"><div class="hero__inner"><div><p class="eyebrow" style="color:var(--gold-2)">Portail culturel du peuple wê</p>' +
       "<h1>La Culture Wê,<br><em>notre fierté</em></h1>" +
       '<p class="lead">Histoire, langue, traditions, musique, villages et forces vives du pays wê, dans l’ouest de la Côte d’Ivoire — réunis en un seul lieu pour les transmettre aux générations futures.</p>' +
-      '<div class="hero__actions"><a class="btn btn--gold" href="#/histoire">Découvrir notre histoire</a><a class="btn btn--ghost" href="#/langue/apprendre">Apprendre le wê</a></div></div>' +
+      '<div class="hero__actions"><a class="btn btn--gold" href="#histoire">Découvrir notre histoire</a><a class="btn btn--ghost" href="#langue--apprendre">Apprendre le wê</a></div></div>' +
       '<img class="hero__logo" src="assets/logo.webp" alt="Logo MW+ : statue wê sculptée devant une montagne boisée, avec la devise La Culture Wê, notre fierté" width="720" height="720"></div></section>' +
 
       '<section class="section"><div class="wrap"><div class="section__head"><div><p class="eyebrow">Explorer le portail</p><h2>Toutes les rubriques du portail</h2></div></div>' +
       '<div class="grid">' + rubriques.map(sectionCard).join("") + "</div></div></section>" +
 
       '<section class="section" style="padding-top:0"><div class="wrap split"><div><div class="section__head"><div><p class="eyebrow">Actualités</p><h2>À la une</h2></div>' +
-      '<a class="btn btn--line" href="#/actualites">Toutes les actualités</a></div><div class="news">' +
+      '<a class="btn btn--line" href="#actualites">Toutes les actualités</a></div><div class="news">' +
       (news.length ? news.map(newsItem).join("") : '<div class="empty">Aucune actualité pour le moment.</div>') + "</div></div>" +
       '<div><div class="section__head"><div><p class="eyebrow">Accès rapides</p><h2>Commencer ici</h2></div></div><div class="grid" style="grid-template-columns:1fr 1fr">' +
       [["langue", "dictionnaire", "Dictionnaire français-wê"], ["langue", "proverbes", "Proverbes et expressions"], ["tourisme", "villages", "Nos villages"],
@@ -119,12 +119,12 @@
 
       '<section class="section" style="padding-top:0"><div class="wrap"><div class="cta"><div><h2>Gardiens de la mémoire, à vous la parole</h2>' +
       "<p>Un conte, un proverbe, une photo d’archive, un mot wê, l’histoire de votre village : chaque contribution enrichit le patrimoine commun.</p></div>" +
-      '<a class="btn btn--gold" href="#/contact/proposer">Proposer un contenu</a></div></div></section>';
+      '<a class="btn btn--gold" href="#contact--proposer">Proposer un contenu</a></div></div></section>';
   }
 
   function renderSection(s) {
     document.title = s.label + " · MW+";
-    main.innerHTML = pageHead("Rubrique", s.label, s.intro, '<a href="#/">Accueil</a> › ' + esc(s.label)) +
+    main.innerHTML = pageHead("Rubrique", s.label, s.intro, '<a href="#accueil">Accueil</a> › ' + esc(s.label)) +
       '<section class="section"><div class="wrap"><div class="grid">' +
       s.pages.map(function (p, i) {
         return '<a class="card" href="' + href(s.id, p.id) + '"><span class="card__num">' + (i + 1) + "</span><h3>" + esc(p.titre) + "</h3><p>" +
@@ -144,7 +144,7 @@
         body = (p.texte || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("") + (p.aCompleter ? aCompleter : "");
     }
     main.innerHTML = pageHead(s.label, p.titre, p.chapo,
-      '<a href="#/">Accueil</a> › <a href="' + href(s.id) + '">' + esc(s.label) + "</a> › " + esc(p.titre)) +
+      '<a href="#accueil">Accueil</a> › <a href="' + href(s.id) + '">' + esc(s.label) + "</a> › " + esc(p.titre)) +
       '<div class="layout"><aside class="sidenav" aria-label="' + esc(s.label) + '"><h2>' + esc(s.court || s.label) + "</h2><ul>" +
       s.pages.map(function (q) {
         return '<li><a href="' + href(s.id, q.id) + '"' + (q.id === p.id ? ' aria-current="page"' : "") + ">" + esc(q.titre) + "</a></li>";
@@ -168,7 +168,7 @@
   function actualites(p) {
     var list = newsSorted().filter(function (n) { return !p.filtre || n.categorie === p.filtre; });
     return list.length ? '<div class="news">' + list.map(newsItem).join("") + "</div>"
-      : '<div class="empty"><strong>Rien à afficher pour le moment</strong>Une information à partager ? <a href="#/contact/proposer">Envoyez-la-nous</a>.</div>';
+      : '<div class="empty"><strong>Rien à afficher pour le moment</strong>Une information à partager ? <a href="#contact--proposer">Envoyez-la-nous</a>.</div>';
   }
 
   /* Annuaire */
@@ -189,7 +189,7 @@
         }).sort(function (a, b) { return a.fr.localeCompare(b.fr, "fr"); });
         if (!S.dictionnaire.length) {
           out.innerHTML = '<div class="empty"><strong>Le dictionnaire est en cours de constitution</strong>Locuteurs du wê, proposez vos premiers mots : ' +
-            'le mot en français, sa traduction, la variante (guéré, wobé, canton) et un exemple.<br><br><a class="btn btn--gold" href="#/contact/proposer">Proposer un mot</a></div>';
+            'le mot en français, sa traduction, la variante (guéré, wobé, canton) et un exemple.<br><br><a class="btn btn--gold" href="#contact--proposer">Proposer un mot</a></div>';
           return;
         }
         out.innerHTML = r.length ? '<p class="muted">' + r.length + " mot" + (r.length > 1 ? "s" : "") + '</p><div class="table-scroll"><table class="dict"><thead><tr><th>Français</th><th>Wê</th><th>Catégorie</th><th>Exemple</th></tr></thead><tbody>' +
@@ -197,7 +197,7 @@
             return "<tr><td>" + esc(e.fr) + '</td><td class="we">' + esc(e.we) + (e.variante ? ' <span class="chip">' + esc(e.variante) + "</span>" : "") +
               "</td><td>" + esc(e.categorie) + "</td><td>" + esc(e.exemple) + "</td></tr>";
           }).join("") + "</tbody></table></div>"
-          : '<div class="empty">Aucun résultat. <a href="#/contact/proposer">Proposer ce mot</a></div>';
+          : '<div class="empty">Aucun résultat. <a href="#contact--proposer">Proposer ce mot</a></div>';
       }
       q.addEventListener("input", run); cat.addEventListener("change", run); run();
     },
@@ -216,7 +216,7 @@
         }).join("") + "</div>"
           : '<div class="empty"><strong>' + (S.annuaire.length ? "Aucun résultat" : "L’annuaire ouvre ses inscriptions") + "</strong>" +
             "Entreprises, commerçants, artisans et entrepreneurs wê : inscrivez gratuitement votre activité.<br><br>" +
-            '<a class="btn btn--gold" href="#/contact/partenaire">Inscrire mon activité</a></div>';
+            '<a class="btn btn--gold" href="#contact--partenaire">Inscrire mon activité</a></div>';
       }
       q.addEventListener("input", run); ville.addEventListener("change", run); run();
     },
@@ -228,8 +228,17 @@
         var d = new FormData(f), lignes = [];
         d.forEach(function (v, k) { if (k !== "sujet" && v) lignes.push(k.charAt(0).toUpperCase() + k.slice(1) + " : " + v); });
         var sujet = "[MW+] " + (d.get("sujet") || p.titre);
-        location.href = "mailto:" + S.emailContact + "?subject=" + encodeURIComponent(sujet) + "&body=" + encodeURIComponent(lignes.join("\n\n"));
-        document.getElementById("form-ok").hidden = false;
+        var texte = "Objet : " + sujet + "\n\n" + lignes.join("\n\n");
+        var ok = document.getElementById("form-ok");
+        ok.querySelector("textarea").value = texte;
+        ok.querySelector("a.btn").href = "mailto:" + S.emailContact + "?subject=" + encodeURIComponent(sujet) + "&body=" + encodeURIComponent(lignes.join("\n\n"));
+        ok.hidden = false;
+        ok.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+      document.getElementById("form-copy").addEventListener("click", function () {
+        var ta = document.getElementById("form-msg"), b = this;
+        function done() { b.textContent = "Message copié"; }
+        try { navigator.clipboard.writeText(ta.value).then(done, function () { ta.select(); }); } catch (err) { ta.select(); }
       });
     }
   };
@@ -261,19 +270,23 @@
     }[p.formulaire];
     return '<form class="form" id="form" novalidate>' + champs +
       '<div><button class="btn btn--gold" type="submit">Envoyer</button></div>' +
-      '<p class="form__ok" id="form-ok" hidden>Votre messagerie s’est ouverte avec le message prêt à partir. Si rien ne s’est passé, écrivez-nous à <a href="mailto:' +
-      esc(S.emailContact) + '">' + esc(S.emailContact) + "</a>.</p></form>";
+      '<div class="form__ok" id="form-ok" hidden><p><strong>Votre message est prêt.</strong> Envoyez-le à <b class="sel">' + esc(S.emailContact) +
+      '</b> depuis votre messagerie : copiez-le ci-dessous ou ouvrez directement votre application d’e-mail.</p>' +
+      '<textarea class="input" id="form-msg" rows="7" readonly aria-label="Message à envoyer"></textarea>' +
+      '<div class="form__actions"><button class="btn btn--line" type="button" id="form-copy">Copier le message</button>' +
+      '<a class="btn btn--gold" href="#">Ouvrir ma messagerie</a></div></div></form>';
   }
 
   function renderNotFound() {
     document.title = "Page introuvable · MW+";
     main.innerHTML = pageHead("Erreur", "Page introuvable", "Cette page n’existe pas ou a été déplacée.") +
-      '<section class="section"><div class="wrap"><a class="btn btn--gold" href="#/">Retour à l’accueil</a></div></section>';
+      '<section class="section"><div class="wrap"><a class="btn btn--gold" href="#accueil">Retour à l’accueil</a></div></section>';
   }
 
   /* ---------- Routeur ---------- */
   function route() {
-    var parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
+    if (location.hash === "#main") return;
+    var parts = location.hash.replace(/^#\/?/, "").split(/--|\//).filter(Boolean);
     var s = parts[0] ? section(parts[0]) : null;
     if (!parts.length || (s && s.id === "accueil")) renderHome();
     else if (!s) renderNotFound();
