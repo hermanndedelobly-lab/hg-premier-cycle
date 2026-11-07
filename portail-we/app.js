@@ -1,7 +1,9 @@
-/* MW+ · Portail culturel wê — navigation et rendu des pages (sans dépendance). */
+/* MW+ · Portail culturel wê — navigation et rendu des pages (sans dépendance).
+   Le contenu est lu dans content/*.json, modifiable depuis l’espace administrateur (/admin). */
 (function () {
   "use strict";
-  var S = window.SITE;
+  var S;
+  var RUBRIQUES = ["histoire", "langue", "culture", "musique", "tourisme", "mediatheque", "actualites", "business", "contact"];
   var main = document.getElementById("main");
   var nav = document.getElementById("nav");
   var menuBtn = document.querySelector(".menu-btn");
@@ -15,7 +17,14 @@
   function norm(s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
   function section(id) { return S.sections.find(function (s) { return s.id === id; }); }
   function href(sec, page) { return "#" + (sec || "accueil") + (page ? "--" + page : ""); }
-  var rubriques = S.sections.filter(function (s) { return s.pages.length; });
+  var rubriques = [];
+  function paras(t) {
+    return String(t || "").split(/\n\s*\n/).map(function (x) { return x.trim(); }).filter(Boolean)
+      .map(function (x) { return "<p>" + esc(x).replace(/\n/g, "<br>") + "</p>"; }).join("");
+  }
+  function figure(src, alt) {
+    return src ? '<figure class="figure"><img src="' + esc(src) + '" alt="' + esc(alt || "") + '" loading="lazy"></figure>' : "";
+  }
 
   /* ---------- Menu ---------- */
   function buildNav() {
@@ -84,7 +93,7 @@
     var d = new Date(n.date + "T12:00:00");
     return '<article class="news__item"><div class="news__date"><b>' + d.getDate() + "</b><span>" + MOIS[d.getMonth()] + " " + d.getFullYear() +
       '</span></div><div><span class="tag">' + esc(n.categorie) + (n.lieu ? " · " + esc(n.lieu) : "") + "</span><h3>" + esc(n.titre) +
-      "</h3><p>" + esc(n.resume) + "</p></div></article>";
+      "</h3><p>" + esc(n.resume) + "</p>" + (n.image ? '<img class="news__img" src="' + esc(n.image) + '" alt="" loading="lazy">' : "") + "</div></article>";
   }
   function newsSorted() { return S.actualites.slice().sort(function (a, b) { return b.date.localeCompare(a.date); }); }
   function pageHead(eyebrow, title, intro, crumbs) {
@@ -101,7 +110,7 @@
     main.innerHTML =
       '<section class="hero"><div class="hero__inner"><div><p class="eyebrow" style="color:var(--gold-2)">Portail culturel du peuple wê</p>' +
       "<h1>La Culture Wê,<br><em>notre fierté</em></h1>" +
-      '<p class="lead">Histoire, langue, traditions, musique, villages et forces vives du pays wê, dans l’ouest de la Côte d’Ivoire — réunis en un seul lieu pour les transmettre aux générations futures.</p>' +
+      '<p class="lead">' + esc(S.accueil.texte) + "</p>" +
       '<div class="hero__actions"><a class="btn btn--gold" href="#histoire">Découvrir notre histoire</a><a class="btn btn--ghost" href="#langue--apprendre">Apprendre le wê</a></div></div>' +
       '<img class="hero__logo" src="assets/logo.webp" alt="Logo MW+ : statue wê sculptée devant une montagne boisée, avec la devise La Culture Wê, notre fierté" width="720" height="720"></div></section>' +
 
@@ -141,7 +150,7 @@
       case "annuaire": body = annuaire(p); break;
       case "formulaire": body = formulaire(p); break;
       default:
-        body = (p.texte || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("") + (p.aCompleter ? aCompleter : "");
+        body = figure(p.image, p.titre) + paras(p.texte) + (p.aCompleter ? aCompleter : "");
     }
     main.innerHTML = pageHead(s.label, p.titre, p.chapo,
       '<a href="#accueil">Accueil</a> › <a href="' + href(s.id) + '">' + esc(s.label) + "</a> › " + esc(p.titre)) +
@@ -156,7 +165,7 @@
 
   /* Dictionnaire */
   function dictionnaire(p) {
-    return (p.texte || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("") +
+    return paras(p.texte) +
       '<div class="search" role="search"><input class="input" id="q" type="search" placeholder="Rechercher un mot (français ou wê)…" aria-label="Rechercher un mot">' +
       '<select class="select" id="cat" aria-label="Catégorie"><option value="">Toutes les catégories</option>' +
       uniq(S.dictionnaire.map(function (e) { return e.categorie; })).map(function (c) { return "<option>" + esc(c) + "</option>"; }).join("") +
@@ -225,8 +234,18 @@
       f.addEventListener("submit", function (e) {
         e.preventDefault();
         if (!f.reportValidity()) return;
-        var d = new FormData(f), lignes = [];
-        d.forEach(function (v, k) { if (k !== "sujet" && v) lignes.push(k.charAt(0).toUpperCase() + k.slice(1) + " : " + v); });
+        var d = new FormData(f), lignes = [], btn = f.querySelector('button[type="submit"]');
+        btn.disabled = true; btn.textContent = "Envoi en cours…";
+        fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(d).toString() })
+          .then(function (r) {
+            if (!r.ok) throw new Error(r.status);
+            f.innerHTML = '<div class="form__sent" role="status"><strong>Merci, votre message a bien été envoyé.</strong>' +
+              "<p>L’équipe MW+ le lira et vous répondra si nécessaire. Les contributions sont relues avant publication.</p>" +
+              '<a class="btn btn--line" href="#accueil">Retour à l’accueil</a></div>';
+          })
+          .catch(function () { btn.disabled = false; btn.textContent = "Envoyer"; secours(); });
+        function secours() {
+        d.forEach(function (v, k) { if (k !== "sujet" && k !== "form-name" && k !== "bot-field" && v) lignes.push(k.charAt(0).toUpperCase() + k.slice(1) + " : " + v); });
         var sujet = "[MW+] " + (d.get("sujet") || p.titre);
         var texte = "Objet : " + sujet + "\n\n" + lignes.join("\n\n");
         var ok = document.getElementById("form-ok");
@@ -234,6 +253,7 @@
         ok.querySelector("a.btn").href = "mailto:" + S.emailContact + "?subject=" + encodeURIComponent(sujet) + "&body=" + encodeURIComponent(lignes.join("\n\n"));
         ok.hidden = false;
         ok.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
       });
       document.getElementById("form-copy").addEventListener("click", function () {
         var ta = document.getElementById("form-msg"), b = this;
@@ -243,7 +263,7 @@
     }
   };
 
-  /* Formulaires (envoi par la messagerie de l'utilisateur) */
+  /* Formulaires : envoyés par Netlify Forms (copie de secours si l’envoi échoue) */
   function formulaire(p) {
     var champs = {
       contact:
@@ -268,9 +288,11 @@
         '<label>Votre contribution <span class="hint">Pour un mot : français, wê, variante, exemple. Pour un fichier, nous vous répondrons avec un lien d’envoi.</span><textarea class="input" name="contribution" rows="7" required></textarea></label>' +
         '<label style="display:flex;gap:8px;align-items:flex-start;font-weight:400"><input type="checkbox" name="accord" value="oui" required> J’accepte que ce contenu soit publié sur le portail, avec mention de son auteur.</label>'
     }[p.formulaire];
-    return '<form class="form" id="form" novalidate>' + champs +
+    return '<form class="form" id="form" name="' + p.formulaire + '" novalidate>' +
+      '<input type="hidden" name="form-name" value="' + p.formulaire + '">' +
+      '<p class="hp" aria-hidden="true"><label>Ne pas remplir <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>' + champs +
       '<div><button class="btn btn--gold" type="submit">Envoyer</button></div>' +
-      '<div class="form__ok" id="form-ok" hidden><p><strong>Votre message est prêt.</strong> Envoyez-le à <b class="sel">' + esc(S.emailContact) +
+      '<div class="form__ok" id="form-ok" hidden><p><strong>L’envoi automatique n’a pas fonctionné.</strong> Envoyez votre message à <b class="sel">' + esc(S.emailContact) +
       '</b> depuis votre messagerie : copiez-le ci-dessous ou ouvrez directement votre application d’e-mail.</p>' +
       '<textarea class="input" id="form-msg" rows="7" readonly aria-label="Message à envoyer"></textarea>' +
       '<div class="form__actions"><button class="btn btn--line" type="button" id="form-copy">Copier le message</button>' +
@@ -306,8 +328,30 @@
     main.focus({ preventScroll: true });
   }
 
-  buildNav();
-  buildFooter();
-  window.addEventListener("hashchange", route);
-  route();
+  /* ---------- Chargement du contenu ---------- */
+  function lire(f) {
+    return fetch("content/" + f, { cache: "no-cache" }).then(function (r) {
+      if (!r.ok) throw new Error(f); return r.json();
+    });
+  }
+  Promise.all([lire("site.json"), lire("actualites.json"), lire("dictionnaire.json"), lire("annuaire.json")]
+    .concat(RUBRIQUES.map(function (id) { return lire("rubriques/" + id + ".json"); })))
+    .then(function (r) {
+      S = r[0];
+      S.actualites = (r[1].articles || []).filter(function (a) { return a.date && a.titre; });
+      S.dictionnaire = r[2].entrees || [];
+      S.annuaire = r[3].entreprises || [];
+      rubriques = RUBRIQUES.map(function (id, i) {
+        var x = r[4 + i]; x.id = id; x.pages = x.pages || []; return x;
+      });
+      S.sections = [{ id: "accueil", label: "Accueil", pages: [] }].concat(rubriques);
+      buildNav();
+      buildFooter();
+      window.addEventListener("hashchange", route);
+      route();
+    })
+    .catch(function () {
+      main.innerHTML = '<section class="section"><div class="wrap"><div class="empty"><strong>Le contenu n’a pas pu être chargé</strong>' +
+        "Vérifiez votre connexion puis rechargez la page.</div></div></section>";
+    });
 })();

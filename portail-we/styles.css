@@ -293,3 +293,10 @@ a.card:hover { transform: translateY(-3px); border-color: var(--gold); }
 .sel { user-select: all; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 [hidden] { display: none !important; }
+.hp { position: absolute; left: -9999px; }
+.form__sent { display: grid; gap: 10px; justify-items: start; padding: 8px 0; }
+.form__sent strong { font-family: var(--serif); font-size: 1.3rem; color: var(--link); }
+.form__sent p { margin: 0; color: var(--muted); }
+.figure { margin: 0 0 20px; }
+.figure img { border-radius: var(--radius); width: 100%; }
+.news__img { margin-top: 10px; border-radius: 10px; max-height: 260px; object-fit: cover; width: 100%; }
