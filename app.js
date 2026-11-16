@@ -272,7 +272,7 @@
       '<a href="#l-' + l.id + '"' + (actif === 'b' ? ' aria-current="page"' : '') + '>Élève</a>' +
       '<a href="#a-' + l.id + '"' + (actif === 'a' ? ' aria-current="page"' : '') + '>Enseignant</a>' +
       '<a href="#g-' + l.id + '"' + (actif === 'g' ? ' aria-current="page"' : '') + '>Culture générale</a></nav>' +
-      (l.v11 && l.v11.statut !== 'validee' ? '<p class="statut-v11">Leçon ' + (l.v11.statut === 'pilote' ? 'pilote' : 'en brouillon') + ' de la version 1.1 : en attente de validation.</p>' : '');
+      (l.v11 && l.v11.statut !== 'validee' ? '<p class="statut-v11">' + (l.v11.statut === 'pilote' ? 'Leçon pilote de la version 1.1 : en attente de validation.' : 'Leçon enrichie (modèle validé) : contenu en attente du contrôle pédagogique.') + '</p>' : '');
   }
   function activerSommaire() {
     vue.querySelectorAll('[data-aller]').forEach(function (b) {
@@ -820,7 +820,17 @@
     'g-h': { fill: C.geo, 'fill-opacity': '0.8' }, 'g-f': { fill: C.hist, 'fill-opacity': '0.8' },
     'g-boite': { fill: C.surface, stroke: C.brand, 'stroke-width': '1.6' },
     'g-periode': { stroke: '#ffffff', 'stroke-width': '1', 'fill-opacity': '0.55' }, 'g-part': { stroke: '#ffffff', 'stroke-width': '1' },
-    p0: { fill: C.geo }, p1: { fill: C.hist }, p2: { fill: '#d6a234' }, p3: { fill: '#6c8f4e' }, p4: { fill: '#8a6bb0' }, p5: { fill: '#9aa4a0' }
+    p0: { fill: C.geo }, p1: { fill: C.hist }, p2: { fill: '#d6a234' }, p3: { fill: '#6c8f4e' }, p4: { fill: '#8a6bb0' }, p5: { fill: '#9aa4a0' },
+    // cartes et schémas des leçons enrichies (généralisation du modèle validé)
+    'g-mer': { fill: '#2f7fbf', 'fill-opacity': '0.14' },
+    'g-pays': { fill: '#ffffff', stroke: C.muted, 'stroke-width': '0.7', 'stroke-linejoin': 'round' },
+    'g-pays-ci': { fill: C.geo, 'fill-opacity': '0.16', stroke: C.geo, 'stroke-width': '1.4', 'stroke-linejoin': 'round' },
+    'g-fleuve': { fill: 'none', stroke: '#2f7fbf', 'stroke-width': '1.6', 'stroke-linecap': 'round' },
+    'g-zone': { 'fill-opacity': '0.35', stroke: 'none' },
+    'g-trait': { fill: 'none', stroke: C.ink, 'stroke-width': '1.4' },
+    'g-tirets': { fill: 'none', stroke: C.muted, 'stroke-width': '1.2', 'stroke-dasharray': '4 3' },
+    'g-cadre': { fill: 'none', stroke: C.line, 'stroke-width': '1' },
+    'g-italique': { fill: C.muted, 'font-size': '10.5', 'font-style': 'italic' }
   };
   function svgPdf(svg) {
     var s = svg.cloneNode(true);
@@ -829,7 +839,18 @@
       var cl = (el.getAttribute('class') || '').split(/\s+/);
       cl.forEach(function (k) { var st = SVG_STYLE[k]; if (st) Object.keys(st).forEach(function (a) { el.setAttribute(a, st[a]); }); });
       var style = el.getAttribute('style');
-      if (style) { var m = style.match(/font-size:\s*([\d.]+)px/); if (m) el.setAttribute('font-size', m[1]); el.removeAttribute('style'); }
+      if (style) {
+        var m = style.match(/font-size:\s*([\d.]+)px/); if (m) el.setAttribute('font-size', m[1]);
+        // autres déclarations (fill, stroke, opacité, épaisseur) : reportées en attributs ; var(--…) remplacé par une couleur fixe
+        style.split(';').forEach(function (d) {
+          var kv = d.split(':'); if (kv.length !== 2) return;
+          var k = kv[0].trim(), v = kv[1].trim();
+          if (!/^(fill|stroke|fill-opacity|stroke-width|stroke-dasharray|opacity)$/.test(k)) return;
+          if (/^var\(--surface/.test(v)) v = '#ffffff'; else if (/^var\(/.test(v)) v = C.ink;
+          el.setAttribute(k, v);
+        });
+        el.removeAttribute('style');
+      }
       if (el.tagName.toLowerCase() === 'text') el.setAttribute('font-family', 'Roboto');
       if (/^(text|tspan)$/i.test(el.tagName) && !el.children.length && FLECHE.test(el.textContent)) {
         var parts = el.textContent.split(FLECHE); el.textContent = '';

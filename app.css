@@ -35,14 +35,14 @@
   :root:not([data-theme="light"]) {
     --bg: #060f2b; --surface: #0c1a45; --ink: #e9edf8; --muted: #9aa6c4; --line: #1f2f63;
     --brand: #001438; --brand-2: #00296a; --on-brand: #ffffff;
-    --hist: #ff9b4d; --hist-soft: #3a2412; --geo: #4fd08a; --geo-soft: #0f3324; --ok: #5fd08e; --focus: #ffc83d;
+    --hist: #ff9b4d; --hist-soft: #3a2412; --geo: #4fd08a; --geo-soft: #0f3324; --ok: #5fd08e; --focus: #ffc83d; --g-ligne: #8fa6e0;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #060f2b; --surface: #0c1a45; --ink: #e9edf8; --muted: #9aa6c4; --line: #1f2f63;
   --brand: #001438; --brand-2: #00296a; --on-brand: #ffffff;
-  --hist: #ff9b4d; --hist-soft: #3a2412; --geo: #4fd08a; --geo-soft: #0f3324; --ok: #5fd08e; --focus: #ffc83d;
+  --hist: #ff9b4d; --hist-soft: #3a2412; --geo: #4fd08a; --geo-soft: #0f3324; --ok: #5fd08e; --focus: #ffc83d; --g-ligne: #8fa6e0;
   color-scheme: dark;
 }
 
@@ -280,7 +280,7 @@ figure.graphe figcaption { font-family: var(--font-ui); font-size: 12.5px; color
 .g-courbe-temp, .g-courbe { fill: none; stroke: var(--hist); stroke-width: 2.4; }
 .g-point-temp { fill: var(--hist); }
 .g-h { fill: var(--geo); fill-opacity: .8; } .g-f { fill: var(--hist); fill-opacity: .8; }
-.g-boite { fill: var(--surface); stroke: var(--brand); stroke-width: 1.6; }
+.g-boite { fill: var(--surface); stroke: var(--g-ligne, var(--brand)); stroke-width: 1.6; }
 .g-periode, .g-part { stroke: var(--bg); stroke-width: 1; }
 .p0 { fill: var(--geo); } .p1 { fill: var(--hist); } .p2 { fill: #d6a234; } .p3 { fill: #6c8f4e; } .p4 { fill: #8a6bb0; } .p5 { fill: #9aa4a0; }
 .g-periode { fill-opacity: .55; }

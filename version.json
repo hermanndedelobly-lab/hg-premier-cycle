@@ -1,7 +1,8 @@
 {
-  "version": "1.15.0",
+  "version": "1.16.0",
   "date": "2026-11-16",
   "notes": [
+    "Version 1.16.0 : généralisation du modèle pédagogique validé à toute la 6e (lot 1) : les 17 leçons ont désormais trois espaces (Élève : trace écrite enrichie, illustrations, cartes, activités et évaluation sur 20 ; Enseignant : cours approfondi et préparation de séance APC avec réponses attendues ; Culture générale : approfondissements et références) ; 42 nouvelles illustrations (cartes sur fond Natural Earth, schémas, frises, graphiques) ; exercices, banque et quiz conservés ; en attente du contrôle pédagogique",
     "Version 1.15.0 : espace Enseignant de la 6e (onglet « Enseignant » de la classe) avec le guide de l'enseignant et 17 fiches de préparation détaillées (déroulement séance par séance, réponses attendues, éclairage scientifique, remédiation, évaluation avec corrigé et barème), lien « Fiche de préparation » dans chaque leçon de 6e, fiches dans la recherche et en PDF ; leçon pilote : déroulé détaillé en deux séances avec les réponses attendues ajouté à la préparation de séance ; photos affichées depuis le canal des mises à jour quand elles manquent dans l'APK installé",
     "Version 1.14.1 : test de la mise à jour directement dans l'application, sans nouvel APK (aucun autre changement)",
     "Nouvelle identité : l'application s'appelle désormais GNOMBLESSON · Histoire & Géographie (« Apprendre, comprendre et découvrir notre monde. ») : nouveau logo, nouvelle icône, écran de démarrage, couleurs bleu nuit, or, orange et vert ; contenus, progression et réglages conservés",
