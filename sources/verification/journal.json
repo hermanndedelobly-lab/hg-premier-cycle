@@ -1,8 +1,30 @@
 [
  {
-  "etape": "OMM",
-  "ok": false,
-  "detail": "HTTP Error 404: Not Found"
+  "etape": "OMM liste",
+  "ok": true,
+  "detail": "39 fichiers dans 60 répertoires"
+ },
+ {
+  "etape": "OMM fichiers Côte d'Ivoire",
+  "ok": true,
+  "detail": [
+   "https://www.ncei.noaa.gov/data/oceans/archive/arc0216/0253808/6.6/data/0-data/documents/Explanatory_Information_Region1.pdf"
+  ]
+ },
+ {
+  "etape": "OMM téléchargement",
+  "ok": true,
+  "detail": "Explanatory_Information_Region1.pdf (918416 octets)"
+ },
+ {
+  "etape": "OMM extraits",
+  "ok": true,
+  "detail": "4 lignes"
+ },
+ {
+  "etape": "Crossref DOI",
+  "ok": true,
+  "detail": "Humans in Africa’s wet tropical forests 150 thousand years ago — 640 402-407"
  },
  {
   "etape": "Crossref",
