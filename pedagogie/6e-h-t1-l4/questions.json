@@ -1,0 +1,10 @@
+{
+  "comprehension": [
+    ["Pourquoi l'historien a-t-il besoin de la chronologie ?", "Pour ranger les faits dans l'ordre, mesurer le temps qui les sépare et comprendre les causes et les conséquences (une cause est toujours antérieure à sa conséquence)."],
+    ["Pourquoi l'année 1900 appartient-elle au XIXe siècle et non au XXe ?", "Parce que le Ier siècle va de l'an 1 à l'an 100 : chaque siècle se termine par une année en 00. 1900 est donc la dernière année du XIXe siècle."],
+    ["Entre 1500 av. J.-C. et 500 av. J.-C., quelle date est la plus ancienne ? Pourquoi ?", "1500 av. J.-C., car avant Jésus-Christ on compte les années en remontant le temps : plus le nombre est grand, plus la date est ancienne."],
+    ["Pourquoi additionne-t-on les deux dates pour calculer une durée entre une date av. J.-C. et une date apr. J.-C. ?", "Parce que les deux dates sont de part et d'autre de l'an 1 : on ajoute le temps écoulé avant l'an 1 à celui écoulé après."],
+    ["Pourquoi le mois du Ramadan change-t-il de date chaque année dans le calendrier grégorien ?", "Parce que le calendrier musulman suit les mois lunaires : son année compte environ 354 jours, soit environ 11 jours de moins que l'année grégorienne."],
+    ["Sur une frise, comment représente-t-on un évènement et une période ?", "Un évènement par un point (ou un trait) à sa date ; une période par une bande colorée entre sa date de début et sa date de fin."]
+  ]
+}
