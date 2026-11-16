@@ -1,0 +1,10 @@
+{
+  "comprehension": [
+    ["Pourquoi faut-il au moins 30 ans d'observations pour connaître le climat d'un lieu ?", "Parce que le temps change chaque jour et que certaines années sont exceptionnelles : seules des moyennes calculées sur une longue période montrent la situation habituelle."],
+    ["Pourquoi le thermomètre doit-il être placé à l'ombre, dans un abri ?", "Pour mesurer la température de l'air et non la chaleur du soleil sur l'instrument, qui fausserait la mesure."],
+    ["Pourquoi fait-il chaud toute l'année dans la zone intertropicale ?", "Parce que les rayons du soleil y arrivent presque à la verticale toute l'année : ils chauffent beaucoup plus qu'aux latitudes élevées, où ils arrivent inclinés."],
+    ["Pourquoi peut-il faire froid en France pendant qu'il fait chaud en Côte d'Ivoire ?", "Parce que la France est dans la zone tempérée, qui connaît un hiver froid de décembre à février, alors que la Côte d'Ivoire est dans la zone chaude, chaude toute l'année."],
+    ["Pourquoi fait-il plus frais à Man qu'à Abidjan ?", "Parce que Man est en altitude, dans la région montagneuse : la température baisse d'environ 0,6 °C tous les 100 m."],
+    ["Comment reconnaît-on un mois sec sur un diagramme ombrothermique ?", "La courbe des températures passe au-dessus de la barre des précipitations (avec l'échelle 1 °C pour 2 mm), ce qui correspond à P ≤ 2T."]
+  ]
+}
