@@ -397,7 +397,7 @@ FICHES['6e-h-t2-l1'] = {
   "L'Afrique est le berceau de l'humanité : australopithèques (dont « Lucy », environ 3,2 millions d'années, Éthiopie), puis le genre Homo (Homo habilis, Homo erectus) ; les plus anciens fossiles d'Homo sapiens connus, à Jebel Irhoud (Maroc), sont datés d'environ 300 000 ans.",
   "En Afrique, les archéologues parlent souvent d'« âge de la pierre ancien » (galets aménagés de type oldowayen, puis bifaces acheuléens), d'« âge de la pierre moyen » et d'« âge de la pierre récent » : c'est l'équivalent africain du paléolithique.",
   "La taille par percussion consiste à frapper une pierre (le nucléus) avec un percuteur pour détacher des éclats tranchants ; le biface demande une préparation et une symétrie qui témoignent d'une vraie habileté.",
-  "Le site d'Anyama a été étudié notamment par l'archéologue ivoirien François Yiodé Guédé ; l'ancienneté exacte des niveaux reste discutée par les spécialistes. Présenter les dates comme des estimations.",
+  "Le site d'Anyama a été étudié notamment par l'archéologue ivoirien François Yodé Guédé ; l'ancienneté exacte des niveaux reste discutée par les spécialistes. Présenter les dates comme des estimations.",
   "La maîtrise du feu est attestée en Afrique depuis plusieurs centaines de milliers d'années ; elle transforme l'alimentation (cuisson), la sécurité et la vie sociale (veillées).",
  ],
  'difficultes': [

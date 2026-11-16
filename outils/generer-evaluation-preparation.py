@@ -3,8 +3,8 @@
 pedagogie/<id>/evaluation.html et pedagogie/<id>/preparation.html au format de la leçon pilote.
 
 Sources :
-  - la fiche de préparation de la leçon (outils/espace-enseignant/fiches_h.py et fiches_g.py, branche
-    espace-enseignant-6e) : situation analysée, séances, activités du professeur et réponses attendues,
+  - la fiche de préparation de la leçon (outils/espace-enseignant/fiches_h.py et fiches_g.py pour la 6e,
+    fiches_5e_h.py et fiches_5e_g.py pour la 5e) : situation analysée, séances, activités du professeur et réponses attendues,
     difficultés, différenciation, évaluation sur 20 avec corrigés et barèmes, valeurs ;
   - la leçon dans data/contenu.json (compétence, exemple de situation, habiletés et contenus) ;
   - pedagogie/<id>/questions.json : questions de compréhension et réponses attendues (rédigées pour la leçon) ;
@@ -22,8 +22,10 @@ R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(R, 'outils', 'espace-enseignant'))
 from fiches_h import FICHES as FH  # noqa: E402
 from fiches_g import FICHES as FG  # noqa: E402
+from fiches_5e_h import FICHES as F5H  # noqa: E402
+from fiches_5e_g import FICHES as F5G  # noqa: E402
 
-FICHES = dict(FH, **FG)
+FICHES = dict(FH, **FG, **F5H, **F5G)
 
 
 def pts(x):
@@ -143,7 +145,7 @@ def preparation(c, d, t, l, F, Q, eleve):
     h += '<p><strong>Pour les élèves avancés :</strong></p>\n' + ul(F['approfondissement'])
     h += '<h4>Éducation aux valeurs et liens avec les autres disciplines</h4>\n' + ul(F['valeurs'])
     h += ('<p class="conseil"><strong>Source :</strong> déroulement, réponses attendues, remédiation et évaluation repris de la fiche de préparation '
-          'de l\'espace enseignant de la 6e (2026) et harmonisés avec la trace écrite de la leçon.</p>\n')
+          'de l\'espace enseignant de la ' + c['id'] + ' (2026) et harmonisés avec la trace écrite de la leçon.</p>\n')
     return h
 
 

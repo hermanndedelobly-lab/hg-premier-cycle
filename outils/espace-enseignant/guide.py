@@ -1,4 +1,4 @@
-# Guide de l\'enseignant de 6e (page d\'accueil de l\'Espace enseignant)
+# Guide de l\'enseignant d\'une classe, 6e ou 5e (page d\'accueil de l\'Espace enseignant)
 
 def _ul(items):
     return '<ul>\n' + ''.join('<li>' + i + '</li>\n' for i in items) + '</ul>\n'
@@ -10,7 +10,9 @@ def _tab(ent, lignes):
     return h + '</tbody></table></div>\n'
 
 def guide_html(c):
-    h = '<p><em>Cet espace est destiné au professeur. Il complète les cours de l\'élève par une fiche de préparation détaillée pour chacune des 17 leçons de 6e, une progression annuelle, des conseils de conduite de classe et des évaluations avec barème.</em></p>\n'
+    K = c['id']
+    nb = sum(len(t['lecons']) for d in c['disciplines'] for t in d['themes'])
+    h = '<p><em>Cet espace est destiné au professeur. Il complète les cours de l\'élève par une fiche de préparation détaillée pour chacune des ' + str(nb) + ' leçons de ' + K + ', une progression annuelle, des conseils de conduite de classe et des évaluations avec barème.</em></p>\n'
 
     h += '<h3>1. Comment utiliser l\'Espace enseignant</h3>\n'
     h += _ul([
@@ -21,7 +23,7 @@ def guide_html(c):
     ])
 
     h += '<h3>2. Rappels sur l\'approche par les compétences (APC)</h3>\n'
-    h += '<p>Le programme éducatif de 6e est organisé en <strong>compétences</strong>, chacune déclinée en <strong>thèmes</strong> puis en <strong>leçons</strong>. Chaque leçon part d\'une <strong>situation d\'apprentissage</strong> qui donne du sens aux savoirs et place l\'élève au centre de l\'activité.</p>\n'
+    h += '<p>Le programme éducatif de ' + K + ' est organisé en <strong>compétences</strong>, chacune déclinée en <strong>thèmes</strong> puis en <strong>leçons</strong>. Chaque leçon part d\'une <strong>situation d\'apprentissage</strong> qui donne du sens aux savoirs et place l\'élève au centre de l\'activité.</p>\n'
     h += _ul([
         '<strong>La situation d\'apprentissage</strong> comprend un <em>contexte</em> (le cadre de vie de l\'élève), une <em>circonstance</em> (le fait déclencheur) et des <em>tâches</em> (ce que les élèves vont faire, formulées à partir des habiletés).',
         '<strong>Les habiletés</strong> sont des verbes d\'action (définir, identifier, localiser, expliquer, construire…) associés à des contenus : ce sont les objectifs observables de la leçon.',
@@ -29,14 +31,14 @@ def guide_html(c):
         '<strong>Le professeur</strong> guide, questionne, organise le travail et fait la synthèse ; <strong>l\'élève</strong> observe, recherche, échange, propose et construit la trace écrite.',
     ])
 
-    h += '<h3>3. Progression annuelle indicative de 6e</h3>\n'
+    h += '<h3>3. Progression annuelle indicative de ' + K + '</h3>\n'
     h += '<p>Volume horaire calculé à partir du programme : à répartir selon le calendrier scolaire officiel et l\'emploi du temps de l\'établissement. Il est conseillé d\'alterner une leçon d\'histoire et une leçon de géographie, et de garder une à deux semaines par trimestre pour les évaluations et la remédiation.</p>\n'
     for d in c['disciplines']:
         lignes, cumul = [], 0
         for t in d['themes']:
             for l in t['lecons']:
                 cumul += l['duree']
-                lignes.append(['T' + str(t['n']) + '-L' + str(l['n']) + ' · <a href="#l-6e-ens-' + l['id'][3:] + '">' + l['titre'] + '</a>', str(l['duree']) + ' h', str(cumul) + ' h'])
+                lignes.append(['T' + str(t['n']) + '-L' + str(l['n']) + ' · <a href="#l-' + K + '-ens-' + l['id'][3:] + '">' + l['titre'] + '</a>', str(l['duree']) + ' h', str(cumul) + ' h'])
         h += '<h4>' + d['nom'] + ' (' + str(cumul) + ' h)</h4>\n' + _tab(['Leçon (T = thème, L = leçon)', 'Durée', 'Cumul'], lignes)
     tot = sum(l['duree'] for d in c['disciplines'] for t in d['themes'] for l in t['lecons'])
     h += '<p><strong>Total : ' + str(tot) + ' heures de cours</strong>, hors évaluations, corrections et remédiation.</p>\n'
@@ -63,7 +65,7 @@ def guide_html(c):
         'Prévoir des tâches supplémentaires pour les groupes qui finissent tôt (rubrique « élèves avancés » des fiches).',
     ])
 
-    h += '<h3>6. Évaluer en 6e</h3>\n'
+    h += '<h3>6. Évaluer en ' + K + '</h3>\n'
     h += _ul([
         '<strong>Évaluation diagnostique</strong> en début de leçon (rappels, prérequis) : elle oriente la séance.',
         '<strong>Évaluation formative</strong> pendant la leçon : les activités d\'application du cours, corrigées immédiatement.',
@@ -99,11 +101,11 @@ def guide_html(c):
         'Évaluations effectuées et date de remise des copies.',
     ])
 
-    h += '<h3>9. Les fiches de préparation de 6e</h3>\n'
+    h += '<h3>9. Les fiches de préparation de ' + K + '</h3>\n'
     for d in c['disciplines']:
         h += '<p><strong>' + d['nom'] + '</strong></p>\n<ol>\n'
         for t in d['themes']:
             for l in t['lecons']:
-                h += '<li><a href="#l-6e-ens-' + l['id'][3:] + '">' + l['titre'] + '</a> (' + str(l['duree']) + ' h)</li>\n'
+                h += '<li><a href="#l-' + K + '-ens-' + l['id'][3:] + '">' + l['titre'] + '</a> (' + str(l['duree']) + ' h)</li>\n'
         h += '</ol>\n'
     return h

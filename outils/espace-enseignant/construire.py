@@ -1,14 +1,16 @@
-# Construit l\'Espace enseignant de 6e et l\'ajoute à data/contenu.json
+# Construit l\'Espace enseignant des classes qui ont des fiches (6e, 5e) et l\'ajoute à data/contenu.json
 # Usage : python3 construire.py <chemin/contenu.json>
 import json, re, sys, html as H
 import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fiches_h import FICHES as FH
 from fiches_g import FICHES as FG
+from fiches_5e_h import FICHES as F5H
+from fiches_5e_g import FICHES as F5G
 from guide import guide_html
 
 FICHES = {}
-FICHES.update(FH); FICHES.update(FG)
+FICHES.update(FH); FICHES.update(FG); FICHES.update(F5H); FICHES.update(F5G)
 
 def txt(s):
     return re.sub(r'\s+', ' ', H.unescape(re.sub(r'<[^>]+>', ' ', s))).strip()
@@ -70,7 +72,7 @@ def fiche(classe, disc, theme, l, F):
         ['Leçon', 'Leçon ' + str(l['n']) + ' : ' + l['titre']],
         ['Volume horaire', str(l['duree']) + ' h, soit ' + str(nb_s) + ' séance' + ('s' if nb_s > 1 else '') + ' de 55 min'],
         ['Supports et matériel', ' ; '.join(F['materiel'])],
-        ['Bibliographie', 'Programme éducatif et guide d\'exécution d\'Histoire-Géographie, classe de 6e (MENA, Côte d\'Ivoire) ; manuel d\'Histoire-Géographie de 6e en usage dans l\'établissement ; ' + F.get('biblio', 'cours de l\'application « Histoire géographie premier cycle »')],
+        ['Bibliographie', 'Programme éducatif et guide d\'exécution d\'Histoire-Géographie, classe de ' + classe['id'] + ' (MENA, Côte d\'Ivoire) ; manuel d\'Histoire-Géographie de ' + classe['id'] + ' en usage dans l\'établissement ; ' + F.get('biblio', 'cours de l\'application « Histoire géographie premier cycle »')],
     ])
     h += '<h3>1. Compétence, situation et habiletés</h3>\n' + l['situation']
     h += '<h4>Analyse de la situation d\'apprentissage</h4>\n'
@@ -133,26 +135,31 @@ def fiche(classe, disc, theme, l, F):
 
 def main(chemin):
     D = json.load(open(chemin, encoding='utf-8'))
-    c = [x for x in D['classes'] if x['id'] == '6e'][0]
-    c['annexes'] = [a for a in c['annexes'] if not a.get('enseignant')]
-    nouvelles = []
-    g = guide_html(c)
-    nouvelles.append({'id': '6e-ens-guide', 'titre': 'Guide de l\'enseignant de 6e', 'enseignant': True, 'html': g, 'texte': txt(g)})
-    manque = []
-    for d in c['disciplines']:
-        for t in d['themes']:
-            for l in t['lecons']:
-                F = FICHES.get(l['id'])
-                if not F:
-                    manque.append(l['id']); continue
-                hh = fiche(c, d, t, l, F)
-                nouvelles.append({'id': '6e-ens-' + l['id'][3:], 'titre': 'Fiche enseignant · ' + d['nom'] + ' T' + str(t['n']) + '-L' + str(l['n']) + ' · ' + l['titre'],
-                                  'enseignant': True, 'lecon': l['id'], 'disc': d['id'], 'html': hh, 'texte': txt(hh)})
-    if manque:
-        print('Fiches manquantes :', manque)
-    c['annexes'] = c['annexes'] + nouvelles
+    for c in D['classes']:
+        ids = [l['id'] for d in c['disciplines'] for t in d['themes'] for l in t['lecons']]
+        if not any(i in FICHES for i in ids):
+            continue
+        K = c['id']
+        c['annexes'] = [a for a in c['annexes'] if not a.get('enseignant')]
+        nouvelles = []
+        g = guide_html(c)
+        nouvelles.append({'id': K + '-ens-guide', 'titre': 'Guide de l\'enseignant de ' + K, 'enseignant': True, 'html': g, 'texte': txt(g)})
+        manque = []
+        for d in c['disciplines']:
+            for t in d['themes']:
+                for l in t['lecons']:
+                    F = FICHES.get(l['id'])
+                    if not F:
+                        manque.append(l['id']); continue
+                    hh = fiche(c, d, t, l, F)
+                    nouvelles.append({'id': K + '-ens-' + l['id'][3:], 'titre': 'Fiche enseignant · ' + d['nom'] + ' T' + str(t['n']) + '-L' + str(l['n']) + ' · ' + l['titre'],
+                                      'enseignant': True, 'lecon': l['id'], 'disc': d['id'], 'html': hh, 'texte': txt(hh)})
+        if manque:
+            print(K, ': fiches manquantes', manque)
+        c['annexes'] = c['annexes'] + nouvelles
+        print(K, ':', len(nouvelles), 'éléments enseignant ;', sum(len(n['html']) for n in nouvelles), 'caractères HTML')
     json.dump(D, open(chemin, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
-    print(len(nouvelles), 'éléments enseignant ajoutés ;', sum(len(n['html']) for n in nouvelles), 'caractères HTML')
+
 
 if __name__ == '__main__':
     main(sys.argv[1])
