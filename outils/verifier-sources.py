@@ -32,7 +32,9 @@ def noter(etape, ok, detail):
     print(('OK  ' if ok else 'ERR ') + etape + ' : ' + str(detail)[:300])
 
 
-# 1. Normales OMM 1991-2020
+# 1. Normales OMM 1991-2020 (liste déjà établie : demande 2)
+if os.environ.get('LISTE_OMM'):
+  pass
 BASE = 'https://www.ncei.noaa.gov/data/oceans/archive/arc0216/0253808/6.6/data/0-data/'
 STATIONS = {'65578': 'Abidjan', '65555': 'Bouaké', '65536': 'Korhogo', '65562': 'Daloa', '65560': 'Man',
             '65548': 'Odienné', '65585': 'Sassandra', '65594': 'San-Pédro', '65599': 'Tabou', '65563': 'Dimbokro',
@@ -89,6 +91,32 @@ try:
     noter('OMM extraits', bool(extraits), f'{len(extraits)} lignes')
 except Exception as e:  # noqa: BLE001
     noter('OMM', False, str(e))
+
+# 1 bis. Fichiers composites OMM : lignes des stations ivoiriennes (identifiants 655xx) et métadonnées
+try:
+    D = BASE
+    pays = get(D + 'metadata/country_station_counts.csv')
+    open(os.path.join(OUT, 'omm-pays-stations.csv'), 'w').write(pays)
+    noter('OMM pays', True, [l for l in pays.splitlines() if re.search(r'Ivoire|IVOIRE|Ivory|IVORY', l)] or 'Côte d\'Ivoire absente de la liste des pays')
+    for nom in ('metadata/wmo_normals_9120_8param_meta.csv', 'data-composite-primary-parameters/wmo_normals_9120_PRCP.csv',
+                'data-composite-primary-parameters/wmo_normals_9120_TAVG.csv', 'data-composite-primary-parameters/wmo_normals_9120_TMAX.csv',
+                'data-composite-primary-parameters/wmo_normals_9120_TMIN.csv', 'data-composite-primary-parameters/wmo_normals_9120_DP01.csv'):
+        t = get(D + nom, timeout=600)
+        lignes = t.splitlines()
+        garde = [lignes[0]] + [l for l in lignes[1:] if re.search(r'(^|[,;"])655\d\d([,;"]|$)|Ivoire|IVOIRE|Ivory|IVORY|ABIDJAN|Abidjan', l)]
+        open(os.path.join(OUT, 'omm-' + os.path.basename(nom).replace('.csv', '-cote-divoire.csv')), 'w').write('\n'.join(garde))
+        noter('OMM ' + os.path.basename(nom), len(garde) > 1, f'{len(garde) - 1} lignes ivoiriennes sur {len(lignes) - 1}')
+except Exception as e:  # noqa: BLE001
+    noter('OMM composites', False, str(e))
+
+# 1 ter. UNESCO : sites de métallurgie ancienne du fer du Burkina Faso (vocabulaire « bas fourneau »)
+try:
+    h = get('https://whc.unesco.org/fr/list/1602/')
+    texte = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', re.sub(r'(?s)<(script|style).*?</\1>', ' ', h)))
+    open(os.path.join(OUT, 'unesco-1602-fr.txt'), 'w').write(texte)
+    noter('UNESCO 1602', 'fourneau' in texte, [texte[m.start() - 150:m.start() + 250] for m in re.finditer('fourneau', texte)][:4])
+except Exception as e:  # noqa: BLE001
+    noter('UNESCO 1602', False, str(e))
 
 # 2. Crossref : étude Nature 2025 sur Anyama (par son DOI)
 try:
