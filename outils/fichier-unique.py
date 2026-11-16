@@ -104,7 +104,7 @@ def main():
         # d'elle-même (code-echec) et l'application redémarre sur la version de l'APK
         garde = ('<script>(function(){var V="' + version + '";setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V)'
                  '{localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>\n')
-        page = page.replace('<head>\n', '<head>\n' + garde, 1)
+        # (insérée après le découpage de la page ci-dessous : les positions de « mode » restent justes)
         # HG_DATA_PROPRE : données nettoyées transmises par la passerelle de l'APK 1.10.0 (outils/fabriquer-pont.py)
         donnees_js = "window.HG_MAJ=true;" + CHARGEUR_MAJ
         mode_js = 'apk'
@@ -118,9 +118,16 @@ def main():
                '<script>' + js.replace('</script', '<\\/script') + '</script>\n')
     page = page[:mode.start()] + page[mode.end():]
     page = page.replace('</body>', scripts + '</body>', 1)
+    if a.mode == 'maj':
+        page = page.replace('<head>\n', '<head>\n' + garde, 1)
     if a.mode == 'apk':
         page = page.replace('<head>\n', '<head>\n' + DEMARRAGE % {'version': version}, 1)
 
+    for id_ in re.findall(r'id="([^"]+)"', lire(os.path.join(a.racine, 'index.html'))):
+        if 'id="' + id_ + '"' not in page:
+            sys.exit(f'élément #{id_} d\'index.html absent de la page produite')
+    if 'src="app.js"' in page or 'HG_MODE="pwa"' in page and a.mode != 'pwa':
+        sys.exit('script de la version en ligne resté dans la page produite')
     with open(a.sortie, 'w', encoding='utf-8') as f:
         f.write(page)
     print(f'{a.sortie} : {len(page.encode()) / 1e6:.2f} Mo, version {version}, mode {a.mode}')
