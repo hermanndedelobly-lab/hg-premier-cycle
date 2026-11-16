@@ -1,7 +1,8 @@
 {
-  "version": "1.14.0",
+  "version": "1.14.1",
   "date": "2026-11-16",
   "notes": [
+    "Version 1.14.1 : test de la mise à jour directement dans l'application, sans nouvel APK (aucun autre changement)",
     "Nouvelle identité : l'application s'appelle désormais GNOMBLESSON · Histoire & Géographie (« Apprendre, comprendre et découvrir notre monde. ») : nouveau logo, nouvelle icône, écran de démarrage, couleurs bleu nuit, or, orange et vert ; contenus, progression et réglages conservés",
     "Leçon pilote « L'histoire et son objet » : 11 photographies libres de droits (Hérodote, pierre de Palerme, poids akan, masque dan, manuscrits de Tombouctou, griot, fouille archéologique, Grand-Bassam, mosquée de Kong en 1892 et en 2002, koras), avec légende, explication et crédit sous chaque image ; comparaison des deux images de Kong pour la critique des sources ; photos disponibles hors connexion et dans les PDF",
     "Leçon pilote « L'histoire et son objet » corrigée après l'évaluation pédagogique : citation d'Amadou Hampâté Bâ (formulation documentée et formule populaire), origine de la discipline nuancée, distinction source / document, traditions orales et écrits africains, estimation du nombre de peuples, incertitudes de la méthode historique, exercices et barèmes harmonisés avec les cinq étapes, durées identiques entre le mode Enseignant et la fiche APC, références vérifiées",
