@@ -404,3 +404,14 @@ figure.photo .credit { display: block; margin-top: 4px; font-size: calc(11.5px *
 
 /* Espace enseignant de la classe : cinq onglets sur petit écran (largeur selon le libellé) */
 @media (max-width: 440px) { .onglets-classe { gap: 2px; } .onglets-classe a { flex: 1 1 auto; padding: 9px 3px; } }
+
+/* Cartes et schémas des leçons enrichies (fonds de carte Natural Earth, domaine public) */
+.g-mer { fill: #2f7fbf; fill-opacity: .14; }
+.g-pays { fill: var(--surface); stroke: var(--muted); stroke-width: .7; stroke-linejoin: round; }
+.g-pays-ci { fill: var(--geo); fill-opacity: .16; stroke: var(--geo); stroke-width: 1.4; stroke-linejoin: round; }
+.g-fleuve { fill: none; stroke: #2f7fbf; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.g-zone { fill-opacity: .35; stroke: none; }
+.g-trait { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.g-tirets { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 4 3; }
+.g-cadre { fill: none; stroke: var(--line); stroke-width: 1; }
+.g-italique { fill: var(--muted); font-size: 10.5px; font-style: italic; }
