@@ -17,6 +17,11 @@ Les réponses sont mélangées à l'affichage : l'ordre dans le fichier n'a pas 
 Ensuite : `python3 outils/integrer-quiz.py` (contrôle puis écrit `data/contenu.json`).
 `python3 outils/integrer-quiz.py --verifier` contrôle sans rien écrire.
 
+## Leçons enrichies (cahier des charges V1.1)
+
+Voir `pedagogie/LISEZMOI.md`. Après modification : `python3 outils/integrer-pedagogie.py`
+(contrôles automatiques des trois espaces, des illustrations et du HTML), puis `python3 outils/integrer-quiz.py --verifier`.
+
 ## Publier une nouvelle version
 
 1. Changer le numéro dans `version.json`, `data/contenu.json` (champs `version`, `date`, `notes`),
@@ -37,3 +42,4 @@ Ensuite : `python3 outils/integrer-quiz.py` (contrôle puis écrit `data/contenu
   (empreinte SHA-256 du certificat indiquée dans le journal de la version). Pour passer de 1.10.0 à 1.11.0,
   il faut désinstaller l'ancienne application puis installer la nouvelle. Les versions suivantes
   pourront se mettre à jour normalement si la nouvelle clé est conservée (Google Drive privé, clé USB).
+  La version 1.12.0 est signée avec cette même clé : elle s'installe par-dessus la 1.11.0 sans perte de données.

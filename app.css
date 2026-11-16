@@ -358,3 +358,22 @@ figure.graphe figcaption { font-family: var(--font-ui); font-size: 12.5px; color
 .quiz-erreurs { margin: 0; padding-left: 1.3em; display: grid; gap: 12px; }
 .quiz-erreurs li p { margin: 0 0 4px; }
 .quiz-erreurs .rep b { color: var(--ok); }
+
+/* ---------- Espaces de la leçon, cahier des charges V1.1 (1.12.0) ---------- */
+.espaces { margin: 2px 0 10px; }
+.statut-v11 { margin: 0 0 12px; font-size: 13px; color: var(--muted); font-style: italic; }
+.v11 { font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 99px; background: var(--gold); color: var(--on-gold); }
+.badge { display: inline-block; vertical-align: middle; font-family: var(--font-ui); font-size: 11px; font-weight: 800; letter-spacing: .04em; padding: 2px 8px; border-radius: 99px; background: var(--line); color: var(--ink); text-transform: none; }
+.badge.prog { background: var(--ok); color: var(--bg); }
+.badge.approf { background: var(--gold); color: var(--on-gold); }
+.legende-badges, .chapo-bloc { font-family: var(--font-ui); font-size: 14px; color: var(--muted); }
+.texte .transition { font-style: italic; color: var(--muted); border-left: 3px solid var(--c); padding-left: 10px; }
+.texte .illus-expl { font-size: calc(14.5px * var(--fs)); color: var(--muted); margin-top: -6px; }
+.texte .conseil { background: var(--c-soft); border-radius: 10px; padding: 10px 12px; font-size: calc(14.5px * var(--fs)); }
+figure.graphe.illus svg { min-width: 0; max-width: 420px; margin: 0 auto; }
+.retenir { margin: 18px 0 22px; padding: 12px 14px 4px; border-radius: 12px; background: var(--c-soft); border: 2px solid var(--c); }
+.texte blockquote { margin: 0 0 1em; padding: 10px 14px; border-left: 4px solid var(--c); background: var(--surface); border-radius: 0 10px 10px 0; font-style: italic; }
+.texte blockquote p { margin: 0; }
+.faq dt { font-family: var(--font-ui); font-weight: 800; margin: 14px 0 4px; }
+.faq dd { margin: 0 0 6px; padding-left: 12px; border-left: 2px solid var(--line); }
+.texte .exo ol, .texte > ol { padding-left: 1.4em; }

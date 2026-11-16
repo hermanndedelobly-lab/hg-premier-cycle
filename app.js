@@ -61,6 +61,8 @@
             INDEX[l.id] = { type: 'lecon', classe: c, disc: d, theme: t, lecon: l };
             ORDRE[c.id].push(l.id);
             RECH.push({ id: l.id, href: '#l-' + l.id, classe: c.id, disc: d.id, titre: l.titre, ctx: c.id + ' · ' + d.nom + ' · ' + nomTheme(t), t: norm(l.titre + ' ' + t.titre), x: l.texte, nx: norm(l.texte) });
+            if (l.texteEns) RECH.push({ id: l.id, href: '#a-' + l.id, classe: c.id, disc: d.id, titre: 'Enseignant : ' + l.titre, ctx: c.id + ' · Espace enseignant', t: norm('enseignant preparation ' + l.titre), x: l.texteEns, nx: norm(l.texteEns) });
+            if (l.texteCult) RECH.push({ id: l.id, href: '#g-' + l.id, classe: c.id, disc: d.id, titre: 'Culture générale : ' + l.titre, ctx: c.id + ' · Culture générale', t: norm('culture generale ' + l.titre), x: l.texteCult, nx: norm(l.texteCult) });
             if (l.banque) { ORDRE_X[c.id].push(l.id); RECH.push({ id: l.id, href: '#e-' + l.id, classe: c.id, disc: d.id, titre: 'Exercices : ' + l.titre, ctx: c.id + ' · Banque d\'exercices', t: norm('exercices ' + l.titre), x: l.texteBanque, nx: norm(l.texteBanque) }); }
           });
         });
@@ -126,7 +128,7 @@
       d.themes.forEach(function (t) {
         h += '<div class="theme"><div class="theme-tete"><p class="eyebrow">' + nomTheme(t) + '</p><h3>' + esc(t.titre === 'Complément' ? 'Leçon complémentaire' : t.titre) + '</h3></div><ul class="lecons">' +
           t.lecons.map(function (l) {
-            return '<li class="' + (faites[l.id] ? 'fait' : '') + '"><a href="#l-' + l.id + '"><span class="num">L' + l.n + '</span><span class="t">' + esc(l.titre) + '</span><span class="meta">' + heures(l.duree) + '<span class="coche" aria-label="' + (faites[l.id] ? 'traitée' : 'non traitée') + '">✓</span></span></a></li>';
+            return '<li class="' + (faites[l.id] ? 'fait' : '') + '"><a href="#l-' + l.id + '"><span class="num">L' + l.n + '</span><span class="t">' + esc(l.titre) + '</span><span class="meta">' + (l.enseignant ? '<span class="v11" title="Leçon enrichie : espaces élève, enseignant et culture générale">3 espaces</span>' : '') + heures(l.duree) + '<span class="coche" aria-label="' + (faites[l.id] ? 'traitée' : 'non traitée') + '">✓</span></span></a></li>';
           }).join('') + '</ul></div>';
       });
       h += '</section>';
@@ -162,15 +164,16 @@
     var nbQ = (l.quiz || []).length;
     var h = '<article class="d-' + d.id + '">' +
       '<nav class="fil" aria-label="Emplacement"><a href="#c-' + c.id + '">' + c.id + '</a><span>›</span><span>' + esc(d.nom) + '</span><span>›</span><span>' + nomTheme(t) + (t.n ? ' · ' + esc(t.titre) : '') + '</span></nav>' +
-      '<h1 class="lecon-titre">' + esc(l.titre) + '</h1>' +
+      '<h1 class="lecon-titre">' + esc(l.titre) + '</h1>' + ongletsEspaces(l, 'b') +
       '<div class="puces"><span class="puce">Leçon ' + l.n + '</span>' + (l.duree ? '<span class="puce">' + l.duree + ' h</span>' : '') + '<span class="puce">' + esc(d.nom) + '</span></div>' + BOUTON_PDF +
-      '<div class="sommaire" role="navigation" aria-label="Parties de la leçon"><button type="button" data-aller="b-sit">Situation</button><button type="button" data-aller="b-cours">Cours</button><button type="button" data-aller="b-exo">Exercices</button>' + (nbQ ? '<a class="chip-lien" href="#q-' + l.id + '">Quiz</a>' : '') + (l.banque ? '<a class="chip-lien" href="#e-' + l.id + '">Banque : ' + l.nbBanque + ' exercices</a>' : '') + '</div>' +
+      '<div class="sommaire" role="navigation" aria-label="Parties de la leçon"><button type="button" data-aller="b-sit">Situation</button><button type="button" data-aller="b-cours">Cours</button><button type="button" data-aller="b-exo">Exercices</button>' + (l.evaluation ? '<button type="button" data-aller="b-eval">Évaluation</button>' : '') + (nbQ ? '<a class="chip-lien" href="#q-' + l.id + '">Quiz</a>' : '') + (l.banque ? '<a class="chip-lien" href="#e-' + l.id + '">Banque : ' + l.nbBanque + ' exercices</a>' : '') + '</div>' +
       '<section class="bloc" id="b-sit"><h2>Compétence, situation et habiletés</h2><div class="situation"><div class="texte">' + l.situation + '</div></div></section>' +
       '<section class="bloc" id="b-cours"><h2>Cours · trace écrite</h2><div class="texte">' + l.cours + '</div></section>' +
       '<section class="bloc" id="b-exo"><h2>Exercices traités et corrigés</h2>' +
       '<div class="outils-exo"><button type="button" class="btn" id="tous-corriges" aria-pressed="' + (reglages.corriges ? 'true' : 'false') + '">' + (reglages.corriges ? 'Masquer les corrigés' : 'Afficher tous les corrigés') + '</button>' +
       '<button type="button" class="btn" id="marquer" aria-pressed="' + (faites[l.id] ? 'true' : 'false') + '">' + (faites[l.id] ? '✓ Leçon traitée' : 'Marquer comme traitée') + '</button></div>' +
       '<div class="texte">' + l.exercices + '</div></section>' +
+      (l.evaluation ? '<section class="bloc" id="b-eval"><h2>Évaluation · corrigés et barèmes</h2><div class="texte">' + l.evaluation + '</div></section>' : '') +
       (nbQ ? carteQuiz(l.id, nbQ) : '') +
       '<nav class="suivants" aria-label="Leçons voisines">' +
       (prev ? '<a class="avant" href="#l-' + prev.id + '"><small>← Précédente</small><span>' + esc(prev.titre) + '</span></a>' : '') +
@@ -179,11 +182,9 @@
     afficher(h, l.titre, { titre: l.titre, disc: d.id, fichier: c.id + ' ' + d.id + ' lecon ' + l.n + ' ' + l.titre,
       surtitre: ('Classe de ' + c.id + ' · ' + d.nom + ' · ' + nomTheme(t)).toUpperCase(),
       meta: (t.n ? nomTheme(t) + ' : ' + t.titre + ' · ' : '') + 'Leçon ' + l.n + (l.duree ? ' · ' + l.duree + ' h' : ''),
-      sections: [{ titre: 'Compétence, situation et habiletés', html: l.situation }, { titre: 'Cours · trace écrite', html: l.cours }, { titre: 'Exercices traités et corrigés', html: l.exercices }] });
+      sections: [{ titre: 'Compétence, situation et habiletés', html: l.situation }, { titre: 'Cours · trace écrite', html: l.cours }, { titre: 'Exercices traités et corrigés', html: l.exercices }].concat(l.evaluation ? [{ titre: 'Évaluation · corrigés et barèmes', html: l.evaluation }] : []) });
     if (reglages.corriges) ouvrirCorriges(true);
-    vue.querySelectorAll('[data-aller]').forEach(function (b) {
-      b.addEventListener('click', function () { var cible = document.getElementById(b.getAttribute('data-aller')); if (cible) cible.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
-    });
+    activerSommaire();
     document.getElementById('tous-corriges').addEventListener('click', function () {
       reglages.corriges = !reglages.corriges; ecrire('reglages', reglages);
       this.setAttribute('aria-pressed', reglages.corriges ? 'true' : 'false');
@@ -196,6 +197,41 @@
       this.setAttribute('aria-pressed', faites[l.id] ? 'true' : 'false');
       this.textContent = faites[l.id] ? '✓ Leçon traitée' : 'Marquer comme traitée';
     });
+  }
+  // ---------- Espaces de la leçon (cahier des charges V1.1) ----------
+  // b = Élève (#l-), a = Enseignant (#a-), g = Culture générale (#g-) ; seulement pour les leçons enrichies.
+  function ongletsEspaces(l, actif) {
+    if (!l.enseignant) return '';
+    return '<nav class="onglets-classe espaces" aria-label="Espaces de la leçon">' +
+      '<a href="#l-' + l.id + '"' + (actif === 'b' ? ' aria-current="page"' : '') + '>Élève</a>' +
+      '<a href="#a-' + l.id + '"' + (actif === 'a' ? ' aria-current="page"' : '') + '>Enseignant</a>' +
+      '<a href="#g-' + l.id + '"' + (actif === 'g' ? ' aria-current="page"' : '') + '>Culture générale</a></nav>' +
+      (l.v11 && l.v11.statut !== 'validee' ? '<p class="statut-v11">Leçon ' + (l.v11.statut === 'pilote' ? 'pilote' : 'en brouillon') + ' de la version 1.1 : en attente de validation.</p>' : '');
+  }
+  function activerSommaire() {
+    vue.querySelectorAll('[data-aller]').forEach(function (b) {
+      b.addEventListener('click', function () { var cible = document.getElementById(b.getAttribute('data-aller')); if (cible) cible.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    });
+  }
+  function vueEspace(e, quoi) {
+    var c = e.classe, d = e.disc, t = e.theme, l = e.lecon;
+    barreClasses(c.id);
+    ecrire('derniere', l.id);
+    var ens = quoi === 'a', nom = ens ? 'Espace enseignant' : 'Culture générale de l\'enseignant';
+    var blocs = ens ? [['e-comp', 'Comprendre la leçon', l.enseignant], ['e-prep', 'Préparer la séance', l.preparation]] : [['e-cult', 'Approfondir', l.culture]];
+    var h = '<article class="d-' + d.id + '">' +
+      '<nav class="fil" aria-label="Emplacement"><a href="#c-' + c.id + '">' + c.id + '</a><span>›</span><span>' + esc(d.nom) + '</span><span>›</span><span>' + nomTheme(t) + '</span></nav>' +
+      '<h1 class="lecon-titre">' + esc(l.titre) + '</h1>' + ongletsEspaces(l, quoi) + BOUTON_PDF +
+      (blocs.length > 1 ? '<div class="sommaire" role="navigation" aria-label="Parties">' + blocs.map(function (b) { return '<button type="button" data-aller="' + b[0] + '">' + b[1] + '</button>'; }).join('') + '</div>' : '') +
+      blocs.map(function (b) { return '<section class="bloc" id="' + b[0] + '"><h2>' + b[1] + '</h2><div class="texte">' + b[2] + '</div></section>'; }).join('') +
+      '<nav class="suivants" aria-label="Autres espaces">' +
+      '<a class="avant" href="#l-' + l.id + '"><small>← Espace élève</small><span>Trace écrite et évaluation</span></a>' +
+      (ens ? '<a class="apres" href="#g-' + l.id + '"><small>Culture générale →</small><span>Approfondir</span></a>' : '<a class="apres" href="#a-' + l.id + '"><small>Espace enseignant →</small><span>Comprendre et préparer</span></a>') +
+      '</nav></article>';
+    afficher(h, nom + ' · ' + l.titre, { titre: l.titre, disc: d.id, fichier: c.id + ' ' + d.id + ' lecon ' + l.n + ' ' + (ens ? 'enseignant' : 'culture generale'),
+      surtitre: ('Classe de ' + c.id + ' · ' + d.nom + ' · ' + nom).toUpperCase(), meta: 'Leçon ' + l.n + (l.duree ? ' · ' + l.duree + ' h' : ''),
+      sections: blocs.map(function (b) { return { titre: b[1], html: b[2] }; }) });
+    activerSommaire();
   }
   function ouvrirCorriges(o) { vue.querySelectorAll('details.corrige').forEach(function (x) { x.open = o; }); }
 
@@ -531,6 +567,7 @@
     if (h.indexOf('q-') === 0 && (c = trouverClasse(h.slice(2))) && nbQuizClasse(c)) return vueQuiz(c.id);
     if (h.indexOf('q-') === 0 && (e = INDEX[h.slice(2)]) && e.type === 'lecon' && (e.lecon.quiz || []).length) return vueQuiz(e.lecon.id);
     if (h.indexOf('e-') === 0 && (e = INDEX[h.slice(2)]) && e.lecon && e.lecon.banque) return vueBanque(e);
+    if ((h.indexOf('a-') === 0 || h.indexOf('g-') === 0) && (e = INDEX[h.slice(2)]) && e.type === 'lecon' && e.lecon.enseignant) return vueEspace(e, h.charAt(0));
     if (h.indexOf('l-') === 0 && (e = INDEX[h.slice(2)])) return e.type === 'lecon' ? vueLecon(e) : vueAnnexe(e);
     vueAccueil();
   }
@@ -772,7 +809,7 @@
         out = out.concat(blocs(tmp, o)); return;
       }
       if (tag === 'summary') return;
-      if (tag === 'aside' && /appli/.test(cls)) {
+      if (tag === 'aside' && /appli|retenir/.test(cls)) {
         out.push({ table: { widths: ['*'], body: [[{ stack: blocs(n, o), margin: [8, 6, 8, 2] }]] }, layout: cadre(o.soft, o.accent), margin: [0, 2, 0, 10] });
         return;
       }
