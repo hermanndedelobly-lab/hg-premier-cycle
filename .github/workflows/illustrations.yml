@@ -1,0 +1,34 @@
+# Télécharge des photographies candidates libres de droits (Wikimedia Commons) pour les leçons.
+# Déclenché uniquement quand illustrations/demande.json change sur la branche de développement.
+# Ne publie rien et ne modifie pas l'application : les images arrivent dans illustrations/candidats/
+# pour être vérifiées (licence, auteur, pertinence) avant toute intégration.
+name: Illustrations libres (Commons)
+
+on:
+  push:
+    branches: [ccr-89031195-ic25pf]
+    paths: [illustrations/demande.json]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  telecharger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Télécharger les candidats
+        run: python3 outils/telecharger-illustrations.py
+      - name: Déposer les candidats sur la branche
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add illustrations/candidats
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "illustrations : photographies candidates (Wikimedia Commons), demande n° $(python3 -c "import json;print(json.load(open('illustrations/demande.json'))['numero'])")"
+          git push

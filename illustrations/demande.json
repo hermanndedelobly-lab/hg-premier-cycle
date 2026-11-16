@@ -1,0 +1,18 @@
+{
+  "numero": 1,
+  "lecon": "6e-h-t1-l1",
+  "candidats_par_theme": 3,
+  "largeur": 800,
+  "themes": [
+    {"id": "01-herodote", "titre": "Buste d'Hérodote", "recherches": ["Herodotos Met 91.8", "Herodotus bust"]},
+    {"id": "02-manuscrits-tombouctou", "titre": "Manuscrits de Tombouctou", "recherches": ["Timbuktu manuscripts", "manuscrits Tombouctou"]},
+    {"id": "03-griot-kora", "titre": "Griot jouant de la kora", "recherches": ["griot kora", "kora player Mali"]},
+    {"id": "04-poids-akan", "titre": "Poids akan à peser l'or", "recherches": ["Akan gold weights", "Ashanti gold weight"]},
+    {"id": "05-grand-bassam", "titre": "Ville historique de Grand-Bassam", "recherches": ["Grand-Bassam colonial building", "Grand-Bassam"]},
+    {"id": "06-mosquee-kong", "titre": "Mosquée de style soudanais du nord ivoirien", "recherches": ["Kong mosque Ivory Coast", "Mosquée Kaouara", "Sudanese style mosque Côte d'Ivoire"]},
+    {"id": "07-pierre-palerme", "titre": "Pierre de Palerme (annales égyptiennes)", "recherches": ["Palermo Stone"]},
+    {"id": "08-ibn-khaldoun", "titre": "Statue d'Ibn Khaldoun à Tunis", "recherches": ["Ibn Khaldoun statue Tunis"]},
+    {"id": "09-fouille-archeologique", "titre": "Fouille archéologique en Afrique de l'Ouest", "recherches": ["archaeological excavation Senegal", "archaeological excavation Ghana", "archaeological excavation Africa"]},
+    {"id": "10-masque-dan", "titre": "Masque dan", "recherches": ["Dan mask Metropolitan", "Dan mask Brooklyn Museum", "Dan mask"]}
+  ]
+}
