@@ -1,0 +1,10 @@
+{
+  "comprehension": [
+    ["Pourquoi le Soleil semble-t-il se lever à l'est ?", "Parce que la Terre tourne sur elle-même d'ouest en est : en tournant, nous découvrons le Soleil du côté est."],
+    ["Pourquoi ne sentons-nous pas la rotation de la Terre ?", "Parce que nous tournons avec elle, avec l'atmosphère et tout ce qui nous entoure, à vitesse constante."],
+    ["Pourquoi a-t-on divisé la Terre en 24 fuseaux de 15° ?", "Parce que la Terre fait un tour complet (360°) en 24 heures : elle tourne donc de 360 ÷ 24 = 15° par heure."],
+    ["Pourquoi les saisons sont-elles inversées entre les deux hémisphères ?", "Parce que l'axe de la Terre est incliné : quand l'hémisphère Nord est penché vers le Soleil (été boréal), l'hémisphère Sud en est éloigné (hiver austral), et inversement."],
+    ["Pourquoi la durée du jour varie-t-elle peu en Côte d'Ivoire ?", "Parce que le pays est proche de l'équateur, où le jour et la nuit durent environ 12 heures toute l'année."],
+    ["Il est 18 h à Abidjan. Quelle heure est-il à un lieu situé à 60° Ouest ? Justifie.", "60 ÷ 15 = 4 fuseaux vers l'ouest : on retranche 4 heures ; il est 14 h."]
+  ]
+}
