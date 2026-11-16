@@ -168,3 +168,77 @@ FICHES['5e-h-t1-l2'] = {
  'valeurs': ["Respect et valorisation de la diversité culturelle.", "Protection du patrimoine culturel national.",
              "Liens avec l'EDHC (vivre ensemble), les arts plastiques (affiches, masques) et l'éducation musicale."],
 }
+
+# ------------------------------------------------------------------ T1-L3
+FICHES['5e-h-t1-l3'] = {
+ 'materiel': ["schémas des codes traditionnels et de la palabre (schémas 1 et 2)", "document des emblèmes protecteurs (document 1)",
+              "extraits simplifiés des Conventions de Genève", "questionnaire d'enquête auprès des sages"],
+ 'contexte': "à Agboville, des violences intercommunautaires se produisent régulièrement ; après un match mal arbitré, des jeunes Dida et des jeunes Abbey s'opposent.",
+ 'circonstance': "un vieil homme rappelle le pacte qui interdit la violence entre Dida et Abbey ; un élève abbey de la classe propose d'enquêter auprès des sages de son village.",
+ 'taches': ["définir et distinguer les codes de règlementation des conflits", "identifier les règles du droit international humanitaire",
+            "collecter des informations auprès des sages et réaliser un tableau comparatif"],
+ 'prerequis': ["Les peuples de la région et leurs traits culturels (leçons 1 et 2).", "La dignité humaine en temps de guerre ou de violence (6e)."],
+ 'seances': [
+  {'titre': "Les notions et les codes de prévention (I, II. 1)", 'etapes': [
+   (PRES, 10, "Lecture de la situation et questionnement",
+    ["Lire la situation d'Agboville.", "« Pourquoi le vieil homme parle-t-il d'un pacte ? Que risque celui qui le viole ? »"],
+    ["Il existe un pacte ancien entre Dida et Abbey ; celui qui le viole risque la malédiction des ancêtres."], "Introduction."),
+   ("Développement · I. Les notions", 15, "Brainstorming et classement",
+    ["Faire citer les causes de conflit dans la région et les classer.", "Faire formuler la définition du code de règlementation des conflits."],
+    ["Causes : terre, héritage, chefferie, vol, injures, match mal arbitré, intolérance.", "Code : règles, pratiques et institutions pour prévenir, limiter ou régler les conflits."], "I. 1 et 2."),
+   ("Développement · II. 1. Les codes de prévention", 20, "Explication et construction du schéma 1",
+    ["Expliquer l'alliance Dida – Abbey.", "Faire relever les autres moyens de prévention : mariages, interdits et serments, éducation."],
+    ["Pacte ancien : interdiction de verser le sang de l'allié, entraide, moquerie amicale.", "Alliances matrimoniales, interdits et serments, éducation et initiation."], "II. 1."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application I."], ["Définition et deux causes de conflit."], None),
+  ]},
+  {'titre': "Régler les conflits et limiter la guerre (II. 2 à 4)", 'etapes': [
+   (PRES, 5, "Rappel et question", ["« Et lorsque le conflit éclate, que fait-on ? »"], ["On va voir le chef, les anciens."], None),
+   ("Développement · II. 2 à 4. Résolution, règles de la guerre, enquête", 35, "Jeu de rôle d'une palabre, lecture, élaboration d'un questionnaire",
+    ["Organiser le jeu de rôle d'une palabre (chef, anciens, parties, témoins) à partir du schéma 2.", "Faire relever les règles traditionnelles de la guerre.", "Faire rédiger le questionnaire d'enquête."],
+    ["Convocation, exposé des parties, témoins, délibération, décision, réconciliation ; la décision vise la réconciliation.",
+     "Épargner femmes, enfants et vieillards ; respecter le messager et les lieux sacrés ; épargner les prisonniers.",
+     "Questions sur les pactes, la palabre, les sanctions et les rites de réconciliation de la région."], "II. 2 à 4."),
+   (EVAL, 15, "Travail individuel et correction", ["Activité d'application II."], ["Expliquent l'alliance Dida – Abbey et deux étapes de la palabre."], None),
+  ]},
+  {'titre': "Le DIH et le tableau comparatif (III et IV)", 'etapes': [
+   (PRES, 5, "Observation des emblèmes", ["Montrer le document 1 : « Les avez-vous déjà vus ? Où ? »"], ["Sur des ambulances, des hôpitaux, des secouristes."], None),
+   ("Développement · III. Le DIH", 20, "Exploitation de documents",
+    ["Faire définir le DIH à partir d'un extrait.", "Faire relever les textes, les acteurs et les règles principales."],
+    ["Règles qui protègent les non-combattants en temps de guerre et limitent les moyens de la guerre.",
+     "Conventions de Genève (1949), Protocoles additionnels (1977), CICR ; protéger les civils, soigner tous les blessés, traiter humainement les prisonniers."], "III. 1 à 3."),
+   ("Développement · IV. Le tableau comparatif", 15, "Travail en binômes à partir des résultats de l'enquête",
+    ["Faire réaliser le tableau comparatif.", "Faire dégager ressemblances et différences."],
+    ["Mêmes buts : protéger ceux qui ne combattent pas, rétablir la paix.", "Différences : échelle (région / monde) et garants (ancêtres et anciens / États, CICR, tribunaux)."], "IV, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Réinvestissent les codes traditionnels et le DIH."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Les parentés à plaisanterie ont été étudiées par Radcliffe-Brown (1940) et Griaule (1948, « alliance cathartique ») ; en pays mandé, on parle de senankuya.",
+  "La palabre vise la réconciliation plus que la punition : on la rapproche aujourd'hui de la « justice restauratrice ».",
+  "Le DIH moderne naît avec Henry Dunant (Solférino, 1859) ; ses textes principaux sont les Conventions de Genève (1949) et leurs Protocoles additionnels (1977).",
+  "Le DIH s'applique pendant les conflits armés, à toutes les parties ; les droits de l'homme s'appliquent en tout temps.",
+ ],
+ 'difficultes': [
+  ("Confusion entre prévention et résolution des conflits.", "Reprendre le schéma 1 et classer six exemples (alliance, palabre, mariage, amende, serment, libation)."),
+  ("Confusion entre DIH et droits de l'homme.", "Rappeler que le DIH s'applique pendant la guerre ; les droits de l'homme en tout temps."),
+  ("Difficulté à réaliser le tableau comparatif.", "Donner les lignes du tableau (non-combattants, lieux, messagers, prisonniers, fin du conflit, garants)."),
+ ],
+ 'soutien': ["Fiche-lexique : palabre, alliance, médiation, DIH, CICR.", "Tableau comparatif partiellement rempli."],
+ 'approfondissement': ["Mener l'enquête auprès d'un sage et présenter les alliances de la région.", "Exposé sur Henry Dunant et la naissance de la Croix-Rouge."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : palabre ; alliance à plaisanterie ; droit international humanitaire.", 3, "Palabre : discussion publique pour régler un différend devant les anciens ; alliance à plaisanterie : pacte ancien entre deux peuples qui interdit la violence et autorise la moquerie amicale ; DIH : règles qui protègent les non-combattants en temps de guerre. 1 pt par définition."),
+   ("Réponds par Vrai ou Faux : a) Le DIH autorise les attaques contre les hôpitaux ennemis. b) Dans la guerre traditionnelle, le messager était protégé. c) Le CICR veille au respect du DIH. d) Les Conventions de Genève datent de 1949.", 2, "a) Faux ; b) Vrai ; c) Vrai ; d) Vrai. 0,5 pt par réponse."),
+   ("Cite trois codes traditionnels de résolution des conflits.", 1.5, "Palabre, médiation, sanctions et réparation, rites de réconciliation. 0,5 pt par code, 3 attendus."),
+   ("Cite trois règles du DIH.", 1.5, "Ne pas attaquer les civils ; soigner tous les blessés ; traiter humainement les prisonniers (ou : épargner hôpitaux et écoles, respecter l'emblème, interdire les enfants soldats). 0,5 pt par règle."),
+  ],
+  'situation': "Deux villages voisins de ta région se disputent une parcelle de forêt ; des jeunes menacent de prendre les machettes. Ton cousin dit qu'« en cas de bagarre, tout est permis ».",
+  'consignes': [
+   ("Identifie la cause du conflit et définis un code de règlementation des conflits.", 2.5, "Conflit foncier, litige sur une terre (1 pt) ; ensemble des règles, pratiques et institutions pour prévenir, limiter ou régler les conflits (1,5 pt)."),
+   ("Explique comment les codes traditionnels de ta région permettraient de régler ce conflit.", 4, "Les chefs convoquent une palabre devant les anciens et les chefs de terre (1 pt) ; chaque partie présente ses arguments et les témoins sont entendus (1 pt) ; une décision est rendue (1 pt) ; la paix est scellée par un rite de réconciliation : cola, repas, libation (1 pt)."),
+   ("Réponds à ton cousin en citant deux règles traditionnelles et deux règles du DIH.", 3.5, "Tout n'est pas permis (0,5 pt). Règles traditionnelles : épargner les femmes, les enfants et les vieillards ; respecter le messager (0,75 pt chacune). Règles du DIH : épargner les civils ; respecter les secouristes et soigner tous les blessés (0,75 pt chacune)."),
+  ],
+ },
+ 'valeurs': ["Culture de la paix, du dialogue et de la tolérance.", "Respect de la dignité humaine, même en cas de conflit.",
+             "Liens avec l'EDHC (droits de l'homme, DIH) et le français (jeu de rôle, argumentation)."],
+}
