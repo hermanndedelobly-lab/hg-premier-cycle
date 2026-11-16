@@ -66,3 +66,21 @@ quand le téléphone est connecté, ou après un nouvel APK. Taille enregistrée
 déclinaisons (logo détouré, emblème, icônes Android et du site, logos de la page). `identite/android.json` décrit
 les changements appliqués à l'APK par `fabriquer-apk.py` (nom affiché, couleur, icônes) ; l'identifiant
 `ci.hg.premiercycle`, le code Java et la clé de signature ne changent pas.
+
+## Espace enseignant de la 6e (1.15.0)
+
+`outils/espace-enseignant/` (repris de la branche `espace-enseignant-6e`) : `python3 outils/espace-enseignant/construire.py data/contenu.json`
+ajoute à la 6e le guide de l'enseignant et une fiche de préparation par leçon (annexes `6e-ens-…`, `enseignant: true`,
+`lecon: <identifiant>`). L'application les montre dans l'onglet « Enseignant » de la classe (`#t-6e`) et par le lien
+« Fiche de préparation » de chaque leçon. Une leçon enrichie (trois espaces, ex. `6e-h-t1-l1`) garde sa propre préparation
+dans son espace Enseignant (`#a-`) : son ancienne fiche reste dans les données (identifiant permanent) mais n'est plus
+listée et son adresse mène à l'espace de la leçon. Ordre : `construire.py` puis `integrer-pedagogie.py` puis `integrer-quiz.py --verifier`.
+
+## Passerelle pour l'APK 1.10.0 (clé perdue), sans désinstallation
+
+`python3 outils/fichier-unique.py maj/page.html --mode maj && python3 outils/fabriquer-pont.py` produit `pont/`.
+Sur le téléphone en 1.10.0 : Réglages › Adresse du site des mises à jour =
+`https://raw.githubusercontent.com/hermanndedelobly-lab/hg-premier-cycle/<branche du canal>/pont` › Enregistrer ›
+Vérifier les mises à jour, puis fermer et rouvrir l'application : GNOMBLESSON démarre avec la progression de la 1.10.0
+(détails dans `outils/fabriquer-pont.py`). Limites : le nom et l'icône du lanceur Android restent ceux de la 1.10.0 ;
+les photos s'affichent depuis le canal quand le téléphone est connecté. À chaque version : régénérer `maj/page.html` puis `pont/`.

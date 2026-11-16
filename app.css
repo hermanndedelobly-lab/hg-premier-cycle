@@ -401,3 +401,6 @@ figure.photo .credit { display: block; margin-top: 4px; font-size: calc(11.5px *
 .demarrage img { width: min(62vw, 300px); height: auto; border-radius: 15%; box-shadow: 0 10px 40px rgba(0,0,0,.45); }
 .demarrage.fin { opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .demarrage { transition: none; } }
+
+/* Espace enseignant de la classe : cinq onglets sur petit écran (largeur selon le libellé) */
+@media (max-width: 440px) { .onglets-classe { gap: 2px; } .onglets-classe a { flex: 1 1 auto; padding: 9px 3px; } }

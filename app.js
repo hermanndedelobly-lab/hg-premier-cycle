@@ -8,6 +8,7 @@
   var INDEX = {};               // id -> {type, classe, disc, theme, lecon|annexe}
   var ORDRE = {}, ORDRE_X = {};               // classe -> [ids des leçons dans l'ordre]
   var RECH = [];                // index de recherche
+  var FICHE_ENS = {};           // id de leçon -> id de la fiche de préparation (espace enseignant de la classe)
   var vue = document.getElementById('vue');
   var swReg = null, majEnAttente = null, majDemandee = false;
 
@@ -23,7 +24,7 @@
   var VERSION_ORIGINE = window.HG_VERSION_EMBARQUEE || (window.HG_DATA ? window.HG_DATA.version : null);
   // Canal des mises à jour de l'application Android (contenu et code) : branche de développement (test).
   // À remplacer par l'adresse du site publié lorsque la publication sera autorisée.
-  var ADRESSE_MAJ = 'https://raw.githubusercontent.com/hermanndedelobly-lab/hg-premier-cycle/ccr-89031195-ic25pf';
+  var ADRESSE_MAJ = 'https://raw.githubusercontent.com/hermanndedelobly-lab/hg-premier-cycle/gnomblesson-integration';
   var faites = lire('faites', {});
   var scores = lire('quiz', {});    // id (leçon ou classe) -> {m: meilleur score, n: nb de questions, d: date, k: essais}
   var reglages = lire('reglages', { theme: 'auto', taille: 1, corriges: false });
@@ -76,7 +77,9 @@
       (c.schemas || []).forEach(function (sc) { RECH.push({ id: sc.id, href: '#s-' + c.id, classe: c.id, disc: 'g', titre: 'Schéma : ' + sc.titre, ctx: c.id + ' · Schémas', t: norm(sc.titre), x: sc.texte, nx: norm(sc.texte) }); });
       c.annexes.forEach(function (a) {
         INDEX[a.id] = { type: 'annexe', classe: c, annexe: a };
-        RECH.push({ id: a.id, href: '#l-' + a.id, classe: c.id, disc: '', titre: a.titre, ctx: c.id + ' · Annexe', t: norm(a.titre), x: a.texte, nx: norm(a.texte) });
+        if (a.enseignant && a.lecon) FICHE_ENS[a.lecon] = a.id;
+        if (ficheRemplacee(a)) return;   // leçon enrichie : sa fiche de préparation est dans l'espace Enseignant de la leçon (#a-)
+        RECH.push({ id: a.id, href: '#l-' + a.id, classe: c.id, disc: a.disc || '', titre: a.titre, ctx: c.id + (a.enseignant ? ' · Espace enseignant' : ' · Annexe'), t: norm(a.titre), x: a.texte, nx: norm(a.texte) });
       });
     });
   }
@@ -116,7 +119,18 @@
       '<a href="#c-' + c.id + '"' + (actif === 'c' ? ' aria-current="page"' : '') + '>Cours</a>' +
       '<a href="#x-' + c.id + '"' + (actif === 'x' ? ' aria-current="page"' : '') + '>Exercices' + (c.nbBanque ? ' <span>' + c.nbBanque + '</span>' : '') + '</a>' +
       '<a href="#s-' + c.id + '"' + (actif === 's' ? ' aria-current="page"' : '') + '>Schémas' + (nbS ? ' <span>' + nbS + '</span>' : '') + '</a>' +
-      (nbQuizClasse(c) ? '<a href="#r-' + c.id + '"' + (actif === 'r' ? ' aria-current="page"' : '') + '>Quiz</a>' : '') + '</nav>';
+      (nbQuizClasse(c) ? '<a href="#r-' + c.id + '"' + (actif === 'r' ? ' aria-current="page"' : '') + '>Quiz</a>' : '') +
+      (fichesEns(c).length ? '<a href="#t-' + c.id + '"' + (actif === 't' ? ' aria-current="page"' : '') + '>Enseignant</a>' : '') + '</nav>';
+  }
+  // ---------- Espace enseignant de la classe : guide et fiches de préparation ----------
+  // Une leçon enrichie (trois espaces) garde sa propre fiche dans son espace Enseignant (#a-) : l'ancienne fiche
+  // reste dans les données (identifiant permanent) mais n'est plus listée ; son adresse mène à l'espace de la leçon.
+  function ficheRemplacee(a) { var L = a.lecon && INDEX[a.lecon]; return !!(L && L.lecon && L.lecon.enseignant); }
+  function fichesEns(c) { return c.annexes.filter(function (a) { return a.enseignant && !ficheRemplacee(a); }); }
+  function lienFiche(id) {
+    var L = INDEX[id]; if (!L || !L.lecon) return null;
+    if (L.lecon.enseignant) return '#a-' + id;
+    return FICHE_ENS[id] ? '#l-' + FICHE_ENS[id] : null;
   }
   function nbQuizClasse(c) { return ORDRE[c.id].reduce(function (a, id) { return a + ((INDEX[id].lecon.quiz || []).length); }, 0); }
   function vueClasse(c) {
@@ -141,7 +155,8 @@
     });
     h += '<section class="discipline"><div class="discipline-tete" style="--c:var(--ink)"><h2>Ressources</h2></div><div class="liens-annexes">' +
       '<a class="lien-carte" href="#p-' + c.id + '"><small>Présentation</small>Programme et progression annuelle de ' + c.id + '</a>' +
-      c.annexes.map(function (a) { return '<a class="lien-carte" href="#l-' + a.id + '"><small>Annexe</small>' + esc(a.titre) + '</a>'; }).join('') +
+      c.annexes.filter(function (a) { return !a.enseignant; }).map(function (a) { return '<a class="lien-carte" href="#l-' + a.id + '"><small>Annexe</small>' + esc(a.titre) + '</a>'; }).join('') +
+      (fichesEns(c).length ? '<a class="lien-carte" href="#t-' + c.id + '"><small>Professeur</small>Espace enseignant : guide et fiches de préparation</a>' : '') +
       '</div></section>';
     afficher(h, c.nom + ' · GNOMBLESSON');
   }
@@ -154,11 +169,56 @@
   }
 
   function vueAnnexe(e) {
+    if (e.annexe.enseignant && ficheRemplacee(e.annexe)) { location.replace('#a-' + e.annexe.lecon); return; }
+    if (e.annexe.enseignant) return vueFicheEns(e);
     barreClasses(e.classe.id);
     ecrire('derniere', e.annexe.id);
     var h = '<div class="d-h"><nav class="fil"><a href="#c-' + e.classe.id + '">' + e.classe.id + '</a><span>›</span><span>Annexe</span></nav>' +
       '<h1 class="lecon-titre">' + esc(e.annexe.titre) + '</h1>' + BOUTON_PDF + '<div class="texte">' + e.annexe.html + '</div></div>';
     afficher(h, e.annexe.titre, { titre: e.annexe.titre, surtitre: 'CLASSE DE ' + e.classe.id.toUpperCase(), disc: 'h', fichier: e.classe.id + ' ' + e.annexe.titre, sections: [{ html: e.annexe.html }] });
+  }
+
+  function vueEnseignant(c) {
+    barreClasses(c.id);
+    var f = fichesEns(c), guide = f.filter(function (a) { return !a.lecon; })[0];
+    var h = '<p class="eyebrow">Classe de ' + c.id + '</p><h1 class="titre-vue">' + esc(c.nom) + '</h1>' + ongletsClasse(c, 't') +
+      '<p class="chapo">Espace réservé au professeur : une fiche de préparation détaillée par leçon (situation analysée, déroulement séance par séance avec les réponses attendues, éclairage scientifique, difficultés et remédiation, évaluation avec corrigé et barème).</p>';
+    if (guide) h += '<a class="reprendre" href="#l-' + guide.id + '"><div><small>Pour commencer</small><strong>' + esc(guide.titre) + '</strong></div><span class="fleche" aria-hidden="true">→</span></a>';
+    c.disciplines.forEach(function (d) {
+      var sec = '';
+      d.themes.forEach(function (t) {
+        var ls = t.lecons.filter(function (l) { return lienFiche(l.id); });
+        if (!ls.length) return;
+        sec += '<div class="theme"><div class="theme-tete"><p class="eyebrow">' + nomTheme(t) + '</p><h3>' + esc(t.titre) + '</h3></div><ul class="lecons">' +
+          ls.map(function (l) {
+            return '<li><a href="' + lienFiche(l.id) + '"><span class="num">L' + l.n + '</span><span class="t">' + esc(l.titre) + '</span><span class="meta">' + (l.enseignant ? '<span class="v11" title="Leçon enrichie : fiche de préparation dans l\'espace Enseignant de la leçon">3 espaces</span>' : '') + heures(l.duree) + '</span></a></li>';
+          }).join('') + '</ul></div>';
+      });
+      if (sec) h += '<section class="discipline d-' + d.id + '"><div class="discipline-tete"><h2>' + esc(d.nom) + '</h2><span>Fiches de préparation</span></div>' + sec + '</section>';
+    });
+    afficher(h, 'Espace enseignant ' + c.id + ' · GNOMBLESSON');
+  }
+  function vueFicheEns(e) {
+    var c = e.classe, a = e.annexe, L = a.lecon ? INDEX[a.lecon] : null;
+    barreClasses(c.id);
+    ecrire('derniere', a.id);
+    var f = fichesEns(c), i = f.indexOf(a), prev = i > 0 ? f[i - 1] : null, next = i < f.length - 1 ? f[i + 1] : null;
+    var titre = L ? L.lecon.titre : a.titre;
+    function nomF(x) { return x.lecon && INDEX[x.lecon] ? INDEX[x.lecon].lecon.titre : x.titre; }
+    var h = '<article class="d-' + (L ? L.disc.id : 'h') + '">' +
+      '<nav class="fil" aria-label="Emplacement"><a href="#c-' + c.id + '">' + c.id + '</a><span>›</span><a href="#t-' + c.id + '">Enseignant</a>' + (L ? '<span>›</span><span>' + esc(L.disc.nom) + '</span>' : '') + '</nav>' +
+      '<h1 class="lecon-titre">' + esc(titre) + '</h1>' +
+      '<div class="puces"><span class="puce">' + (L ? 'Fiche de préparation' : 'Guide') + '</span>' + (L ? '<span class="puce">' + nomTheme(L.theme) + ' · L' + L.lecon.n + '</span>' + (L.lecon.duree ? '<span class="puce">' + L.lecon.duree + ' h</span>' : '') : '') + '</div>' + BOUTON_PDF +
+      (L ? '<div class="sommaire"><a class="chip-lien" href="#l-' + L.lecon.id + '">Leçon de l\'élève</a>' + (L.lecon.banque ? '<a class="chip-lien" href="#e-' + L.lecon.id + '">Banque : ' + L.lecon.nbBanque + ' exercices</a>' : '') + '</div>' : '') +
+      '<div class="texte">' + a.html + '</div>' +
+      '<nav class="suivants" aria-label="Fiches voisines">' +
+      (prev ? '<a class="avant" href="#l-' + prev.id + '"><small>← Précédente</small><span>' + esc(nomF(prev)) + '</span></a>' : '') +
+      (next ? '<a class="apres" href="#l-' + next.id + '"><small>Suivante →</small><span>' + esc(nomF(next)) + '</span></a>' : '') +
+      '</nav></article>';
+    afficher(h, 'Fiche enseignant · ' + titre, { titre: titre, disc: L ? L.disc.id : 'h', fichier: c.id + ' enseignant ' + (L ? L.disc.id + ' ' + L.lecon.titre : 'guide'),
+      surtitre: ('Espace enseignant · Classe de ' + c.id + (L ? ' · ' + L.disc.nom : '')).toUpperCase(),
+      meta: L ? (nomTheme(L.theme) + ' : ' + L.theme.titre + ' · Leçon ' + L.lecon.n + (L.lecon.duree ? ' · ' + L.lecon.duree + ' h' : '')) : 'Guide de l\'enseignant',
+      sections: [{ html: a.html }] });
   }
 
   function vueLecon(e) {
@@ -172,7 +232,7 @@
       '<nav class="fil" aria-label="Emplacement"><a href="#c-' + c.id + '">' + c.id + '</a><span>›</span><span>' + esc(d.nom) + '</span><span>›</span><span>' + nomTheme(t) + (t.n ? ' · ' + esc(t.titre) : '') + '</span></nav>' +
       '<h1 class="lecon-titre">' + esc(l.titre) + '</h1>' + ongletsEspaces(l, 'b') +
       '<div class="puces"><span class="puce">Leçon ' + l.n + '</span>' + (l.duree ? '<span class="puce">' + l.duree + ' h</span>' : '') + '<span class="puce">' + esc(d.nom) + '</span></div>' + BOUTON_PDF +
-      '<div class="sommaire" role="navigation" aria-label="Parties de la leçon"><button type="button" data-aller="b-sit">Situation</button><button type="button" data-aller="b-cours">Cours</button><button type="button" data-aller="b-exo">Exercices</button>' + (l.evaluation ? '<button type="button" data-aller="b-eval">Évaluation</button>' : '') + (nbQ ? '<a class="chip-lien" href="#q-' + l.id + '">Quiz</a>' : '') + (l.banque ? '<a class="chip-lien" href="#e-' + l.id + '">Banque : ' + l.nbBanque + ' exercices</a>' : '') + '</div>' +
+      '<div class="sommaire" role="navigation" aria-label="Parties de la leçon"><button type="button" data-aller="b-sit">Situation</button><button type="button" data-aller="b-cours">Cours</button><button type="button" data-aller="b-exo">Exercices</button>' + (l.evaluation ? '<button type="button" data-aller="b-eval">Évaluation</button>' : '') + (nbQ ? '<a class="chip-lien" href="#q-' + l.id + '">Quiz</a>' : '') + (l.banque ? '<a class="chip-lien" href="#e-' + l.id + '">Banque : ' + l.nbBanque + ' exercices</a>' : '') + (lienFiche(l.id) ? '<a class="chip-lien" href="' + lienFiche(l.id) + '">Fiche de préparation</a>' : '') + '</div>' +
       '<section class="bloc" id="b-sit"><h2>Compétence, situation et habiletés</h2><div class="situation"><div class="texte">' + l.situation + '</div></div></section>' +
       '<section class="bloc" id="b-cours"><h2>Cours · trace écrite</h2><div class="texte">' + l.cours + '</div></section>' +
       '<section class="bloc" id="b-exo"><h2>Exercices traités et corrigés</h2>' +
@@ -544,6 +604,7 @@
   function afficher(h, titre, spec) {
     PDF_SPEC = spec || null;
     vue.innerHTML = h;
+    imagesDistantes(vue);
     var bp = vue.querySelector('[data-pdf]');
     if (bp) bp.addEventListener('click', function () { if (window.HGPDF && PDF_SPEC) window.HGPDF.ouvrir(PDF_SPEC); });
     document.title = titre === 'GNOMBLESSON · Histoire & Géographie' ? titre : titre + ' · GNOMBLESSON';
@@ -552,6 +613,16 @@
     window.scrollTo(0, 0);
     mesurerEntete();
   }
+  // Application Android : une photo absente de l'APK installé (photos ajoutées après sa fabrication, ou passerelle
+  // depuis l'APK 1.10.0) est affichée depuis le canal des mises à jour quand le téléphone est connecté.
+  function imagesDistantes(el) {
+    if (MODE === 'pwa') return;
+    el.querySelectorAll('img[src^="img/"]').forEach(function (i) {
+      var rel = i.getAttribute('src');
+      i.addEventListener('error', function () { if (i.getAttribute('src') === rel) i.src = ADRESSE_MAJ + '/' + rel; });
+    });
+  }
+  window.HG_ADRESSE_MAJ = ADRESSE_MAJ;
   // écran de démarrage (logo) : retiré dès que la première page est affichée, ou au plus tard après 8 s
   function finDemarrage() {
     var d = document.getElementById('demarrage');
@@ -580,6 +651,7 @@
     if (h.indexOf('x-') === 0 && (c = trouverClasse(h.slice(2)))) return vueExercicesClasse(c);
     if (h.indexOf('s-') === 0 && (c = trouverClasse(h.slice(2)))) return vueSchemas(c);
     if (h.indexOf('r-') === 0 && (c = trouverClasse(h.slice(2))) && nbQuizClasse(c)) return vueQuizClasse(c);
+    if (h.indexOf('t-') === 0 && (c = trouverClasse(h.slice(2))) && fichesEns(c).length) return vueEnseignant(c);
     if (h.indexOf('q-') === 0 && (c = trouverClasse(h.slice(2))) && nbQuizClasse(c)) return vueQuiz(c.id);
     if (h.indexOf('q-') === 0 && (e = INDEX[h.slice(2)]) && e.type === 'lecon' && (e.lecon.quiz || []).length) return vueQuiz(e.lecon.id);
     if (h.indexOf('e-') === 0 && (e = INDEX[h.slice(2)]) && e.lecon && e.lecon.banque) return vueBanque(e);
@@ -620,7 +692,7 @@
   // (mêmes fichiers version.json et data/contenu.json que la version web) puis gardé dans le téléphone.
   function codeTelecharge() { try { var c = JSON.parse(localStorage.getItem('hg1c.code-maj')); return c && c.version; } catch (e) { return null; } }
   // Redémarrage : la page d'origine (assets de l'APK) est rechargée ; son script de démarrage choisit la version la plus récente.
-  function redemarrer() { location.reload(); }
+  function redemarrer() { location.replace(location.href.split('#')[0]); }   // sans l'adresse interne : la page d'accueil ou de la classe démarre
   function oublierMaj() { ['contenu-maj', 'code-maj', 'code-essai', 'code-ok', 'code-echec'].forEach(function (k) { try { localStorage.removeItem('hg1c.' + k); } catch (e) { /* rien */ } }); }
   function verifierMajApk(manuel) {
     var base = (reglages.adresse || ADRESSE_MAJ).trim().replace(/\/+$/, '');
@@ -714,13 +786,19 @@
   function script(src) {
     return new Promise(function (ok, ko) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = function () { ko(new Error('chargement ' + src)); }; document.head.appendChild(s); });
   }
+  // photos du PDF absentes de l'APK installé : lues depuis le canal des mises à jour (servi en texte brut)
+  function imagesPdfDistantes() {
+    if (window.HG_MODE === 'pwa' || !window.HG_ADRESSE_MAJ || !window.fetch) return null;
+    return fetch(window.HG_ADRESSE_MAJ + '/img/pdf-images.js').then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (t) { (new Function(t))(); }).catch(function () { /* pas de photos */ });
+  }
   function charger() {
     if (window.pdfMake && window.pdfMake.vfs) return Promise.resolve();
     if (chargement) return chargement;
     var base = (window.HG_MODE === 'single') ? SITE + 'lib/' : 'lib/';
     chargement = script(base + 'pdfmake.min.js').then(function () { return script(base + 'vfs_fonts.js'); })
       // photographies des leçons enrichies (encodées pour le PDF) : facultatif, sans effet si le fichier manque
-      .then(function () { return script(base.replace(/lib\/$/, '') + 'img/pdf-images.js').catch(function () { /* pas de photos */ }); })
+      .then(function () { return script(base.replace(/lib\/$/, '') + 'img/pdf-images.js').catch(function () { return imagesPdfDistantes(); }); })
       .catch(function (e) { chargement = null; throw e; });
     return chargement;
   }

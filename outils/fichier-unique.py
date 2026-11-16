@@ -91,7 +91,8 @@ def main():
         garde = ('<script>(function(){var V="' + version + '";setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V)'
                  '{localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>\n')
         page = page.replace('<head>\n', '<head>\n' + garde, 1)
-        donnees_js = "window.HG_MAJ=true;try{window.HG_DATA=JSON.parse(localStorage.getItem('hg1c.contenu-maj'))}catch(e){window.HG_DATA=null}"
+        # HG_DATA_PROPRE : données nettoyées transmises par la passerelle de l'APK 1.10.0 (outils/fabriquer-pont.py)
+        donnees_js = "window.HG_MAJ=true;try{window.HG_DATA=window.HG_DATA_PROPRE||JSON.parse(localStorage.getItem('hg1c.contenu-maj'))}catch(e){window.HG_DATA=null}"
         mode_js = 'apk'
     else:
         donnees_js = 'window.HG_DATA=' + donnees
