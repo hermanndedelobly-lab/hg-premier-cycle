@@ -49,7 +49,7 @@ def main():
         cartes = ''.join(f'''<figure><img src="{os.path.join(SEL, s['fichier'])}" alt="{e(s['titre'])}">
 <figcaption><b>{i}. {e(s['titre'])}.</b> {e(s['legende'])}</figcaption>
 <p class="expl">{e(s['explication'])}</p>
-<p class="meta"><b>Emplacement prévu :</b> {e(s['emplacement'])}<br><b>Crédit :</b> {e(s['credit'])}<br>
+<p class="meta"><b>Statut :</b> {e(s.get('statut', ''))}<br><b>Emplacement prévu :</b> {e(s['emplacement'])}<br><b>Crédit :</b> {e(s['credit'])}<br>
 <b>Fichier :</b> {e(s['fichier_commons'])} · {s['largeur']}×{s['hauteur']} px · {s['octets'] // 1024} Ko</p></figure>''' for i, s in enumerate(sortie, 1))
         total = sum(s['octets'] for s in sortie) // 1024
         page = f'''<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,7 +64,7 @@ img {{ display:block; max-width:100%; max-height:360px; margin:0 auto 10px; bord
 .expl {{ margin:8px 0 6px; }} .meta {{ margin:0; font-size:12.5px; color:var(--muted); word-break:break-word; }}
 </style></head><body><div class="doc"><h1>Photographies proposées — leçon pilote « 6e – L'histoire et son objet »</h1>
 <p class="chapo">{len(sortie)} photographies libres de droits (Wikimedia Commons), choisies parmi 30 candidates, optimisées pour les téléphones
-(640 px au plus, {total} Ko au total). Proposition à valider : rien n'est encore intégré à l'application. Licences : domaine public,
+(640 px au plus, {total} Ko au total). Proposition à valider : rien n'est intégré à l'application. La statue d'Ibn Khaldoun (n° 10) est suspendue jusqu'à clarification des droits de reproduction. Licences : domaine public,
 CC0, CC BY-SA (le crédit doit alors être affiché sous l'image, ce qui est prévu).</p>{cartes}</div></body></html>'''
         open(sys.argv[1], 'w', encoding='utf-8').write(page)
         print('planche :', sys.argv[1])
