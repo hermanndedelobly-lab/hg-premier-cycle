@@ -84,3 +84,22 @@ Sur le téléphone en 1.10.0 : Réglages › Adresse du site des mises à jour =
 Vérifier les mises à jour, puis fermer et rouvrir l'application : GNOMBLESSON démarre avec la progression de la 1.10.0
 (détails dans `outils/fabriquer-pont.py`). Limites : le nom et l'icône du lanceur Android restent ceux de la 1.10.0 ;
 les photos s'affichent depuis le canal quand le téléphone est connecté. À chaque version : régénérer `maj/page.html` puis `pont/`.
+
+## Stockage v2 des mises à jour sans APK (1.17.0)
+
+Module : `outils/stockage-maj.js` (inclus dans la page de l'APK et dans `maj/page.html` par `fichier-unique.py`,
+et dans le lanceur de la passerelle par `fabriquer-pont.py`).
+- Le contenu complet téléchargé est compressé (gzip, `CompressionStream`), emballé en texte (15 bits par caractère,
+  U+0800 – U+87FF) et rangé sous `hg1c.contenu-gz` avec un en-tête `GZ15:version:longueur:empreinte:` ; l'empreinte
+  (FNV-1a) est vérifiée à chaque lecture. Rapport mesuré : 4,32 millions de caractères → 0,50 million (8,7 fois moins).
+- `hg1c.contenu-maj` ne contient plus qu'un descripteur (quelques centaines de caractères) : le script de démarrage des APK
+  installés (1.14.x) n'exige que son numéro de version. Pour la passerelle 1.10.0, c'est un squelette (≈ 49 ko) porteur du
+  lanceur ; le contenu complet est lu à l'adresse `source` (`../data/contenu.json` depuis `pont/`).
+- Ordre d'écriture : contenu compressé dans une clé temporaire → relecture et comparaison → page de code → contenu définitif
+  → descripteur (en dernier). Ancien format (contenu en clair) : migré automatiquement au premier démarrage de la 1.17.0.
+- Contenu illisible au démarrage : la mise à jour enregistrée est retirée (jamais la progression), un incident est noté
+  (`hg1c.maj-incident`) et l'application redémarre sur la version de l'APK (ou la 1.10.0 d'origine pour la passerelle).
+- Les clés de progression (`faites`, `quiz`, `derniere`, `classe`, `reglages`) ne sont jamais lues ni modifiées par ce module ;
+  « Revenir à la version d'origine » retire seulement les clés de mise à jour (et, pour la passerelle, son adresse).
+- Limite connue : un téléphone resté sur un code antérieur à 1.17.0 télécharge encore l'ancien format (en clair) ; il doit
+  passer par la 1.17.0 avant une version dont le contenu dépasserait environ 5 millions de caractères.

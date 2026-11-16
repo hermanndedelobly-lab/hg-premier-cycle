@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<script>(function(){var V="1.16.0";setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V){localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>
+<script>(function(){var V="1.17.0";setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V){localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>
 <meta charset="utf-8">
 <title>GNOMBLESSON · Histoire &amp; Géographie</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -461,9 +461,115 @@ figure.photo .credit { display: block; margin-top: 4px; font-size: calc(11.5px *
     </div>
   </div>
 </div>
-<script>window.HG_MODE="pwa";window.HG_VERSION="1.16.0";</script>
+<script>window.HG_MODE="pwa";window.HG_VERSION="1.17.0";</script>
 <script src="app.js" defer></script>
-<script>window.HG_MODE="apk";window.HG_VERSION="1.16.0";window.HG_MAJ=true;try{window.HG_DATA=window.HG_DATA_PROPRE||JSON.parse(localStorage.getItem('hg1c.contenu-maj'))}catch(e){window.HG_DATA=null};</script>
+<script>/* GNOMBLESSON — stockage v2 des mises à jour sans APK (depuis 1.17.0).
+   Le contenu complet téléchargé est compressé (gzip) puis « emballé » en texte (15 bits par caractère, caractères
+   U+0800 à U+87FF, jamais de demi-caractère UTF-16) et rangé dans localStorage sous la clé hg1c.contenu-gz :
+   environ 6 fois moins de place qu'avant. La clé hg1c.contenu-maj ne contient plus qu'un petit descripteur
+   (ou, pour la passerelle 1.10.0, un squelette porteur du lanceur). Une empreinte (FNV-1a) contrôle l'intégrité.
+   Les clés de progression (faites, quiz, derniere, reglages…) ne sont jamais lues ni modifiées ici.
+   Ce fichier est inclus tel quel dans la page de mise à jour (outils/fichier-unique.py, mode maj) et dans le
+   lanceur de la passerelle (outils/fabriquer-pont.py). */
+window.HGStock = window.HGStock || (function () {
+  'use strict';
+  var CLE = 'hg1c.contenu-gz', CLE_TMP = 'hg1c.contenu-gz-nouveau', ENTETE = 'GZ15';
+  function dispo() { return typeof CompressionStream === 'function' && typeof DecompressionStream === 'function' && typeof TextEncoder === 'function'; }
+  function empreinte(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return ('0000000' + h.toString(16)).slice(-8); }
+  function flux(octets, transfo) { return new Response(new Blob([octets]).stream().pipeThrough(transfo)).arrayBuffer().then(function (b) { return new Uint8Array(b); }); }
+  function emballer(o) {   // octets → texte, 15 bits par caractère
+    var t = [], acc = 0, n = 0;
+    for (var i = 0; i < o.length; i++) {
+      acc = (acc << 8) | o[i]; n += 8;
+      if (n >= 15) { n -= 15; t.push(String.fromCharCode(0x0800 + ((acc >>> n) & 0x7fff))); acc &= (1 << n) - 1; }
+      if (t.length >= 8192) { t = [t.join('')]; }
+    }
+    if (n > 0) t.push(String.fromCharCode(0x0800 + ((acc << (15 - n)) & 0x7fff)));
+    return t.join('');
+  }
+  function deballer(s, longueur) {
+    var o = new Uint8Array(longueur), acc = 0, n = 0, j = 0;
+    for (var i = 0; i < s.length && j < longueur; i++) {
+      var v = s.charCodeAt(i) - 0x0800; if (v < 0 || v > 0x7fff) throw new Error('caractère invalide');
+      acc = (acc << 15) | v; n += 15;
+      while (n >= 8 && j < longueur) { n -= 8; o[j++] = (acc >>> n) & 0xff; acc &= (1 << n) - 1; }
+    }
+    if (j !== longueur) throw new Error('données tronquées');
+    return o;
+  }
+  // texte JSON → valeur à ranger : « GZ15:version:longueur:empreinte:données »
+  function compresser(version, texte) {
+    return flux(new TextEncoder().encode(texte), new CompressionStream('gzip')).then(function (o) {
+      return [ENTETE, version, o.length, empreinte(texte), emballer(o)].join(':');
+    });
+  }
+  function lireEntete(val) {
+    if (!val || val.slice(0, 5) !== ENTETE + ':') return null;
+    var p = val.split(':', 4), deb = p.join(':').length + 1;
+    return { version: p[1], longueur: +p[2], empreinte: p[3], donnees: val.slice(deb) };
+  }
+  // valeur rangée → texte JSON vérifié
+  function decompresser(val, versionAttendue) {
+    var e = lireEntete(val);
+    if (!e) return Promise.reject(new Error('stockage compressé absent'));
+    if (versionAttendue && e.version !== versionAttendue) return Promise.reject(new Error('version ' + e.version + ' au lieu de ' + versionAttendue));
+    var o; try { o = deballer(e.donnees, e.longueur); } catch (x) { return Promise.reject(x); }
+    return flux(o, new DecompressionStream('gzip')).then(function (b) {
+      var t = new TextDecoder().decode(b);
+      if (empreinte(t) !== e.empreinte) throw new Error('empreinte incorrecte');
+      return t;
+    });
+  }
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+  function lsDel(k) { try { localStorage.removeItem(k); } catch (e) { /* rien */ } }
+  // contenu enregistré (version) → objet ; rejeté si absent, d'une autre version ou abîmé
+  function lire(version) { return decompresser(lsGet(CLE), version).then(JSON.parse); }
+  function versionRangee() { var e = lireEntete(lsGet(CLE)); return e ? e.version : null; }
+  // squelette pour la passerelle 1.10.0 : structure complète, textes longs vidés, champs déclencheurs conservés
+  function squelette(d) {
+    function vide(x, cle) {
+      if (typeof x === 'string') return (x.length > 300 && cle !== 'pont' && x.indexOf('pont-declencheur') < 0) ? '' : x;
+      if (Array.isArray(x)) return cle === 'quiz' ? [] : x.map(function (y) { return vide(y, ''); });
+      if (x && typeof x === 'object') { var r = {}; Object.keys(x).forEach(function (k) { r[k] = vide(x[k], k); }); return r; }
+      return x;
+    }
+    var s = vide(d, ''); s.stub = true; s.stockage = 'compresse'; return s;
+  }
+  function descripteur(d) { return { version: d.version, date: d.date, stockage: 'compresse', notes: (d.notes || []).slice(0, 1) }; }
+  /* Enregistre une version complète (objet d, texte JSON t) : contenu compressé vérifié, puis page de code éventuelle,
+     puis descripteur (dernier, c'est lui qui « valide » la mise à jour). stub : squelette passerelle à garder.
+     En cas d'échec, l'état précédent est conservé (ou, au pire, l'application revient à la version de l'APK). */
+  function enregistrer(d, t, page, stub) {
+    if (!dispo()) return Promise.reject(new Error('compression indisponible'));
+    var V = d.version;
+    return compresser(V, t).then(function (val) {
+      // ancien contenu non compressé (format 1, plusieurs Mo) : remplacé d'abord par un descripteur provisoire
+      // (version « 0 » : l'APK démarre sur sa propre version tant que la nouvelle n'est pas complète)
+      var ancienDesc = lsGet('hg1c.contenu-maj');
+      if (ancienDesc && ancienDesc.length > 200000) lsSet('hg1c.contenu-maj', JSON.stringify({ version: '0', stockage: 'en-cours' }));
+      if (!lsSet(CLE_TMP, val)) {   // place insuffisante : on libère l'ancien contenu compressé avant de réessayer
+        lsDel(CLE_TMP); lsDel(CLE);
+        if (!lsSet(CLE_TMP, val)) { lsDel(CLE_TMP); throw new Error('place insuffisante'); }
+      }
+      return decompresser(lsGet(CLE_TMP), V).then(function (t2) {
+        if (t2 !== t) throw new Error('relecture différente');
+        if (page !== null && page !== undefined && !lsSet('hg1c.code-maj', JSON.stringify({ version: V, page: page }))) throw new Error('place insuffisante (code)');
+        lsDel(CLE);
+        if (!lsSet(CLE, val)) throw new Error('place insuffisante (contenu)');
+        lsDel(CLE_TMP);
+        if (!lsSet('hg1c.contenu-maj', JSON.stringify(stub || descripteur(d)))) throw new Error('place insuffisante (descripteur)');
+        return true;
+      });
+    }).catch(function (e) { lsDel(CLE_TMP); throw e; });
+  }
+  function oublier() { lsDel(CLE); lsDel(CLE_TMP); }
+  return { dispo: dispo, compresser: compresser, decompresser: decompresser, lire: lire, versionRangee: versionRangee,
+    enregistrer: enregistrer, squelette: squelette, descripteur: descripteur, empreinte: empreinte, oublier: oublier,
+    emballer: emballer, deballer: deballer, CLE: CLE };
+})();
+</script>
+<script>window.HG_MODE="apk";window.HG_VERSION="1.17.0";window.HG_MAJ=true;(function(){var W=window;function L(k){try{return localStorage.getItem('hg1c.'+k)}catch(e){return null}}function retablir(r){try{localStorage.setItem('hg1c.maj-incident',JSON.stringify({version:W.HG_VERSION,quand:Date.now(),raison:String(r)}));localStorage.removeItem('hg1c.contenu-maj');localStorage.removeItem('hg1c.contenu-gz')}catch(e){}location.replace(location.href.split('#')[0])}if(W.HG_DATA_PROPRE){W.HG_DATA=W.HG_DATA_PROPRE;W.HG_DATA_PROMESSE=Promise.resolve(W.HG_DATA);return}var d=null;try{d=JSON.parse(L('contenu-maj'))}catch(e){}if(d&&d.classes&&!d.stub){W.HG_DATA=d;W.HG_DATA_PROMESSE=Promise.resolve(d);return}W.HG_DATA=null;W.HG_DATA_PROMESSE=(d&&d.version&&W.HGStock?W.HGStock.lire(d.version):Promise.reject(new Error('contenu absent'))).then(function(x){W.HG_DATA=x;try{localStorage.setItem('hg1c.code-ok',W.HG_VERSION)}catch(e){}return x},function(e){retablir(e&&e.message);return new Promise(function(){})})})();</script>
 <script>/* GNOMBLESSON · Histoire & Géographie (ex-« Histoire géographie premier cycle ») — application hors ligne */
 (function () {
   'use strict';
@@ -512,6 +618,7 @@ figure.photo .credit { display: block; margin-top: 4px; font-size: calc(11.5px *
 
   // ---------- Chargement ----------
   function charger() {
+    if (window.HG_DATA_PROMESSE) return window.HG_DATA_PROMESSE;   // page de mise à jour (stockage v2, voir outils/stockage-maj.js)
     if (window.HG_DATA) {
       // application Android : une mise à jour du contenu téléchargée remplace le contenu d'origine
       if (MODE === 'apk') {
@@ -1041,7 +1148,13 @@ figure.photo .credit { display: block; margin-top: 4px; font-size: calc(11.5px *
       if (v) verifierMajApk(true); else { message('Adresse effacée : le canal prévu est utilisé.'); verifierMajApk(true); }
     });
     var ro = document.getElementById('retour-origine');
-    if (ro) ro.addEventListener('click', function () { oublierMaj(); location.reload(); });
+    if (ro) ro.addEventListener('click', function () {
+      oublierMaj();
+      // passerelle de l'APK 1.10.0 : on retire aussi l'adresse de la passerelle, sinon la 1.10.0 la retéléchargerait
+      // aussitôt (sa vérification automatique) ; la progression et les autres réglages ne changent pas
+      if (VERSION_ORIGINE === '1.10.0' && /\/pont\/?$/.test(reglages.adresse || '')) { delete reglages.adresse; ecrire('reglages', reglages); }
+      location.replace(location.href.split('#')[0]);
+    });
     var bi = document.getElementById('btn-installer');
     if (bi) bi.addEventListener('click', function () { if (!invite) return; invite.prompt(); invite.userChoice.then(function () { invite = null; vueReglages(); }); });
   }
@@ -1159,31 +1272,64 @@ figure.photo .credit { display: block; margin-top: 4px; font-size: calc(11.5px *
   function codeTelecharge() { try { var c = JSON.parse(localStorage.getItem('hg1c.code-maj')); return c && c.version; } catch (e) { return null; } }
   // Redémarrage : la page d'origine (assets de l'APK) est rechargée ; son script de démarrage choisit la version la plus récente.
   function redemarrer() { location.replace(location.href.split('#')[0]); }   // sans l'adresse interne : la page d'accueil ou de la classe démarre
-  function oublierMaj() { ['contenu-maj', 'code-maj', 'code-essai', 'code-ok', 'code-echec'].forEach(function (k) { try { localStorage.removeItem('hg1c.' + k); } catch (e) { /* rien */ } }); }
+  function oublierMaj() { ['contenu-maj', 'contenu-gz', 'contenu-gz-nouveau', 'code-maj', 'code-essai', 'code-ok', 'code-echec', 'maj-incident'].forEach(function (k) { try { localStorage.removeItem('hg1c.' + k); } catch (e) { /* rien */ } }); }
+  // Stockage v2 : le contenu complet encore rangé en clair (format 1, plusieurs Mo) est compressé une fois.
+  // La progression (faites, quiz, derniere, reglages…) n'est jamais lue ni modifiée.
+  function migrerStockage() {
+    if (!window.HG_MAJ || !window.HGStock || !window.HGStock.dispo()) return;
+    var brut = null; try { brut = localStorage.getItem('hg1c.contenu-maj'); } catch (e) { return; }
+    if (!brut || brut.length < 200000) return;
+    var ancien; try { ancien = JSON.parse(brut); } catch (e) { return; }
+    if (!ancien || !ancien.classes || ancien.stub || ancien.version !== VERSION) return;
+    var propre = window.HG_DATA_PROPRE, stub = null, t = brut, d = ancien;
+    if (ancien.pont) { stub = window.HGStock.squelette(ancien); if (!propre) return; d = propre; t = JSON.stringify(propre); }
+    window.HGStock.enregistrer(d, t, null, stub).catch(function (e) { try { localStorage.setItem('hg1c.maj-incident', JSON.stringify({ version: VERSION, quand: Date.now(), raison: 'migration : ' + (e && e.message) })); } catch (x) { /* rien */ } });
+  }
+
+  var majEnCours = null;   // une seule vérification à la fois (automatique ou manuelle)
   function verifierMajApk(manuel) {
+    if (majEnCours) { if (manuel) { message('Vérification en cours…'); majEnCours.then(function () { verifierMajApk(true); }); } return; }
+    majEnCours = verifierMajApk2(manuel).then(function () { majEnCours = null; }, function () { majEnCours = null; });
+  }
+  function verifierMajApk2(manuel) {
     var base = (reglages.adresse || ADRESSE_MAJ).trim().replace(/\/+$/, '');
-    if (!base) { if (manuel) message('Renseigne d\'abord l\'adresse du site des mises à jour, juste en dessous.'); return; }
-    if (!navigator.onLine) { if (manuel) message('Pas de connexion. Réessaie quand le téléphone est connecté : tes cours restent disponibles en attendant.'); return; }
+    if (!base) { if (manuel) message('Renseigne d\'abord l\'adresse du site des mises à jour, juste en dessous.'); return Promise.resolve(); }
+    if (!navigator.onLine) { if (manuel) message('Pas de connexion. Réessaie quand le téléphone est connecté : tes cours restent disponibles en attendant.'); return Promise.resolve(); }
     if (manuel) message('Vérification en cours…');
-    fetch(base + '/version.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (v) {
+    return fetch(base + '/version.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (v) {
       if (!plusRecent(v.version, VERSION)) { if (manuel) message('Tu as la dernière version (' + VERSION + ').'); return; }
       var echec = null; try { echec = localStorage.getItem('hg1c.code-echec'); } catch (e) { /* rien */ }
       if (echec === v.version) { if (manuel) message('La version ' + v.version + ' n\'a pas pu démarrer sur ce téléphone : la version ' + VERSION + ' est conservée. Une version corrigée sera proposée dès sa publication.'); return; }
       var deja = lire('contenu-maj', null), dejaCode = codeTelecharge();
-      if (deja && deja.version === v.version && (!v.code || dejaCode === v.version)) { message('Version ' + v.version + ' prête.'); bandeau('Version ' + v.version + ' prête : redémarre pour l\'utiliser.', redemarrer); return; }
+      if (deja && deja.version === v.version && (!v.code || dejaCode === v.version) && (deja.classes && !deja.stub || (window.HGStock && window.HGStock.versionRangee() === v.version))) { message('Version ' + v.version + ' prête.'); bandeau('Version ' + v.version + ' prête : redémarre pour l\'utiliser.', redemarrer); return; }
       if (manuel) message('Version ' + v.version + ' trouvée. Téléchargement en cours…');
       var obtenir = function (chemin, type) { return fetch(base + '/' + chemin, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r[type](); }); };
-      return Promise.all([obtenir('data/contenu.json', 'json'), v.code ? obtenir(v.code, 'text') : Promise.resolve(null)]).then(function (res) {
-        var d = res[0], page = res[1];
+      return Promise.all([obtenir('data/contenu.json', 'text'), v.code ? obtenir(v.code, 'text') : Promise.resolve(null)]).then(function (res) {
+        var t = res[0], d = JSON.parse(t), page = res[1], stub = null;
         if (!d || !d.classes || !d.classes.length || d.version !== v.version) throw new Error('contenu invalide');
         if (page !== null && page.indexOf('window.HG_VERSION="' + v.version + '"') < 0) throw new Error('page de mise à jour invalide');
-        if (!ecrire('contenu-maj', d)) { message('Le téléphone manque de place pour enregistrer la mise à jour.'); return; }
-        if (page !== null) {
-          try { localStorage.setItem('hg1c.code-maj', JSON.stringify({ version: v.version, page: page })); }
-          catch (e) { message('Le téléphone manque de place pour enregistrer la nouvelle version de l\'application (le contenu des cours est à jour).'); return; }
+        // passerelle 1.10.0 : le canal fournit un squelette (porteur du lanceur) et l'adresse du contenu complet
+        var complet = Promise.resolve([d, t]);
+        if (d.stub && d.source) {
+          stub = d;
+          complet = fetch(new URL(d.source, base + '/').href, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+            .then(function (t2) { var d2 = JSON.parse(t2); if (!d2.classes || d2.version !== v.version) throw new Error('contenu invalide'); return [d2, t2]; });
         }
+        return complet.then(function (c) {
+          if (window.HGStock && window.HGStock.dispo()) return window.HGStock.enregistrer(c[0], c[1], page, stub);
+          // téléphone sans compression (navigateur interne très ancien) : ancien format, si la place suffit
+          if (stub) throw new Error('compression indisponible');
+          if (!ecrire('contenu-maj', c[0])) throw new Error('place insuffisante');
+          if (page !== null) localStorage.setItem('hg1c.code-maj', JSON.stringify({ version: v.version, page: page }));
+          return true;
+        }).then(function () {
         message('Version ' + v.version + ' téléchargée.');
         bandeau('Version ' + v.version + ' téléchargée : ' + (v.notes && v.notes[0] ? v.notes[0] : 'corrections du contenu'), redemarrer);
+        }, function (e) {
+          // échec d'enregistrement : la version en service reste utilisable ; rien n'est touché à la progression
+          message(/place/.test(String(e && e.message)) ? 'Le téléphone manque de place pour enregistrer la mise à jour. Tes cours actuels restent disponibles.'
+            : 'La mise à jour n\'a pas pu être enregistrée (' + (e && e.message) + '). Tes cours actuels restent disponibles ; réessaie plus tard.');
+        });
       });
     }).catch(function () { if (manuel) message('Le site des mises à jour ne répond pas. Vérifie l\'adresse ou réessaie plus tard.'); });
   }
@@ -1229,6 +1375,7 @@ figure.photo .credit { display: block; margin-top: 4px; font-size: calc(11.5px *
     D = data; VERSION = data.version || VERSION;
     indexer(); route(); initSW();
     if (MODE === 'apk') {
+      setTimeout(migrerStockage, 800);
       setTimeout(function () { verifierMajApk(false); }, 1500);
       document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') verifierMajApk(false); });
     }

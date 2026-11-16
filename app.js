@@ -46,6 +46,7 @@
 
   // ---------- Chargement ----------
   function charger() {
+    if (window.HG_DATA_PROMESSE) return window.HG_DATA_PROMESSE;   // page de mise à jour (stockage v2, voir outils/stockage-maj.js)
     if (window.HG_DATA) {
       // application Android : une mise à jour du contenu téléchargée remplace le contenu d'origine
       if (MODE === 'apk') {
@@ -575,7 +576,13 @@
       if (v) verifierMajApk(true); else { message('Adresse effacée : le canal prévu est utilisé.'); verifierMajApk(true); }
     });
     var ro = document.getElementById('retour-origine');
-    if (ro) ro.addEventListener('click', function () { oublierMaj(); location.reload(); });
+    if (ro) ro.addEventListener('click', function () {
+      oublierMaj();
+      // passerelle de l'APK 1.10.0 : on retire aussi l'adresse de la passerelle, sinon la 1.10.0 la retéléchargerait
+      // aussitôt (sa vérification automatique) ; la progression et les autres réglages ne changent pas
+      if (VERSION_ORIGINE === '1.10.0' && /\/pont\/?$/.test(reglages.adresse || '')) { delete reglages.adresse; ecrire('reglages', reglages); }
+      location.replace(location.href.split('#')[0]);
+    });
     var bi = document.getElementById('btn-installer');
     if (bi) bi.addEventListener('click', function () { if (!invite) return; invite.prompt(); invite.userChoice.then(function () { invite = null; vueReglages(); }); });
   }
@@ -693,31 +700,64 @@
   function codeTelecharge() { try { var c = JSON.parse(localStorage.getItem('hg1c.code-maj')); return c && c.version; } catch (e) { return null; } }
   // Redémarrage : la page d'origine (assets de l'APK) est rechargée ; son script de démarrage choisit la version la plus récente.
   function redemarrer() { location.replace(location.href.split('#')[0]); }   // sans l'adresse interne : la page d'accueil ou de la classe démarre
-  function oublierMaj() { ['contenu-maj', 'code-maj', 'code-essai', 'code-ok', 'code-echec'].forEach(function (k) { try { localStorage.removeItem('hg1c.' + k); } catch (e) { /* rien */ } }); }
+  function oublierMaj() { ['contenu-maj', 'contenu-gz', 'contenu-gz-nouveau', 'code-maj', 'code-essai', 'code-ok', 'code-echec', 'maj-incident'].forEach(function (k) { try { localStorage.removeItem('hg1c.' + k); } catch (e) { /* rien */ } }); }
+  // Stockage v2 : le contenu complet encore rangé en clair (format 1, plusieurs Mo) est compressé une fois.
+  // La progression (faites, quiz, derniere, reglages…) n'est jamais lue ni modifiée.
+  function migrerStockage() {
+    if (!window.HG_MAJ || !window.HGStock || !window.HGStock.dispo()) return;
+    var brut = null; try { brut = localStorage.getItem('hg1c.contenu-maj'); } catch (e) { return; }
+    if (!brut || brut.length < 200000) return;
+    var ancien; try { ancien = JSON.parse(brut); } catch (e) { return; }
+    if (!ancien || !ancien.classes || ancien.stub || ancien.version !== VERSION) return;
+    var propre = window.HG_DATA_PROPRE, stub = null, t = brut, d = ancien;
+    if (ancien.pont) { stub = window.HGStock.squelette(ancien); if (!propre) return; d = propre; t = JSON.stringify(propre); }
+    window.HGStock.enregistrer(d, t, null, stub).catch(function (e) { try { localStorage.setItem('hg1c.maj-incident', JSON.stringify({ version: VERSION, quand: Date.now(), raison: 'migration : ' + (e && e.message) })); } catch (x) { /* rien */ } });
+  }
+
+  var majEnCours = null;   // une seule vérification à la fois (automatique ou manuelle)
   function verifierMajApk(manuel) {
+    if (majEnCours) { if (manuel) { message('Vérification en cours…'); majEnCours.then(function () { verifierMajApk(true); }); } return; }
+    majEnCours = verifierMajApk2(manuel).then(function () { majEnCours = null; }, function () { majEnCours = null; });
+  }
+  function verifierMajApk2(manuel) {
     var base = (reglages.adresse || ADRESSE_MAJ).trim().replace(/\/+$/, '');
-    if (!base) { if (manuel) message('Renseigne d\'abord l\'adresse du site des mises à jour, juste en dessous.'); return; }
-    if (!navigator.onLine) { if (manuel) message('Pas de connexion. Réessaie quand le téléphone est connecté : tes cours restent disponibles en attendant.'); return; }
+    if (!base) { if (manuel) message('Renseigne d\'abord l\'adresse du site des mises à jour, juste en dessous.'); return Promise.resolve(); }
+    if (!navigator.onLine) { if (manuel) message('Pas de connexion. Réessaie quand le téléphone est connecté : tes cours restent disponibles en attendant.'); return Promise.resolve(); }
     if (manuel) message('Vérification en cours…');
-    fetch(base + '/version.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (v) {
+    return fetch(base + '/version.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (v) {
       if (!plusRecent(v.version, VERSION)) { if (manuel) message('Tu as la dernière version (' + VERSION + ').'); return; }
       var echec = null; try { echec = localStorage.getItem('hg1c.code-echec'); } catch (e) { /* rien */ }
       if (echec === v.version) { if (manuel) message('La version ' + v.version + ' n\'a pas pu démarrer sur ce téléphone : la version ' + VERSION + ' est conservée. Une version corrigée sera proposée dès sa publication.'); return; }
       var deja = lire('contenu-maj', null), dejaCode = codeTelecharge();
-      if (deja && deja.version === v.version && (!v.code || dejaCode === v.version)) { message('Version ' + v.version + ' prête.'); bandeau('Version ' + v.version + ' prête : redémarre pour l\'utiliser.', redemarrer); return; }
+      if (deja && deja.version === v.version && (!v.code || dejaCode === v.version) && (deja.classes && !deja.stub || (window.HGStock && window.HGStock.versionRangee() === v.version))) { message('Version ' + v.version + ' prête.'); bandeau('Version ' + v.version + ' prête : redémarre pour l\'utiliser.', redemarrer); return; }
       if (manuel) message('Version ' + v.version + ' trouvée. Téléchargement en cours…');
       var obtenir = function (chemin, type) { return fetch(base + '/' + chemin, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r[type](); }); };
-      return Promise.all([obtenir('data/contenu.json', 'json'), v.code ? obtenir(v.code, 'text') : Promise.resolve(null)]).then(function (res) {
-        var d = res[0], page = res[1];
+      return Promise.all([obtenir('data/contenu.json', 'text'), v.code ? obtenir(v.code, 'text') : Promise.resolve(null)]).then(function (res) {
+        var t = res[0], d = JSON.parse(t), page = res[1], stub = null;
         if (!d || !d.classes || !d.classes.length || d.version !== v.version) throw new Error('contenu invalide');
         if (page !== null && page.indexOf('window.HG_VERSION="' + v.version + '"') < 0) throw new Error('page de mise à jour invalide');
-        if (!ecrire('contenu-maj', d)) { message('Le téléphone manque de place pour enregistrer la mise à jour.'); return; }
-        if (page !== null) {
-          try { localStorage.setItem('hg1c.code-maj', JSON.stringify({ version: v.version, page: page })); }
-          catch (e) { message('Le téléphone manque de place pour enregistrer la nouvelle version de l\'application (le contenu des cours est à jour).'); return; }
+        // passerelle 1.10.0 : le canal fournit un squelette (porteur du lanceur) et l'adresse du contenu complet
+        var complet = Promise.resolve([d, t]);
+        if (d.stub && d.source) {
+          stub = d;
+          complet = fetch(new URL(d.source, base + '/').href, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+            .then(function (t2) { var d2 = JSON.parse(t2); if (!d2.classes || d2.version !== v.version) throw new Error('contenu invalide'); return [d2, t2]; });
         }
+        return complet.then(function (c) {
+          if (window.HGStock && window.HGStock.dispo()) return window.HGStock.enregistrer(c[0], c[1], page, stub);
+          // téléphone sans compression (navigateur interne très ancien) : ancien format, si la place suffit
+          if (stub) throw new Error('compression indisponible');
+          if (!ecrire('contenu-maj', c[0])) throw new Error('place insuffisante');
+          if (page !== null) localStorage.setItem('hg1c.code-maj', JSON.stringify({ version: v.version, page: page }));
+          return true;
+        }).then(function () {
         message('Version ' + v.version + ' téléchargée.');
         bandeau('Version ' + v.version + ' téléchargée : ' + (v.notes && v.notes[0] ? v.notes[0] : 'corrections du contenu'), redemarrer);
+        }, function (e) {
+          // échec d'enregistrement : la version en service reste utilisable ; rien n'est touché à la progression
+          message(/place/.test(String(e && e.message)) ? 'Le téléphone manque de place pour enregistrer la mise à jour. Tes cours actuels restent disponibles.'
+            : 'La mise à jour n\'a pas pu être enregistrée (' + (e && e.message) + '). Tes cours actuels restent disponibles ; réessaie plus tard.');
+        });
       });
     }).catch(function () { if (manuel) message('Le site des mises à jour ne répond pas. Vérifie l\'adresse ou réessaie plus tard.'); });
   }
@@ -763,6 +803,7 @@
     D = data; VERSION = data.version || VERSION;
     indexer(); route(); initSW();
     if (MODE === 'apk') {
+      setTimeout(migrerStockage, 800);
       setTimeout(function () { verifierMajApk(false); }, 1500);
       document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') verifierMajApk(false); });
     }

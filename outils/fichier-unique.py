@@ -40,6 +40,20 @@ DEMARRAGE = '''<script>/* Démarrage GNOMBLESSON : version la plus récente enre
   });
 })();</script>
 '''
+# Page de mise à jour (stockage v2) : le contenu vient du lanceur de la passerelle (HG_DATA_PROPRE), de l'ancien
+# format non compressé, ou du stockage compressé (outils/stockage-maj.js). En cas de contenu illisible : on retire la
+# mise à jour enregistrée (jamais la progression) et l'application redémarre sur la version de l'APK.
+CHARGEUR_MAJ = (
+    "(function(){var W=window;function L(k){try{return localStorage.getItem('hg1c.'+k)}catch(e){return null}}"
+    "function retablir(r){try{localStorage.setItem('hg1c.maj-incident',JSON.stringify({version:W.HG_VERSION,quand:Date.now(),raison:String(r)}));"
+    "localStorage.removeItem('hg1c.contenu-maj');localStorage.removeItem('hg1c.contenu-gz')}catch(e){}"
+    "location.replace(location.href.split('#')[0])}"
+    "if(W.HG_DATA_PROPRE){W.HG_DATA=W.HG_DATA_PROPRE;W.HG_DATA_PROMESSE=Promise.resolve(W.HG_DATA);return}"
+    "var d=null;try{d=JSON.parse(L('contenu-maj'))}catch(e){}"
+    "if(d&&d.classes&&!d.stub){W.HG_DATA=d;W.HG_DATA_PROMESSE=Promise.resolve(d);return}"
+    "W.HG_DATA=null;W.HG_DATA_PROMESSE=(d&&d.version&&W.HGStock?W.HGStock.lire(d.version):Promise.reject(new Error('contenu absent')))"
+    ".then(function(x){W.HG_DATA=x;try{localStorage.setItem('hg1c.code-ok',W.HG_VERSION)}catch(e){}return x},function(e){retablir(e&&e.message);return new Promise(function(){})})})()"
+)
 import argparse
 import base64
 import json
@@ -92,12 +106,15 @@ def main():
                  '{localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>\n')
         page = page.replace('<head>\n', '<head>\n' + garde, 1)
         # HG_DATA_PROPRE : données nettoyées transmises par la passerelle de l'APK 1.10.0 (outils/fabriquer-pont.py)
-        donnees_js = "window.HG_MAJ=true;try{window.HG_DATA=window.HG_DATA_PROPRE||JSON.parse(localStorage.getItem('hg1c.contenu-maj'))}catch(e){window.HG_DATA=null}"
+        donnees_js = "window.HG_MAJ=true;" + CHARGEUR_MAJ
         mode_js = 'apk'
     else:
         donnees_js = 'window.HG_DATA=' + donnees
         mode_js = a.mode
-    scripts = ('<script>window.HG_MODE="' + mode_js + '";window.HG_VERSION="' + version + '";' + donnees_js + ';</script>\n'
+    stock = ''
+    if a.mode in ('apk', 'maj'):   # stockage v2 des mises à jour (contenu compressé)
+        stock = '<script>' + lire(os.path.join(a.racine, 'outils', 'stockage-maj.js')).replace('</script', '<\\/script') + '</script>\n'
+    scripts = (stock + '<script>window.HG_MODE="' + mode_js + '";window.HG_VERSION="' + version + '";' + donnees_js + ';</script>\n'
                '<script>' + js.replace('</script', '<\\/script') + '</script>\n')
     page = page[:mode.start()] + page[mode.end():]
     page = page.replace('</body>', scripts + '</body>', 1)
