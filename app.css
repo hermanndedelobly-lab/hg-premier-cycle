@@ -377,3 +377,12 @@ figure.graphe.illus svg { min-width: 0; max-width: 420px; margin: 0 auto; }
 .faq dt { font-family: var(--font-ui); font-weight: 800; margin: 14px 0 4px; }
 .faq dd { margin: 0 0 6px; padding-left: 12px; border-left: 2px solid var(--line); }
 .texte .exo ol, .texte > ol { padding-left: 1.4em; }
+
+/* ---------- Photographies des leçons enrichies (1.13.0) ---------- */
+figure.photo { margin: 8px 0 14px; padding: 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+figure.photo img { display: block; width: auto; max-width: 100%; height: auto; max-height: 340px; margin: 0 auto; border-radius: 6px; background: var(--line); }
+figure.photo figcaption { font-family: var(--font-ui); font-size: calc(13px * var(--fs)); color: var(--muted); padding-top: 8px; line-height: 1.4; }
+figure.photo figcaption b { color: var(--ink); }
+figure.photo .credit { display: block; margin-top: 4px; font-size: calc(11.5px * var(--fs)); opacity: .9; }
+.tbl.credits table { font-size: calc(12px * var(--fs)); }
+.tbl.credits td { overflow-wrap: anywhere; }

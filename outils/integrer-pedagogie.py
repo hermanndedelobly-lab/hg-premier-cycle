@@ -11,6 +11,8 @@ evaluation, v11 (statut) ; textes de recherche recalculés. Contrôles bloquants
   - préparation : compétence, habiletés, situation, matériel, stratégie, déroulement, vérification,
     synthèse, évaluation, remédiation ;
   - exercices.html, banque.html (facultatifs) : jamais moins d'exercices que dans la version précédente ;
+  - photographies : texte alternatif, fichier img/ de 100 Ko au plus, crédit sous l'image,
+    aucune photo « suspendue » (illustrations/selection.json) ;
   - illustrations : chaque <figure> a un <svg aria-label>, une <figcaption> avec titre en gras,
     puis une explication <p class="illus-expl">.
 Usage : python3 outils/integrer-pedagogie.py [--verifier]
@@ -25,6 +27,16 @@ from html.parser import HTMLParser
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENU = os.path.join(RACINE, 'data', 'contenu.json')
 PEDA = os.path.join(RACINE, 'pedagogie')
+IMG = os.path.join(RACINE, 'img')
+MAX_PHOTO = 100 * 1024
+
+
+def photos_suspendues():
+    # identifiants marqués « suspendue » dans illustrations/selection.json : interdits dans les leçons
+    p = os.path.join(RACINE, 'illustrations', 'selection.json')
+    if not os.path.isfile(p):
+        return set()
+    return {x['id'] for x in json.load(open(p, encoding='utf-8'))['photos'] if x.get('statut', '').startswith('suspendue')}
 FICHIERS = ['eleve', 'evaluation', 'enseignant', 'preparation', 'culture']
 VIDES = {'br', 'img', 'hr', 'input', 'meta', 'link', 'col', 'area', 'source', 'wbr'}
 
@@ -67,7 +79,20 @@ def controler(lid, f, h, err):
     if v.pile:
         err.append(f'{lid}/{f}.html : balises non fermées : ' + ', '.join(f'<{t}> l.{n}' for t, n in v.pile))
     for fig in re.findall(r'<figure.*?</figure>', h, re.S):
-        if not re.search(r'<svg[^>]*aria-label="[^"]+"', fig):
+        img = re.search(r'<img [^>]*src="([^"]+)"[^>]*>', fig)
+        if img:
+            src, balise = img.group(1), img.group(0)
+            if not re.search(r'alt="[^"]{5,}"', balise):
+                err.append(f'{lid}/{f}.html : photo sans texte alternatif ({src})')
+            if not src.startswith('img/') or not os.path.isfile(os.path.join(RACINE, src)):
+                err.append(f'{lid}/{f}.html : photo introuvable ({src})')
+            elif os.path.getsize(os.path.join(RACINE, src)) > MAX_PHOTO:
+                err.append(f'{lid}/{f}.html : photo de plus de 100 Ko ({src})')
+            if os.path.splitext(os.path.basename(src))[0] in photos_suspendues():
+                err.append(f'{lid}/{f}.html : photo suspendue, intégration interdite ({src})')
+            if not re.search(r'<span class="credit">[^<]{10,}</span>', fig):
+                err.append(f'{lid}/{f}.html : photo sans crédit (auteur, licence) sous l\'image ({src})')
+        elif not re.search(r'<svg[^>]*aria-label="[^"]+"', fig):
             err.append(f'{lid}/{f}.html : illustration sans svg ni aria-label')
         if not re.search(r'<figcaption><b>[^<]+</b>', fig):
             err.append(f'{lid}/{f}.html : illustration sans légende commençant par un titre en gras')
@@ -154,6 +179,21 @@ def main():
     with open(CONTENU, 'w', encoding='utf-8') as fh:
         fh.write(json.dumps(d, ensure_ascii=False, separators=(',', ':')))
     print('data/contenu.json mis à jour.')
+    ecrire_images_pdf(d)
+
+
+def ecrire_images_pdf(d):
+    """img/pdf-images.js : photos des leçons encodées en base64, chargées seulement pour fabriquer un PDF
+    (dans l'APK, Android interdit de relire une image locale par un canevas)."""
+    import base64
+    tout = json.dumps(d, ensure_ascii=False)
+    srcs = sorted(set(re.findall(r'src=\\?"(img/[^"\\]+\.jpe?g)\\?"', tout)))
+    js = 'window.HG_IMG_PDF = {\n' + ',\n'.join(
+        f'  "{s}": "data:image/jpeg;base64,' + base64.b64encode(open(os.path.join(RACINE, s), 'rb').read()).decode() + '"' for s in srcs) + '\n};\n'
+    os.makedirs(IMG, exist_ok=True)
+    with open(os.path.join(IMG, 'pdf-images.js'), 'w', encoding='utf-8') as fh:
+        fh.write('/* Généré par outils/integrer-pedagogie.py — ne pas modifier à la main. */\n' + js)
+    print(f'img/pdf-images.js : {len(srcs)} photo(s), {os.path.getsize(os.path.join(IMG, "pdf-images.js")) // 1024} Ko.')
 
 
 if __name__ == '__main__':

@@ -23,3 +23,10 @@ pour l'enseignant ; chaque illustration est une `<figure class="graphe illus">` 
 
 Intégration : `python3 outils/integrer-pedagogie.py` (contrôle puis écrit `data/contenu.json`) ;
 `--verifier` contrôle sans écrire.
+
+Photographies : `<figure class="photo"><img src="img/<identifiant>/<nom>.jpg" alt="…" width height loading="lazy">`
+`<figcaption><b>Titre.</b> Légende <span class="credit">Crédit : auteur — licence — source</span></figcaption></figure>`,
+suivie d'un `<p class="illus-expl">`. Fichiers dans `img/` (100 Ko au plus), choisis et validés via `illustrations/`
+(licences contrôlées par le workflow « Illustrations — contrôle des licences »). Le script refuse une photo sans crédit,
+sans texte alternatif, trop lourde ou marquée « suspendue » dans `illustrations/selection.json`, et génère
+`img/pdf-images.js` (photos pour les PDF). Ajouter les nouveaux fichiers `img/` à la liste `PRECACHE` de `sw.js`.

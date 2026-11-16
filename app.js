@@ -686,6 +686,8 @@
     if (chargement) return chargement;
     var base = (window.HG_MODE === 'single') ? SITE + 'lib/' : 'lib/';
     chargement = script(base + 'pdfmake.min.js').then(function () { return script(base + 'vfs_fonts.js'); })
+      // photographies des leçons enrichies (encodées pour le PDF) : facultatif, sans effet si le fichier manque
+      .then(function () { return script(base.replace(/lib\/$/, '') + 'img/pdf-images.js').catch(function () { /* pas de photos */ }); })
       .catch(function (e) { chargement = null; throw e; });
     return chargement;
   }
@@ -792,6 +794,8 @@
       if (tag === 'table') { out.push(tableau(n)); return; }
       if (tag === 'figure') {
         var svg = n.querySelector('svg'); if (svg) out.push(svgPdf(svg));
+        var img = n.querySelector('img'), donnees = img && window.HG_IMG_PDF && window.HG_IMG_PDF[img.getAttribute('src')];
+        if (donnees) out.push({ image: donnees, fit: [360, 230], alignment: 'center', margin: [0, 4, 0, 2] });
         var cap = n.querySelector('figcaption'); if (cap) out.push({ text: cap.textContent.trim(), style: 'legende' });
         return;
       }

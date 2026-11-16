@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Fabrique l'APK d'une nouvelle version à partir de l'APK précédent (même coquille Android) :
 
-  1. remplace assets/www/index.html par la page unique (outils/fichier-unique.py) ;
+  1. remplace assets/www/index.html par la page unique (outils/fichier-unique.py) et ajoute les
+     photographies du dossier img/ (assets/www/img/) ;
   2. met à jour versionCode et versionName dans AndroidManifest.xml (binaire) ;
   3. signe : v1 (jarsigner), alignement sur 4 octets, puis APK Signature Scheme v2.
 
@@ -117,8 +118,8 @@ def main():
 
     entrees, ancienne = [], None
     for nom, data, methode in lire_entrees(precedent):
-        if nom.startswith('META-INF/'):
-            continue
+        if nom.startswith('META-INF/') or nom.startswith('assets/www/img/'):
+            continue   # signature refaite ; photos reprises depuis le dossier img/ du dépôt (ci-dessous)
         if nom == 'AndroidManifest.xml':
             # versionName : seule chaîne « x.y.z » du pool de chaînes (UTF-16)
             ancienne = re.findall(rb'(?:[0-9]\x00)+\.\x00(?:[0-9]\x00)+\.\x00(?:[0-9]\x00)+', data)
@@ -129,7 +130,17 @@ def main():
         elif nom == 'assets/www/index.html':
             data = html
         entrees.append((nom, data, methode))
-    print(f'coquille {precedent} : version {ancienne} -> {version} (versionCode {code_version(version)})')
+    # photographies des leçons (img/) : fichiers à côté de la page, chargés par chemin relatif
+    # (la page est ouverte depuis file:///android_asset/www/index.html)
+    n_img = 0
+    for dossier, _, fichiers in sorted(os.walk(os.path.join(RACINE, 'img'))):
+        for f in sorted(fichiers):
+            chemin = os.path.join(dossier, f)
+            rel = os.path.relpath(chemin, RACINE).replace(os.sep, '/')
+            methode = zipfile.ZIP_STORED if f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')) else zipfile.ZIP_DEFLATED
+            entrees.append(('assets/www/' + rel, open(chemin, 'rb').read(), methode))
+            n_img += 1
+    print(f'coquille {precedent} : version {ancienne} -> {version} (versionCode {code_version(version)}) ; {n_img} fichier(s) img/ ajouté(s)')
 
     with tempfile.TemporaryDirectory() as tmp:
         brut = os.path.join(tmp, 'brut.apk')
