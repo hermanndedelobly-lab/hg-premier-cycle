@@ -242,3 +242,77 @@ FICHES['5e-h-t1-l3'] = {
  'valeurs': ["Culture de la paix, du dialogue et de la tolérance.", "Respect de la dignité humaine, même en cas de conflit.",
              "Liens avec l'EDHC (droits de l'homme, DIH) et le français (jeu de rôle, argumentation)."],
 }
+
+# ------------------------------------------------------------------ T2-L1
+FICHES['5e-h-t2-l1'] = {
+ 'materiel': ["frise de la préhistoire ivoirienne (6e)", "carte des premiers habitants (carte 1)", "schéma des arguments de l'autochtonie (schéma 1)",
+              "récit de tradition évoquant des occupants antérieurs"],
+ 'contexte': "en attendant le professeur d'EDHC, des élèves de 5e du Lycée moderne de Bouna discutent de l'origine de leurs peuples en Côte d'Ivoire.",
+ 'circonstance': "chacun soutient appartenir à l'ethnie la plus ancienne ; les élèves décident de chercher dans des documents historiques.",
+ 'taches': ["identifier et localiser les premiers habitants de la Côte d'Ivoire", "expliquer l'autochtonie et ses limites",
+            "élaborer des slogans pour la promotion de l'unité des peuples"],
+ 'prerequis': ["La préhistoire de la Côte d'Ivoire : paléolithique, néolithique, métallurgie du fer (6e).", "Autochtone, allochtone, allogène (leçon 1 du thème 1).",
+               "Les mythes d'origine et leur critique (leçon 1 du thème 1)."],
+ 'seances': [
+  {'titre': "Les tout premiers occupants et les peuples anciens (I, II. 1 et 2)", 'etapes': [
+   (PRES, 10, "Lecture de la situation et recueil des représentations",
+    ["Lire la situation de Bouna.", "Recueillir, sans les juger, les affirmations sur « le peuple le plus ancien »."],
+    ["Chaque élève affirme que son peuple est le plus ancien."], "Introduction."),
+   ("Développement · I. Les tout premiers occupants", 20, "Rappel sur frise et lecture d'un récit de tradition",
+    ["Rappeler Anyama, le néolithique et le fer.", "« Peut-on connaître le nom de ces hommes ? » ; lire un récit évoquant des occupants antérieurs."],
+    ["Présence très ancienne prouvée par les vestiges ; aucun nom connu.", "Les traditions évoquent des occupants antérieurs, absorbés ou repoussés."], "I. 1 et 2."),
+   ("Développement · II. 1 et 2. Les peuples anciens", 15, "Définition et lecture d'un tableau",
+    ["Faire définir le proto-peuple.", "Faire lire le tableau des peuples anciens."],
+    ["Peuple installé avant les grandes migrations des XVe – XVIIIe siècles.", "Ehotilé, Kotrowou, Zéhiri, Ega, Krobou, Gban, groupes krou et sénoufo anciens."], "II. 1 et 2."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application I."], ["Citent des vestiges et expliquent l'absence de nom."], None),
+  ]},
+  {'titre': "Localiser les peuples anciens ; la notion d'autochtonie (II. 2 et 3, III. 1)", 'etapes': [
+   (PRES, 5, "Rappel", ["Faire distinguer premiers occupants et peuples anciens."], ["Les premiers sont connus par les vestiges, les seconds par les traditions."], None),
+   ("Développement · II. 2 et 3. Localisation et vie en communauté", 25, "Travail sur carte, individuel",
+    ["Faire localiser les peuples anciens sur un fond de carte (titre, légende, orientation).", "Faire décrire la vie en communauté des premiers habitants."],
+    ["Peuples anciens surtout dans le Sud lagunaire ; Krou au Sud-Ouest ; Sénoufo au Nord.", "Chasse, pêche, agriculture ; lignages dirigés par les aînés ; culte des ancêtres et des génies ; accueil des nouveaux venus."], "II. 2 et 3."),
+   ("Développement · III. 1. La notion d'autochtonie", 15, "Questionnement",
+    ["Faire définir l'autochtonie à partir du mot autochtone (leçon 1)."], ["Ancienneté de l'installation d'un peuple sur un territoire."], "III. 1."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application II."], ["Localisent trois peuples anciens."], None),
+  ]},
+  {'titre': "Arguments et limites de l'autochtonie ; l'unité des peuples (III. 2 et 3, IV)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Comment un peuple prouve-t-il qu'il est autochtone ? »"], ["Par ses récits, ses anciens, ses lieux sacrés."], None),
+   ("Développement · III. 2 et 3. Arguments et limites", 20, "Travail de groupes avec le schéma 1",
+    ["Chaque groupe examine un argument (mythe, absence de migration, maître de la terre, vestiges) et cherche sa limite."],
+    ["Mythe merveilleux et invérifiable ; la mémoire orale oublie les migrations anciennes ; le statut de maître de la terre prouve l'ancienneté, pas la première place ; les vestiges ne donnent pas de nom."], "III. 2 et 3."),
+   ("Développement · IV. Des peuples divers mais unis", 15, "Atelier d'écriture de slogans",
+    ["Expliquer le brassage et l'égalité des citoyens.", "Faire écrire un slogan court, positif et clair."],
+    ["Les peuples actuels sont issus du brassage ; la Constitution garantit l'égalité des citoyens.", "« Anciens ou nouveaux venus, nous sommes tous Ivoiriens. »"], "IV, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Réponse argumentée aux élèves de Bouna ; situation d'évaluation."], ["Montrent qu'on ne peut pas désigner « le peuple le plus ancien » et prônent l'unité."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Deux niveaux à distinguer : les tout premiers occupants, connus par l'archéologie et sans nom ; les peuples anciens, connus par les traditions.",
+  "Certaines langues de petits groupes du Sud (ega, krobou, ehotilé) sont isolées ou peu apparentées à celles de leurs voisins : indice possible d'une installation ancienne.",
+  "Le premier occupant garde souvent le rôle religieux de « maître de la terre », même quand le pouvoir politique appartient à des nouveaux venus.",
+  "L'autochtonie a pris une dimension politique dans les années 1990 – 2000 : la leçon doit rester rigoureuse et apaisée.",
+ ],
+ 'difficultes': [
+  ("Confusion entre les hommes d'Anyama et un peuple actuel.", "Frise : vestiges sans nom / peuples anciens connus par les traditions / migrations."),
+  ("Idée qu'un peuple peut prouver qu'il est « le premier ».", "Reprendre le schéma 1 : chaque argument a une limite."),
+  ("Difficulté à localiser les peuples anciens.", "Fond de carte avec les villes repères déjà placées (Divo, Oumé, Fresco, Grand-Lahou, Agboville, Aboisso)."),
+ ],
+ 'soutien': ["Tableau à compléter : peuple ancien – région.", "Liste de mots pour écrire un slogan (unis, ensemble, diversité, nation, paix)."],
+ 'approfondissement': ["Recueillir le récit d'origine d'un village et l'analyser avec le schéma 1.", "Exposé sur les îles Ehotilé."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : proto-peuple ; autochtonie ; brassage.", 3, "Proto-peuple : peuple ancien installé avant les grandes migrations ; autochtonie : ancienneté de l'installation d'un peuple sur un territoire ; brassage : mélange de populations d'origines différentes. 1 pt par définition."),
+   ("Relie chaque peuple ancien à sa région : a) Ehotilé ; b) Zéhiri ; c) Ega ; d) Gban — 1) Divo ; 2) Grand-Lahou ; 3) lagune Aby ; 4) Oumé.", 2, "a-3 ; b-2 ; c-1 ; d-4. 0,5 pt par association."),
+   ("Cite trois vestiges qui prouvent l'occupation ancienne du territoire.", 1.5, "Outils de pierre d'Anyama, haches polies, amas coquilliers, sites de métallurgie du fer. 0,5 pt par vestige."),
+   ("Explique en une phrase pourquoi on ne peut pas désigner le peuple le plus ancien de Côte d'Ivoire.", 1.5, "Les tout premiers habitants n'ont pas laissé de nom, les peuples se sont mélangés et les arguments de l'autochtonie sont difficiles à vérifier. 1,5 pt."),
+  ],
+  'situation': "Lors d'une fête au village, un jeune affirme que son peuple, « premier occupant », doit seul diriger la localité et chasser les « étrangers ».",
+  'consignes': [
+   ("Cite deux preuves utilisées pour affirmer l'autochtonie d'un peuple.", 2, "Le mythe d'origine (ancêtre sorti de la terre) ; l'absence de récit de migration ; le statut de maître de la terre. 1 pt par preuve, 2 attendues."),
+   ("Explique pourquoi ces preuves doivent être critiquées.", 4, "Ce sont souvent des récits mythiques, transmis oralement et déformés (1,5 pt) ; la mémoire orale oublie les migrations anciennes et les peuples se sont mélangés (1,5 pt) ; seule la comparaison avec d'autres sources (archéologie, langues) permet de vérifier (1 pt)."),
+   ("Réponds au jeune en rappelant un principe et en formulant un slogan pour l'unité des peuples.", 4, "L'ancienneté ne donne pas plus de droits : tous les citoyens sont égaux devant la loi (2 pts) ; slogan court, positif et clair, par exemple « Venus d'hier ou d'aujourd'hui, ensemble nous bâtissons notre pays ! » (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Unité nationale et égalité des citoyens.", "Respect des traditions et esprit critique.",
+             "Liens avec l'EDHC (citoyenneté) et le français (slogan, argumentation)."],
+}
