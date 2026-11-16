@@ -1,0 +1,10 @@
+{
+  "comprehension": [
+    ["Pourquoi le globe est-il la représentation la plus fidèle de la Terre ?", "Parce qu'il a la même forme que la Terre (une sphère) : il respecte les formes, les surfaces et les distances, sans déformation."],
+    ["Pourquoi les géographes utilisent-ils quand même des planisphères et des cartes ?", "Parce qu'ils montrent toute la Terre ou une région d'un seul coup d'œil, sont faciles à transporter et peuvent être très détaillés."],
+    ["Pourquoi la Côte d'Ivoire est-elle en latitude Nord et en longitude Ouest ?", "Parce qu'elle est située au nord de l'équateur et à l'ouest du méridien de Greenwich."],
+    ["Pourquoi le Groenland paraît-il très grand sur la projection de Mercator ?", "Parce que cette projection cylindrique agrandit les régions proches des pôles ; en réalité, le Groenland est environ quatorze fois plus petit que l'Afrique."],
+    ["Quelle carte est à la plus grande échelle : 1/10 000 ou 1/1 000 000 ? Justifie.", "1/10 000 : le dénominateur est plus petit, la réduction est moins forte ; la carte représente un petit espace avec beaucoup de détails."],
+    ["Pourquoi une carte sans légende est-elle difficile à utiliser ?", "Parce qu'on ne sait pas ce que représentent ses signes et ses couleurs."]
+  ]
+}
