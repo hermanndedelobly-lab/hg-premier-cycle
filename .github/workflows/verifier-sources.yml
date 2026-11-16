@@ -1,0 +1,37 @@
+# Vérification des sources officielles (normales OMM / SODEXAM, Crossref, UNESCO, décret).
+# Déclenché uniquement quand sources/demande.json change sur la branche de développement.
+# Ne modifie pas l'application : dépose les documents récupérés dans sources/verification/.
+name: Sources — vérification
+
+on:
+  push:
+    branches: [gnomblesson-integration]
+    paths: [sources/demande.json]
+
+permissions:
+  contents: write
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Outils
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils unzip
+      - name: Récupérer les sources
+        run: python3 outils/verifier-sources.py
+      - name: Déposer le résultat sur la branche
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          find sources/verification -size +20M -delete
+          rm -rf sources/verification/omm-zip
+          git add sources/verification
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "sources : vérification des documents officiels (demande n° $(python3 -c "import json;print(json.load(open('sources/demande.json'))['numero'])"))"
+          git pull --rebase
+          git push
