@@ -1,0 +1,33 @@
+[
+ {
+  "etape": "OMM",
+  "ok": false,
+  "detail": "HTTP Error 404: Not Found"
+ },
+ {
+  "etape": "Crossref",
+  "ok": true,
+  "detail": [
+   "Conservation status and distribution of large non-arboreal mammals in tai national park (S — International Journal of Zoology and Applied Biosciences",
+   "Découverte inédite en Côte d’Ivoire : des humains vivaient en forêt tropicale africaine il — ",
+   "The Preschool Years — Lifespan Human Function and Occupation",
+   "Prevalence and determinants of polypharmacy in Côte d′Ivoire: Findings from a retrospectiv — Pharmacoeconomics and Policy",
+   "Can human lifespan really reach 150 years? — üha"
+  ]
+ },
+ {
+  "etape": "UNESCO unesco-5087-fr.html",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "etape": "UNESCO unesco-5087-en.html",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "etape": "Décret 2017-322",
+  "ok": true,
+  "detail": "                                 Ceci est une copie du Journal Officiel de la RCI réalisée par ERIS - infos@eris-ci.com Tel: +225 22 48 71 85\n\n                                                                                      REPUBLIQUE DE COTE D'IVOIRE\nSOIXANTIEME ANNEE- No                         93                                                UNION- DISCIPLINE- TRAVAIL                                   LUNDI 19 NOVEMBRE 2018\n\n\n\n\nJOURNAL OFFICIEL\n                                                                                                DE LA\n\n                                  REPUB"
+ }
+]
