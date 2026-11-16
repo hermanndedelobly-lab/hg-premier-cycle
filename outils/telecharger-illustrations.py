@@ -13,6 +13,7 @@ import os
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -23,11 +24,24 @@ UA = 'illustrations-scolaires/1.0 (outil pedagogique; GitHub Actions)'
 LIBRE = re.compile(r'^(public domain|pd\b|pd-|cc0|cc by(-sa)? ?\d|cc-by(-sa)?-\d)', re.I)
 
 
+def lire(url, essais=6):
+    # Wikimedia limite le débit (erreur 429) : on attend de plus en plus longtemps avant de réessayer.
+    for k in range(essais):
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': UA})
+            with urllib.request.urlopen(req, timeout=120) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code not in (429, 500, 502, 503, 504) or k == essais - 1:
+                raise
+            attente = int(e.headers.get('Retry-After') or 0) or 10 * (k + 1)
+            print(f'  limite de débit ({e.code}), nouvelle tentative dans {attente} s', file=sys.stderr)
+            time.sleep(attente)
+
+
 def appel(params):
     url = API + '?' + urllib.parse.urlencode(dict(params, format='json', formatversion='2'))
-    req = urllib.request.Request(url, headers={'User-Agent': UA})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)
+    return json.loads(lire(url))
 
 
 def texte(h):
@@ -71,18 +85,22 @@ def main():
                         vus.add(c['fichier']); retenus.append(c)
             except Exception as e:
                 print(f'{th["id"]} : recherche « {q} » en échec : {e}', file=sys.stderr)
-            time.sleep(1)
+            time.sleep(3)
             if len(retenus) >= n:
                 break
         for k, c in enumerate(retenus, 1):
             ext = '.png' if c['miniature'].lower().endswith('.png') else '.jpg'
             nom = f'{th["id"]}-{k}{ext}'
-            req = urllib.request.Request(c['miniature'], headers={'User-Agent': UA})
-            with urllib.request.urlopen(req, timeout=120) as r, open(os.path.join(SORTIE, nom), 'wb') as f:
-                f.write(r.read())
+            try:
+                data = lire(c['miniature'])
+            except Exception as e:
+                print(f'{nom} : téléchargement impossible ({e}), image ignorée', file=sys.stderr)
+                continue
+            with open(os.path.join(SORTIE, nom), 'wb') as f:
+                f.write(data)
             c.update({'theme': th['id'], 'titre_theme': th['titre'], 'image': nom})
             tout.append(c)
-            time.sleep(1)
+            time.sleep(4)
         print(f'{th["id"]} : {len(retenus)} candidat(s)')
     with open(os.path.join(SORTIE, 'candidats.json'), 'w', encoding='utf-8') as f:
         json.dump({'demande': dem.get('numero'), 'candidats': tout}, f, ensure_ascii=False, indent=1)
