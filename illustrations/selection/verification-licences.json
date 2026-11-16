@@ -1,0 +1,452 @@
+{
+ "date": "2026-11-16 16:37 UTC",
+ "fichiers": [
+  {
+   "id": "herodote",
+   "fichier": "File:Marble bust of Herodotos MET DT11742 (cropped).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Marble_bust_of_Herodotos_MET_DT11742_(cropped).jpg",
+   "derniere_modification": "2026-02-09T14:55:32Z",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "conditions": "Creative Commons Zero, Public Domain Dedication",
+   "auteur": "",
+   "credit": "This file was donated to Wikimedia Commons as part of a project by the Metropolitan Museum of Art . See the Image and Data Resources Open Access Policy",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "True",
+   "attribution_requise": "false",
+   "modeles": [
+    "Artwork",
+    "Assessments",
+    "Cc-zero",
+    "Extracted from",
+    "Institution:Metropolitan Museum of Art",
+    "Template:TheMet",
+    "Uploaded with GWToolset",
+    "int:filedesc"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:Artworks with known accession number",
+    "Category:Artworks without Wikidata item",
+    "Category:CC-Zero",
+    "Category:Extracted images",
+    "Category:Featured pictures on Wikipedia, Hebrew",
+    "Category:Files with Assessments template missing SDC Commons no value quality assessment",
+    "Category:Files with no machine-readable author",
+    "Category:GWToolset Batch Upload",
+    "Category:Images from Metropolitan Museum of Art",
+    "Category:Marble bust of Herodotos, MET 91.8"
+   ],
+   "licence_dans_texte": [
+    "Cc-zero"
+   ]
+  },
+  {
+   "id": "manuscrits-tombouctou",
+   "fichier": "File:Timbuktu-manuscripts-astronomy-mathematics.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Timbuktu-manuscripts-astronomy-mathematics.jpg",
+   "derniere_modification": "2025-11-29T00:36:59Z",
+   "licence": "Public domain",
+   "licence_url": "",
+   "conditions": "Public domain",
+   "auteur": "Elias Altmimi",
+   "credit": "EurAstro : Mission to Mali",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "False",
+   "attribution_requise": "false",
+   "modeles": [
+    "Information",
+    "PD-old",
+    "en",
+    "taken on"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:African Ajami Arabic script",
+    "Category:Arabic script in non-Arabic languages",
+    "Category:Astronomy books single pages",
+    "Category:CC-PD-Mark",
+    "Category:PD Old",
+    "Category:Pages of books about mathematics",
+    "Category:Photographs taken on 2007-11-11",
+    "Category:Taken with Canon EOS-1Ds Mark II",
+    "Category:Timbuktu manuscripts"
+   ],
+   "licence_dans_texte": [
+    "PD-old"
+   ]
+  },
+  {
+   "id": "griot-gravure",
+   "fichier": "File:Griot de Niantanso-1872.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Griot_de_Niantanso-1872.jpg",
+   "derniere_modification": "2026-10-10T09:19:00Z",
+   "licence": "Public domain",
+   "licence_url": "",
+   "conditions": "Public domain",
+   "auteur": "Eugène Mage",
+   "credit": "New York Public Library [1] from Voyage dans le Soudan Occidental by Eugene Mage, between pages 34 and 35",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "False",
+   "attribution_requise": "false",
+   "modeles": [
+    "Information",
+    "NYPL-image",
+    "PD-old",
+    "en",
+    "fr",
+    "int:filedesc",
+    "int:license-header"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:Africa in the 1870s",
+    "Category:CC-PD-Mark",
+    "Category:Deprecated template usage: NYPL-image",
+    "Category:Griots",
+    "Category:Images from the New York Public Library",
+    "Category:Kora",
+    "Category:Nyenmyemo",
+    "Category:PD-old missing SDC copyright status",
+    "Category:PD Old",
+    "Category:Voyage dans le Soudan Occidental (Mage)"
+   ],
+   "licence_dans_texte": [
+    "NYPL-image",
+    "PD-old"
+   ]
+  },
+  {
+   "id": "koras",
+   "fichier": "File:Kora mandigue.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kora_mandigue.jpg",
+   "derniere_modification": "2026-11-13T17:52:30Z",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "conditions": "Creative Commons Attribution-Share Alike 4.0",
+   "auteur": "Mouha.ibs",
+   "credit": "Own work",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "True",
+   "attribution_requise": "true",
+   "modeles": [
+    "Information",
+    "fr",
+    "int:filedesc",
+    "int:license-header",
+    "own",
+    "self"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:CC-BY-SA-4.0",
+    "Category:Kora",
+    "Category:Self-published work"
+   ],
+   "licence_dans_texte": [
+    "self"
+   ]
+  },
+  {
+   "id": "poids-akan",
+   "fichier": "File:Akan Gold Weight MHNT bovid head.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Akan_Gold_Weight_MHNT_bovid_head.jpg",
+   "derniere_modification": "2025-01-07T18:52:31Z",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "conditions": "Creative Commons Attribution-Share Alike 4.0",
+   "auteur": "Didier Descouens",
+   "credit": "Self-photographed",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "True",
+   "attribution_requise": "true",
+   "modeles": [
+    "EthnologyItemMHNT",
+    "LargeImage",
+    "Technique",
+    "VI",
+    "en",
+    "focus stack",
+    "fr",
+    "other_date",
+    "self"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:Akan gold weights made using lost-wax casting",
+    "Category:Artifacts with black background",
+    "Category:Artworks with known accession number",
+    "Category:Artworks without Wikidata item",
+    "Category:Brass objects",
+    "Category:CC-BY-SA-4.0",
+    "Category:Files with coordinates missing SDC location of creation",
+    "Category:Images by Archaeodontosaurus Ethnology",
+    "Category:Large images",
+    "Category:Media supported by Wikimedia France",
+    "Category:Muséum de Toulouse; Akan goldweights of animal heads",
+    "Category:Muséum de Toulouse; Akan goldweights on black background",
+    "Category:Sculptures of Bovidae",
+    "Category:Self-published work",
+    "Category:Supported by Projet Phoebus",
+    "Category:Supported by Wikimedia France",
+    "Category:Valued Images by Archaeodontosaurus",
+    "Category:Valued images missing SDC creator",
+    "Category:Valued images missing SDC depicts",
+    "Category:Valued images missing SDC inception",
+    "Category:Valued images of Muséum de Toulouse",
+    "Category:Valued images of archeology",
+    "Category:Valued images of ethnology",
+    "Category:Valued images promoted 2014-01",
+    "Category:Valued images sorted by promotion date",
+    "Category:Valued images supported by Wikimedia France"
+   ],
+   "licence_dans_texte": [
+    "self"
+   ]
+  },
+  {
+   "id": "grand-bassam",
+   "fichier": "File:800px-Grand-Bassam.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:800px-Grand-Bassam.jpg",
+   "derniere_modification": "2026-04-28T13:43:04Z",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+   "conditions": "Creative Commons Attribution-Share Alike 3.0",
+   "auteur": "Joker-x http://fr.wikipedia.org/wiki/User:Joker-x",
+   "credit": "fr.wikipedia.org",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "True",
+   "attribution_requise": "true",
+   "modeles": [
+    "GFDL",
+    "Information",
+    "de",
+    "en",
+    "fr"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:1995 in Ivory Coast",
+    "Category:Architecture of Ivory Coast",
+    "Category:Buildings in Grand-Bassam",
+    "Category:CC-BY-SA-3.0-migrated",
+    "Category:Coconut trees in Ivory Coast",
+    "Category:French West Africa",
+    "Category:French colonial architecture in Ivory Coast",
+    "Category:GFDL",
+    "Category:History of Grand-Bassam",
+    "Category:Images uploaded at reduced resolution",
+    "Category:License migration completed",
+    "Category:Loggias"
+   ],
+   "licence_dans_texte": []
+  },
+  {
+   "id": "mosquee-kong",
+   "fichier": "File:Kong3.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kong3.jpg",
+   "derniere_modification": "2026-07-06T02:41:02Z",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "conditions": "Creative Commons Attribution-Share Alike 3.0",
+   "auteur": "Ivoire8",
+   "credit": "Own work",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "True",
+   "attribution_requise": "true",
+   "modeles": [
+    "Information",
+    "Own",
+    "int:filedesc",
+    "int:license-header",
+    "self"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:CC-BY-SA-3.0,2.5,2.0,1.0",
+    "Category:GFDL",
+    "Category:Grande mosquée de Kong",
+    "Category:License migration redundant",
+    "Category:Self-published work"
+   ],
+   "licence_dans_texte": [
+    "self"
+   ]
+  },
+  {
+   "id": "mosquee-kong-1892",
+   "fichier": "File:Mosquée de Kong-1892.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Mosqu%C3%A9e_de_Kong-1892.jpg",
+   "derniere_modification": "2025-07-26T18:09:38Z",
+   "licence": "Public domain",
+   "licence_url": "",
+   "conditions": "Public domain",
+   "auteur": "Édouard Riou",
+   "credit": "New York Public Library, [1] , from Du Niger au Golfe de Guinée par le pays de Kong et le Mossi, par le capitaine Binger (1887-1889)",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "False",
+   "attribution_requise": "false",
+   "modeles": [
+    "Creator:Édouard Riou",
+    "Information",
+    "NYPL-image",
+    "PD-old-100-1923",
+    "fr",
+    "int:filedesc",
+    "int:license-header"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:1892 in Ivory Coast",
+    "Category:Architecture of Ivory Coast",
+    "Category:CC-PD-Mark",
+    "Category:Deprecated template usage: NYPL-image",
+    "Category:Drawings by Édouard Riou",
+    "Category:Du Niger au Golfe de Guinée par le pays de Kong et le Mossi",
+    "Category:Grande mosquée de Kong",
+    "Category:History of Ivory Coast",
+    "Category:Images from the New York Public Library",
+    "Category:PD-old-100-expired"
+   ],
+   "licence_dans_texte": [
+    "NYPL-image",
+    "PD-old-100-1923"
+   ]
+  },
+  {
+   "id": "pierre-palerme",
+   "fichier": "File:240911 CvZ-Palermo-stone.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:240911_CvZ-Palermo-stone.jpg",
+   "derniere_modification": "2025-12-11T21:32:00Z",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "conditions": "Creative Commons Attribution-Share Alike 4.0",
+   "auteur": "CvZ",
+   "credit": "Own work",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "True",
+   "attribution_requise": "true",
+   "modeles": [
+    "Image extracted",
+    "Information",
+    "Location",
+    "de",
+    "en",
+    "fr",
+    "int:filedesc",
+    "int:license-header",
+    "nl",
+    "own",
+    "self"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:CC-BY-SA-4.0",
+    "Category:Files with coordinates missing SDC location of creation",
+    "Category:Images with extracted images",
+    "Category:Palermo stone",
+    "Category:Self-published work"
+   ],
+   "licence_dans_texte": [
+    "self"
+   ]
+  },
+  {
+   "id": "ibn-khaldoun",
+   "statut": "suspendue : non vérifiée, non intégrée"
+  },
+  {
+   "id": "fouille-yagala",
+   "fichier": "File:Archaeological excavations at Yagala Rock Shelter, Sierra Leone (West Africa) (528278331).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Archaeological_excavations_at_Yagala_Rock_Shelter,_Sierra_Leone_(West_Africa)_(528278331).jpg",
+   "derniere_modification": "2025-02-02T19:03:16Z",
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "conditions": "Creative Commons Attribution-Share Alike 2.0",
+   "auteur": "John Atherton",
+   "credit": "Archaeological excavations at Yagala Rock Shelter, Sierra Leone (West Africa) Uploaded by AlbertHerring",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "True",
+   "attribution_requise": "true",
+   "modeles": [
+    "Information",
+    "cc-by-sa-2.0",
+    "flickrreview",
+    "int:filedesc",
+    "int:license-header"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:Archaeological stratigraphy",
+    "Category:Black and white photographs of men at work",
+    "Category:CC-BY-SA-2.0",
+    "Category:Excavations in Sierra Leone",
+    "Category:Flickr images reviewed by File Upload Bot (Magnus Manske)",
+    "Category:Fula people in Sierra Leone",
+    "Category:Iron Age in Sierra Leone",
+    "Category:Photographs by John Atherton",
+    "Category:Shelters",
+    "Category:Stratum"
+   ],
+   "licence_dans_texte": [
+    "cc-by-sa-2.0",
+    "flickrreview"
+   ]
+  },
+  {
+   "id": "masque-dan",
+   "fichier": "File:Dan mask-romanceor.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Dan_mask-romanceor.jpg",
+   "derniere_modification": "2025-11-19T03:33:07Z",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "conditions": "Creative Commons Attribution-Share Alike 4.0",
+   "auteur": "This photo was taken by Roman Bonnefoy ( Romanceor [parlons-en] ) . Feel free to use my pictures, but please credit me as the author (as required by the license). An email or a message would be welcome. More free-licensed pictures on my french Wikipedia account . My website : www.romanceor.net .",
+   "credit": "Own work",
+   "attribution": "",
+   "restrictions": "",
+   "protege": "True",
+   "attribution_requise": "true",
+   "modeles": [
+    "Information",
+    "QualityImage",
+    "User:Romanceor/credit",
+    "fr",
+    "int:filedesc",
+    "int:license-header",
+    "own",
+    "self"
+   ],
+   "alertes": [],
+   "categories": [
+    "Category:CC-BY-SA-4.0,3.0,2.5,2.0,1.0",
+    "Category:Dan masks",
+    "Category:GFDL",
+    "Category:License migration redundant",
+    "Category:Masks by Romanceor",
+    "Category:Objects with black background",
+    "Category:Photographs by Romanceor",
+    "Category:Quality Images by Romanceor",
+    "Category:Quality images",
+    "Category:Quality images missing SDC creator",
+    "Category:Quality images missing SDC depicts",
+    "Category:Quality images of objects",
+    "Category:Self-published work",
+    "Category:Taken with Nikon D90"
+   ],
+   "licence_dans_texte": [
+    "self"
+   ]
+  }
+ ]
+}
