@@ -1,0 +1,13 @@
+{
+  "objet": "Identité GNOMBLESSON (décision du porteur du projet, 16/11/2026) : nom sous l'icône, icônes, couleur bleu nuit. L'identifiant ci.hg.premiercycle, le code et la clé ne changent pas.",
+  "app_name": {"ancien": "Histoire géographie premier cycle", "nouveau": "GNOMBLESSON"},
+  "couleurs": [{"ressource": "vert_hg (barre d'état, fond de l'icône adaptative)", "ancienne": "#ff081b54", "nouvelle": "#ff002158"}],
+  "images": {
+    "res/mipmap-mdpi/ic_launcher.png": "identite/android/mipmap-mdpi/ic_launcher.png",
+    "res/mipmap-hdpi/ic_launcher.png": "identite/android/mipmap-hdpi/ic_launcher.png",
+    "res/mipmap-xhdpi/ic_launcher.png": "identite/android/mipmap-xhdpi/ic_launcher.png",
+    "res/mipmap-xxhdpi/ic_launcher.png": "identite/android/mipmap-xxhdpi/ic_launcher.png",
+    "res/mipmap-xxxhdpi/ic_launcher.png": "identite/android/mipmap-xxxhdpi/ic_launcher.png",
+    "res/drawable-xxxhdpi/ic_premier_plan.png": "identite/android/drawable-xxxhdpi/ic_premier_plan.png"
+  }
+}

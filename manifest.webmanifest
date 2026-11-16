@@ -1,14 +1,14 @@
 {
-  "name": "Histoire géographie premier cycle",
-  "short_name": "HG 1er cycle",
-  "description": "Cours d'Histoire-Géographie de la 6e à la 3e (programme ivoirien), avec exercices corrigés, utilisables hors ligne.",
+  "name": "GNOMBLESSON — Histoire & Géographie",
+  "short_name": "GNOMBLESSON",
+  "description": "GNOMBLESSON — Histoire & Géographie : cours de la 6e à la 3e (programme ivoirien), avec exercices corrigés, utilisables hors ligne. Apprendre, comprendre et découvrir notre monde.",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#081b54",
-  "theme_color": "#081b54",
+  "background_color": "#002158",
+  "theme_color": "#002158",
   "icons": [
     {
       "src": "icons/icon-192.png",

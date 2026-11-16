@@ -4,26 +4,28 @@
 @font-face{font-family:"Archivo";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/archivo-latin-500-normal.woff2) format("woff2")}
 @font-face{font-family:"Archivo";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/archivo-latin-700-normal.woff2) format("woff2")}
 @font-face{font-family:"Archivo";font-style:normal;font-weight:800;font-display:swap;src:url(fonts/archivo-latin-800-normal.woff2) format("woff2")}
-/* Mise en page : une colonne de lecture (≈ 46rem) sous une barre bleu nuit, aux couleurs du logo
-   (bleu nuit et or) ; l'orange du drapeau ivoirien marque l'histoire, le vert marque la géographie. */
+/* Mise en page : une colonne de lecture (≈ 46rem) sous une barre bleu nuit, aux couleurs du logo GNOMBLESSON
+   (bleu nuit dominant, or en accent, filet orange-or-vert) ; l'orange marque l'histoire, le vert la géographie. */
 :root {
   --bg: #f4f6fb;
   --surface: #ffffff;
   --ink: #0f1a33;
   --muted: #55607a;
   --line: #d8deeb;
-  --brand: #081b54;
-  --brand-2: #0f3a94;
+  --brand: #002158;
+  --brand-2: #003a80;
   --on-brand: #ffffff;
-  --gold: #f5b301;
-  --gold-2: #ffd54a;
+  --gold: #f8c215;
+  --gold-2: #ffd84d;
+  --orange: #f47b0b;
+  --vert: #2aa63c;
   --on-gold: #1a1400;
   --hist: #b8540a;
   --hist-soft: #fdeedd;
   --geo: #0b7a3e;
   --geo-soft: #e1f3e8;
   --ok: #1f7a45;
-  --focus: #f5b301;
+  --focus: #f8c215;
   --font-ui: "Archivo", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-text: "Literata", Georgia, "Times New Roman", serif;
   --fs: 1;
@@ -32,14 +34,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #060f2b; --surface: #0c1a45; --ink: #e9edf8; --muted: #9aa6c4; --line: #1f2f63;
-    --brand: #040d29; --brand-2: #0b2a73; --on-brand: #ffffff;
+    --brand: #001438; --brand-2: #00296a; --on-brand: #ffffff;
     --hist: #ff9b4d; --hist-soft: #3a2412; --geo: #4fd08a; --geo-soft: #0f3324; --ok: #5fd08e; --focus: #ffc83d;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #060f2b; --surface: #0c1a45; --ink: #e9edf8; --muted: #9aa6c4; --line: #1f2f63;
-  --brand: #040d29; --brand-2: #0b2a73; --on-brand: #ffffff;
+  --brand: #001438; --brand-2: #00296a; --on-brand: #ffffff;
   --hist: #ff9b4d; --hist-soft: #3a2412; --geo: #4fd08a; --geo-soft: #0f3324; --ok: #5fd08e; --focus: #ffc83d;
   color-scheme: dark;
 }
@@ -60,7 +62,8 @@ a { color: inherit; }
 }
 
 /* ---------- Barre supérieure ---------- */
-.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: linear-gradient(180deg, var(--brand-2), var(--brand) 70%); color: var(--on-brand); border-bottom: 3px solid var(--gold); }
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: linear-gradient(180deg, var(--brand-2), var(--brand) 70%); color: var(--on-brand); }
+.topbar::after { content: ""; display: block; height: 3px; background: linear-gradient(90deg, var(--orange) 0 18%, var(--gold) 18% 82%, var(--vert) 82% 100%); }
 .topbar-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px 6px; max-width: 52rem; margin: 0 auto; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
 .brand-logo { width: 38px; height: 38px; border-radius: 9px; flex: none; display: block; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
@@ -386,3 +389,15 @@ figure.photo figcaption b { color: var(--ink); }
 figure.photo .credit { display: block; margin-top: 4px; font-size: calc(11.5px * var(--fs)); opacity: .9; }
 .tbl.credits table { font-size: calc(12px * var(--fs)); }
 .tbl.credits td { overflow-wrap: anywhere; }
+
+/* ---------- Identité GNOMBLESSON (1.14.0) ---------- */
+.brand-text b { letter-spacing: .06em; }
+.brand-text span { text-transform: none; letter-spacing: .02em; opacity: .85; }
+.hero img { border-radius: 22px; }
+.hero b { font-size: 1.3rem; letter-spacing: .05em; }
+.hero-sous { display: block; margin-top: 2px; color: var(--gold-2); font-weight: 800; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; }
+.demarrage { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px;
+  background: radial-gradient(circle at 50% 42%, #003070, #002158 62%, #001438); transition: opacity .4s ease; }
+.demarrage img { width: min(62vw, 300px); height: auto; border-radius: 15%; box-shadow: 0 10px 40px rgba(0,0,0,.45); }
+.demarrage.fin { opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .demarrage { transition: none; } }

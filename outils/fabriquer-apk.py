@@ -3,7 +3,8 @@
 
   1. remplace assets/www/index.html par la page unique (outils/fichier-unique.py) et ajoute les
      photographies du dossier img/ (assets/www/img/) ;
-  2. met à jour versionCode et versionName dans AndroidManifest.xml (binaire) ;
+  2. met à jour versionCode et versionName dans AndroidManifest.xml (binaire) et, si identite/android.json
+     existe, le nom affiché, les couleurs et les icônes (resources.arsc, res/…) ;
   3. signe : v1 (jarsigner), alignement sur 4 octets, puis APK Signature Scheme v2.
 
 La clé de signature n'est JAMAIS dans le dépôt (dépôt public). Elle est passée par l'environnement :
@@ -26,6 +27,9 @@ import tempfile
 import zipfile
 
 from cryptography.hazmat.primitives import hashes, serialization
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ressources_android import lire_pool, remplacer_chaine, remplacer_couleur  # noqa: E402
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.serialization import pkcs12
 
@@ -116,6 +120,12 @@ def main():
     if ('window.HG_VERSION="' + version + '"').encode() not in html or b'window.HG_MODE="apk"' not in html:
         sys.exit(f'la page unique n\'est pas une page « apk » de la version {version}')
 
+    # identité visuelle (identite/android.json, facultatif) : nom affiché, couleurs, images d'icône
+    ident = None
+    p_ident = os.path.join(RACINE, 'identite', 'android.json')
+    if os.path.isfile(p_ident):
+        ident = json.load(open(p_ident, encoding='utf-8'))
+
     entrees, ancienne = [], None
     for nom, data, methode in lire_entrees(precedent):
         if nom.startswith('META-INF/') or nom.startswith('assets/www/img/'):
@@ -129,6 +139,23 @@ def main():
             data = maj_manifeste(data, ancienne, version)
         elif nom == 'assets/www/index.html':
             data = html
+        elif ident and nom == 'resources.arsc':
+            noms = lire_pool(data)[0]
+            if ident['app_name']['nouveau'] not in noms:
+                data = remplacer_chaine(data, ident['app_name']['ancien'], ident['app_name']['nouveau'])
+            for c in ident.get('couleurs', []):
+                anc, nouv = int(c['ancienne'][1:], 16), int(c['nouvelle'][1:], 16)
+                try:
+                    data = remplacer_couleur(data, anc, nouv)
+                except ValueError:
+                    remplacer_couleur(data, nouv, nouv)   # déjà appliquée (APK précédent déjà rebaptisé) : sinon erreur
+        elif ident and nom in ident.get('images', {}):
+            neuf = open(os.path.join(RACINE, ident['images'][nom]), 'rb').read()
+            from PIL import Image
+            import io
+            if Image.open(io.BytesIO(neuf)).size != Image.open(io.BytesIO(data)).size:
+                sys.exit(f'{nom} : dimensions différentes de l\'original')
+            data = neuf
         entrees.append((nom, data, methode))
     # photographies des leçons (img/) : fichiers à côté de la page, chargés par chemin relatif
     # (la page est ouverte depuis file:///android_asset/www/index.html)

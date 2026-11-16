@@ -1,6 +1,7 @@
-/* Histoire géographie premier cycle — application hors ligne */
+/* GNOMBLESSON · Histoire & Géographie (ex-« Histoire géographie premier cycle ») — application hors ligne */
 (function () {
   'use strict';
+  if (window.HG_REMPLACER) return;   // une version téléchargée plus récente va remplacer cette page (voir le script de démarrage)
   var MODE = window.HG_MODE || 'single';
   var VERSION = window.HG_VERSION || '?';
   var D = null;                 // contenu
@@ -8,7 +9,7 @@
   var ORDRE = {}, ORDRE_X = {};               // classe -> [ids des leçons dans l'ordre]
   var RECH = [];                // index de recherche
   var vue = document.getElementById('vue');
-  var swReg = null, majEnAttente = null;
+  var swReg = null, majEnAttente = null, majDemandee = false;
 
   // ---------- Stockage local (protégé) ----------
   function lire(k, def) { try { var v = localStorage.getItem('hg1c.' + k); return v === null ? def : JSON.parse(v); } catch (e) { return def; } }
@@ -19,7 +20,10 @@
     for (var i = 0; i < 3; i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); }
     return false;
   }
-  var VERSION_ORIGINE = window.HG_DATA ? window.HG_DATA.version : null;
+  var VERSION_ORIGINE = window.HG_VERSION_EMBARQUEE || (window.HG_DATA ? window.HG_DATA.version : null);
+  // Canal des mises à jour de l'application Android (contenu et code) : branche de développement (test).
+  // À remplacer par l'adresse du site publié lorsque la publication sera autorisée.
+  var ADRESSE_MAJ = 'https://raw.githubusercontent.com/hermanndedelobly-lab/hg-premier-cycle/ccr-89031195-ic25pf';
   var faites = lire('faites', {});
   var scores = lire('quiz', {});    // id (leçon ou classe) -> {m: meilleur score, n: nb de questions, d: date, k: essais}
   var reglages = lire('reglages', { theme: 'auto', taille: 1, corriges: false });
@@ -44,8 +48,10 @@
     if (window.HG_DATA) {
       // application Android : une mise à jour du contenu téléchargée remplace le contenu d'origine
       if (MODE === 'apk') {
-        var m = lire('contenu-maj', null);
-        if (m && m.classes && plusRecent(m.version, window.HG_DATA.version)) return Promise.resolve(m);
+        var m = lire('contenu-maj', null), echec = null;
+        try { echec = localStorage.getItem('hg1c.code-echec'); } catch (e) { /* rien */ }
+        // une version téléchargée qui n'a pas pu démarrer est écartée entièrement (code et contenu)
+        if (m && m.classes && m.version !== echec && plusRecent(m.version, window.HG_DATA.version)) return Promise.resolve(m);
       }
       return Promise.resolve(window.HG_DATA);
     }
@@ -86,8 +92,8 @@
   function vueAccueil() {
     barreClasses(null);
     var der = lire('derniere', null);
-    var h = '<div class="hero"><img src="' + (window.HG_LOGO || 'icons/icon-192.png') + '" alt="Logo de l\'application" width="104" height="104"><div><b>Histoire <em>géographie</em></b>' +
-      '<p>L\'histoire pour comprendre le passé, la géographie pour maîtriser le monde.</p><small>6e – 3e · ENSEIGNANTS</small></div></div>' +
+    var h = '<div class="hero"><img src="' + (window.HG_LOGO || 'icons/icon-192.png') + '" alt="Logo GNOMBLESSON : monogramme HV, globe centré sur l\'Afrique, livre ouvert et colonne" width="104" height="104"><div><b>GNOMBLESSON</b><span class="hero-sous">Histoire &amp; Géographie</span>' +
+      '<p>Apprendre, comprendre et découvrir notre monde.</p><small>6e – 3e · ENSEIGNANTS</small></div></div>' +
       '<p class="eyebrow">Programme ivoirien · APC</p><h1 class="titre-vue">Choisis une classe</h1>' +
       '<p class="chapo">' + D.nbLecons + ' leçons de la 6e à la 3e, chacune avec sa situation d\'apprentissage, le cours, des exercices corrigés' + (D.nbQuiz ? ' et un quiz pour s\'entraîner (' + D.nbQuiz + ' questions)' : '') + '. Tout fonctionne sans connexion.</p>';
     if (der && INDEX[der]) h += carteReprendre(der);
@@ -96,7 +102,7 @@
       return '<a class="carte-classe" href="#c-' + c.id + '"><b>' + c.id + '</b><span>' + esc(c.nom) + '</span><small>' + n + ' leçons · ' + f + ' traitée' + (f > 1 ? 's' : '') + '</small><span class="mini"><i style="width:' + Math.round(100 * f / n) + '%"></i></span></a>';
     }).join('') + '</div>';
     h += '<a class="lien-carte" href="#apropos"><small>Version ' + esc(VERSION) + '</small>Réglages, mises à jour et installation</a>';
-    afficher(h, 'Histoire géographie premier cycle');
+    afficher(h, 'GNOMBLESSON · Histoire & Géographie');
   }
 
   function carteReprendre(id) {
@@ -137,7 +143,7 @@
       '<a class="lien-carte" href="#p-' + c.id + '"><small>Présentation</small>Programme et progression annuelle de ' + c.id + '</a>' +
       c.annexes.map(function (a) { return '<a class="lien-carte" href="#l-' + a.id + '"><small>Annexe</small>' + esc(a.titre) + '</a>'; }).join('') +
       '</div></section>';
-    afficher(h, c.nom + ' · Histoire géographie');
+    afficher(h, c.nom + ' · GNOMBLESSON');
   }
 
   function vueProgramme(c) {
@@ -489,7 +495,7 @@
       [['auto', 'Comme le téléphone'], ['light', 'Claire'], ['dark', 'Sombre']].map(function (t) { return '<button type="button" class="btn" data-theme-choix="' + t[0] + '" aria-pressed="' + (reglages.theme === t[0] ? 'true' : 'false') + '">' + t[1] + '</button>'; }).join('') + '</div></section>' +
       '<section class="panneau"><h2>Suivi de progression</h2><p>' + Object.keys(faites).length + ' leçon(s) marquée(s) comme traitée(s) et ' + Object.keys(scores).length + ' quiz fait(s) sur cet appareil.</p><div class="ligne"><button type="button" class="btn" id="raz">Remettre le suivi à zéro</button><span class="msg" id="msg-raz"></span></div></section>' +
       '<section class="panneau" id="install"><h2>Installer sur le téléphone</h2>' + aideInstall(installee) + '</section>' +
-      '<section class="panneau"><h2>À propos</h2><p>Support pédagogique pour l\'enseignant, rédigé à partir des programmes éducatifs ivoiriens (APC) du premier cycle. Vérifiez la progression auprès de votre conseiller pédagogique ou de l\'antenne pédagogique.</p></section>' +
+      '<section class="panneau"><h2>À propos</h2><p><strong>GNOMBLESSON · Histoire &amp; Géographie</strong> — « Apprendre, comprendre et découvrir notre monde. » Support pédagogique pour l\'enseignant, rédigé à partir des programmes éducatifs ivoiriens (APC) du premier cycle. Vérifiez la progression auprès de votre conseiller pédagogique ou de l\'antenne pédagogique.</p></section>' +
       '</div>';
     afficher(h, 'Réglages');
     document.getElementById('verifier').addEventListener('click', verifierMaj);
@@ -504,24 +510,24 @@
     if (fa) fa.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var v = document.getElementById('adresse').value.trim().replace(/\/+$/, '');
-      if (v && !/^https:\/\/[^\s/]+\.[^\s]+$/.test(v)) { message('L\'adresse doit commencer par https:// (exemple : https://hg-premier-cycle.netlify.app).'); return; }
+      if (v && !/^https:\/\/[^\s/]+\.[^\s]+$/.test(v)) { message('L\'adresse doit commencer par https:// (exemple : https://exemple.org/application).'); return; }
       reglages.adresse = v; ecrire('reglages', reglages);
-      if (v) verifierMajApk(true); else message('Adresse effacée : les mises à jour en ligne sont désactivées.');
+      if (v) verifierMajApk(true); else { message('Adresse effacée : le canal prévu est utilisé.'); verifierMajApk(true); }
     });
     var ro = document.getElementById('retour-origine');
-    if (ro) ro.addEventListener('click', function () { effacer('contenu-maj'); location.reload(); });
+    if (ro) ro.addEventListener('click', function () { oublierMaj(); location.reload(); });
     var bi = document.getElementById('btn-installer');
     if (bi) bi.addEventListener('click', function () { if (!invite) return; invite.prompt(); invite.userChoice.then(function () { invite = null; vueReglages(); }); });
   }
   function panneauAdresse() {
-    return '<form id="form-adresse" style="margin-top:12px"><label for="adresse" style="display:block;font-weight:700;margin-bottom:4px">Adresse du site des mises à jour</label>' +
-      '<p class="msg" style="margin:0 0 8px">Le site où les versions corrigées sont publiées. À renseigner une seule fois.</p>' +
-      '<div class="ligne"><input id="adresse" class="champ" style="flex:1 1 14rem;font-size:15px;padding:10px 12px" type="url" inputmode="url" autocomplete="off" placeholder="https://…" value="' + esc(reglages.adresse || '') + '">' +
+    return '<form id="form-adresse" style="margin-top:12px"><label for="adresse" style="display:block;font-weight:700;margin-bottom:4px">Adresse des mises à jour (facultatif)</label>' +
+      '<p class="msg" style="margin:0 0 8px">Laisse vide pour utiliser le canal prévu (actuellement : canal de test, branche de développement). Les mises à jour du contenu <em>et</em> de l\'application s\'installent ici, sans nouveau fichier .apk.</p>' +
+      '<div class="ligne"><input id="adresse" class="champ" style="flex:1 1 14rem;font-size:15px;padding:10px 12px" type="url" inputmode="url" autocomplete="off" placeholder="canal de test (par défaut)" value="' + esc(reglages.adresse || '') + '">' +
       '<button type="submit" class="btn">Enregistrer</button></div></form>' +
-      (VERSION_ORIGINE && VERSION !== VERSION_ORIGINE ? '<p class="msg" style="margin-top:10px">Contenu mis à jour (version d\'origine de l\'application : ' + esc(VERSION_ORIGINE) + '). <button type="button" class="btn" id="retour-origine">Revenir au contenu d\'origine</button></p>' : '');
+      (VERSION_ORIGINE && VERSION !== VERSION_ORIGINE ? '<p class="msg" style="margin-top:10px">Application mise à jour dans le téléphone (version d\'origine de l\'APK : ' + esc(VERSION_ORIGINE) + '). <button type="button" class="btn" id="retour-origine">Revenir à la version d\'origine</button></p>' : '');
   }
   function aideInstall(installee) {
-    if (MODE === 'apk') return '<p>L\'application Android est installée : tous les cours sont dans le téléphone et fonctionnent sans connexion. Pour installer une nouvelle version de l\'application elle-même, ouvre le nouveau fichier .apk : tes réglages et ton suivi sont conservés.</p>';
+    if (MODE === 'apk') return '<p>L\'application Android est installée : tous les cours sont dans le téléphone et fonctionnent sans connexion. Les nouvelles versions (contenu et application) se téléchargent directement ici, avec « Vérifier les mises à jour » : il n\'est plus nécessaire d\'installer un nouveau fichier .apk. Tes réglages et ton suivi sont conservés.</p>';
     if (MODE !== 'pwa') return '<p>Tu utilises la version « fichier unique » : elle s\'ouvre dans le navigateur, sans connexion, mais ne se met pas à jour seule. Pour l\'installer comme une application avec les mises à jour automatiques, ouvre l\'adresse en ligne de l\'application dans Chrome puis choisis « Installer ».</p>';
     if (installee) return '<p>L\'application est installée sur cet appareil. Les cours restent disponibles sans connexion.</p>';
     return (invite ? '<p><button type="button" class="btn btn-plein" id="btn-installer">Installer l\'application</button></p>' : '') +
@@ -540,10 +546,20 @@
     vue.innerHTML = h;
     var bp = vue.querySelector('[data-pdf]');
     if (bp) bp.addEventListener('click', function () { if (window.HGPDF && PDF_SPEC) window.HGPDF.ouvrir(PDF_SPEC); });
-    document.title = titre === 'Histoire géographie premier cycle' ? titre : titre + ' · HG premier cycle';
+    document.title = titre === 'GNOMBLESSON · Histoire & Géographie' ? titre : titre + ' · GNOMBLESSON';
+    finDemarrage();
+    if (window.HG_MAJ && !afficher.confirme) { afficher.confirme = true; try { localStorage.setItem('hg1c.code-ok', VERSION); } catch (e) { /* rien */ } }
     window.scrollTo(0, 0);
     mesurerEntete();
   }
+  // écran de démarrage (logo) : retiré dès que la première page est affichée, ou au plus tard après 8 s
+  function finDemarrage() {
+    var d = document.getElementById('demarrage');
+    if (!d || d.classList.contains('fin')) return;
+    d.classList.add('fin');
+    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 450);
+  }
+  setTimeout(finDemarrage, 8000);
   function mesurerEntete() {
     var t = document.querySelector('.topbar'); if (t) document.documentElement.style.setProperty('--hdr', t.offsetHeight + 'px');
   }
@@ -594,6 +610,7 @@
   }
   function appliquerMaj() {
     var b = document.getElementById('bandeau-ok'); b.textContent = 'Mise à jour…'; b.disabled = true;
+    majDemandee = true;   // l'utilisateur a demandé la mise à jour : le rechargement est voulu
     if (majEnAttente) majEnAttente.postMessage({ type: 'SKIP_WAITING' }); else location.reload();
   }
 
@@ -601,21 +618,34 @@
 
   // Application Android : le contenu corrigé est téléchargé depuis le site des mises à jour
   // (mêmes fichiers version.json et data/contenu.json que la version web) puis gardé dans le téléphone.
+  function codeTelecharge() { try { var c = JSON.parse(localStorage.getItem('hg1c.code-maj')); return c && c.version; } catch (e) { return null; } }
+  // Redémarrage : la page d'origine (assets de l'APK) est rechargée ; son script de démarrage choisit la version la plus récente.
+  function redemarrer() { location.reload(); }
+  function oublierMaj() { ['contenu-maj', 'code-maj', 'code-essai', 'code-ok', 'code-echec'].forEach(function (k) { try { localStorage.removeItem('hg1c.' + k); } catch (e) { /* rien */ } }); }
   function verifierMajApk(manuel) {
-    var base = (reglages.adresse || '').trim().replace(/\/+$/, '');
+    var base = (reglages.adresse || ADRESSE_MAJ).trim().replace(/\/+$/, '');
     if (!base) { if (manuel) message('Renseigne d\'abord l\'adresse du site des mises à jour, juste en dessous.'); return; }
     if (!navigator.onLine) { if (manuel) message('Pas de connexion. Réessaie quand le téléphone est connecté : tes cours restent disponibles en attendant.'); return; }
     if (manuel) message('Vérification en cours…');
     fetch(base + '/version.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (v) {
       if (!plusRecent(v.version, VERSION)) { if (manuel) message('Tu as la dernière version (' + VERSION + ').'); return; }
-      var deja = lire('contenu-maj', null);
-      if (deja && deja.version === v.version) { message('Version ' + v.version + ' prête.'); bandeau('Version ' + v.version + ' prête : redémarre pour l\'utiliser.', function () { location.reload(); }); return; }
+      var echec = null; try { echec = localStorage.getItem('hg1c.code-echec'); } catch (e) { /* rien */ }
+      if (echec === v.version) { if (manuel) message('La version ' + v.version + ' n\'a pas pu démarrer sur ce téléphone : la version ' + VERSION + ' est conservée. Une version corrigée sera proposée dès sa publication.'); return; }
+      var deja = lire('contenu-maj', null), dejaCode = codeTelecharge();
+      if (deja && deja.version === v.version && (!v.code || dejaCode === v.version)) { message('Version ' + v.version + ' prête.'); bandeau('Version ' + v.version + ' prête : redémarre pour l\'utiliser.', redemarrer); return; }
       if (manuel) message('Version ' + v.version + ' trouvée. Téléchargement en cours…');
-      return fetch(base + '/data/contenu.json', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
+      var obtenir = function (chemin, type) { return fetch(base + '/' + chemin, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r[type](); }); };
+      return Promise.all([obtenir('data/contenu.json', 'json'), v.code ? obtenir(v.code, 'text') : Promise.resolve(null)]).then(function (res) {
+        var d = res[0], page = res[1];
         if (!d || !d.classes || !d.classes.length || d.version !== v.version) throw new Error('contenu invalide');
+        if (page !== null && page.indexOf('window.HG_VERSION="' + v.version + '"') < 0) throw new Error('page de mise à jour invalide');
         if (!ecrire('contenu-maj', d)) { message('Le téléphone manque de place pour enregistrer la mise à jour.'); return; }
+        if (page !== null) {
+          try { localStorage.setItem('hg1c.code-maj', JSON.stringify({ version: v.version, page: page })); }
+          catch (e) { message('Le téléphone manque de place pour enregistrer la nouvelle version de l\'application (le contenu des cours est à jour).'); return; }
+        }
         message('Version ' + v.version + ' téléchargée.');
-        bandeau('Version ' + v.version + ' téléchargée : ' + (v.notes && v.notes[0] ? v.notes[0] : 'corrections du contenu'), function () { location.reload(); });
+        bandeau('Version ' + v.version + ' téléchargée : ' + (v.notes && v.notes[0] ? v.notes[0] : 'corrections du contenu'), redemarrer);
       });
     }).catch(function () { if (manuel) message('Le site des mises à jour ne répond pas. Vérifie l\'adresse ou réessaie plus tard.'); });
   }
@@ -637,8 +667,10 @@
     if (MODE !== 'pwa' || !('serviceWorker' in navigator)) return;
     // On ne recharge que lors d'une mise à jour (un ancien service worker contrôlait déjà la page) :
     // à la toute première visite, la prise de contrôle ne doit pas interrompre l'élève (quiz en cours…).
+    // Rechargement : lors d'une mise à jour (un service worker contrôlait déjà la page) ou quand l'utilisateur
+    // l'a demandée (bouton « Mettre à jour ») ; jamais à la toute première prise de contrôle (quiz en cours…).
     var rechargement = false, avaitControleur = !!navigator.serviceWorker.controller;
-    navigator.serviceWorker.addEventListener('controllerchange', function () { if (rechargement || !avaitControleur) return; rechargement = true; location.reload(); });
+    navigator.serviceWorker.addEventListener('controllerchange', function () { if (rechargement || !(avaitControleur || majDemandee)) return; rechargement = true; location.reload(); });
     navigator.serviceWorker.register('sw.js').then(function (reg) {
       swReg = reg;
       if (reg.waiting && navigator.serviceWorker.controller) annoncerMaj(reg.waiting);
@@ -663,18 +695,19 @@
       document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') verifierMajApk(false); });
     }
   }).catch(function () {
+    finDemarrage();
     vue.innerHTML = '<h1 class="titre-vue">Cours introuvables</h1><p>Le contenu n\'a pas pu être chargé. Connecte le téléphone une fois et rouvre l\'application pour enregistrer les cours.</p>';
   });
 })();
 
-/* Histoire géographie premier cycle — export PDF (télécharger, partager, imprimer)
+/* GNOMBLESSON · Histoire & Géographie — export PDF (télécharger, partager, imprimer)
    Chaque fiche est mise en page en PDF A4 avec le nom de l'auteur en filigrane discret.
    Bibliothèque : pdfmake (chargée à la demande depuis lib/). */
 (function () {
   'use strict';
   var AUTEUR = 'Gnomblesson Hermann Vallès';
   var SITE = 'https://hermanndedelobly-lab.github.io/hg-premier-cycle/';
-  var C = { ink: '#0f1a33', muted: '#55607a', line: '#d8deeb', brand: '#081b54', hist: '#b8540a', histSoft: '#fdf1e4', geo: '#0b7a3e', geoSoft: '#e6f4eb', ok: '#1f7a45', bg: '#f4f6fb', surface: '#ffffff' };
+  var C = { ink: '#0f1a33', muted: '#55607a', line: '#d8deeb', brand: '#002158', hist: '#b8540a', histSoft: '#fdf1e4', geo: '#0b7a3e', geoSoft: '#e6f4eb', ok: '#1f7a45', bg: '#f4f6fb', surface: '#ffffff' };
 
   // ---------- chargement de pdfmake ----------
   var chargement = null;
@@ -877,7 +910,7 @@
     });
     return {
       pageSize: 'A4', pageMargins: [40, 46, 40, 50],
-      info: { title: spec.titre, author: AUTEUR, subject: 'Histoire-Géographie, premier cycle', creator: 'Histoire géographie premier cycle' },
+      info: { title: spec.titre, author: AUTEUR, subject: 'Histoire-Géographie, premier cycle', creator: 'GNOMBLESSON · Histoire & Géographie' },
       background: function (page, size) { return { svg: filigrane(size.width, size.height), absolutePosition: { x: 0, y: 0 } }; },
       header: function (p) { if (p === 1) return null; return { text: 'Histoire-Géographie · ' + (spec.surtitre || ''), style: 'entete', margin: [40, 20, 40, 0] }; },
       footer: function (p, n) {
@@ -907,7 +940,7 @@
   }
 
   function nomFichier(spec) {
-    var base = ('HG ' + (spec.fichier || spec.titre)).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    var base = ('GNOMBLESSON ' + (spec.fichier || spec.titre)).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
     return base.slice(0, 80) + '.pdf';
   }
 

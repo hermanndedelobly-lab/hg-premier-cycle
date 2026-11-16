@@ -1,4 +1,4 @@
-# Outils de publication — Histoire géographie premier cycle
+# Outils de publication — GNOMBLESSON · Histoire & Géographie (ex-« Histoire géographie premier cycle »)
 
 ## Modifier ou ajouter des questions de quiz
 
@@ -43,3 +43,26 @@ Voir `pedagogie/LISEZMOI.md`. Après modification : `python3 outils/integrer-ped
   il faut désinstaller l'ancienne application puis installer la nouvelle. Les versions suivantes
   pourront se mettre à jour normalement si la nouvelle clé est conservée (Google Drive privé, clé USB).
   La version 1.12.0 est signée avec cette même clé : elle s'installe par-dessus la 1.11.0 sans perte de données.
+
+## Mise à jour de l'application Android sans nouvel APK (depuis la 1.14.0)
+
+L'application télécharge, depuis le canal de mise à jour (`ADRESSE_MAJ` dans `app.js`, actuellement la branche de
+développement sur raw.githubusercontent.com ; une adresse peut aussi être saisie dans Réglages) :
+`version.json`, `data/contenu.json` et la page `maj/page.html` (code et styles, sans les données).
+Au démarrage, le script placé en tête de la page de l'APK utilise la version téléchargée si elle est plus récente
+et complète. Sécurité : une version qui ne confirme pas son démarrage en 12 s est écartée et l'application
+revient à la version de l'APK ; « Revenir à la version d'origine » (Réglages) efface les versions téléchargées.
+
+Pour publier une mise à jour sans APK :
+1. changer le numéro de version (4 fichiers, voir plus haut) ; `version.json` garde `"code": "maj/page.html"` ;
+2. `python3 outils/fichier-unique.py maj/page.html --mode maj` ;
+3. envoyer sur la branche du canal. Les téléphones la proposent à la prochaine vérification.
+Limites : les nouvelles photos (`img/`) ne sont pas dans l'APK installé : elles s'afficheront depuis le canal
+quand le téléphone est connecté, ou après un nouvel APK. Taille enregistrée dans le téléphone ≈ 2,4 Mo.
+
+## Identité visuelle GNOMBLESSON (1.14.0)
+
+`identite/logo-gnomblesson-reference.png` (visuel fourni) → `python3 outils/identite-gnomblesson.py` produit les
+déclinaisons (logo détouré, emblème, icônes Android et du site, logos de la page). `identite/android.json` décrit
+les changements appliqués à l'APK par `fabriquer-apk.py` (nom affiché, couleur, icônes) ; l'identifiant
+`ci.hg.premiercycle`, le code Java et la clé de signature ne changent pas.
