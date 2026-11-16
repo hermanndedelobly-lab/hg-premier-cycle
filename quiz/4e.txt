@@ -1,0 +1,508 @@
+# Quiz de la 4e — même format que quiz/6e.txt.
+
+@4e-h-t1-l1
+? Combien de grandes aires culturelles compte la Côte d'Ivoire ?
++ quatre (akan, krou, mandé, gour)
+- deux
+- dix
+- une soixantaine
+= La Côte d'Ivoire compte une soixantaine de peuples, répartis en quatre grandes aires culturelles.
+? L'aire akan occupe surtout :
++ l'Est, le Centre et le Sud-Est
+- l'Ouest et le Sud-Ouest
+- le Nord-Ouest
+- le Nord et le Nord-Est
+? L'aire gour (voltaïque) occupe :
++ le Nord et le Nord-Est (Korhogo, Ferkessédougou, Bouna)
+- le littoral du Sud-Est
+- l'Ouest montagneux
+- le Centre-Ouest forestier
+? Les Abron (région de Bondoukou) appartiennent au groupe :
++ akan
+- krou
+- mandé du Sud
+- gour
+? Pourquoi les Akan ont-ils quitté l'actuel Ghana ?
++ à cause des guerres de succession et des conflits entre royaumes
+- à cause du déclin de l'empire du Mali
+- pour fuir les Européens installés à Assinie
+- à cause de l'islamisation forcée
+? Les Mandé du Nord ont quitté la vallée du Niger après :
++ le déclin de l'empire du Mali
+- la conférence de Berlin
+- la Révolution française
+- l'arrivée des Portugais
+? Le royaume abron du Gyaman se situe dans la région de :
++ Bondoukou
+- Korhogo
+- Man
+- Gagnoa
+? Les migrants suivaient souvent :
++ les vallées des fleuves et les pistes commerciales
+- les routes goudronnées
+- les voies ferrées
+- les côtes en bateau à vapeur
+
+@4e-h-t1-l2
+? Le lignage est :
++ l'ensemble des descendants d'un même ancêtre connu
+- un ensemble de lignages qui ont un ancêtre lointain et souvent mythique
+- un ensemble de villages qui parlent la même langue
+- une classe d'âge
+? Le clan est :
++ un ensemble de lignages qui se reconnaissent un ancêtre commun lointain, souvent mythique
+- la cellule de base de la société
+- un groupe de personnes nées à la même période
+- un royaume
+? Dans le système matrilinéaire, l'enfant appartient :
++ au lignage de sa mère
+- au lignage de son père
+- au village de son choix
+- à la classe d'âge de son père
+? Les gens de caste (forgerons, griots, cordonniers) se trouvent surtout chez les :
++ Mandé du Nord
+- Krou
+- Akan lagunaires
+- Mandé du Sud
+? Le Poro est une société d'initiation chez les :
++ Sénoufo
+- Bété
+- Baoulé
+- Ébrié
+? Lequel de ces peuples avait un pouvoir centralisé (royaume) ?
++ les Baoulé
+- les Bété
+- les Dan
+- les Ébrié
+? Chez les peuples lagunaires (Ébrié, Attié, Abbey…), le pouvoir est exercé :
++ à tour de rôle par les classes d'âge (générations)
+- par un roi de droit divin
+- par un empereur élu
+- par les commerçants
+? Dans les sociétés lignagères, les décisions importantes sont prises :
++ collectivement, après palabre, à la recherche du consensus
+- par un roi seul
+- par vote secret
+- par le gouverneur colonial
+
+@4e-h-t1-l3
+? Prévenir un conflit, c'est :
++ prendre des mesures pour l'empêcher de naître ou de s'aggraver
+- punir les coupables après la guerre
+- déclarer la guerre
+- ignorer les désaccords
+? Comment une alliance à plaisanterie prévient-elle les conflits ?
++ elle interdit de verser le sang de l'allié et oblige à l'entraide
+- elle permet d'insulter gravement l'autre
+- elle oblige à partager toutes les terres
+- elle impose un roi commun
+? Le chef de terre limite les litiges fonciers en :
++ attribuant les terres selon des règles connues de tous
+- vendant les terres aux plus riches
+- interdisant l'agriculture
+- confisquant les champs
+? Dans la palabre, la décision du chef vise surtout à :
++ rétablir l'harmonie plus qu'à punir
+- humilier le coupable
+- enrichir le chef
+- désigner un nouveau roi
+? Pendant la palabre, chaque partie expose sa version :
++ par l'intermédiaire d'un porte-parole
+- par écrit
+- devant un juge colonial
+- en secret
+? L'épreuve utilisée parfois pour établir la vérité s'appelle :
++ l'ordalie
+- la palabre
+- la libation
+- l'intronisation
+? Chez les Mandé, qui joue souvent le rôle de médiateur ?
++ les griots
+- les commerçants européens
+- les soldats
+- les enfants
+? Quelle commission a été créée en 2011 pour la réconciliation en Côte d'Ivoire ?
++ la Commission Dialogue, Vérité et Réconciliation (CDVR)
+- la Croix-Rouge
+- la CEDEAO
+- l'ANADER
+
+@4e-h-t1-l4
+? Quels Européens atteignent les premiers le littoral ivoirien, vers 1470-1471 ?
++ les Portugais
+- les Français
+- les Anglais
+- les Hollandais
+? La caravelle est :
++ un navire rapide et maniable qui permet la navigation en haute mer
+- un comptoir fortifié
+- une monnaie européenne
+- une plante d'Amérique
+? Pourquoi les premiers contacts sont-ils périodiques ?
++ la côte est rectiligne, sans abri, et la barre rend le débarquement dangereux
+- les peuples côtiers refusaient tout commerce
+- les Européens n'avaient pas de navires
+- la côte était couverte de glace
+? Le nom « Côte de l'Ivoire » vient :
++ du commerce de l'ivoire
+- du nom d'un roi
+- de la couleur du sable
+- d'un navire portugais
+? Un comptoir est :
++ un établissement commercial européen sur une côte étrangère, souvent fortifié
+- un marché de l'intérieur du pays
+- une assemblée des anciens
+- un navire négrier
+? En 1701, les Français construisent le fort Saint-Louis à :
++ Assinie
+- Grand-Lahou
+- Sassandra
+- San Pedro
+? Les intermédiaires africains de la côte :
++ contrôlaient le commerce et empêchaient les Européens d'aller à l'intérieur
+- n'avaient aucun rôle
+- travaillaient pour les rois du Mali
+- interdisaient tout échange
+? Quelles plantes venues d'Amérique ont été introduites grâce à ces contacts ?
++ le maïs et le manioc
+- l'igname et le palmier à huile
+- le mil et le sorgho
+- le café et la cola
+
+@4e-h-t2-l1
+? La traite négrière est :
++ le commerce des esclaves noirs africains (capture, achat, transport, vente)
+- le commerce de l'or et du sel
+- l'exportation du cacao
+- le travail libre en Amérique
+? La traite la plus massive et la mieux organisée est :
++ la traite atlantique (XVe – XIXe siècle)
+- la traite orientale
+- la traite interne
+- la traite transsaharienne
+? Quel prêtre espagnol proposa de remplacer les Amérindiens par des esclaves africains ?
++ Bartolomé de Las Casas
+- l'abbé Grégoire
+- Thomas Clarkson
+- Victor Schœlcher
+? Dans le commerce triangulaire, quelle est l'étape Europe → Afrique ?
++ les navires apportent la pacotille (tissus, armes, alcool)
+- les navires transportent les esclaves
+- les navires rapportent le sucre et le coton
+- les navires apportent l'or d'Amérique
+? Dans le commerce triangulaire, l'étape Afrique → Amérique correspond :
++ au transport des captifs
+- au transport de la pacotille
+- au retour des produits tropicaux
+- au transport des colons
+? La Maison des esclaves, lieu de mémoire de la traite, se trouve à :
++ Gorée
+- Assinie
+- Manchester
+- Versailles
+? Environ combien d'Africains ont été embarqués vers l'Amérique ?
++ 12 à 13 millions
+- 12 à 13 mille
+- 1 million
+- 100 millions
+? Quel article de la Déclaration universelle de 1948 interdit l'esclavage ?
++ l'article 4
+- l'article 1
+- l'article 17
+- l'article 13
+
+@4e-h-t2-l2
+? Avant 1789, la France est :
++ une monarchie absolue de droit divin
+- une république
+- une monarchie constitutionnelle
+- un empire colonial indépendant
+? Le tiers état représente environ :
++ 98 % de la population
+- 2 % de la population
+- 50 % de la population
+- 10 % de la population
+? Quels ordres étaient privilégiés avant 1789 ?
++ le clergé et la noblesse
+- le tiers état et le clergé
+- la bourgeoisie et les paysans
+- la noblesse et le tiers état
+? Le 14 juillet 1789, le peuple de Paris :
++ prend la Bastille
+- abolit la royauté
+- exécute Louis XVI
+- adopte la Constitution
+? Pendant la nuit du 4 août 1789 :
++ les privilèges et les droits féodaux sont abolis
+- le roi s'enfuit
+- la République est proclamée
+- Robespierre est exécuté
+? La Déclaration des droits de l'homme et du citoyen est adoptée le :
++ 26 août 1789
+- 14 juillet 1789
+- 21 janvier 1793
+- 10 décembre 1948
+? Quand la Convention abolit-elle l'esclavage dans les colonies ?
++ le 4 février 1794
+- le 26 août 1789
+- en 1848
+- en 1807
+? Article 1 de la DDHC : « Les hommes naissent et demeurent… »
++ libres et égaux en droits
+- soumis au roi
+- riches et puissants
+- citoyens de la nation française
+
+@4e-h-t2-l3
+? La Révolution industrielle commence vers 1750-1780 en :
++ Angleterre
+- France
+- Allemagne
+- Côte d'Ivoire
+? La première Révolution industrielle repose sur :
++ le charbon, la machine à vapeur et le textile
+- le pétrole et l'électricité
+- Internet et l'informatique
+- le nucléaire
+? Les enclosures sont liées à :
++ la révolution agricole en Angleterre
+- la traite négrière
+- la Révolution française
+- les comptoirs africains
+? Qui a mis au point la machine à vapeur (1769) ?
++ James Watt
+- George Stephenson
+- Thomas Edison
+- Graham Bell
+? George Stephenson est associé à :
++ la locomotive
+- le téléphone
+- la lampe électrique
+- la machine à vapeur
+? Manchester était surnommée la capitale :
++ du coton
+- de l'acier
+- de la soie
+- du charbon
+? En Allemagne, le grand foyer industriel du charbon et de l'acier est :
++ la Ruhr
+- le Lancashire
+- la Lorraine
+- la Wallonie
+? Laquelle est une conséquence sociale de la Révolution industrielle ?
++ l'exode rural et l'urbanisation
+- la disparition des usines
+- la baisse de la population européenne
+- la fin du commerce mondial
+
+@4e-g-t1-l1
+? La déconcentration est un système d'administration fondé sur :
++ des circonscriptions administratives dirigées par des responsables nommés par le pouvoir central
+- des collectivités dirigées par des élus locaux
+- des chefferies traditionnelles uniquement
+- des royaumes indépendants
+? Qui dirige un district autonome ?
++ un ministre-gouverneur
+- un préfet de région
+- un sous-préfet
+- un maire
+? Qui dirige un département ?
++ le préfet
+- le sous-préfet
+- le chef de village
+- le ministre-gouverneur
+? Quelle est la plus petite circonscription dirigée par un agent de l'État ?
++ la sous-préfecture
+- le village
+- le département
+- la région
+? Quelle est la cellule de base de l'administration territoriale ?
++ le village
+- la sous-préfecture
+- la commune
+- le district
+? Range du plus grand au plus petit :
++ district → région → département → sous-préfecture → village
+- région → district → sous-préfecture → département → village
+- département → région → district → village → sous-préfecture
+- village → sous-préfecture → département → région → district
+? Un service extérieur de l'État est :
++ un démembrement d'un ministère au plan local
+- une entreprise privée
+- une ambassade à l'étranger
+- un conseil municipal élu
+? Le chef de village est :
++ désigné selon la coutume et reconnu par l'autorité administrative
+- élu au suffrage universel national
+- nommé par le préfet de région parmi les fonctionnaires
+- choisi par le ministre-gouverneur
+
+@4e-g-t1-l2
+? La décentralisation est un système dans lequel l'État :
++ transfère une partie de ses compétences et de ses moyens à des collectivités territoriales
+- nomme des préfets dans chaque région
+- supprime les communes
+- gouverne seul depuis la capitale
+? Quelle est la différence essentielle avec la déconcentration ?
++ dans la décentralisation, les responsables sont élus par les populations
+- dans la décentralisation, les responsables sont nommés par décret
+- il n'y a aucune différence
+- la décentralisation ne concerne que les villages
+? En 1980, la communalisation est relancée avec la création de :
++ 37 communes
+- 200 communes
+- 14 districts
+- 31 régions
+? L'organe délibérant de la commune est :
++ le conseil municipal
+- le maire
+- le préfet
+- le conseil régional
+? Le maire est élu :
++ par le conseil municipal
+- par le Président de la République
+- par le préfet
+- par le chef de village
+? Les conseillers régionaux et municipaux sont élus pour :
++ 5 ans
+- 2 ans
+- 7 ans
+- 10 ans
+? Lequel est une ressource propre d'une commune ?
++ les droits de place au marché
+- les dotations de l'État
+- les dons des partenaires
+- les emprunts bancaires
+? La tutelle est :
++ le contrôle exercé par l'État sur les collectivités territoriales
+- l'indépendance totale des communes
+- l'élection du maire
+- un impôt local
+
+@4e-g-t1-l3
+? L'organisation administrative est :
++ l'ensemble des structures, règles et personnes par lesquelles l'État et les collectivités administrent le territoire
+- l'ensemble des entreprises privées d'un pays
+- la liste des chefs traditionnels
+- le budget d'une commune
+? Le manque d'ingénieurs et de comptables dans une collectivité est un obstacle :
++ humain
+- financier
+- institutionnel
+- lié à la gouvernance
+? Le retard dans le versement des dotations de l'État est un obstacle :
++ financier
+- humain
+- matériel
+- culturel
+? Le chevauchement des compétences entre l'État, les régions et les communes est un obstacle :
++ institutionnel
+- financier
+- humain
+- lié aux populations
+? La corruption et les détournements de fonds sont des obstacles liés à :
++ la gouvernance
+- la population
+- la géographie
+- la météo
+? L'incivisme fiscal est un obstacle lié :
++ aux populations
+- à l'État uniquement
+- au climat
+- aux partenaires extérieurs
+? Laquelle est une conséquence des insuffisances de l'administration ?
++ des routes dégradées qui gênent l'évacuation des produits agricoles
+- la disparition des inégalités régionales
+- une confiance totale des populations
+- l'achèvement rapide de tous les projets
+? Quelle solution relève des citoyens ?
++ payer régulièrement ses impôts et taxes
+- accélérer le transfert des compétences
+- affecter du personnel qualifié
+- numériser l'état civil
+
+@4e-g-t2-l1
+? La CEDEAO a été créée le 28 mai 1975 à :
++ Lagos (Nigeria)
+- Abidjan (Côte d'Ivoire)
+- Dakar (Sénégal)
+- Accra (Ghana)
+? Où se trouve le siège de la Commission de la CEDEAO ?
++ Abuja (Nigeria)
+- Lagos (Nigeria)
+- Ouagadougou (Burkina Faso)
+- Bamako (Mali)
+? Combien d'États membres compte la CEDEAO en 2026 ?
++ 12
+- 15
+- 16
+- 27
+= Le Mali, le Burkina Faso et le Niger se sont retirés en janvier 2025 pour former l'Alliance des États du Sahel (AES).
+? Quel pays s'est retiré de la CEDEAO en 2000 ?
++ la Mauritanie
+- le Cap-Vert
+- le Ghana
+- le Togo
+? Quel pays est le premier producteur mondial de cacao ?
++ la Côte d'Ivoire
+- le Nigeria
+- la Guinée
+- le Sénégal
+? Quel est l'organe suprême de la CEDEAO ?
++ la Conférence des chefs d'État et de gouvernement
+- la Commission
+- le Parlement
+- la Cour de justice
+? Le protocole de 1979 permet aux citoyens de la Communauté de :
++ voyager sans visa et séjourner jusqu'à 90 jours dans un autre État membre
+- voter dans tous les pays membres
+- utiliser une monnaie unique
+- travailler sans aucune règle
+? Comment s'appelle la monnaie unique en projet dans la CEDEAO ?
++ l'Eco
+- l'euro
+- le naira
+- le cedi
+
+@4e-g-t2-l2
+? Combien d'États membres compte l'Union européenne en 2026 ?
++ 27
+- 12
+- 21
+- 6
+? Combien de pays utilisent l'euro en 2026 ?
++ 21
+- 27
+- 12
+- 15
+= La Bulgarie est entrée dans la zone euro le 1er janvier 2026.
+? Quelle est la première étape de la construction européenne ?
++ la CECA (1951)
+- le traité de Maastricht (1992)
+- l'euro (1999 – 2002)
+- le Brexit (2020)
+? Quel est le bon ordre ?
++ CECA (1951) → traités de Rome (1957) → Maastricht (1992) → euro (1999 – 2002)
+- traités de Rome → CECA → euro → Maastricht
+- Maastricht → CECA → traités de Rome → euro
+- euro → Maastricht → traités de Rome → CECA
+? Quelle est la principale raison de la construction européenne ?
++ éviter une nouvelle guerre, notamment entre la France et l'Allemagne
+- coloniser l'Afrique
+- créer une monnaie pour l'Asie
+- quitter l'OTAN
+? Quelle institution européenne propose les lois ?
++ la Commission européenne
+- le Parlement européen
+- la Cour de justice
+- la Banque centrale européenne
+? La politique agricole commune (PAC) a été lancée en :
++ 1962
+- 1992
+- 2002
+- 1951
+? Quel pays a quitté l'Union européenne en 2020 ?
++ le Royaume-Uni
+- la Grèce
+- la Bulgarie
+- l'Irlande

@@ -1,0 +1,5 @@
+# Clés de signature : jamais dans le dépôt public
+*.p12
+*.jks
+*.keystore
+__pycache__/

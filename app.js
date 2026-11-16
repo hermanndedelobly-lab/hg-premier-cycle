@@ -21,6 +21,7 @@
   }
   var VERSION_ORIGINE = window.HG_DATA ? window.HG_DATA.version : null;
   var faites = lire('faites', {});
+  var scores = lire('quiz', {});    // id (leçon ou classe) -> {m: meilleur score, n: nb de questions, d: date, k: essais}
   var reglages = lire('reglages', { theme: 'auto', taille: 1, corriges: false });
 
   function appliquerReglages() {
@@ -86,7 +87,7 @@
     var h = '<div class="hero"><img src="' + (window.HG_LOGO || 'icons/icon-192.png') + '" alt="Logo de l\'application" width="104" height="104"><div><b>Histoire <em>géographie</em></b>' +
       '<p>L\'histoire pour comprendre le passé, la géographie pour maîtriser le monde.</p><small>6e – 3e · ENSEIGNANTS</small></div></div>' +
       '<p class="eyebrow">Programme ivoirien · APC</p><h1 class="titre-vue">Choisis une classe</h1>' +
-      '<p class="chapo">' + D.nbLecons + ' leçons de la 6e à la 3e, chacune avec sa situation d\'apprentissage, le cours et des exercices corrigés. Tout fonctionne sans connexion.</p>';
+      '<p class="chapo">' + D.nbLecons + ' leçons de la 6e à la 3e, chacune avec sa situation d\'apprentissage, le cours, des exercices corrigés' + (D.nbQuiz ? ' et un quiz pour s\'entraîner (' + D.nbQuiz + ' questions)' : '') + '. Tout fonctionne sans connexion.</p>';
     if (der && INDEX[der]) h += carteReprendre(der);
     h += '<div class="accueil-grille">' + D.classes.map(function (c) {
       var n = nbLecons(c), f = nbFaites(c);
@@ -106,8 +107,10 @@
     return '<nav class="onglets-classe" aria-label="Espaces de la classe">' +
       '<a href="#c-' + c.id + '"' + (actif === 'c' ? ' aria-current="page"' : '') + '>Cours</a>' +
       '<a href="#x-' + c.id + '"' + (actif === 'x' ? ' aria-current="page"' : '') + '>Exercices' + (c.nbBanque ? ' <span>' + c.nbBanque + '</span>' : '') + '</a>' +
-      '<a href="#s-' + c.id + '"' + (actif === 's' ? ' aria-current="page"' : '') + '>Schémas' + (nbS ? ' <span>' + nbS + '</span>' : '') + '</a></nav>';
+      '<a href="#s-' + c.id + '"' + (actif === 's' ? ' aria-current="page"' : '') + '>Schémas' + (nbS ? ' <span>' + nbS + '</span>' : '') + '</a>' +
+      (nbQuizClasse(c) ? '<a href="#r-' + c.id + '"' + (actif === 'r' ? ' aria-current="page"' : '') + '>Quiz</a>' : '') + '</nav>';
   }
+  function nbQuizClasse(c) { return ORDRE[c.id].reduce(function (a, id) { return a + ((INDEX[id].lecon.quiz || []).length); }, 0); }
   function vueClasse(c) {
     barreClasses(c.id);
     var n = nbLecons(c), f = nbFaites(c), nbT = 0;
@@ -156,17 +159,19 @@
     ecrire('derniere', l.id);
     var ord = ORDRE[c.id], i = ord.indexOf(l.id);
     var prev = i > 0 ? INDEX[ord[i - 1]].lecon : null, next = i < ord.length - 1 ? INDEX[ord[i + 1]].lecon : null;
+    var nbQ = (l.quiz || []).length;
     var h = '<article class="d-' + d.id + '">' +
       '<nav class="fil" aria-label="Emplacement"><a href="#c-' + c.id + '">' + c.id + '</a><span>›</span><span>' + esc(d.nom) + '</span><span>›</span><span>' + nomTheme(t) + (t.n ? ' · ' + esc(t.titre) : '') + '</span></nav>' +
       '<h1 class="lecon-titre">' + esc(l.titre) + '</h1>' +
       '<div class="puces"><span class="puce">Leçon ' + l.n + '</span>' + (l.duree ? '<span class="puce">' + l.duree + ' h</span>' : '') + '<span class="puce">' + esc(d.nom) + '</span></div>' + BOUTON_PDF +
-      '<div class="sommaire" role="navigation" aria-label="Parties de la leçon"><button type="button" data-aller="b-sit">Situation</button><button type="button" data-aller="b-cours">Cours</button><button type="button" data-aller="b-exo">Exercices</button>' + (l.banque ? '<a class="chip-lien" href="#e-' + l.id + '">Banque : ' + l.nbBanque + ' exercices</a>' : '') + '</div>' +
+      '<div class="sommaire" role="navigation" aria-label="Parties de la leçon"><button type="button" data-aller="b-sit">Situation</button><button type="button" data-aller="b-cours">Cours</button><button type="button" data-aller="b-exo">Exercices</button>' + (nbQ ? '<a class="chip-lien" href="#q-' + l.id + '">Quiz</a>' : '') + (l.banque ? '<a class="chip-lien" href="#e-' + l.id + '">Banque : ' + l.nbBanque + ' exercices</a>' : '') + '</div>' +
       '<section class="bloc" id="b-sit"><h2>Compétence, situation et habiletés</h2><div class="situation"><div class="texte">' + l.situation + '</div></div></section>' +
       '<section class="bloc" id="b-cours"><h2>Cours · trace écrite</h2><div class="texte">' + l.cours + '</div></section>' +
       '<section class="bloc" id="b-exo"><h2>Exercices traités et corrigés</h2>' +
       '<div class="outils-exo"><button type="button" class="btn" id="tous-corriges" aria-pressed="' + (reglages.corriges ? 'true' : 'false') + '">' + (reglages.corriges ? 'Masquer les corrigés' : 'Afficher tous les corrigés') + '</button>' +
       '<button type="button" class="btn" id="marquer" aria-pressed="' + (faites[l.id] ? 'true' : 'false') + '">' + (faites[l.id] ? '✓ Leçon traitée' : 'Marquer comme traitée') + '</button></div>' +
       '<div class="texte">' + l.exercices + '</div></section>' +
+      (nbQ ? carteQuiz(l.id, nbQ) : '') +
       '<nav class="suivants" aria-label="Leçons voisines">' +
       (prev ? '<a class="avant" href="#l-' + prev.id + '"><small>← Précédente</small><span>' + esc(prev.titre) + '</span></a>' : '') +
       (next ? '<a class="apres" href="#l-' + next.id + '"><small>Suivante →</small><span>' + esc(next.titre) + '</span></a>' : '') +
@@ -259,6 +264,122 @@
     afficher(h, 'Schémas ' + c.id, { titre: 'Schémas et méthodes de la ' + c.id, disc: 'g', fichier: c.id + ' schemas', surtitre: ('Classe de ' + c.id + ' · Schémas').toUpperCase(), sections: secs });
   }
 
+  // ---------- Quiz ----------
+  var NB_REVISION = 10;
+  function texteScore(id, n) {
+    var s = scores[id];
+    return s ? 'Meilleur score : ' + s.m + ' / ' + s.n : n + ' questions';
+  }
+  function carteQuiz(id, n) {
+    return '<a class="carte-quiz" href="#q-' + id + '"><span class="cq-icone" aria-hidden="true">?</span><span><small>Teste-toi</small><strong>Quiz de la leçon · ' + n + ' questions</strong>' +
+      '<span class="cq-score">' + (scores[id] ? esc(texteScore(id, n)) : 'Pas encore fait') + '</span></span><span class="fleche" aria-hidden="true">→</span></a>';
+  }
+  function melanger(t) {
+    var a = t.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), x = a[i]; a[i] = a[j]; a[j] = x; }
+    return a;
+  }
+
+  function vueQuizClasse(c) {
+    barreClasses(c.id);
+    var nb = nbQuizClasse(c), faitsQ = ORDRE[c.id].filter(function (id) { return scores[id]; }).length;
+    var h = '<p class="eyebrow">Classe de ' + c.id + '</p><h1 class="titre-vue">' + esc(c.nom) + '</h1>' + ongletsClasse(c, 'r') +
+      '<p class="chapo">' + nb + ' questions à choix multiple, avec la correction et une explication après chaque réponse. Ton meilleur score est gardé sur ce téléphone.</p>' +
+      '<div class="barre-progres"><span>' + faitsQ + ' / ' + ORDRE[c.id].length + ' quiz faits</span><span class="piste"><i style="width:' + Math.round(100 * faitsQ / ORDRE[c.id].length) + '%"></i></span></div>' +
+      '<a class="carte-quiz revision" href="#q-' + c.id + '"><span class="cq-icone" aria-hidden="true">↻</span><span><small>Révision</small><strong>' + NB_REVISION + ' questions au hasard sur toute l\'année</strong>' +
+      '<span class="cq-score">' + (scores[c.id] ? esc(texteScore(c.id, NB_REVISION)) : 'Une nouvelle série à chaque fois') + '</span></span><span class="fleche" aria-hidden="true">→</span></a>';
+    c.disciplines.forEach(function (d) {
+      h += '<section class="discipline d-' + d.id + '"><div class="discipline-tete"><h2>' + esc(d.nom) + '</h2></div>';
+      d.themes.forEach(function (t) {
+        h += '<div class="theme"><div class="theme-tete"><p class="eyebrow">' + nomTheme(t) + '</p><h3>' + esc(t.titre === 'Complément' ? 'Leçon complémentaire' : t.titre) + '</h3></div><ul class="lecons">' +
+          t.lecons.map(function (l) {
+            var s = scores[l.id], n = (l.quiz || []).length, reussi = s && s.m === s.n;
+            return '<li class="' + (reussi ? 'fait' : '') + '"><a href="' + (n ? '#q-' + l.id : '#l-' + l.id) + '"><span class="num">L' + l.n + '</span><span class="t">' + esc(l.titre) + '</span><span class="meta">' +
+              (s ? '<span class="note-quiz">' + s.m + '/' + s.n + '</span>' : (n ? n + ' questions' : '—')) + '</span></a></li>';
+          }).join('') + '</ul></div>';
+      });
+      h += '</section>';
+    });
+    afficher(h, 'Quiz ' + c.id);
+  }
+
+  function vueQuiz(id) {
+    var e = INDEX[id], c, titre, questions, lecon = null;
+    if (e && e.type === 'lecon') {
+      c = e.classe; lecon = e.lecon; titre = lecon.titre;
+      questions = melanger(lecon.quiz.map(function (q) { return { q: q, l: lecon }; }));
+    } else {
+      c = trouverClasse(id); titre = 'Révision de l\'année';
+      var tout = [];
+      ORDRE[c.id].forEach(function (lid) { var l = INDEX[lid].lecon; (l.quiz || []).forEach(function (q) { tout.push({ q: q, l: l }); }); });
+      questions = melanger(tout).slice(0, NB_REVISION);
+    }
+    barreClasses(c.id);
+    var disc = lecon ? INDEX[id].disc.id : 'h';
+    var etat = { i: 0, bons: 0, erreurs: [] };
+    var retour = '#r-' + c.id;
+
+    function entete() {
+      return '<nav class="fil" aria-label="Emplacement"><a href="' + retour + '">' + c.id + ' · Quiz</a>' + (lecon ? '<span>›</span><span>' + esc(INDEX[id].disc.nom) + '</span>' : '') + '</nav>' +
+        '<h1 class="lecon-titre">' + esc(titre) + '</h1>';
+    }
+    function question() {
+      var it = questions[etat.i], q = it.q;
+      var choix = melanger(q.c.map(function (t, k) { return { t: t, ok: k === 0 }; }));
+      var h = '<article class="quiz d-' + disc + '">' + entete() +
+        '<div class="quiz-progres"><span>Question ' + (etat.i + 1) + ' / ' + questions.length + '</span><span class="piste"><i style="width:' + Math.round(100 * etat.i / questions.length) + '%"></i></span><span>' + etat.bons + ' ✓</span></div>' +
+        (lecon ? '' : '<p class="quiz-source">' + esc(INDEX[it.l.id].disc.nom) + ' · ' + esc(it.l.titre) + '</p>') +
+        '<h2 class="quiz-question" id="quiz-q" tabindex="-1">' + esc(q.q) + '</h2>' +
+        '<ul class="quiz-choix" role="list">' + choix.map(function (x, k) {
+          return '<li><button type="button" data-choix="' + k + '"><span class="lettre" aria-hidden="true">' + 'ABCDEF'.charAt(k) + '</span><span>' + esc(x.t) + '</span></button></li>';
+        }).join('') + '</ul>' +
+        '<div class="quiz-retour" id="quiz-retour" role="status" aria-live="polite"></div></article>';
+      afficher(h, 'Quiz · ' + titre);
+      var boutons = vue.querySelectorAll('[data-choix]');
+      boutons.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var x = choix[+b.getAttribute('data-choix')];
+          boutons.forEach(function (o) {
+            o.disabled = true;
+            var y = choix[+o.getAttribute('data-choix')];
+            if (y.ok) o.classList.add('juste');
+          });
+          if (x.ok) etat.bons++; else { b.classList.add('faux'); etat.erreurs.push(it); }
+          var bonne = q.c[0], dernier = etat.i === questions.length - 1;
+          document.getElementById('quiz-retour').innerHTML = '<div class="quiz-verdict ' + (x.ok ? 'ok' : 'ko') + '"><strong>' + (x.ok ? 'Bonne réponse !' : 'Ce n\'est pas ça.') + '</strong>' +
+            (x.ok ? '' : '<p>La bonne réponse : <b>' + esc(bonne) + '</b></p>') + (q.e ? '<p>' + esc(q.e) + '</p>' : '') + '</div>' +
+            '<button type="button" class="btn btn-plein" id="quiz-suite">' + (dernier ? 'Voir mon score' : 'Question suivante →') + '</button>';
+          var s = document.getElementById('quiz-suite');
+          s.addEventListener('click', function () { etat.i++; if (etat.i < questions.length) question(); else resultat(); });
+          s.focus({ preventScroll: true });
+          s.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      });
+    }
+    function resultat() {
+      var n = questions.length, m = etat.bons, ancien = scores[id];
+      var record = !ancien || m > ancien.m;
+      scores[id] = { m: record ? m : ancien.m, n: n, d: Date.now(), k: (ancien ? ancien.k || 1 : 0) + 1 };
+      ecrire('quiz', scores);
+      var r = m / n, mention = r === 1 ? 'Parfait !' : r >= 0.75 ? 'Très bien !' : r >= 0.5 ? 'C\'est bien, encore un effort.' : 'Revois le cours, puis réessaie.';
+      var h = '<article class="quiz d-' + disc + '">' + entete() +
+        '<div class="quiz-fin"><p class="eyebrow">Ton score</p><p class="quiz-note"><b>' + m + '</b> / ' + n + '</p><p class="quiz-mention">' + mention + '</p>' +
+        (record && ancien ? '<p class="msg">Nouveau meilleur score (avant : ' + ancien.m + ' / ' + ancien.n + ').</p>' : (ancien && !record ? '<p class="msg">Meilleur score : ' + ancien.m + ' / ' + ancien.n + '.</p>' : '')) +
+        '<div class="ligne quiz-actions"><button type="button" class="btn btn-plein" id="quiz-encore">' + (lecon ? 'Recommencer' : 'Nouvelle série') + '</button>' +
+        (lecon ? '<a class="btn" href="#l-' + lecon.id + '">Revoir le cours</a>' : '') + '<a class="btn" href="' + retour + '">Tous les quiz</a></div></div>';
+      if (etat.erreurs.length) {
+        h += '<section class="bloc"><h2>À revoir</h2><ol class="quiz-erreurs">' + etat.erreurs.map(function (it) {
+          return '<li><p>' + esc(it.q.q) + '</p><p class="rep">→ <b>' + esc(it.q.c[0]) + '</b></p>' + (it.q.e ? '<p class="msg">' + esc(it.q.e) + '</p>' : '') +
+            (lecon ? '' : '<p><a href="#l-' + it.l.id + '">Revoir : ' + esc(it.l.titre) + '</a></p>') + '</li>';
+        }).join('') + '</ol></section>';
+      }
+      h += '</article>';
+      afficher(h, 'Score · ' + titre);
+      document.getElementById('quiz-encore').addEventListener('click', function () { vueQuiz(id); });
+    }
+    question();
+  }
+
   var rechEtat = { q: lire('recherche', ''), classe: '' };
   function vueRecherche() {
     barreClasses(null);
@@ -330,7 +451,7 @@
       [[0.92, 'Petite'], [1, 'Normale'], [1.12, 'Grande'], [1.25, 'Très grande']].map(function (t) { return '<button type="button" class="btn" data-taille="' + t[0] + '" aria-pressed="' + (reglages.taille === t[0] ? 'true' : 'false') + '">' + t[1] + '</button>'; }).join('') + '</div>' +
       '<p style="margin-top:12px">Apparence</p><div class="ligne" role="group" aria-label="Apparence">' +
       [['auto', 'Comme le téléphone'], ['light', 'Claire'], ['dark', 'Sombre']].map(function (t) { return '<button type="button" class="btn" data-theme-choix="' + t[0] + '" aria-pressed="' + (reglages.theme === t[0] ? 'true' : 'false') + '">' + t[1] + '</button>'; }).join('') + '</div></section>' +
-      '<section class="panneau"><h2>Suivi de progression</h2><p>' + Object.keys(faites).length + ' leçon(s) marquée(s) comme traitée(s) sur cet appareil.</p><div class="ligne"><button type="button" class="btn" id="raz">Remettre le suivi à zéro</button><span class="msg" id="msg-raz"></span></div></section>' +
+      '<section class="panneau"><h2>Suivi de progression</h2><p>' + Object.keys(faites).length + ' leçon(s) marquée(s) comme traitée(s) et ' + Object.keys(scores).length + ' quiz fait(s) sur cet appareil.</p><div class="ligne"><button type="button" class="btn" id="raz">Remettre le suivi à zéro</button><span class="msg" id="msg-raz"></span></div></section>' +
       '<section class="panneau" id="install"><h2>Installer sur le téléphone</h2>' + aideInstall(installee) + '</section>' +
       '<section class="panneau"><h2>À propos</h2><p>Support pédagogique pour l\'enseignant, rédigé à partir des programmes éducatifs ivoiriens (APC) du premier cycle. Vérifiez la progression auprès de votre conseiller pédagogique ou de l\'antenne pédagogique.</p></section>' +
       '</div>';
@@ -341,7 +462,7 @@
     var raz = document.getElementById('raz'), arme = false;
     raz.addEventListener('click', function () {
       if (!arme) { arme = true; raz.textContent = 'Confirmer la remise à zéro'; document.getElementById('msg-raz').textContent = 'Appuie encore pour confirmer.'; return; }
-      faites = {}; ecrire('faites', faites); vueReglages();
+      faites = {}; ecrire('faites', faites); scores = {}; ecrire('quiz', scores); vueReglages();
     });
     var fa = document.getElementById('form-adresse');
     if (fa) fa.addEventListener('submit', function (ev) {
@@ -406,6 +527,9 @@
     if (h.indexOf('p-') === 0 && (c = trouverClasse(h.slice(2)))) return vueProgramme(c);
     if (h.indexOf('x-') === 0 && (c = trouverClasse(h.slice(2)))) return vueExercicesClasse(c);
     if (h.indexOf('s-') === 0 && (c = trouverClasse(h.slice(2)))) return vueSchemas(c);
+    if (h.indexOf('r-') === 0 && (c = trouverClasse(h.slice(2))) && nbQuizClasse(c)) return vueQuizClasse(c);
+    if (h.indexOf('q-') === 0 && (c = trouverClasse(h.slice(2))) && nbQuizClasse(c)) return vueQuiz(c.id);
+    if (h.indexOf('q-') === 0 && (e = INDEX[h.slice(2)]) && e.type === 'lecon' && (e.lecon.quiz || []).length) return vueQuiz(e.lecon.id);
     if (h.indexOf('e-') === 0 && (e = INDEX[h.slice(2)]) && e.lecon && e.lecon.banque) return vueBanque(e);
     if (h.indexOf('l-') === 0 && (e = INDEX[h.slice(2)])) return e.type === 'lecon' ? vueLecon(e) : vueAnnexe(e);
     vueAccueil();
@@ -474,8 +598,10 @@
 
   function initSW() {
     if (MODE !== 'pwa' || !('serviceWorker' in navigator)) return;
-    var rechargement = false;
-    navigator.serviceWorker.addEventListener('controllerchange', function () { if (rechargement) return; rechargement = true; location.reload(); });
+    // On ne recharge que lors d'une mise à jour (un ancien service worker contrôlait déjà la page) :
+    // à la toute première visite, la prise de contrôle ne doit pas interrompre l'élève (quiz en cours…).
+    var rechargement = false, avaitControleur = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', function () { if (rechargement || !avaitControleur) return; rechargement = true; location.reload(); });
     navigator.serviceWorker.register('sw.js').then(function (reg) {
       swReg = reg;
       if (reg.waiting && navigator.serviceWorker.controller) annoncerMaj(reg.waiting);

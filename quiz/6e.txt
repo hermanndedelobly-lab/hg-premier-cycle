@@ -1,0 +1,726 @@
+# Quiz de la 6e — format : « @ identifiant de la leçon », puis pour chaque question :
+# « ? question », « + bonne réponse », « - mauvaise réponse », « = explication » (facultative).
+# Les réponses sont mélangées à l'affichage.
+
+@6e-h-t1-l1
+? Le mot « histoire » vient du grec historia, qui signifie :
++ enquête, recherche
+- récit imaginaire
+- souvenir des rois
+- étude des astres
+= Historia signifie « enquête », « recherche ».
+? Au sens scientifique, l'histoire est :
++ la science qui étudie le passé des hommes vivant en société, à partir de sources
+- un récit vrai ou imaginaire comme un conte
+- l'étude des guerres et des héros uniquement
+- la description de la surface de la Terre
+? Vrai ou faux : l'histoire ne s'intéresse qu'aux guerres et aux rois.
++ Faux
+- Vrai
+= Elle étudie tous les aspects de la vie des hommes : politique, économique, social, culturel et religieux.
+? La création d'un royaume relève de quel domaine de l'histoire ?
++ la vie politique
+- la vie économique
+- la vie sociale
+- la vie culturelle et religieuse
+? Le commerce et l'artisanat relèvent de quel domaine de l'histoire ?
++ la vie économique
+- la vie politique
+- la vie sociale
+- la vie religieuse
+? Quelle est la première étape de la démarche de l'historien ?
++ poser une question (un problème à résoudre)
+- rédiger un récit
+- critiquer les sources
+- classer les faits dans l'ordre chronologique
+? Pourquoi l'historien critique-t-il ses sources ?
++ pour vérifier leur authenticité et leur fiabilité
+- pour les rendre plus intéressantes
+- pour en supprimer les dates
+- pour choisir celles qui lui plaisent
+? Laquelle de ces propositions n'est PAS un intérêt de l'histoire ?
++ prédire exactement l'avenir
+- connaître ses origines et son identité
+- comprendre le présent
+- former le citoyen
+= L'histoire aide à préparer l'avenir en tirant les leçons du passé, mais elle ne le prédit pas.
+
+@6e-h-t1-l2
+? Une source de l'histoire est :
++ toute trace laissée par l'homme dans le passé, qui permet de le reconstituer
+- uniquement un livre d'histoire récent
+- un point d'eau où l'on puise
+- l'opinion personnelle de l'historien
+? Le récit d'un griot est une source :
++ orale
+- écrite
+- archéologique
+- iconographique
+? Des outils en pierre et des poteries retrouvés lors de fouilles sont des sources :
++ archéologiques
+- orales
+- écrites
+- audiovisuelles
+? Une photographie ou une carte ancienne est une source :
++ iconographique
+- orale
+- archéologique
+- linguistique
+? Quelle est une limite des sources écrites en Afrique ?
++ elles sont rares avant le XVe siècle
+- elles ne donnent jamais de dates
+- elles sont toujours fausses
+- elles ne parlent que de la préhistoire
+? Quelle est une limite des sources orales ?
++ les récits peuvent être déformés, oubliés ou embellis
+- elles n'existent pas en Côte d'Ivoire
+- elles donnent toujours des dates très précises
+- elles ne concernent que les objets
+? La linguistique est :
++ l'étude des langues
+- l'étude des noms de lieux
+- l'étude des fossiles
+- l'étude des images
+= La parenté des langues akan, mandé, krou ou gour renseigne sur l'origine commune des peuples.
+? Pourquoi l'historien doit-il comparer plusieurs sources ?
++ parce qu'aucune source n'est parfaite
+- parce qu'une seule source suffit toujours
+- pour allonger son récit
+- parce que les sources orales sont interdites
+
+@6e-h-t1-l3
+? La dignité humaine est :
++ le respect dû à toute personne parce qu'elle est un être humain
+- le droit du plus fort pendant une guerre
+- la richesse d'une personne
+- le respect dû seulement aux chefs
+? Pendant une guerre, la dignité humaine :
++ doit toujours être respectée
+- peut être ignorée par les combattants
+- ne concerne que les soldats
+- est suspendue jusqu'à la paix
+? Tu reçois un message non signé annonçant des violences dans ton quartier. Que dois-tu faire ?
++ vérifier la source et comparer avec des sources fiables
+- le transférer tout de suite à tous tes contacts
+- le croire puisqu'il est sur ton téléphone
+- l'ajouter sur les réseaux sociaux
+? Lequel de ces actes est une atteinte à la dignité humaine en temps de guerre ?
++ l'enrôlement d'enfants soldats
+- soigner les blessés des deux camps
+- distribuer de la nourriture aux déplacés
+- respecter l'emblème de la Croix-Rouge
+? Le Droit international humanitaire (DIH) :
++ protège en temps de guerre les personnes qui ne participent pas ou plus aux combats
+- autorise toutes les méthodes de guerre
+- s'applique seulement en temps de paix
+- protège uniquement les chefs militaires
+? Les principaux textes du DIH sont :
++ les Conventions de Genève de 1949
+- la Constitution ivoirienne
+- le Code de la route
+- la Charte de l'Union africaine
+? Le Comité international de la Croix-Rouge (CICR) a été créé en 1863 à l'initiative de :
++ Henry Dunant
+- Félix Houphouët-Boigny
+- Hérodote
+- Jules Ferry
+? Lequel de ces éléments est un risque d'infection au VIH/sida en temps de guerre ?
++ l'utilisation de matériel non stérilisé lors des soins d'urgence
+- le respect des règles du DIH
+- l'accès au dépistage
+- la protection des femmes et des enfants
+
+@6e-h-t1-l4
+? Le mot chronologie vient du grec chronos et logos, qui signifient :
++ le temps et l'étude
+- la terre et la description
+- la pierre et l'ancien
+- le peuple et le pouvoir
+? Un millénaire correspond à :
++ 1 000 ans
+- 100 ans
+- 10 ans
+- 25 à 30 ans
+? Une génération correspond environ à :
++ 25 à 30 ans
+- 100 ans
+- 10 ans
+- 1 000 ans
+? Le calendrier musulman commence à l'Hégire, en :
++ 622 apr. J.-C.
+- l'an 1
+- 1453
+- 476
+? En quel siècle se situe l'année 1960 ?
++ XXe siècle
+- XIXe siècle
+- XXIe siècle
+- XVIe siècle
+= 19 centaines + 1 = 20, soit le XXe siècle.
+? En quel siècle se situe l'année 1893 (création de la colonie de Côte d'Ivoire) ?
++ XIXe siècle
+- XVIIIe siècle
+- XXe siècle
+- IXe siècle
+? Quel est le bon ordre chronologique ?
++ Hégire (622) → colonie de Côte d'Ivoire (1893) → indépendance (1960)
+- colonie (1893) → Hégire (622) → indépendance (1960)
+- indépendance (1960) → Hégire (622) → colonie (1893)
+- Hégire (622) → indépendance (1960) → colonie (1893)
+? Sur une frise à l'échelle 1 cm = 100 ans commençant à l'an 1, où places-tu l'an 1500 ?
++ à 15 cm de l'origine
+- à 1,5 cm de l'origine
+- à 150 cm de l'origine
+- à 5 cm de l'origine
+= 1 500 ÷ 100 = 15 cm.
+
+@6e-h-t1-l5
+? Une borne chronologique est :
++ un évènement important qui marque une rupture et délimite une période
+- une pierre placée au bord d'une route
+- une date sans importance
+- la durée d'une génération
+? La Préhistoire se termine avec :
++ l'invention de l'écriture, vers 3300 – 3000 av. J.-C.
+- l'apparition de l'homme
+- la chute de Rome
+- la conférence de Berlin
+? Quelle période se situe entre 476 et 1453 ?
++ le Moyen Âge
+- l'Antiquité
+- les Temps modernes
+- l'époque contemporaine
+? Pourquoi dit-on que l'Afrique est le berceau de l'humanité ?
++ parce que les plus anciens restes humains y ont été découverts
+- parce que l'écriture y est née
+- parce que c'est le plus grand continent
+- parce que les Européens l'ont dit
+? Les empires du Ghana, du Mali et du Songhaï se développent entre :
++ le VIIIe et le XVIe siècle
+- le Ier et le IIIe siècle
+- le XVIIIe et le XIXe siècle
+- 1893 et 1960
+? Ces grands empires se sont enrichis grâce :
++ au commerce transsaharien de l'or et du sel
+- à l'exportation du cacao
+- à la traite négrière atlantique
+- au pétrole
+? Quelle conférence a précédé le partage de l'Afrique par les Européens ?
++ la conférence de Berlin (1884 – 1885)
+- la conférence de Brazzaville (1944)
+- la conférence de Bandung (1955)
+- la conférence de Genève (1949)
+? La période coloniale en Côte d'Ivoire va de :
++ 1893 à 1960
+- 1884 à 1885
+- 1960 à aujourd'hui
+- 622 à 1453
+
+@6e-h-t2-l1
+? Le mot paléolithique signifie :
++ l'âge de la pierre ancienne
+- l'âge de la pierre polie
+- l'âge du fer
+- l'âge de l'écriture
+? Le paléolithique est aussi appelé :
++ l'âge de la pierre taillée
+- l'âge de la pierre polie
+- l'âge des métaux
+- l'âge du bronze
+? Quel est le principal site paléolithique de Côte d'Ivoire ?
++ Anyama, au nord d'Abidjan
+- Ahouakro, près de Tiassalé
+- Korhogo
+- Grand-Lahou
+? Le site d'Anyama prouve que des hommes vivaient en milieu forestier il y a environ :
++ 150 000 ans
+- 1 500 ans
+- 10 ans
+- 3 000 ans
+? Pourquoi les vestiges du paléolithique sont-ils rares en Côte d'Ivoire ?
++ les pluies abondantes et les sols acides de la forêt les ont détruits
+- personne n'a jamais vécu en Côte d'Ivoire à cette époque
+- les hommes les ont tous emportés en Europe
+- ils sont interdits de fouille
+? Lequel de ces objets est un vestige du paléolithique ?
++ un biface
+- une hache polie
+- une poterie décorée
+- un bas fourneau
+? Les hommes du paléolithique sont des prédateurs, c'est-à-dire qu'ils :
++ prennent leur nourriture dans la nature (chasse, pêche, cueillette)
+- cultivent la terre et élèvent des animaux
+- achètent leur nourriture au marché
+- fabriquent des outils en fer
+? Les hommes du paléolithique sont nomades : ils
++ se déplacent sans cesse à la recherche de nourriture et d'eau
+- vivent dans des villages fixes
+- habitent des maisons en dur
+- restent toute leur vie au même endroit
+
+@6e-h-t2-l2
+? Le néolithique est l'âge de :
++ la pierre polie
+- la pierre taillée
+- l'écriture
+- l'industrie
+? Au néolithique, l'homme devient :
++ producteur de sa nourriture grâce à l'agriculture et à l'élevage
+- uniquement chasseur et cueilleur
+- nomade
+- forgeron
+? Un amas coquillier est :
++ un énorme tas de coquillages laissés par les populations qui consommaient les mollusques des lagunes
+- un village de pêcheurs actuel
+- une carrière de pierre
+- un outil en pierre polie
+? Le parc archéologique d'Ahouakro se trouve dans la sous-préfecture de :
++ Tiassalé
+- Anyama
+- Korhogo
+- Man
+? Laquelle de ces plantes est cultivée au néolithique en Côte d'Ivoire ?
++ l'igname
+- le cacao
+- le café
+- l'hévéa
+? La sédentarisation signifie que les hommes :
++ se fixent dans des villages
+- se déplacent sans cesse
+- quittent l'Afrique
+- abandonnent l'agriculture
+? Pourquoi parle-t-on de « révolution » du néolithique ?
++ parce que l'homme passe de la vie nomade à la vie sédentaire et de la prédation à la production
+- parce qu'il y a eu une guerre
+- parce que l'écriture est inventée
+- parce que les Européens arrivent
+? Lequel de ces objets est caractéristique du néolithique ?
++ la poterie
+- le biface
+- le galet aménagé
+- le coupe-coupe en fer
+
+@6e-h-t2-l3
+? La métallurgie du fer est :
++ l'ensemble des techniques pour extraire le fer de son minerai et le travailler
+- l'extraction de l'or dans les rivières
+- le polissage de la pierre
+- la fabrication des poteries
+? Les scories sont :
++ les déchets du fer fondu
+- des tubes en terre cuite
+- des outils en pierre
+- des morceaux de charbon de bois
+? Les tuyères sont :
++ des tubes en terre cuite qui conduisent l'air dans le fourneau
+- des déchets du fer
+- des haches en fer
+- des fours à pain
+? Dans quelle région du Nord les forgerons occupent-ils une place importante ?
++ le pays sénoufo (Korhogo, Boundiali)
+- la région des lagunes
+- la région de Man
+- la région d'Anyama
+? Quel est l'ordre des étapes du travail du fer ?
++ extraction → préparation → réduction → forgeage
+- forgeage → extraction → réduction → préparation
+- réduction → extraction → forgeage → préparation
+- préparation → forgeage → extraction → réduction
+? Où se fait la réduction du minerai de fer ?
++ dans le bas fourneau en argile
+- dans la rivière
+- sur l'enclume
+- dans un amas coquillier
+? Lequel de ces éléments est un progrès économique dû au fer ?
++ des outils plus solides qui augmentent la production agricole
+- la disparition du commerce
+- la fin de l'agriculture
+- l'abandon de la chasse
+? La métallurgie du fer marque :
++ la fin de la préhistoire
+- le début du paléolithique
+- le début de la colonisation
+- l'indépendance
+
+@6e-g-t1-l1
+? Le mot géographie vient du grec gê et graphein, qui signifient :
++ la Terre et décrire
+- le temps et l'étude
+- la pierre et nouveau
+- le peuple et écrire
+? La géographie physique étudie :
++ le relief, le climat, les cours d'eau, les sols et la végétation
+- la population et les villes
+- l'industrie et le commerce
+- l'histoire des royaumes
+? La population, les villes et les migrations relèvent de :
++ la géographie humaine
+- la géographie physique
+- la géographie économique
+- l'histoire
+? L'industrie, le commerce et les transports relèvent de :
++ la géographie économique
+- la géographie physique
+- la géographie humaine
+- la géographie générale
+? L'étude de la région du Gôh dans tous ses aspects relève de :
++ la géographie régionale
+- la géographie générale
+- la géographie physique seulement
+- l'archéologie
+? Quel est l'ordre de la démarche du géographe ?
++ observer → localiser → décrire → expliquer → comparer
+- expliquer → observer → décrire → localiser → comparer
+- localiser → comparer → observer → expliquer → décrire
+- décrire → expliquer → observer → comparer → localiser
+? Localiser un phénomène, c'est répondre à la question :
++ où ?
+- pourquoi ?
+- quand ?
+- combien ?
+? Lequel de ces exemples montre l'utilité de la géographie ?
++ aider à prévenir les inondations et l'érosion
+- dater les fossiles
+- écrire la généalogie des rois
+- traduire les langues anciennes
+
+@6e-g-t1-l2
+? Le relief est :
++ l'ensemble des parties hautes et des parties basses de la surface de la Terre
+- l'ensemble des cours d'eau d'une région
+- le climat d'une région montagneuse
+- la végétation qui couvre le sol
+? Une surface plane et basse est :
++ une plaine
+- une montagne
+- un plateau
+- une colline
+? L'altitude est :
++ la hauteur d'un point par rapport au niveau de la mer
+- la différence d'altitude entre deux points
+- l'inclinaison d'un terrain
+- la profondeur d'un océan
+? La dénivellation est :
++ la différence d'altitude entre deux points
+- le point le plus haut d'un relief
+- la partie la plus basse d'une vallée
+- la pente d'un versant
+? Le prolongement du continent sous la mer, peu profond, s'appelle :
++ le plateau continental
+- la plaine abyssale
+- la dorsale océanique
+- le talus continental
+? Les forces internes (mouvements des plaques, volcanisme) :
++ construisent le relief
+- usent le relief par l'érosion
+- forment uniquement les plaines
+- n'ont aucun effet sur le relief
+? Quel est le point culminant de la Côte d'Ivoire ?
++ le mont Nimba (1 752 m)
+- le mont Tonkoui
+- le Kilimandjaro
+- le plateau d'Anyama
+? Sur une carte du relief, le vert représente généralement :
++ les basses terres (plaines)
+- les hautes montagnes
+- les mers et les océans
+- les déserts
+
+@6e-g-t1-l3
+? Le temps est :
++ l'état de l'atmosphère en un lieu et à un moment donnés
+- la succession habituelle des types de temps sur au moins 30 ans
+- la durée d'une année
+- la quantité de pluie tombée en un an
+? Le climat est observé sur une période d'au moins :
++ 30 ans
+- 1 an
+- 1 mois
+- 300 ans
+? « Il pleut ce matin à Gagnoa » décrit :
++ le temps
+- le climat
+- la végétation
+- le relief
+? Quel instrument mesure la quantité de pluie ?
++ le pluviomètre
+- le thermomètre
+- le baromètre
+- l'anémomètre
+? La zone chaude se situe :
++ entre le tropique du Cancer et le tropique du Capricorne
+- au-delà des cercles polaires
+- entre les tropiques et les cercles polaires
+- uniquement au Sahara
+? Le climat du Sud de la Côte d'Ivoire est :
++ subéquatorial (attiéen), avec quatre saisons
+- désertique
+- polaire
+- tropical soudanais à deux saisons
+? Températures : mois le plus chaud 28 °C, mois le plus froid 24 °C. L'amplitude thermique est de :
++ 4 °C
+- 52 °C
+- 26 °C
+- 2 °C
+= Amplitude = 28 − 24 = 4 °C.
+? Dans un diagramme ombrothermique, un mois est sec lorsque :
++ les précipitations sont inférieures ou égales au double de la température (P ≤ 2T)
+- il fait plus de 30 °C
+- il tombe plus de 100 mm de pluie
+- la température est inférieure à 10 °C
+
+@6e-g-t1-l4
+? Le sol est :
++ la couche superficielle et meuble de l'écorce terrestre où poussent les plantes
+- la roche dure en profondeur
+- l'ensemble des plantes d'une région
+- la couche d'air au-dessus de la Terre
+? L'humus est formé :
++ de débris de végétaux et d'animaux décomposés
+- de sable et de graviers
+- de fer et de cuirasse
+- d'eau salée
+? Les sols ferrallitiques sont :
++ profonds, rouges ou ocre, lessivés par les fortes pluies
+- gorgés d'eau en permanence
+- formés uniquement de sable
+- couverts de glace
+? La mangrove est :
++ une forêt de palétuviers sur les côtes vaseuses, au bord des lagunes
+- une savane à hautes herbes
+- une steppe d'épineux
+- une forêt de montagne
+? Au Nord de la Côte d'Ivoire, on trouve surtout :
++ la savane arborée et arbustive
+- la forêt dense humide
+- la mangrove
+- la toundra
+? Comment la déforestation agit-elle sur le sol ?
++ le sol n'est plus protégé ni enrichi : la pluie l'érode et l'appauvrit
+- elle rend le sol plus fertile
+- elle n'a aucun effet
+- elle augmente l'humus
+? Au Sud de la Côte d'Ivoire, on associe :
++ climat subéquatorial, sols ferrallitiques, forêt dense humide
+- climat soudanais, sols ferrugineux, savane
+- climat désertique, sols sableux, steppe
+- climat de montagne, sols hydromorphes, toundra
+? Le « V baoulé » désigne au Centre :
++ une mosaïque forêt-savane
+- une chaîne de montagnes
+- un fleuve
+- une forêt classée
+
+@6e-g-t1-l5
+? Une carte plane qui représente toute la surface de la Terre est :
++ un planisphère
+- un globe
+- un plan
+- une coupe topographique
+? Une représentation très détaillée d'un petit espace (école, quartier) est :
++ un plan
+- un planisphère
+- un globe
+- une projection
+? L'équateur (0°) partage la Terre en :
++ hémisphère Nord et hémisphère Sud
+- hémisphère Est et hémisphère Ouest
+- quatre fuseaux horaires
+- deux pôles
+? La longitude est la distance en degrés entre un point et :
++ le méridien de Greenwich
+- l'équateur
+- le pôle Nord
+- le tropique du Cancer
+? Abidjan est située à environ :
++ 5° de latitude Nord et 4° de longitude Ouest
+- 5° de latitude Sud et 4° de longitude Est
+- 40° de latitude Nord et 0° de longitude
+- 0° de latitude et 45° de longitude Ouest
+? Sur une carte au 1/50 000, deux villages sont à 6 cm. Quelle est la distance réelle ?
++ 3 km
+- 30 km
+- 300 m
+- 6 km
+= 6 × 50 000 = 300 000 cm = 3 000 m = 3 km.
+? Une carte à grande échelle (1/10 000) représente :
++ un petit espace avec beaucoup de détails
+- un grand espace avec peu de détails
+- toute la Terre
+- uniquement les océans
+? Pourquoi toute projection entraîne-t-elle des déformations ?
++ parce qu'on ne peut pas représenter exactement une sphère sur une surface plane
+- parce que les cartographes se trompent
+- parce que la Terre est plate
+- parce que l'échelle est toujours fausse
+
+@6e-g-t1-l6
+? La rotation est le mouvement de la Terre :
++ sur elle-même, autour de l'axe des pôles
+- autour du Soleil
+- autour de la Lune
+- vers le nord
+? La rotation de la Terre dure environ :
++ 24 heures
+- 365 jours
+- 30 jours
+- 12 heures
+? La succession des jours et des nuits est une conséquence de :
++ la rotation
+- la révolution
+- l'inclinaison de la Lune
+- l'érosion
+? La Terre est divisée en 24 fuseaux horaires de :
++ 15° chacun
+- 24° chacun
+- 30° chacun
+- 10° chacun
+= 360° ÷ 24 = 15°.
+? La révolution de la Terre autour du Soleil dure :
++ 365 jours et environ 6 heures
+- 24 heures
+- 366 jours exactement
+- 12 mois de 30 jours
+? Pourquoi une année bissextile compte-t-elle 366 jours ?
++ les 6 heures accumulées pendant 4 ans donnent un jour de plus
+- la Terre ralentit tous les 4 ans
+- c'est une décision du calendrier musulman
+- la Lune ajoute un jour
+? Les saisons sont dues :
++ à l'inclinaison de l'axe de la Terre pendant la révolution
+- à la distance entre la Terre et la Lune
+- à la rotation de la Terre
+- aux vents
+? Il est 12 h à Abidjan (0°). Quelle heure est-il à 30° Est ?
++ 14 h
+- 10 h
+- 12 h
+- 15 h
+= 30 ÷ 15 = 2 fuseaux vers l'est : on ajoute 2 heures.
+
+@6e-g-t2-l1
+? L'environnement comprend :
++ des éléments naturels et des éléments créés par l'homme
+- seulement les forêts et les animaux
+- seulement les villes
+- seulement le climat
+? Laquelle de ces composantes est humaine ?
++ un marché
+- une colline
+- une rivière
+- la forêt
+? Les hommes s'installent de préférence :
++ sur les plateaux, près des points d'eau et sur les sols fertiles
+- dans les bas-fonds marécageux
+- loin des routes et des marchés
+- au sommet des montagnes
+? Une sous-préfecture compte 60 000 habitants pour 1 200 km². Sa densité est de :
++ 50 habitants par km²
+- 500 habitants par km²
+- 20 habitants par km²
+- 72 habitants par km²
+= 60 000 ÷ 1 200 = 50 hab./km².
+? Lequel de ces effets est dû à l'orpaillage clandestin ?
++ la pollution des eaux par des produits chimiques
+- le reboisement
+- l'amélioration des sols
+- la baisse des maladies
+? Les feux de brousse :
++ détruisent la végétation et appauvrissent les sols
+- enrichissent durablement les sols
+- protègent les animaux
+- empêchent l'érosion
+? Laquelle de ces maladies est liée à l'insalubrité ?
++ le choléra
+- la rougeole
+- le diabète
+- la myopie
+? Lequel de ces moyens préserve l'environnement local ?
++ le reboisement et la protection des forêts classées
+- l'agriculture extensive
+- les dépôts d'ordures sauvages
+- la fabrication de charbon de bois
+
+@6e-g-t2-l2
+? L'eau couvre environ quelle part de la surface de la Terre ?
++ 71 %
+- 30 %
+- 97 %
+- 50 %
+? Environ quelle part de l'eau de la Terre est salée ?
++ 97 %
+- 71 %
+- 3 %
+- 50 %
+? La glace et la grêle sont de l'eau à l'état :
++ solide
+- liquide
+- gazeux
+- salé
+? La transformation de la vapeur d'eau en gouttelettes qui forment les nuages s'appelle :
++ la condensation
+- l'évaporation
+- l'infiltration
+- le ruissellement
+? L'eau qui pénètre dans le sol et alimente les nappes souterraines, c'est :
++ l'infiltration
+- le ruissellement
+- l'évaporation
+- la condensation
+? Quel est le bon ordre du cycle de l'eau ?
++ évaporation → condensation → précipitations → ruissellement et infiltration
+- condensation → évaporation → infiltration → précipitations
+- précipitations → évaporation → ruissellement → condensation
+- ruissellement → condensation → évaporation → précipitations
+? Laquelle de ces maladies est une maladie hydrique ?
++ la fièvre typhoïde
+- le paludisme
+- la tuberculose
+- la grippe
+? Lequel de ces gestes permet de gérer l'eau de façon rationnelle ?
++ récupérer l'eau de pluie
+- laisser couler le robinet
+- jeter les ordures dans la rivière
+- arroser en plein midi sans arrêt
+
+@6e-g-t2-l3
+? L'impôt est :
++ une contribution financière obligatoire versée à l'État ou aux collectivités, sans contrepartie directe
+- un don volontaire aux chefs de village
+- le prix d'un service particulier
+- une amende pour les fraudeurs
+? Vrai ou faux : celui qui ne paie pas l'impôt ne profite pas des routes.
++ Faux
+- Vrai
+= L'impôt est sans contrepartie directe : tout le monde utilise les routes, les écoles et les hôpitaux.
+? Quel service collecte principalement les impôts en Côte d'Ivoire ?
++ la Direction générale des impôts (DGI)
+- la Croix-Rouge
+- la mairie uniquement
+- la CEDEAO
+? Lequel de ces impôts est un impôt direct ?
++ l'impôt foncier
+- la TVA
+- les droits de douane
+- la taxe incluse dans le prix du carburant
+? La TVA est :
++ un impôt indirect inclus dans le prix payé par le consommateur
+- un impôt sur les terrains
+- une taxe de marché
+- un salaire
+? Le taux normal de la TVA en Côte d'Ivoire est de :
++ 18 %
+- 10 %
+- 25 %
+- 5 %
+? Une facture affiche 50 000 F CFA HT. Le montant TTC est de :
++ 59 000 F CFA
+- 50 000 F CFA
+- 9 000 F CFA
+- 68 000 F CFA
+= TVA = 50 000 × 18 ÷ 100 = 9 000 F ; TTC = 50 000 + 9 000 = 59 000 F CFA.
+? Les droits de place perçus au marché sont :
++ des taxes locales
+- des impôts sur les salaires
+- des droits de douane
+- la TVA
