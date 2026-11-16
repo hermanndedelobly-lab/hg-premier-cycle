@@ -10,6 +10,7 @@ evaluation, v11 (statut) ; textes de recherche recalculés. Contrôles bloquants
   - évaluation : compréhension, activités d'application, situation d'évaluation, corrigés, barème ;
   - préparation : compétence, habiletés, situation, matériel, stratégie, déroulement, vérification,
     synthèse, évaluation, remédiation ;
+  - exercices.html, banque.html (facultatifs) : jamais moins d'exercices que dans la version précédente ;
   - illustrations : chaque <figure> a un <svg aria-label>, une <figcaption> avec titre en gras,
     puis une explication <p class="illus-expl">.
 Usage : python3 outils/integrer-pedagogie.py [--verifier]
@@ -113,6 +114,19 @@ def main():
                 continue
             lot[f] = open(p, encoding='utf-8').read().strip() + '\n'
             controler(lid, f, lot[f], err)
+        # exercices.html (facultatif) : version corrigée des exercices traités de la leçon (champ « exercices »).
+        # Garde-fou : aucun exercice existant ne peut disparaître.
+        # banque.html (facultatif) : idem pour la banque d'exercices de la leçon (champ « banque »).
+        for opt in ('exercices', 'banque'):
+            p = os.path.join(dossier, opt + '.html')
+            if not os.path.isfile(p):
+                continue
+            lot[opt] = open(p, encoding='utf-8').read().strip() + '\n'
+            controler(lid, opt, lot[opt], err)
+            avant = (lecons[lid].get(opt) or '').count('<section class="exo">')
+            apres = lot[opt].count('<section class="exo">')
+            if apres < avant:
+                err.append(f'{lid}/{opt}.html : {apres} exercices au lieu de {avant} (suppression interdite)')
         meta = os.path.join(dossier, 'meta.json')
         lot['meta'] = json.load(open(meta, encoding='utf-8')) if os.path.isfile(meta) else {'statut': 'brouillon'}
         if lot['meta'].get('statut') not in ('brouillon', 'pilote', 'validee'):
@@ -127,8 +141,12 @@ def main():
     for lid, lot in lots.items():
         l = lecons[lid]
         l['cours'] = lot['eleve']
-        for f in ('enseignant', 'preparation', 'culture', 'evaluation'):
-            l[f] = lot[f]
+        for f in ('enseignant', 'preparation', 'culture', 'evaluation', 'exercices', 'banque'):
+            if f in lot:
+                l[f] = lot[f]
+        if 'banque' in lot:
+            l['texteBanque'] = texte(l['banque'])
+            l['nbBanque'] = l['banque'].count('<section class="exo">')
         l['v11'] = lot['meta']
         l['texte'] = texte(l['situation'] + ' ' + l['cours'] + ' ' + l['evaluation'])
         l['texteEns'] = texte(l['enseignant'] + ' ' + l['preparation'])
