@@ -33,7 +33,7 @@ def noter(etape, ok, detail):
 
 
 # 1. Normales OMM 1991-2020
-BASE = 'https://www.ncei.noaa.gov/pub/data/normals/WMO/'
+BASE = 'https://www.ncei.noaa.gov/data/oceans/archive/arc0216/0253808/6.6/data/0-data/'
 STATIONS = {'65578': 'Abidjan', '65555': 'Bouaké', '65536': 'Korhogo', '65562': 'Daloa', '65560': 'Man',
             '65548': 'Odienné', '65585': 'Sassandra', '65594': 'San-Pédro', '65599': 'Tabou', '65563': 'Dimbokro',
             '65545': 'Séguéla', '65557': 'Bondoukou', '65559': 'Gagnoa', '65556': 'Yamoussoukro'}
@@ -56,9 +56,9 @@ try:
                 fichiers.append(plein)
     open(os.path.join(OUT, 'omm-normales-liste.txt'), 'w').write('\n'.join(fichiers))
     noter('OMM liste', True, f'{len(fichiers)} fichiers dans {len(visites)} répertoires')
-    cibles = [f for f in fichiers if re.search(r'(Ivoire|Cote|COTE|IVORY|Ivory|CIV|_IV_)', f)]
+    cibles = [f for f in fichiers if re.search(r'(Ivoire|Cote|COTE|IVORY|Ivory|CIV|_IV_|Region[-_ ]?1|Region_I\b|RA[-_ ]?I\b|Africa)', f)]
     noter('OMM fichiers Côte d\'Ivoire', bool(cibles), cibles[:20])
-    for f in cibles[:20]:
+    for f in cibles[:40]:
         nom = os.path.basename(urllib.parse.unquote(f))
         try:
             data = get(f, binaire=True, timeout=300)
@@ -90,7 +90,18 @@ try:
 except Exception as e:  # noqa: BLE001
     noter('OMM', False, str(e))
 
-# 2. Crossref : étude Nature 2025 sur Anyama
+# 2. Crossref : étude Nature 2025 sur Anyama (par son DOI)
+try:
+    r = json.loads(get('https://api.crossref.org/works/10.1038/s41586-025-08613-y'))['message']
+    notice = {'titre': (r.get('title') or [''])[0], 'revue': (r.get('container-title') or [''])[0], 'doi': r.get('DOI'),
+              'volume': r.get('volume'), 'numero': r.get('issue'), 'pages': r.get('page'),
+              'en_ligne': (r.get('published-online') or {}).get('date-parts'), 'imprime': (r.get('published-print') or {}).get('date-parts'),
+              'auteurs': [{'nom': ((a.get('given') or '') + ' ' + (a.get('family') or '')).strip(),
+                           'affiliations': [x.get('name') for x in a.get('affiliation', [])]} for a in r.get('author', [])]}
+    json.dump(notice, open(os.path.join(OUT, 'crossref-nature-anyama-doi.json'), 'w'), ensure_ascii=False, indent=1)
+    noter('Crossref DOI', True, notice['titre'] + ' — ' + str(notice['volume']) + ' ' + str(notice['pages']))
+except Exception as e:  # noqa: BLE001
+    noter('Crossref DOI', False, str(e))
 try:
     q = urllib.parse.urlencode({'query.bibliographic': 'rainforest human occupation 150,000 years Côte d\'Ivoire Anyama Bété',
                                 'filter': 'from-pub-date:2024-06-01,until-pub-date:2025-12-31', 'rows': 10})
