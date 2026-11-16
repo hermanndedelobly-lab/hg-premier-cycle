@@ -1,0 +1,15 @@
+Rgn,Country                     , Status   ,Latitude,  Longtiude,Elevation,Elem1,Elem2,Elem3,Elem4,Elem5,Elem6,Elem7,Elem8, Filename 
+1,Cote_d'Ivoire                 ,WMO_Member,   5.250,  -3.930,    7.00,PRCP,DP01,TMAX,    ,    ,MSLP,MNVP,TSUN, ABIDJAN_65578.csv                                                
+1,Cote_d'Ivoire                 ,WMO_Member,   5.300,  -3.300,   35.00,PRCP,DP01,TMAX,    ,    ,    ,MNVP,TSUN, ADIAKE_65585.csv                                                 
+1,Cote_d'Ivoire                 ,WMO_Member,   8.050,  -2.780,  371.00,PRCP,DP01,TMAX,    ,    ,MSLP,MNVP,    , BONDOUKOU_65545.csv                                              
+1,Cote_d'Ivoire                 ,WMO_Member,   7.730,  -5.070,  376.00,PRCP,DP01,    ,    ,    ,MSLP,MNVP,    , BOUAKE_65555.csv                                                 
+1,Cote_d'Ivoire                 ,WMO_Member,   6.870,  -6.470,  276.00,PRCP,DP01,TMAX,    ,    ,MSLP,MNVP,    , DALOA_65560.csv                                                  
+1,Cote_d'Ivoire                 ,WMO_Member,   6.650,  -4.700,   92.00,PRCP,DP01,TMAX,    ,    ,MSLP,MNVP,TSUN, DIMBOKRO_65562.csv                                               
+1,Cote_d'Ivoire                 ,WMO_Member,   6.130,  -5.950,  205.00,PRCP,DP01,TMAX,    ,    ,MSLP,MNVP,TSUN, GAGNOA_65557.csv                                                 
+1,Cote_d'Ivoire                 ,WMO_Member,   9.420,  -5.620,  381.00,PRCP,DP01,    ,    ,    ,MSLP,MNVP,    , KORHOGO_65536.csv                                                
+1,Cote_d'Ivoire                 ,WMO_Member,   7.380,  -7.520,  340.00,PRCP,DP01,    ,    ,    ,MSLP,MNVP,    , MAN_65548.csv                                                    
+1,Cote_d'Ivoire                 ,WMO_Member,   7.500,  -4.570,  434.00,PRCP,DP01,    ,    ,    ,MSLP,MNVP,    , ODIENNE_65528.csv                                                
+1,Cote_d'Ivoire                 ,WMO_Member,   4.730,  -6.650,   62.00,PRCP,DP01,TMAX,    ,    ,MSLP,MNVP,TSUN, SANPEDRO_65594.csv                                               
+1,Cote_d'Ivoire                 ,WMO_Member,   4.950,  -6.080,   62.00,PRCP,DP01,TMAX,    ,    ,MSLP,MNVP,TSUN, SASSANDRA_65599.csv                                              
+1,Cote_d'Ivoire                 ,WMO_Member,   4.420,  -7.370,   62.00,PRCP,DP01,TMAX,    ,    ,MSLP,MNVP,TSUN, TABOU_65592.csv                                                  
+1,Cote_d'Ivoire                 ,WMO_Member,   6.900,  -5.350,  196.00,PRCP,DP01,TMAX,    ,    ,MSLP,MNVP,TSUN, YAMOUSSOUKRO_65563.csv                                           

@@ -19,7 +19,54 @@
  {
   "etape": "OMM extraits",
   "ok": true,
-  "detail": "4 lignes"
+  "detail": "8 lignes"
+ },
+ {
+  "etape": "OMM pays",
+  "ok": true,
+  "detail": [
+   "1,CoteDIvoire,14"
+  ]
+ },
+ {
+  "etape": "OMM wmo_normals_9120_8param_meta.csv",
+  "ok": true,
+  "detail": "14 lignes ivoiriennes sur 6809"
+ },
+ {
+  "etape": "OMM wmo_normals_9120_PRCP.csv",
+  "ok": true,
+  "detail": "14 lignes ivoiriennes sur 6282"
+ },
+ {
+  "etape": "OMM wmo_normals_9120_TAVG.csv",
+  "ok": false,
+  "detail": "0 lignes ivoiriennes sur 5408"
+ },
+ {
+  "etape": "OMM wmo_normals_9120_TMAX.csv",
+  "ok": true,
+  "detail": "10 lignes ivoiriennes sur 5716"
+ },
+ {
+  "etape": "OMM wmo_normals_9120_TMIN.csv",
+  "ok": false,
+  "detail": "0 lignes ivoiriennes sur 5764"
+ },
+ {
+  "etape": "OMM wmo_normals_9120_DP01.csv",
+  "ok": true,
+  "detail": "14 lignes ivoiriennes sur 5532"
+ },
+ {
+  "etape": "UNESCO 1602",
+  "ok": true,
+  "detail": [
+   "de métallurgie ancienne du fer du Burkina Faso Ce bien, composé de cinq éléments situés dans différentes provinces du pays, comprend une quinzaine de fourneaux debout à tirage naturel, plusieurs bases de fourneaux, des mines et des traces d’habitations. Remontant au VIII e siècle AEC, Douroula est le témoin le plus ancien du développement de la production de fer recensé au Burkina Faso. Les autres",
+   ", composé de cinq éléments situés dans différentes provinces du pays, comprend une quinzaine de fourneaux debout à tirage naturel, plusieurs bases de fourneaux, des mines et des traces d’habitations. Remontant au VIII e siècle AEC, Douroula est le témoin le plus ancien du développement de la production de fer recensé au Burkina Faso. Les autres composantes du bien - Tiwêga, Yamané, Kindibo et Béku",
+   "emière phase relativement précoce du développement de la production de fer en Afrique. Tiwêga, Yamané, Kindibo et Békuy possèdent tous les quatre des fourneaux de réduction du minerai de fer remarquablement bien conservés. Ce sont également les très rares sites qui ont des fourneaux en élévation au Burkina Faso. Ce sont des sites de production massive qui, par leur ampleur, illustrent l’intensific",
+   "èdent tous les quatre des fourneaux de réduction du minerai de fer remarquablement bien conservés. Ce sont également les très rares sites qui ont des fourneaux en élévation au Burkina Faso. Ce sont des sites de production massive qui, par leur ampleur, illustrent l’intensification de la production du fer au cours du second millénaire après notre ère, au moment où les sociétés d’Afrique de l’Ouest "
+  ]
  },
  {
   "etape": "Crossref DOI",
