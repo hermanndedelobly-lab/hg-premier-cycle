@@ -316,3 +316,70 @@ FICHES['5e-h-t2-l1'] = {
  'valeurs': ["Unité nationale et égalité des citoyens.", "Respect des traditions et esprit critique.",
              "Liens avec l'EDHC (citoyenneté) et le français (slogan, argumentation)."],
 }
+
+# ------------------------------------------------------------------ T2-L2
+FICHES['5e-h-t2-l2'] = {
+ 'materiel': ["schéma des causes des migrations (schéma 1)", "fond de carte de la Côte d'Ivoire et de ses voisins (un par élève)",
+              "crayons de couleur", "carte des premiers mouvements migratoires (carte 1) pour la correction"],
+ 'contexte': "une cérémonie de réconciliation est organisée dans la localité après la crise sociopolitique.",
+ 'circonstance': "le responsable de la commission locale affirme que les peuples de Côte d'Ivoire sont issus d'un brassage continuel dû à de multiples migrations ; des élèves de 5e du Lycée moderne de Bouaflé décident de le vérifier.",
+ 'taches': ["définir la migration et identifier ses causes", "représenter les flux migratoires sur une carte",
+            "identifier les conséquences des migrations et proposer des actions pour l'unité nationale"],
+ 'prerequis': ["Les premiers habitants de la Côte d'Ivoire (leçon 1).", "Les grands groupes culturels (thème 1).", "Les éléments d'une carte : titre, légende, orientation (6e)."],
+ 'seances': [
+  {'titre': "La migration, ses causes et les principaux flux (I à III)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation de Bouaflé.", "« Le responsable de la réconciliation a-t-il raison de dire que nous sommes issus de migrations ? »"],
+    ["Hypothèses des élèves : certains peuples sont venus d'ailleurs."], "Introduction."),
+   ("Développement · I. La notion de migration", 10, "Exemples actuels et construction des définitions",
+    ["Partir d'exemples actuels (parent parti travailler en ville).", "Faire définir migration, émigration, immigration."],
+    ["Migration : déplacement d'un groupe vers une autre région pour s'y installer durablement ; émigration : départ ; immigration : arrivée.", "Les migrations anciennes sont lentes, par petits groupes."], "I. 1 et 2."),
+   ("Développement · II. Les causes", 15, "Classement d'exemples avec le schéma 1",
+    ["Faire classer des causes en quatre familles.", "Montrer qu'une migration a souvent plusieurs causes."],
+    ["Politiques : guerres, éclatement des empires ; économiques : terres, or, cola ; naturelles : sécheresses ; religieuses et sociales : refus de l'islam imposé, razzias."], "II. 1 à 4."),
+   ("Développement · III. Les principaux flux", 14, "Lecture guidée du tableau",
+    ["Pour chaque groupe, faire relever provenance, période, peuples et zone d'installation."],
+    ["Mandé du Nord et du Sud : nord-ouest ; Krou : ouest ; Gour : nord et nord-est ; Akan : est."], "III. 1 à 5."),
+   (EVAL, 8, "Travail individuel", ["Activités d'application I et II."], ["Définitions et classement des causes."], None),
+  ]},
+  {'titre': "Carte des flux, conséquences et unité nationale (IV à VI)", 'etapes': [
+   (PRES, 5, "Rappel et question", ["« Comment montrer ces déplacements sur une carte ? »"], ["Avec des flèches."], None),
+   ("Développement · IV. La carte des flux", 20, "Réalisation individuelle d'une carte, correction",
+    ["Faire tracer une flèche colorée par groupe, placer les villes repères.", "Faire ajouter titre, légende et orientation ; corriger avec la carte 1."],
+    ["Carte avec cinq flèches de couleurs différentes, titre « Les premiers mouvements migratoires en Côte d'Ivoire », légende et flèche du Nord."], "IV."),
+   ("Développement · V et VI. Conséquences et unité nationale", 20, "Questionnement puis débat dirigé",
+    ["Faire relever les conséquences démographiques, socioculturelles, politiques et économiques.", "Débat sur la phrase du responsable de la réconciliation ; propositions d'actions."],
+    ["Occupation de tout le territoire ; brassage ; royaumes (Kong, Gyaman, royaumes agni et baoulé) ; commerce ; conflits et alliances.", "Actions : refuser le tribalisme, journées des cultures, activités sportives communes."], "V, VI, conclusion."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application III à VI ou situation d'évaluation."], ["Réinvestissent flux, conséquences et actions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Les migrations anciennes sont lentes et fragmentées : des lignages et des familles, pas des peuples entiers ; une partie des groupes de chaque ensemble se dit autochtone.",
+  "Au nord, l'expansion mandé est d'abord commerciale : routes dioula de l'or et de la cola, villes marchandes de Bégho, Bondoukou et Kong.",
+  "À l'est, les migrations akan des XVIIe et XVIIIe siècles sont liées à la formation des États akan de l'actuel Ghana ; elles sont approfondies en 4e.",
+  "Les dates sont des ordres de grandeur tirés des traditions et des généalogies.",
+ ],
+ 'difficultes': [
+  ("Confusion entre émigration et immigration.", "Exemple concret : un villageois qui part à Abidjan émigre de son village et immigre à Abidjan."),
+  ("Confusion entre les provenances des groupes.", "Faire reconstituer le tableau des flux de mémoire, puis le comparer à la carte 1."),
+  ("Carte incomplète (titre, légende ou orientation manquants).", "Grille de vérification à cocher avant de rendre la carte."),
+ ],
+ 'soutien': ["Fond de carte avec les zones de provenance déjà nommées.", "Tableau des flux à compléter avec une liste de mots."],
+ 'approfondissement': ["Recueillir le récit de migration d'une famille ou d'un village.", "Exposé sur la ville de Kong."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : migration ; émigration ; immigration.", 3, "Migration : déplacement d'un groupe vers une autre région pour s'y installer durablement ; émigration : départ de sa région ou de son pays ; immigration : arrivée et installation dans une autre région ou un autre pays. 1 pt par définition."),
+   ("Indique la direction de provenance des Krou, des Akan, des Mandé du Nord et des Gour.", 2, "Krou : ouest (Libéria actuel) ; Akan : est (Ghana actuel) ; Mandé du Nord : nord-ouest (Mali actuel) ; Gour : nord et nord-est. 0,5 pt par groupe."),
+   ("Réponds par Vrai ou Faux : a) Les Bété appartiennent au groupe krou. b) Les Sénoufo appartiennent au groupe akan. c) Les guerres sont une cause des migrations. d) Les migrations se faisaient par petits groupes.", 2, "a) Vrai ; b) Faux (groupe gour) ; c) Vrai ; d) Vrai. 0,5 pt par réponse."),
+   ("Cite les trois éléments indispensables d'une carte des flux migratoires.", 1, "Titre, légende, orientation. 1 pt si les trois sont cités."),
+  ],
+  'situation': "Dans ton quartier, des jeunes de groupes différents s'insultent en se traitant d'« étrangers ». Ton club d'histoire veut organiser une journée de l'unité.",
+  'consignes': [
+   ("Définis la migration et cite deux causes des premières migrations.", 3, "Déplacement d'un groupe humain d'une région vers une autre pour s'y installer durablement (1 pt) ; deux causes exactes, par exemple guerres, recherche de terres, commerce de l'or et de la cola, sécheresses (1 pt chacune)."),
+   ("Montre, avec deux exemples, que les grands groupes de Côte d'Ivoire sont issus de migrations.", 4, "Les Krou sont venus de l'ouest ; les Akan de l'est ; les Malinké du nord-ouest ; les Lobi du nord-est (2 pts par exemple, 2 attendus) : chaque groupe a migré avant de se fixer et de se mêler aux premiers habitants."),
+   ("Propose deux actions pour promouvoir l'unité nationale.", 3, "Journée culturelle où chaque groupe présente ses danses et ses mets ; affiches « Tous migrants, tous Ivoiriens » ; tournoi sportif inter-quartiers (1,5 pt par action, 2 attendues)."),
+  ],
+ },
+ 'valeurs': ["Unité nationale et refus de la xénophobie et du tribalisme.", "Réconciliation et vivre-ensemble.",
+             "Liens avec l'EDHC (citoyenneté), la géographie (migrations actuelles) et le français (débat)."],
+}
