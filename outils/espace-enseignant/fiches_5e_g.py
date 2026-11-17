@@ -360,3 +360,66 @@ FICHES['5e-g-t2-l2'] = {
  'valeurs': ["Respect du cadre de vie et de la santé de tous.", "Sens de la responsabilité individuelle et collective (salubrité).",
              "Liens avec les SVT (santé, écosystèmes), l'EDHC (droit à un environnement sain) et le français (débat, slogan)."],
 }
+
+# ------------------------------------------------------------------ T2-L3
+FICHES['5e-g-t2-l3'] = {
+ 'materiel': ["schéma du circuit de l'impôt (schéma 1)", "graphique et tableau d'un budget communal (données d'exercice)",
+              "facture ou ticket de caisse avec TVA (document fictif ou anonymisé)", "papier et feutres pour les affiches"],
+ 'contexte': "à l'approche des élections municipales et régionales, à Abengourou, le dossier de candidature de l'oncle d'un élève et ceux d'autres candidats sont rejetés pour impôts impayés.",
+ 'circonstance': "surpris par l'importance accordée à l'impôt, des élèves de 5e du Collège moderne d'Abengourou décident de se rendre à la direction régionale des impôts.",
+ 'taches': ["définir l'impôt et distinguer les types d'impôts", "comprendre et établir le lien entre l'impôt et l'aménagement du territoire ; exploiter un tableau statistique",
+            "produire des affiches et des supports en faveur du paiement de l'impôt"],
+ 'prerequis': ["L'importance de l'impôt dans le développement de la région (6e).", "Le calcul d'un pourcentage (mathématiques).", "Le découpage administratif : régions, communes (histoire de 5e, leçon 1)."],
+ 'seances': [
+  {'titre': "L'impôt, ses types et l'aménagement du territoire (I à III)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation d'Abengourou.", "« Pourquoi accorder autant d'importance au paiement de l'impôt ? »"], ["Parce que l'impôt finance l'État ; parce qu'un candidat doit donner l'exemple."], "Introduction."),
+   ("Développement · I et II. L'impôt et ses types", 25, "Construction de la définition ; classement à partir de documents",
+    ["Faire construire la définition de l'impôt.", "Faire classer des exemples en impôts directs, indirects et locaux à partir d'une facture et d'un ticket de marché."],
+    ["Prélèvement obligatoire, fixé par la loi, sans contrepartie directe, pour financer les dépenses publiques ; devoir civique.",
+     "Directs : salaires, bénéfices, foncier, patente ; indirects : TVA (18 %), douanes ; locaux : taxes de marché, taxe communale."], "I, II."),
+   ("Développement · III. L'aménagement du territoire", 12, "Définition et inventaire des équipements de la région",
+    ["Faire définir l'aménagement du territoire.", "Faire citer des équipements de la région."],
+    ["Répartition équilibrée des populations, activités et équipements pour réduire les inégalités régionales.", "Routes, ponts, écoles, centres de santé, forages, électrification, marchés."], "III. 1 et 2."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application I à III."], ["Définitions ; classement des impôts."], None),
+  ]},
+  {'titre': "Le lien entre impôt et aménagement ; supports (IV et V)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Qui paie la route que nous empruntons pour venir à l'école ? »"], ["L'État, la mairie… donc les contribuables."], None),
+   ("Développement · IV. Le lien entre impôt et aménagement", 25, "Construction du circuit de l'impôt ; exploitation d'un tableau et d'un graphique",
+    ["Faire construire le circuit de l'impôt (schéma 1).", "Faire exploiter le budget communal : parts et effet du non-paiement des taxes."],
+    ["Contribuables → collecte → budget → équipements → citoyens.", "Recettes fiscales locales : 360 ÷ 600 × 100 = 60 % ; taxes de marché : 20 % du budget ; freins : fraude, informel, mauvaise gestion."], "IV. 1 à 4."),
+   ("Développement · V. Les supports", 10, "Atelier d'affiches et de slogans",
+    ["Faire produire en groupes une affiche ou un slogan en faveur du paiement de l'impôt."], ["« Mon impôt, ma route, mon école » ; « Citoyen en règle, pays équipé »."], "V, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Définition, lien impôt – équipements, arguments et support."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Impôt : obligatoire, fixé par la loi, sans contrepartie directe ; à distinguer de la redevance (eau, électricité).",
+  "Ressources publiques : impôts intérieurs (DGI), recettes douanières, taxes locales ; emprunts et aide extérieure en complément.",
+  "L'UEMOA fixe à ses membres un objectif de pression fiscale d'au moins 20 % du PIB ; l'intégration du secteur informel est un enjeu majeur.",
+  "Les données du budget communal du cours sont des données d'exercice.",
+ ],
+ 'difficultes': [
+  ("Confusion entre impôt direct et indirect.", "Question-test : qui verse l'impôt à l'administration et sur quelle base ? Exemple de la TVA sur une facture."),
+  ("Confusion entre impôt et redevance.", "Comparer une facture d'eau (service précis) et l'impôt foncier (dépenses générales)."),
+  ("Erreurs dans les calculs de parts.", "Formule montant ÷ total × 100 ; vérifier que les parts font 100 %."),
+ ],
+ 'soutien': ["Tableau à compléter : impôt – direct ou indirect – exemple.", "Circuit de l'impôt à compléter avec des étiquettes."],
+ 'approfondissement': ["Recenser trois équipements récents de la région et chercher qui les a financés.", "Concevoir une campagne d'affichage pour le paiement des taxes de marché."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : impôt ; aménagement du territoire.", 2, "Impôt : prélèvement financier obligatoire, fixé par la loi, sans contrepartie directe, pour financer les dépenses publiques (1 pt) ; aménagement du territoire : répartition équilibrée des populations, des activités et des équipements (1 pt)."),
+   ("Classe en impôts directs ou indirects : patente, TVA, droits de douane, impôt foncier.", 2, "Directs : patente, impôt foncier ; indirects : TVA, droits de douane. 0,5 pt par réponse."),
+   ("Budget communal (données d'exercice) : taxes de marché 120, impôts fonciers 180, autres taxes 60, subvention de l'État 240 (millions de F CFA). Calcule la part des recettes fiscales locales.", 2.5, "120 + 180 + 60 = 360 millions (1 pt) ; 360 ÷ 600 × 100 = 60 % (1,5 pt)."),
+   ("Cite trois freins à la collecte de l'impôt.", 1.5, "Fraude et évasion fiscales, secteur informel, mauvaise gestion des fonds publics. 0,5 pt par frein."),
+  ],
+  'situation': "Dans ton département, les routes sont dégradées et un village n'a toujours pas d'électricité. Un commerçant déclare : « Je ne paierai pas d'impôts tant que l'État ne fera rien. »",
+  'consignes': [
+   ("Définis l'aménagement du territoire.", 2, "Organisation de l'espace national pour répartir de façon équilibrée populations, activités et équipements, et réduire les inégalités (2 pts)."),
+   ("Établis le lien entre l'impôt et la réalisation de ces équipements.", 4, "Les routes et l'électrification sont financées par le budget de l'État et des collectivités (2 pts), alimenté principalement par les impôts : si les citoyens ne paient pas, ces travaux ne peuvent pas être réalisés (2 pts)."),
+   ("Propose deux arguments ou supports pour convaincre le commerçant.", 4, "Montrer des équipements locaux réalisés grâce aux impôts (marché, école, forage) ; réaliser une affiche « Mon impôt éclaire mon village » ; rappeler que l'impôt est un devoir et que la fraude est punie (2 pts par argument ou support, 2 attendus)."),
+  ],
+ },
+ 'valeurs': ["Civisme fiscal et sens de l'intérêt général.", "Exigence de bonne gestion de l'argent public.",
+             "Liens avec l'EDHC (devoirs du citoyen) et les mathématiques (pourcentages, tableaux)."],
+}
