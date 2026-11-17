@@ -70,19 +70,127 @@
       return ENTITES.hasOwnProperty(e.toLowerCase()) ? ENTITES[e.toLowerCase()] : m;
     }).replace(/\s+/g, ' ').trim();
   }
+  // Fiches de l'onglet Enseignant : depuis la 1.19.0, data/contenu.json porte les données compactes de chaque fiche
+  // (champ « fiche ») au lieu de son HTML ; le HTML est reconstitué ici, à l'identique de outils/espace-enseignant/construire.py
+  // (même ordre, mêmes balises, même texte : contrôle d'égalité exacte des 41 fiches à chaque version).
+  function ulF(items) { return '<ul>\n' + items.map(function (i) { return '<li>' + i + '</li>\n'; }).join('') + '</ul>\n'; }
+  function tableauF(entetes, lignes) {
+    var h = '<div class="tbl"><table>\n<thead><tr>' + entetes.map(function (e) { return '<th>' + e + '</th>'; }).join('') + '</tr></thead>\n<tbody>';
+    lignes.forEach(function (l) { h += '<tr>' + l.map(function (x) { return '<td>' + x + '</td>'; }).join('') + '</tr>\n'; });
+    return h + '</tbody></table></div>\n';
+  }
+  function corrigeF(contenu, titre) { return '<details class="corrige"><summary>' + (titre || 'Corrigé') + '</summary><div class="corrige-body">' + contenu + '</div></details>'; }
+  function ptsF(x) { return String(x).replace('.', ',') + ' pt' + (x >= 2 ? 's' : ''); }
+  function planTraceF(cours) {
+    var c = cours.replace(/<aside class="appli">[\s\S]*?<\/aside>/g, ''), out = [], cur = null, m, re = /<(h[345])>([\s\S]*?)<\/\1>/g;
+    while ((m = re.exec(c))) {
+      if (m[1] === 'h4') { cur = [m[2], []]; out.push(cur); } else if (m[1] === 'h5' && cur) cur[1].push(m[2]);
+    }
+    var h = '<ul>\n<li>Introduction</li>\n';
+    out.forEach(function (o) { h += '<li><strong>' + o[0] + '</strong>' + (o[1].length ? ulF(o[1]) : '') + '</li>\n'; });
+    return h + '<li>Conclusion</li>\n</ul>\n';
+  }
+  function habiletesF(situation) {
+    var res = [], m, re = /<tr>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>/g, deb = ['La ', 'Le ', 'Les ', 'L&#39;', "L'", 'Des ', 'Un ', 'Une '];
+    while ((m = re.exec(situation))) {
+      var a = m[1].trim().toLowerCase(), b = m[2].trim();
+      if (deb.some(function (x) { return b.indexOf(x) === 0; })) b = b.charAt(0).toLowerCase() + b.slice(1);
+      res.push(a.charAt(0).toUpperCase() + a.slice(1) + ' ' + b + ' ;');
+    }
+    if (res.length) res[res.length - 1] = res[res.length - 1].slice(0, -2) + '.';
+    return res;
+  }
+  function ficheHTML(classe, disc, theme, l, F) {
+    var nbS = F.seances.length, E = F.evaluation;
+    var h = '<p><em>Fiche de préparation détaillée, conforme à l\'approche par les compétences (APC), à adapter à votre classe. Elle accompagne la leçon de l\'élève : la trace écrite à faire copier se trouve dans le cours.</em></p>\n';
+    h += '<p><a href="#l-' + l.id + '">→ Ouvrir la leçon de l\'élève (cours, activités, exercices)</a></p>\n';
+    h += '<h3>Fiche d\'identification</h3>\n';
+    h += tableauF(['Rubrique', 'Renseignement'], [
+      ['Classe', classe.nom + ' (' + classe.id + ')'],
+      ['Discipline', disc.nom],
+      ['Thème', 'Thème ' + theme.n + ' : ' + theme.titre],
+      ['Leçon', 'Leçon ' + l.n + ' : ' + l.titre],
+      ['Volume horaire', l.duree + ' h, soit ' + nbS + ' séance' + (nbS > 1 ? 's' : '') + ' de 55 min'],
+      ['Supports et matériel', F.materiel.join(' ; ')],
+      ['Bibliographie', 'Programme éducatif et guide d\'exécution d\'Histoire-Géographie, classe de ' + classe.id + ' (MENA, Côte d\'Ivoire) ; manuel d\'Histoire-Géographie de ' + classe.id + ' en usage dans l\'établissement ; ' + (F.biblio || 'cours de l\'application « Histoire géographie premier cycle »')]
+    ]);
+    h += '<h3>1. Compétence, situation et habiletés</h3>\n' + l.situation;
+    h += '<h4>Analyse de la situation d\'apprentissage</h4>\n';
+    h += ulF(['<strong>Contexte :</strong> ' + F.contexte, '<strong>Circonstance :</strong> ' + F.circonstance, '<strong>Tâches des élèves :</strong> ' + F.taches.join(' ; ') + '.']);
+    h += '<h3>2. Objectifs de la leçon</h3>\n<p>À la fin de la leçon, l\'élève doit être capable de :</p>\n' + ulF(habiletesF(l.situation));
+    h += '<h3>3. Prérequis à vérifier</h3>\n' + ulF(F.prerequis);
+    h += '<h3>4. Plan de la trace écrite</h3>\n' + planTraceF(l.cours);
+    h += '<h3>5. Déroulement détaillé</h3>\n';
+    h += '<p>Repères : présentation 10 min environ, développement 35 min, évaluation 10 min par séance. Les réponses attendues guident la correction orale ; la trace écrite est dictée ou recopiée à la fin de chaque partie.</p>\n';
+    F.seances.forEach(function (s, i) {
+      h += '<h4>Séance ' + (i + 1) + ' (55 min) : ' + s.titre + '</h4>\n';
+      s.etapes.forEach(function (e) {
+        h += '<h5>' + e[0] + ' · ' + e[1] + ' min</h5>\n';
+        h += '<p><strong>Stratégie :</strong> ' + e[2] + '</p>\n';
+        h += '<p><strong>Activités du professeur :</strong></p>\n' + ulF(e[3]);
+        h += '<p><strong>Activités des élèves et réponses attendues :</strong></p>\n' + ulF(e[4]);
+        if (e[5]) h += '<p><strong>Trace écrite :</strong> ' + e[5] + '</p>\n';
+      });
+    });
+    h += '<h3>6. Éclairage scientifique pour le professeur</h3>\n<p>Connaissances d\'approfondissement, à ne pas dicter, pour répondre aux questions des élèves et enrichir les explications.</p>\n' + ulF(F.eclairage);
+    h += '<h3>7. Difficultés prévisibles et remédiation</h3>\n' + tableauF(['Difficulté ou erreur fréquente', 'Remédiation proposée'], F.difficultes);
+    h += '<h3>8. Différenciation pédagogique</h3>\n';
+    h += '<p><strong>Pour les élèves en difficulté :</strong></p>\n' + ulF(F.soutien);
+    h += '<p><strong>Pour les élèves avancés :</strong></p>\n' + ulF(F.approfondissement);
+    h += '<h3>9. Évaluation de fin de leçon (20 points)</h3>\n';
+    h += '<p><em>Durée conseillée : 30 à 40 min. Les corrigés sont masqués ; ouvrez-les pour la correction.</em></p>\n';
+    h += '<h4>I. Activités d\'application (8 points)</h4>\n';
+    E.activites.forEach(function (a, k) {
+      h += '<aside class="appli"><p class="appli-tete">Activité ' + (k + 1) + ' · ' + ptsF(a[1]) + '</p><div class="enonce"><p>' + a[0] + '</p></div>' + corrigeF('<p>' + a[2] + '</p>', 'Corrigé et barème') + '</aside>\n';
+    });
+    h += '<h4>II. Situation d\'évaluation (12 points)</h4>\n';
+    h += '<div class="situation"><div class="texte"><p>' + E.situation + '</p></div></div>\n<p><strong>Consignes :</strong></p>\n<ol>\n';
+    E.consignes.forEach(function (c) { h += '<li>' + c[0] + ' <em>(' + ptsF(c[1]) + ')</em></li>\n'; });
+    h += '</ol>\n';
+    h += corrigeF(E.consignes.map(function (c, k) { return '<p><strong>Consigne ' + (k + 1) + ' (' + ptsF(c[1]) + ') :</strong> ' + c[2] + '</p>'; }).join(''), 'Corrigé de la situation d\'évaluation') + '\n';
+    h += '<p><strong>Grille de correction de la situation (12 pts)</strong></p>\n' + tableauF(['Critère', 'Indicateur', 'Points'], [
+      ['CM1 – Pertinence', 'Chaque réponse correspond à la consigne posée', 'compris dans les points des consignes'],
+      ['CM2 – Utilisation correcte des outils de la discipline', 'Notions, dates, localisations et calculs exacts', 'compris dans les points des consignes'],
+      ['CM3 – Cohérence', 'Réponses logiques, ordonnées, sans contradiction', '1'],
+      ['CP – Perfectionnement', 'Présentation soignée, orthographe correcte, originalité de la proposition', '1'],
+      ['Total', 'Consignes 10 pts + cohérence 1 pt + perfectionnement 1 pt', '12']
+    ]);
+    h += '<h3>10. Éducation aux valeurs et liens avec les autres disciplines</h3>\n' + ulF(F.valeurs);
+    h += '<h3>11. Bilan de la séance (à remplir par le professeur)</h3>\n' + ulF([
+      'Les objectifs ont-ils été atteints ? Par quelle proportion d\'élèves (résultats de l\'évaluation) ?',
+      'Quelles parties ont pris plus de temps que prévu ? Que faut-il ajuster pour la prochaine classe ?',
+      'Quels élèves ont besoin d\'une remédiation, et laquelle ?',
+      'Remarques sur les supports utilisés (à garder, à changer, à compléter).']);
+    return h;
+  }
+  function completerFiches() {
+    D.classes.forEach(function (c) {
+      var ou = {};
+      c.disciplines.forEach(function (d) { d.themes.forEach(function (t) { t.lecons.forEach(function (l) { ou[l.id] = [d, t, l]; }); }); });
+      (c.annexes || []).forEach(function (a) {
+        if (!a.fiche || !ou[a.lecon]) return;
+        try { a.html = ficheHTML(c, ou[a.lecon][0], ou[a.lecon][1], ou[a.lecon][2], a.fiche); a.texte = ''; } catch (e) { /* le texte de remplacement reste affiché */ }
+      });
+    });
+  }
+
   function completerTextes() {
+    completerFiches();
     D.classes.forEach(function (c) {
       c.disciplines.forEach(function (d) {
         d.themes.forEach(function (t) {
           t.lecons.forEach(function (l) {
+            // depuis la 1.19.0 : textes de toutes les leçons, de la banque d'exercices et des schémas reconstitués ici aussi
+            if (!l.texte) l.texte = texteDe((l.situation || '') + ' ' + (l.cours || '') + ' ' + ((l.enseignant ? l.evaluation : l.exercices) || ''));
+            if (!l.texteBanque && l.banque) l.texteBanque = texteDe(l.banque);
             if (!l.enseignant) return;
-            if (!l.texte) l.texte = texteDe((l.situation || '') + ' ' + (l.cours || '') + ' ' + (l.evaluation || ''));
             if (!l.texteEns) l.texteEns = texteDe((l.enseignant || '') + ' ' + (l.preparation || ''));
             if (!l.texteCult && l.culture) l.texteCult = texteDe(l.culture);
           });
         });
       });
       (c.annexes || []).forEach(function (a) { if (!a.texte && a.html) a.texte = texteDe(a.html); });
+      (c.schemas || []).forEach(function (s) { if (!s.texte && s.html) s.texte = texteDe((s.lecon ? 'Leçon : ' + s.lecon + ' ' : '') + s.html); });
     });
   }
 

@@ -260,7 +260,7 @@ FICHES['4e-g-t2-l1'] = {
  'eclairage': [
   "12 États membres depuis le retrait du Mali, du Burkina Faso et du Niger (janvier 2025).",
   "Ne pas confondre la CEDEAO (Abuja, 12 membres) et l'UEMOA (Ouagadougou, franc CFA).",
-  "Les présidences 2026 indiquées par le cours sont à vérifier sur le site officiel de la CEDEAO.",
+  "Présidences en novembre 2026 (site officiel) : Bassirou Diomaye Faye (Conférence), général Birame Diop (Commission) ; à revérifier, elles changent régulièrement.",
   "Traiter l'actualité (AES, coups d'État) avec neutralité.",
  ],
  'difficultes': [

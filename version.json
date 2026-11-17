@@ -1,7 +1,8 @@
 {
-  "version": "1.18.0",
+  "version": "1.19.0",
   "date": "2026-11-17",
   "notes": [
+    "Version 1.19.0 : les 12 leçons de 4e ont désormais trois espaces (Élève, Enseignant, Culture générale), 24 illustrations et un onglet Enseignant (guide et 12 fiches) ; corrections du cours ; exercices, banque et quiz conservés ; en attente du contrôle pédagogique",
     "Version 1.18.0 : lot 2 (5e) de la généralisation du modèle pédagogique validé : les 12 leçons de 5e ont désormais trois espaces (Élève : trace écrite enrichie, illustrations, cartes sur fond Natural Earth, activités et évaluation sur 20 ; Enseignant : cours approfondi et préparation de séance APC avec réponses attendues ; Culture générale : approfondissements et références vérifiées) ; 26 illustrations ; onglet Enseignant de la 5e (guide et 12 fiches) ; exercices, banque et quiz conservés ; en attente du contrôle pédagogique",
     "Version 1.17.1 : correction de la page de mise à jour sans APK (le bouton du bandeau « Mettre à jour » manquait, ce qui faisait afficher à tort « Le site des mises à jour ne répond pas » après un téléchargement réussi) ; contenu identique à la 1.17.0",
     "Version 1.17.0 : stockage des mises à jour sans APK plus fiable (contenu compressé et vérifié, environ 8 fois moins de place, migration automatique sans perte de progression) ; corrections scientifiques du lot 6e (Ahouakro, fin de la préhistoire selon les régions, référence exacte de l'étude Nature 2025 sur Anyama, diagramme climatique d'Abidjan sur données officielles)",

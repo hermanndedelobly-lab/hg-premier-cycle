@@ -178,6 +178,19 @@ def main():
         l['texte'] = ''
         l['texteEns'] = ''
         l['texteCult'] = ''
+    # depuis la 1.19.0 : les textes de recherche de toutes les leçons, de la banque d'exercices, des annexes et des schémas
+    # sont eux aussi reconstitués par l'application (app.js, completerTextes) : on les laisse vides
+    for c in d['classes']:
+        for di in c['disciplines']:
+            for t in di['themes']:
+                for l in t['lecons']:
+                    l['texte'] = ''
+                    if 'texteBanque' in l:
+                        l['texteBanque'] = ''
+        for a in c.get('annexes', []):
+            a['texte'] = ''
+        for sc in c.get('schemas', []):
+            sc['texte'] = ''
     with open(CONTENU, 'w', encoding='utf-8') as fh:
         fh.write(json.dumps(d, ensure_ascii=False, separators=(',', ':')))
     print('data/contenu.json mis à jour.')

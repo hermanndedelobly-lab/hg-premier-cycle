@@ -135,6 +135,10 @@ def fiche(classe, disc, theme, l, F):
         'Remarques sur les supports utilisés (à garder, à changer, à compléter).'])
     return h
 
+REMPLACEMENT = '<p><em>Fiche disponible après la mise à jour de l\'application.</em></p>'
+COMPLET = {}   # HTML de référence de chaque fiche (pour outils/verifier-fiches.py)
+
+
 # 'texte' vide : reconstitué par l'application au chargement (app.js, completerTextes) depuis la 1.18.0
 def main(chemin):
     D = json.load(open(chemin, encoding='utf-8'))
@@ -154,13 +158,17 @@ def main(chemin):
                     F = FICHES.get(l['id'])
                     if not F:
                         manque.append(l['id']); continue
-                    hh = fiche(c, d, t, l, F)
+                    hh = fiche(c, d, t, l, F)   # contrôles (durées, barèmes) et HTML de référence
+                    COMPLET[K + '-ens-' + l['id'][3:]] = hh
+                    # depuis la 1.19.0 : données compactes de la fiche ; l'application reconstitue le HTML à l'identique
+                    # (app.js, completerFiches ; contrôle : outils/verifier-fiches.py). Le texte de remplacement n'est
+                    # visible que si un ancien code affichait ce contenu.
                     nouvelles.append({'id': K + '-ens-' + l['id'][3:], 'titre': 'Fiche enseignant · ' + d['nom'] + ' T' + str(t['n']) + '-L' + str(l['n']) + ' · ' + l['titre'],
-                                      'enseignant': True, 'lecon': l['id'], 'disc': d['id'], 'html': hh, 'texte': ''})
+                                      'enseignant': True, 'lecon': l['id'], 'disc': d['id'], 'html': REMPLACEMENT, 'texte': '', 'fiche': F})
         if manque:
             print(K, ': fiches manquantes', manque)
         c['annexes'] = c['annexes'] + nouvelles
-        print(K, ':', len(nouvelles), 'éléments enseignant ;', sum(len(n['html']) for n in nouvelles), 'caractères HTML')
+        print(K, ':', len(nouvelles), 'éléments enseignant ;', sum(len(n['html']) for n in nouvelles) + sum(len(COMPLET[n['id']]) for n in nouvelles if n['id'] in COMPLET), 'caractères HTML')
     json.dump(D, open(chemin, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 
 
