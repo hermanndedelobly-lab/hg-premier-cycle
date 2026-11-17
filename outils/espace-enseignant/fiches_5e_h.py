@@ -383,3 +383,69 @@ FICHES['5e-h-t2-l2'] = {
  'valeurs': ["Unité nationale et refus de la xénophobie et du tribalisme.", "Réconciliation et vivre-ensemble.",
              "Liens avec l'EDHC (citoyenneté), la géographie (migrations actuelles) et le français (débat)."],
 }
+
+# ------------------------------------------------------------------ T2-L3
+FICHES['5e-h-t2-l3'] = {
+ 'materiel': ["carte de l'empire du Mali au XIVe siècle (carte 1)", "extrait de l'épopée de Soundiata (D. T. Niane)",
+              "extrait sur le pèlerinage de Kankou Moussa ou sur le séjour d'Ibn Battuta", "papier millimétré ou règle pour la frise"],
+ 'contexte': "une classe de 5e du Lycée moderne de Grand-Lahou effectue un voyage d'études au Mali.",
+ 'circonstance': "les élèves sont surpris de retrouver des patronymes et des coutumes semblables à ceux de certaines régions de Côte d'Ivoire.",
+ 'taches': ["décrire et localiser l'empire du Mali à son apogée", "représenter son évolution sur une frise chronologique",
+            "établir un lien entre son déclin et les migrations ; proposer des actions pour la diversité culturelle"],
+ 'prerequis': ["Les premiers mouvements migratoires en Côte d'Ivoire (leçon 2).", "La construction d'une frise à l'échelle (6e).", "La critique des traditions orales (thème 1)."],
+ 'seances': [
+  {'titre': "L'origine et l'apogée de l'empire (I et II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation du voyage au Mali.", "Faire citer des patronymes communs au Mali et à la Côte d'Ivoire : « Comment l'expliquer ? »"],
+    ["Keïta, Traoré, Coulibaly, Touré, Konaté… ; hypothèse d'une origine commune."], "Introduction."),
+   ("Développement · I. L'origine", 12, "Lecture d'un extrait de l'épopée",
+    ["Raconter la lutte de Soundiata contre Soumaoro à partir de l'épopée.", "Faire distinguer le merveilleux et les faits."],
+    ["Soundiata Keïta bat Soumaoro Kanté à Kirina vers 1235 et fonde l'empire ; charte du Manden.", "Le merveilleux : pouvoirs magiques ; les faits : victoire du Manden sur le Sosso."], "I. 1 et 2."),
+   ("Développement · II. L'apogée", 25, "Exploitation de la carte 1 et d'un texte",
+    ["Faire localiser l'empire, les fleuves, les villes et les régions de l'or.", "Faire relever dans un texte les richesses et l'organisation ; présenter le pèlerinage de Kankou Moussa."],
+    ["De l'Atlantique à la boucle du Niger ; Niger, Sénégal ; Tombouctou, Djenné, Gao ; Bambouk, Bouré.",
+     "Or, commerce transsaharien ; mansa, gouverneurs, vassaux, armée ; islam ; pèlerinage de 1324 – 1325."], "II. 1 à 4."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application I et II."], ["Fondateur, bataille, date ; pèlerinage et richesses."], None),
+  ]},
+  {'titre': "Le déclin, la frise et le lien avec les migrations (III à V)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Pourquoi un empire si riche a-t-il disparu ? »"], ["Hypothèses : guerres, rivalités."], None),
+   ("Développement · III. Le déclin et la frise", 17, "Relevé des causes et construction d'une frise à l'échelle",
+    ["Faire relever les causes du déclin.", "Faire construire la frise 1200 – 1700 à l'échelle."],
+    ["Querelles de succession, révoltes, attaques (Touareg, Mossi, Songhaï), commerce détourné vers la côte ; éclatement au XVIIe siècle.",
+     "Frise : essor (vers 1235), apogée (XIVe siècle), déclin (XVe – XVIe), éclatement (XVIIe)."], "III. 1 à 3."),
+   ("Développement · IV et V. Migrations et diversité culturelle", 18, "Chaîne de causes au tableau, réinvestissement de la carte des flux",
+    ["Faire établir la chaîne : déclin → insécurité → départs vers le sud → installation dans le nord-ouest ivoirien → migrations en chaîne.", "Faire proposer des actions pour la diversité culturelle."],
+    ["Malinké et Dioula à Odienné, Touba, Séguéla, Kong ; Mandé du Sud repoussés ; patronymes, langues, islam, griots.", "Échanges scolaires, valorisation de l'héritage mandingue."], "IV, V, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Réinvestissent origine, déclin et lien avec les migrations."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Deux types de sources : la tradition orale (épopée de Soundiata, publiée par D. T. Niane en 1960) et les sources arabes (al-Umari, Ibn Battuta en 1352 – 1353, chroniques de Tombouctou).",
+  "Dates et lieux sont discutés : Kirina « vers 1235 » ; capitale traditionnellement appelée Niani, mais son emplacement n'est pas établi avec certitude.",
+  "La puissance du Mali repose sur le contrôle de l'or (Bambouk, Bouré) et des villes caravanières de la boucle du Niger.",
+  "Le déclin est long : Touareg à Tombouctou vers 1433, Songhaï en 1468, éclatement au XVIIe siècle.",
+ ],
+ 'difficultes': [
+  ("Confusion entre l'empire du Mali et l'État actuel du Mali.", "Superposer les deux sur la carte 1."),
+  ("Confusion entre les empires du Ghana, du Mali et du Songhaï.", "Frise des trois empires avec leurs siècles et leurs capitales."),
+  ("Frise mal graduée.", "Règle : chaque siècle a la même longueur ; faire vérifier au compas ou à la règle."),
+ ],
+ 'soutien': ["Carte muette à compléter avec une liste de noms (Niger, Tombouctou, Djenné, Gao, Bambouk, Bouré).", "Frise pré-graduée à compléter."],
+ 'approfondissement': ["Lire un chapitre de l'épopée de Soundiata et en faire le compte rendu.", "Exposé sur Tombouctou et ses manuscrits."],
+ 'evaluation': {
+  'activites': [
+   ("Associe chaque date à son évènement : a) vers 1235 ; b) 1324 ; c) XVIIe siècle — 1) éclatement de l'empire ; 2) bataille de Kirina ; 3) pèlerinage de Kankou Moussa.", 1.5, "a-2 ; b-3 ; c-1. 0,5 pt par association."),
+   ("Cite deux richesses de l'empire du Mali.", 2, "L'or (Bambouk, Bouré) ; le commerce transsaharien (ou l'agriculture et l'élevage le long du Niger). 1 pt par richesse."),
+   ("Cite trois causes du déclin de l'empire.", 1.5, "Querelles de succession, révoltes des provinces, attaques des Touareg, des Mossi et du Songhaï, détournement du commerce vers la côte. 0,5 pt par cause."),
+   ("Calcule le nombre d'années entre la bataille de Kirina (vers 1235) et l'indépendance de la Côte d'Ivoire (1960), et indique le siècle de Kirina.", 3, "1960 − 1235 = 725 ans environ (2 pts) ; XIIIe siècle (1 pt)."),
+  ],
+  'situation': "Ton camarade s'étonne qu'un élève malien et un élève d'Odienné portent le même nom, Keïta, et parlent presque la même langue.",
+  'consignes': [
+   ("Nomme le fondateur de l'empire du Mali et indique la date et le lieu de sa victoire décisive.", 3, "Soundiata Keïta (1 pt), vainqueur à Kirina (1 pt) vers 1235 (1 pt)."),
+   ("Explique le lien entre le déclin de l'empire et le peuplement du nord-ouest ivoirien.", 4, "Le déclin (XVe – XVIIe siècle) entraîne insécurité et guerres (1 pt) ; des Malinké et des Dioula migrent vers le sud (1 pt) et s'installent dans le nord-ouest de la Côte d'Ivoire (Odienné, Touba, Séguéla, Kong) (1 pt), apportant leurs noms, leur langue et leurs coutumes (1 pt)."),
+   ("Propose une action pour valoriser ces liens culturels.", 3, "Échange scolaire avec le Mali, journée culturelle sur l'héritage mandingue (griots, épopée de Soundiata, musique) (3 pts pour une action réaliste et justifiée)."),
+  ],
+ },
+ 'valeurs': ["Fierté de l'histoire africaine et respect des peuples voisins.", "Préservation de la diversité et de l'héritage culturel partagé.",
+             "Liens avec le français (épopée), l'EDHC (intégration régionale) et la géographie (Afrique de l'Ouest)."],
+}
