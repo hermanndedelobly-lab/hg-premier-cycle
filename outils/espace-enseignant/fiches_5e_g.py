@@ -296,3 +296,67 @@ FICHES['5e-g-t2-l1'] = {
  'valeurs': ["Respect de la terre nourricière et de la forêt.", "Valorisation du travail agricole et des savoirs paysans.",
              "Liens avec les SVT (sol, humus, biodiversité) et l'EDHC (développement durable)."],
 }
+
+# ------------------------------------------------------------------ T2-L2
+FICHES['5e-g-t2-l2'] = {
+ 'materiel': ["schéma des sources de pollution dans un quartier (schéma 1)", "schéma d'interrelation (schéma 2)",
+              "article ou résumé sur l'affaire du Probo Koala (2006)", "papier et feutres pour les slogans"],
+ 'contexte': "un industriel projette de construire une usine et un marché dans le quartier d'élèves de 5e du Collège moderne de Tanda.",
+ 'circonstance': "les jeunes du quartier se divisent : les uns approuvent le projet pour les emplois, les autres le combattent parce qu'il va dégrader l'environnement.",
+ 'taches': ["identifier les composantes de l'environnement ; connaître les formes de pollution et leurs causes", "distinguer les conséquences ; réaliser un schéma d'interrelation",
+            "formuler un slogan de sensibilisation en faveur de l'environnement"],
+ 'prerequis': ["Population et environnement local (6e).", "L'eau et ses problèmes (leçon 3 du thème 1)."],
+ 'seances': [
+  {'titre': "Environnement, formes et causes de la pollution (I et II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et formulation des deux positions",
+    ["Lire la situation de Tanda.", "Faire formuler les arguments des deux groupes de jeunes."], ["Pour : emplois, revenus ; contre : fumées, déchets, bruit."], "Introduction."),
+   ("Développement · I. Environnement et pollution", 10, "Observation du quartier et définitions",
+    ["Faire distinguer composantes naturelles et humaines ; définir la pollution."],
+    ["Naturelles : air, eau, sol, végétation, faune ; humaines : habitations, routes, usines, marchés.", "Pollution : dégradation de l'environnement par des substances ou nuisances dangereuses."], "I. 1 et 2."),
+   ("Développement · II. Formes et causes de la pollution", 27, "Exploitation du schéma 1 ; tableau source – polluant – milieu ; étude d'un document",
+    ["Faire associer chaque numéro du schéma 1 à une forme de pollution.", "Faire remplir un tableau source, polluant, milieu touché ; présenter l'affaire du Probo Koala."],
+    ["Air : fumées, gaz d'échappement ; eau : eaux usées, rejets chimiques, déchets ; sols : déchets toxiques, sachets ; sonore et visuelle : bruit, ordures.", "Probo Koala, Abidjan, août 2006 : déchets toxiques, décès, milliers d'intoxications."], "II. 1 à 5."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application I et II."], ["Définition ; association des pollutions."], None),
+  ]},
+  {'titre': "Conséquences, schéma d'interrelation et préservation (III et IV)", 'etapes': [
+   (PRES, 5, "Questionnement", ["« Quelles sont les conséquences de ces pollutions pour nous ? »"], ["Maladies, inondations, poissons morts."], None),
+   ("Développement · III. Conséquences et schéma d'interrelation", 20, "Relevé des conséquences ; construction du schéma en binômes",
+    ["Faire classer les conséquences (santé, nature, économie).", "Faire construire le schéma d'interrelation."],
+    ["Santé : maladies respiratoires, diarrhées, intoxications ; nature : poissons morts, sols stériles ; économie : pêche, inondations, tourisme.",
+     "Activités → rejets → pollutions → conséquences → solutions, avec retour vers les activités."], "III. 1 à 4."),
+   ("Développement · IV. Préservation", 15, "Atelier de slogans et débat final",
+    ["Faire relever les moyens de lutte ; faire écrire des slogans.", "Débat : à quelles conditions accepter l'usine et le marché ?"],
+    ["Lois et contrôles (étude d'impact), traitement et tri des déchets, ANAGED, sensibilisation.", "« Une usine propre, un quartier sain » ; accepter le projet avec étude d'impact et traitement des rejets."], "IV, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Formes de pollution, conséquences, slogan et mesure."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Cadre légal : loi n° 96-766 du 3 octobre 1996 portant Code de l'environnement (étude d'impact) ; sachets plastiques non biodégradables interdits depuis 2013.",
+  "Acteurs : CIAPOL (surveillance des eaux, installations classées), ANAGED (déchets, créée en 2017), ANDE (études d'impact).",
+  "Probo Koala (août 2006) : déchets toxiques déversés à Abidjan, décès et dizaines de milliers de consultations.",
+  "Le débat de la situation doit aboutir à des conditions d'acceptation du projet, pas à un refus de tout développement.",
+ ],
+ 'difficultes': [
+  ("Confusion entre source et forme de pollution.", "Tableau à trois colonnes : source, polluant, milieu touché."),
+  ("Schéma d'interrelation sans logique.", "Chaque flèche doit se lire « entraîne » ; lecture à voix haute du schéma."),
+  ("Slogans négatifs ou vagues.", "Critères : court, positif, message et action clairs."),
+ ],
+ 'soutien': ["Schéma d'interrelation à compléter avec des étiquettes fournies.", "Liste de mots pour écrire un slogan."],
+ 'approfondissement': ["Réaliser le schéma d'interrelation du quartier de l'établissement.", "Exposé sur l'affaire du Probo Koala et la Convention de Bamako."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : environnement ; pollution.", 2, "Environnement : ensemble des éléments naturels et humains qui entourent les êtres vivants (1 pt) ; pollution : dégradation de l'environnement par des substances ou nuisances dangereuses (1 pt)."),
+   ("Indique la forme de pollution : a) fumée noire d'une usine ; b) sachets plastiques dans un champ ; c) huile usée déversée dans la lagune ; d) haut-parleurs d'un marché.", 2, "a) air ; b) sol ; c) eau ; d) sonore. 0,5 pt par réponse."),
+   ("Explique comment les sachets plastiques provoquent des inondations en ville.", 2, "Jetés dans la rue, ils bouchent les caniveaux (1 pt) ; l'eau de pluie ne peut plus s'écouler et déborde (1 pt)."),
+   ("Que s'est-il passé à Abidjan en août 2006 avec le Probo Koala ?", 2, "Des déchets toxiques venus d'un navire ont été déversés dans plusieurs sites d'Abidjan (1 pt), provoquant des décès et des milliers d'intoxications (1 pt)."),
+  ],
+  'situation': "Un industriel projette de construire une usine et un marché dans ton quartier ; les jeunes se divisent entre ceux qui veulent les emplois et ceux qui craignent la pollution.",
+  'consignes': [
+   ("Cite deux formes de pollution que ce projet pourrait provoquer.", 2, "Pollution de l'air par les fumées de l'usine ; pollution des sols et de l'eau par les déchets du marché et les eaux usées (1 pt par forme)."),
+   ("Montre une conséquence sur la santé et une sur la nature.", 4, "Santé : maladies respiratoires, diarrhées, intoxications (2 pts) ; nature : mort des poissons et des plantes, sols stériles (2 pts)."),
+   ("Propose un slogan et une mesure pour concilier emplois et environnement.", 4, "Slogan court et positif, par exemple « Des emplois oui, la pollution non ! » (1,5 pt) ; mesure : étude d'impact environnemental, traitement des eaux usées et des déchets, poubelles au marché (2,5 pts)."),
+  ],
+ },
+ 'valeurs': ["Respect du cadre de vie et de la santé de tous.", "Sens de la responsabilité individuelle et collective (salubrité).",
+             "Liens avec les SVT (santé, écosystèmes), l'EDHC (droit à un environnement sain) et le français (débat, slogan)."],
+}
