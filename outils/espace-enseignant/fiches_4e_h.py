@@ -208,3 +208,66 @@ FICHES['4e-h-t1-l3'] = {
  'valeurs': ["Paix, dialogue, pardon et réconciliation.", "Respect des aînés et des institutions.",
              "Liens avec l'EDHC (paix, droits de l'homme) et le français (jeu de rôle, argumentation)."],
 }
+
+FICHES['4e-h-t1-l4'] = {
+ 'materiel': ["frise des contacts entre la côte ivoirienne et l'Europe (frise 1)", "carte des points de commerce et comptoirs de la côte (carte 1)",
+              "images d'une caravelle, d'une boussole et d'un astrolabe", "photographie du wharf de Sassandra"],
+ 'contexte': "le littoral ivoirien conserve des vestiges du commerce maritime avec l'Europe, comme le wharf de Sassandra.",
+ 'circonstance': "lors d'une visite au wharf de Sassandra, des élèves de 4e se demandent depuis quand les Européens commercent sur la côte ivoirienne.",
+ 'taches': ["définir le comptoir", "identifier les États européens et les peuples impliqués, décrire les premiers contacts et localiser les premiers comptoirs",
+            "expliquer les causes et analyser les conséquences des contacts"],
+ 'prerequis': ["Le commerce transsaharien (5e).", "La mise en place des peuples de Côte d'Ivoire (leçon 1)."],
+ 'seances': [
+  {'titre': "Les causes et les premiers contacts (I et II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation (wharf de Sassandra).", "« Ce wharf date-t-il des premiers contacts avec l'Europe ? »"], ["Non : il date de la période coloniale ; les contacts sont bien plus anciens."], "Introduction."),
+   ("Développement · I. Les causes", 15, "Observation d'images et classement",
+    ["Faire classer les causes : économiques, techniques, religieuses et politiques."],
+    ["Recherche de l'or, de l'ivoire et d'une route vers les Indes ; caravelle, boussole, astrolabe ; diffusion du christianisme ; rivalités entre États européens."], "I."),
+   ("Développement · II. Les premiers contacts", 22, "Lecture de la frise 1, tableau des produits",
+    ["Faire identifier les États européens et les peuples côtiers.", "Faire décrire la nature des contacts et les produits échangés."],
+    ["Portugais vers 1470, puis Hollandais, Anglais, Français ; peuples côtiers (Kroumen, Alladian, Avikam, Agni du Sanwi…).", "Contacts périodiques : commerce depuis les navires ; or, ivoire, cotonnades contre tissus, armes, alcool, objets métalliques."], "II."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application I et II."], ["Causes ; nature des premiers contacts."], None),
+  ]},
+  {'titre': "L'installation et les conséquences (III et IV)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Les Européens se sont-ils installés sur la côte ivoirienne ? »"], ["Ils ont essayé, surtout à Assinie."], None),
+   ("Développement · III. L'installation permanente", 20, "Lecture de la carte 1, récit",
+    ["Faire définir le comptoir.", "Faire localiser les points de commerce ; raconter Assinie (1637, Aniaba, fort Saint-Louis) et les traités de 1842 – 1843."],
+    ["Comptoir : établissement commercial permanent, souvent fortifié.", "Échec du fort Saint-Louis (1701 – 1705) ; rôle des intermédiaires côtiers ; traités de Grand-Bassam et d'Assinie."], "III."),
+   ("Développement · IV. Les conséquences", 15, "Tableau à deux colonnes",
+    ["Faire classer les conséquences pour les Européens et pour les peuples ivoiriens."],
+    ["Européens : enrichissement, connaissance de la côte, bases pour la colonisation.", "Peuples ivoiriens : enrichissement des intermédiaires, nouveaux produits (maïs, manioc), rivalités, début de la traite, perte progressive de souveraineté."], "IV, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Causes, contacts, comptoirs, conséquences."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "La côte ivoirienne, sans port naturel et battue par la barre, a longtemps été délaissée au profit de la Côte de l'Or, où les Européens ont bâti des forts (Elmina, 1482).",
+  "La tentative française d'Assinie (fort Saint-Louis, 1701 – 1705) a échoué ; Aniaba a été présenté comme un prince en France, son rang réel est discuté.",
+  "Les wharfs (Grand-Bassam, Port-Bouët, Sassandra) datent de la colonisation : ils sont postérieurs aux contacts étudiés.",
+  "Le manioc et le maïs, venus d'Amérique avec les navires européens, sont une conséquence durable des contacts.",
+ ],
+ 'difficultes': [
+  ("Dater le wharf de la période des premiers contacts.", "Placer le wharf sur la frise, après les traités de 1842 – 1843."),
+  ("Confusion entre point de commerce et comptoir.", "Opposer le passage d'un navire et une installation permanente."),
+  ("Croire que les Européens contrôlaient tout le commerce.", "Montrer le rôle des intermédiaires côtiers."),
+ ],
+ 'soutien': ["Fiche-lexique : comptoir, barre, intermédiaire, traité, wharf.", "Carte 1 muette à compléter."],
+ 'approfondissement': ["Exposé sur Aniaba et l'établissement d'Issiny.", "Recherche sur les plantes venues d'Amérique dans l'alimentation ivoirienne."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : comptoir.", 1, "Établissement commercial permanent installé par des étrangers sur une côte, souvent fortifié (1 pt)."),
+   ("Cite trois causes des contacts entre l'Europe et la côte ivoirienne.", 1.5, "Recherche de l'or et de l'ivoire, route vers les Indes, progrès de la navigation, diffusion du christianisme, rivalités entre États. 0,5 pt par cause."),
+   ("Cite trois États européens présents sur la côte ivoirienne du XVIe au XVIIIe siècle.", 1.5, "Portugal, Hollande (Provinces-Unies), Angleterre, France. 0,5 pt par État."),
+   ("Explique pourquoi les premiers contacts sont restés périodiques.", 2, "Côte sans port naturel et barre dangereuse (1 pt) ; intermédiaires côtiers qui contrôlaient le commerce, maladies (1 pt)."),
+   ("Localise deux points de commerce sur la côte ivoirienne.", 2, "Sassandra, Grand-Lahou, Jacqueville, Grand-Bassam, Assinie… 1 pt par lieu correctement placé."),
+  ],
+  'situation': "Pendant une visite au musée de Grand-Bassam, un camarade affirme que les Européens ont occupé la côte ivoirienne dès leur arrivée au XVe siècle.",
+  'consignes': [
+   ("Identifie les premiers Européens arrivés sur la côte ivoirienne et la date de leur arrivée.", 2, "Les Portugais (1 pt), vers 1470 (1 pt)."),
+   ("Montre que l'affirmation de ton camarade est inexacte.", 4, "Contacts d'abord périodiques, depuis les navires (1 pt) ; tentative d'installation à Assinie (fort Saint-Louis) abandonnée en 1705 (1,5 pt) ; installation française seulement après les traités de 1842 – 1843 (1,5 pt)."),
+   ("Analyse deux conséquences de ces contacts pour les peuples de Côte d'Ivoire.", 4, "Enrichissement des intermédiaires côtiers et nouveaux produits (maïs, manioc) (2 pts) ; début de la traite et préparation de la colonisation (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Ouverture au monde et esprit critique face aux sources.", "Fierté du patrimoine du littoral ivoirien.",
+             "Liens avec la géographie (littoral, ports) et le français (récit de voyage)."],
+}
