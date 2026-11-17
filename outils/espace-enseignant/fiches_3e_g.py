@@ -154,3 +154,77 @@ FICHES['3e-g-t1-l2'] = {
  'valeurs': ["Valorisation du travail agricole et de l'esprit d'entreprise.", "Consommer local et soutenir la transformation des produits.",
              "Liens avec les mathématiques (pourcentages, angles), les SVT (cacaoyer) et l'EDHC (civisme fiscal)."],
 }
+
+# ------------------------------------------------------------------ T1-L3
+FICHES['3e-g-t1-l3'] = {
+ 'materiel': ["schéma du cercle vicieux (schéma 1)", "graphique du recul de la forêt (graphique 1)", "affiche de sensibilisation au dépistage du VIH",
+              "extrait d'un plan national de développement", "ticket de caisse montrant la TVA"],
+ 'contexte': "des élèves de 3e 4 du collège Ségbé, à Yopougon, constatent que la Côte d'Ivoire est une grande puissance économique d'Afrique de l'Ouest.",
+ 'circonstance': "pourtant, le panier de la ménagère est vide, l'accès aux soins est difficile et les revendications sociales augmentent : ils veulent comprendre ce paradoxe.",
+ 'taches': ["identifier et caractériser les problèmes de développement économique", "identifier les problèmes de santé publique liés au VIH/sida et montrer l'importance de la fiscalité",
+            "proposer des solutions aux problèmes économiques"],
+ 'prerequis': ["Les atouts et les secteurs d'activités (leçons précédentes).", "La notion de PIB.", "Les notions de santé publique (SVT)."],
+ 'seances': [
+  {'titre': "Les problèmes structurels (I)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et du schéma 1",
+    ["Lire la situation ; « Comment un pays riche peut-il avoir des habitants pauvres ? »", "Lire le schéma 1."], ["Les richesses sont mal réparties ; l'économie dépend des produits bruts."], "Introduction."),
+   ("Développement · I. Problèmes structurels", 35, "Étude de documents, lecture du graphique 1",
+    ["Faire définir le problème structurel ; faire relever les problèmes.", "Faire lire le graphique 1 (recul de la forêt)."],
+    ["Dépendance aux produits bruts, industrie insuffisante, informel, chômage des jeunes, pauvreté, endettement, mauvaise gouvernance, infrastructures inégales.",
+     "La forêt dense est passée d'environ 16 à environ 3 millions d'hectares en un siècle (ordres de grandeur)."], "I. 1 à 8."),
+   (EVAL, 12, "Travail individuel", ["Activité d'application I."], ["Définitions et trois problèmes structurels."], None),
+  ]},
+  {'titre': "Problèmes conjoncturels et VIH/sida (II, III)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Qu'est-ce qui peut faire reculer l'économie d'une année à l'autre ? »"], ["Une crise, une épidémie, la chute des prix."], None),
+   ("Développement · II et III. Conjoncture et VIH/sida", 38, "Exposé dialogué, étude d'une affiche",
+    ["Faire relever les problèmes conjoncturels.", "Expliquer le lien entre VIH/sida et développement ; présenter les réponses."],
+    ["Prix mondiaux, vie chère, crises de 1999 – 2011, Covid-19, aléas climatiques, insécurité au nord.",
+     "Perte de main-d'œuvre, dépenses de santé, orphelins ; dépistage et traitements gratuits, prévention, lutte contre la stigmatisation."], "II et III."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application II et III."], ["Deux problèmes conjoncturels ; VIH et développement."], None),
+  ]},
+  {'titre': "L'importance de la fiscalité (IV)", 'etapes': [
+   (PRES, 5, "Lecture d'un ticket de caisse", ["« Que représente la ligne TVA ? »"], ["Une taxe payée à l'État."], None),
+   ("Développement · IV. La fiscalité", 35, "Explication, tableau impôts directs / indirects",
+    ["Faire classer des impôts en directs et indirects.", "Faire expliquer ce que financent les impôts ; parler de civisme fiscal."],
+    ["Directs : sur les salaires, les bénéfices, le foncier, la patente ; indirects : TVA (18 %), droits de douane, taxes sur les carburants.",
+     "Les impôts financent écoles, hôpitaux, routes, salaires ; ils réduisent l'endettement ; l'informel et la fraude privent l'État de ressources."], "IV."),
+   (EVAL, 15, "Travail individuel", ["Activité d'application IV."], ["Rôle de la fiscalité."], None),
+  ]},
+  {'titre': "Les solutions et l'évaluation (V)", 'etapes': [
+   (PRES, 5, "Retour au schéma 1", ["« Comment briser le cercle vicieux ? »"], ["Transformer, former, bien gérer."], None),
+   ("Développement · V. Les solutions", 25, "Travail de groupes : une solution par problème",
+    ["Chaque groupe propose une solution à un problème et la justifie.", "Mise en commun et trace écrite."],
+    ["Transformation locale, formation et emploi des jeunes, bonne gouvernance, CMU et filets sociaux, plans de développement, civisme fiscal, protection de l'environnement."], "V, conclusion."),
+   (EVAL, 25, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Problèmes, fiscalité, solutions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Croissance n'est pas développement : la croissance mesure la production, le développement les conditions de vie (IDH).",
+  "Les données sur la forêt varient selon la définition (forêt dense ou totale) et la méthode ; le graphique 1 donne des ordres de grandeur à vérifier.",
+  "La prévalence du VIH chez les adultes est estimée autour de 2 % par l'ONUSIDA ; la donnée change chaque année.",
+  "L'élargissement de l'assiette fiscale au secteur informel est un objectif majeur des plans nationaux de développement.",
+ ],
+ 'difficultes': [
+  ("Confusion entre problème structurel et conjoncturel.", "Critère de durée ; exemples à classer."),
+  ("Vision de l'impôt comme une simple contrainte.", "Ce que l'impôt finance concrètement."),
+  ("Préjugés sur le VIH/sida.", "Informations scientifiques ; refus de la stigmatisation."),
+ ],
+ 'soutien': ["Liste de problèmes à classer en structurels et conjoncturels.", "Schéma 1 à compléter avec des étiquettes."],
+ 'approfondissement': ["Enquête : que finance le budget de l'État ? (loi de finances simplifiée)", "Exposé sur la déforestation et le cacao."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : problème structurel ; fiscalité.", 2, "Problème structurel : difficulté durable liée à l'organisation de l'économie (1 pt) ; fiscalité : ensemble des impôts et taxes prélevés par l'État et les collectivités (1 pt)."),
+   ("Classe en structurels ou conjoncturels : Covid-19 ; poids de l'informel ; chute des cours du cacao ; chômage des jeunes.", 2, "Structurels : poids de l'informel, chômage des jeunes ; conjoncturels : Covid-19, chute des cours du cacao. 0,5 pt par élément."),
+   ("Explique pourquoi le VIH/sida est un problème de développement.", 2, "Il touche les adultes actifs : moins de main-d'œuvre (1 pt) ; il augmente les dépenses de santé et laisse des orphelins (1 pt)."),
+   ("Cite deux impôts, un direct et un indirect.", 2, "Direct : impôt sur les salaires, sur les bénéfices ou foncier (1 pt) ; indirect : TVA ou droits de douane (1 pt)."),
+  ],
+  'situation': "Un commerçant du marché d'Adjamé refuse de déclarer son activité : « Les impôts ne servent à rien, l'État est assez riche avec le cacao. »",
+  'consignes': [
+   ("Cite deux problèmes structurels de l'économie ivoirienne.", 2, "La dépendance aux matières premières brutes (1 pt) ; le poids de l'informel ou le chômage des jeunes (1 pt)."),
+   ("Explique pourquoi le cacao ne suffit pas à financer l'État.", 4, "Ses prix varient sur les marchés mondiaux et il est exporté brut, avec une faible valeur ajoutée (2 pts) ; l'État a besoin de ressources régulières, comme les impôts, pour financer les services publics (2 pts)."),
+   ("Montre au commerçant l'importance de la fiscalité.", 4, "Les impôts financent les écoles, les hôpitaux et les routes, dont le commerçant profite (2 pts) ; s'ils sont bien collectés, ils réduisent l'endettement et la dépendance du pays (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Civisme fiscal et refus de la corruption.", "Solidarité, lutte contre la stigmatisation des malades, protection de l'environnement.",
+             "Liens avec l'EDHC (citoyenneté), les SVT (VIH, forêt) et les mathématiques (pourcentages)."],
+}
