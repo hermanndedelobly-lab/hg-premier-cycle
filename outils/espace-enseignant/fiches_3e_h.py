@@ -432,3 +432,70 @@ FICHES['3e-h-t2-l2'] = {
  'valeurs': ["Paix, coopération entre les peuples, respect des droits de l'homme.", "Esprit critique et argumentation nuancée.",
              "Liens avec l'EDHC (DUDH), la géographie (mondialisation) et le français (débat argumenté)."],
 }
+
+# ------------------------------------------------------------------ T2-L3
+FICHES['3e-h-t2-l3'] = {
+ 'materiel': ["carte des sièges de l'UA (carte 1)", "organigramme de l'UA (schéma 1)", "extraits de l'Acte constitutif (articles 3 et 4)",
+              "articles de la Charte africaine des droits de l'homme et des peuples", "coupures de presse sur la crise ivoirienne (2002 – 2011)"],
+ 'contexte': "pendant la crise ivoirienne, des expressions comme « Conseil de paix et de sécurité » ou « panel de chefs d'État » reviennent dans l'actualité.",
+ 'circonstance': "les élèves de 3e 1 du lycée moderne d'Alépé constatent que les débats publics montrent une mauvaise connaissance de l'Union africaine.",
+ 'taches': ["définir l'UA et décrire sa création", "expliquer ses objectifs et principes, décrire ses organes et construire son organigramme",
+            "réaliser un tableau des succès et des échecs et apprécier ses actions"],
+ 'prerequis': ["L'ONU (leçon précédente).", "La décolonisation de l'Afrique (thème 1).", "La carte politique de l'Afrique."],
+ 'seances': [
+  {'titre': "Création, objectifs et principes (I, II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation, relevé d'expressions",
+    ["Lire la situation ; faire relever les expressions liées à l'UA.", "« Qu'est-ce que l'Union africaine ? »"], ["Une organisation des États africains."], "Introduction."),
+   ("Développement · I et II. Création, objectifs et principes", 35, "Exposé dialogué, lecture de la carte 1 et de l'Acte constitutif",
+    ["Présenter le passage de l'OUA à l'UA ; faire repérer les lieux sur la carte 1.", "Faire relever objectifs et principes ; identifier le principe nouveau."],
+    ["OUA (25 mai 1963) ; Syrte (1999), Lomé (2000), Durban (2002) ; siège à Addis-Abeba ; 55 membres.",
+     "Unité, paix, démocratie, intégration, développement ; principe nouveau : droit d'intervenir en cas de crimes graves ; rejet des coups d'État."], "I et II."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application I et II."], ["Étapes ; objectifs ; principe nouveau."], None),
+  ]},
+  {'titre': "Les organes et l'organigramme (III, IV)", 'etapes': [
+   (PRES, 5, "Comparaison", ["« Quels organes de l'ONU retrouve-t-on à l'UA ? »"], ["Une assemblée de chefs d'État, une commission, un conseil pour la paix."], None),
+   ("Développement · III et IV. Organes et organigramme", 38, "Travail de groupes, construction de l'organigramme",
+    ["Chaque groupe présente un organe.", "Construire l'organigramme à partir du schéma 1 ; comparer avec celui de l'ONU."],
+    ["Conférence (chefs d'État, organe suprême) ; Conseil exécutif (ministres) ; Commission (exécutif, Addis-Abeba) ; Conseil de paix et de sécurité (15 États).",
+     "Parlement panafricain (Midrand), Cour africaine (Arusha), ECOSOCC (société civile)."], "III et IV."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application III et IV."], ["Association organe – rôle ; lecture de l'organigramme."], None),
+  ]},
+  {'titre': "La CADHP et le bilan de l'UA (V, VI)", 'etapes': [
+   (PRES, 5, "Lecture d'un article de la CADHP", ["Lire l'article 29 (devoirs de l'individu) ; « Ce texte ressemble-t-il à la DUDH ? »"], ["Il parle aussi de devoirs."], None),
+   ("Développement · V et VI. CADHP, succès et échecs", 30, "Comparaison de documents, tableau synoptique",
+    ["Comparer la CADHP et la DUDH.", "Construire le tableau des succès et des échecs de l'UA."],
+    ["CADHP : droits de la personne, droits des peuples et devoirs ; adoptée à Nairobi en juin 1981.",
+     "Succès : médiations (crise ivoirienne), missions de paix, ZLECAf, Agenda 2063, G20 ; échecs : coups d'État, conflits, dépendance financière."], "V, VI, conclusion."),
+   (EVAL, 20, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Organes, rôle dans la crise ivoirienne, bilan."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "L'Acte constitutif (article 4 h) donne à l'Union le droit d'intervenir en cas de génocide, de crimes de guerre et de crimes contre l'humanité : rupture avec la stricte non-ingérence de l'OUA.",
+  "La date d'adoption de la CADHP est donnée au 27 ou au 28 juin 1981 selon les sources ; elle entre en vigueur le 21 octobre 1986.",
+  "La ZLECAf : accord entré en vigueur en 2019, échanges lancés le 1er janvier 2021, secrétariat à Accra.",
+  "La liste des États suspendus évolue avec les coups d'État et les transitions : la vérifier sur le site de l'UA avant le cours.",
+ ],
+ 'difficultes': [
+  ("Confusion entre OUA et UA.", "Frise : OUA 1963 – 2002 ; UA depuis 2002."),
+  ("Confusion entre Conférence et Commission.", "Décider / exécuter."),
+  ("Confusion entre UA et CEDEAO.", "Continent / région ; carte 1."),
+ ],
+ 'soutien': ["Organigramme à compléter avec des étiquettes.", "Tableau OUA / UA à compléter."],
+ 'approfondissement': ["Exposé sur la ZLECAf et ses enjeux pour la Côte d'Ivoire.", "Comparer la CADHP et la DUDH dans un tableau argumenté."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : Union africaine ; panafricanisme.", 2, "UA : organisation des États africains pour l'unité, la paix et le développement du continent (1 pt) ; panafricanisme : mouvement qui défend l'unité et la solidarité des peuples africains (1 pt)."),
+   ("Donne la date et le lieu de création de l'OUA et du lancement de l'UA.", 2, "OUA : 25 mai 1963, Addis-Abeba (1 pt) ; UA : 9 juillet 2002, Durban (1 pt)."),
+   ("Associe chaque organe à son rôle : Conférence ; Commission ; Conseil de paix et de sécurité ; Parlement panafricain.", 2, "Organe suprême qui décide ; exécute les décisions ; prévient et gère les conflits ; représente les peuples. 0,5 pt par association."),
+   ("Explique en quoi la CADHP est originale.", 2, "Elle proclame aussi des droits des peuples (développement, paix, autodétermination) (1 pt) et des devoirs de l'individu envers sa famille, la société et l'État (1 pt)."),
+  ],
+  'situation': "Un camarade pense que l'Union africaine « ne fait que des réunions » et n'a rien fait pour la Côte d'Ivoire.",
+  'consignes': [
+   ("Cite deux objectifs de l'UA.", 2, "Réaliser l'unité et la solidarité africaines (1 pt) ; promouvoir la paix, la sécurité et la démocratie (1 pt) ; on accepte l'intégration économique."),
+   ("Montre que l'UA a agi pendant la crise ivoirienne.", 4, "Elle a envoyé des médiateurs, comme Thabo Mbeki (2 pts) ; elle a formé un panel de chefs d'État en 2011 pour aider à sortir de la crise (2 pts)."),
+   ("Réponds à ton camarade par une appréciation nuancée du bilan de l'UA.", 4, "Succès : médiations, missions de paix, ZLECAf, entrée au G20 (2 pts) ; limites : coups d'État, conflits non résolus, dépendance financière (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Solidarité africaine et culture de la paix.", "Respect des droits de l'homme et des peuples, de la démocratie.",
+             "Liens avec l'EDHC (CADHP), la géographie (intégration régionale, ZLECAf) et le français (débat)."],
+}
