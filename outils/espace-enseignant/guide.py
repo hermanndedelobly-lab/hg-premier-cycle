@@ -1,4 +1,4 @@
-# Guide de l\'enseignant d\'une classe, 6e ou 5e (page d\'accueil de l\'Espace enseignant)
+# Guide de l\'enseignant d\'une classe, de la 6e à la 3e (page d\'accueil de l\'Espace enseignant)
 
 def _ul(items):
     return '<ul>\n' + ''.join('<li>' + i + '</li>\n' for i in items) + '</ul>\n'
@@ -33,14 +33,22 @@ def guide_html(c):
 
     h += '<h3>3. Progression annuelle indicative de ' + K + '</h3>\n'
     h += '<p>Volume horaire calculé à partir du programme : à répartir selon le calendrier scolaire officiel et l\'emploi du temps de l\'établissement. Il est conseillé d\'alterner une leçon d\'histoire et une leçon de géographie, et de garder une à deux semaines par trimestre pour les évaluations et la remédiation.</p>\n'
+    tot = 0
     for d in c['disciplines']:
         lignes, cumul = [], 0
         for t in d['themes']:
+            alt = False   # leçons alternantes (3e) : une seule des deux est traitée, on ne compte sa durée qu'une fois
             for l in t['lecons']:
+                if 'alternante' in l['titre'] and alt:
+                    lignes.append(['T' + str(t['n']) + '-L' + str(l['n']) + ' · <a href="#l-' + K + '-ens-' + l['id'][3:] + '">' + l['titre'] + '</a>', 'au choix', str(cumul) + ' h'])
+                    continue
+                alt = alt or 'alternante' in l['titre']
                 cumul += l['duree']
                 lignes.append(['T' + str(t['n']) + '-L' + str(l['n']) + ' · <a href="#l-' + K + '-ens-' + l['id'][3:] + '">' + l['titre'] + '</a>', str(l['duree']) + ' h', str(cumul) + ' h'])
+        tot += cumul
         h += '<h4>' + d['nom'] + ' (' + str(cumul) + ' h)</h4>\n' + _tab(['Leçon (T = thème, L = leçon)', 'Durée', 'Cumul'], lignes)
-    tot = sum(l['duree'] for d in c['disciplines'] for t in d['themes'] for l in t['lecons'])
+        if any('alternante' in l['titre'] for t in d['themes'] for l in t['lecons']):
+            h += '<p class="conseil">Les deux leçons alternantes sont au choix : le professeur traite l\'une ou l\'autre ; une seule est comptée dans le volume horaire.</p>\n'
     h += '<p><strong>Total : ' + str(tot) + ' heures de cours</strong>, hors évaluations, corrections et remédiation.</p>\n'
 
     h += '<h3>4. Les stratégies pédagogiques utilisées dans les fiches</h3>\n'
