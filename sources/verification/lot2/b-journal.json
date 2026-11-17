@@ -1,0 +1,341 @@
+[
+ {
+  "etape": "Open Library vogel-1997",
+  "ok": false,
+  "detail": []
+ },
+ {
+  "etape": "Open Library niane-1960",
+  "ok": false,
+  "detail": "URLError(ConnectionResetError(104, 'Connection reset by peer'))"
+ },
+ {
+  "etape": "Crossref chauveau-2006",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "How does an institution evolve? Land, politics, intergenerational relations and the institution of the tutorat amongst autochthones and immigrants (Gban region, Cote d’Ivoire)",
+    "auteurs": [
+     "Chauveau"
+    ],
+    "ouvrage": "Land and the Politics of Belonging in West Africa",
+    "editeur": "BRILL",
+    "annee": 2006,
+    "doi": "10.1163/9789047417033_012"
+   },
+   {
+    "titre": "How does a distance-teaching institution work?",
+    "auteurs": [
+     null
+    ],
+    "ouvrage": "",
+    "editeur": "Commonwealth Secretariat",
+    "annee": 1991,
+    "doi": "10.14217/9781848594869-4-en"
+   },
+   {
+    "titre": "China’s institution-building amidst (dynamic) network effects: how will the relations between the IMF and newcomer institutions evolve?",
+    "auteurs": [
+     "Kruck",
+     "Weisser"
+    ],
+    "ouvrage": "Review of International Political Economy",
+    "editeur": "Informa UK Limited",
+    "annee": 2026,
+    "doi": "10.1080/09692290.2026.2748312"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia code-environnement",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Côte d'Ivoire",
+    "extrait": "« article de qualité » labellisé en 2008. Pour les articles homonymes, voir Côte d&#039;Ivoire (homonymie). République de Côte d’Ivoire La Côte d&#039;IvoireÉcouter"
+   },
+   {
+    "titre": "La Tribune (France, 1985)",
+    "extrait": "ex-figure de la rédaction, le journaliste d&#039;investigation Guy-André Kieffer, spécialiste reconnu des matières premières, est enlevé en Côte d&#039;Ivoire, où il"
+   },
+   {
+    "titre": "Pau",
+    "extrait": "nombre de ses compétences, dans les conditions déterminées par le code général des collectivités territoriales. Dans le cadre des dispositions de la loi portant"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia probo-koala",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Affaire du Probo Koala",
+    "extrait": "L&#039;affaire du Probo Koala est une catastrophe environnementale survenue en Côte d&#039;Ivoire. Elle tire son nom du navire vraquier qui a acheminé des déchets en Côte"
+   },
+   {
+    "titre": "Probo Koala",
+    "extrait": "un équipage russe, le Probo Koala fut en 2006 au centre de l&#039;affaire de dépôt de déchets toxiques en Côte d&#039;Ivoire. Le Probo Koala est un supertanker à"
+   },
+   {
+    "titre": "Trafigura",
+    "extrait": "où le Probo Koala a séjourné, n&#039;a jamais fait mention de cette substance. Les résidus chimiques du Probo Koala déversés à Abidjan en août 2006 sont déjà"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia rgph-2021",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Recensement général de la population et de l'habitat 2021 (Côte d'Ivoire)",
+    "extrait": "Recensement général de la population et de l&#039;habitat de 2021 (RGPH 2021) Le recensement général de la population et de l&#039;habitat de 2021 (RGPH 2021) est"
+   },
+   {
+    "titre": "Côte d'Ivoire",
+    "extrait": "« article de qualité » labellisé en 2008. Pour les articles homonymes, voir Côte d&#039;Ivoire (homonymie). République de Côte d’Ivoire La Côte d&#039;IvoireÉcouter"
+   },
+   {
+    "titre": "Lakota (Côte d'Ivoire)",
+    "extrait": "essentiellement de Dida. Selon le recensement général de la population et de l&#039;habitat de Côte d&#039;Ivoire en 2021 (RGPH 2021), la population de Lakota est estimée"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia demographie",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Démographie de la Côte d'Ivoire",
+    "extrait": "Cet article contient des statistiques sur la démographie de la Côte d&#039;Ivoire. Il y a plus de soixante peuples dont les principaux sont : Baoulés, Agnis"
+   },
+   {
+    "titre": "Côte d'Ivoire",
+    "extrait": "« article de qualité » labellisé en 2008. Pour les articles homonymes, voir Côte d&#039;Ivoire (homonymie). République de Côte d’Ivoire La Côte d&#039;IvoireÉcouter"
+   },
+   {
+    "titre": "Économie de la Côte d'Ivoire",
+    "extrait": "L’économie de la Côte d&#039;Ivoire, avec un PIB par habitant qui s&#039;élève à 2 286 USD en 2019 fait partie des économies en voie de développement. L&#039;indice de pauvreté"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia code-eau",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Côte d'Ivoire",
+    "extrait": "« article de qualité » labellisé en 2008. Pour les articles homonymes, voir Côte d&#039;Ivoire (homonymie). République de Côte d’Ivoire La Côte d&#039;IvoireÉcouter"
+   },
+   {
+    "titre": "Économie de la Côte d'Ivoire",
+    "extrait": "cas de la côte d&#039;ivoire », sur ilo.org via Wikiwix, 1998 (consulté le 15 décembre 2008). (Paul Koffi Koffi, 2008, p. 178-179). (La Côte d&#039;Ivoire en chiffres"
+   },
+   {
+    "titre": "Himra",
+    "extrait": "par l&#039;Association des producteurs et éditeurs de musique de Côte d&#039;Ivoire (APRODEMCI). Né le 28 mai 1998 à Cocody, commune située au sein d&#039;Abidjan, capitale"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia foncier",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Code foncier rural",
+    "extrait": "un domaine juridiquement délicat et économiquement crucial ». Loi (Côte d&#039;Ivoire) n°98-750 du 23 décembre 1998 relative au domaine du foncier rural (fr)"
+   },
+   {
+    "titre": "Côte d'Ivoire",
+    "extrait": "homonymes, voir Côte d&#039;Ivoire (homonymie). République de Côte d’Ivoire La Côte d&#039;IvoireÉcouter, en forme longue la république de Côte d&#039;Ivoire (RCI), est un"
+   },
+   {
+    "titre": "Assemblée nationale (Côte d'Ivoire)",
+    "extrait": "officiel de la Côte d&#039;Ivoire, note du 11 février 1953, p. 95) Loi n° 59-1 du 26 mars 1959 portant constitution de la République de Côte d&#039;Ivoire Loi constitutionnelle"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia anaged",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Agence nationale de gestion des déchets (Côte d’Ivoire)",
+    "extrait": "Agence nationale de gestion des déchets. Agence nationale de gestion des déchets L’Agence Nationale de Gestion des Déchets (ANAGED) de Côte d’Ivoire est"
+   },
+   {
+    "titre": "Agence nationale de gestion des déchets",
+    "extrait": "s&#039;appellent Agence nationale de gestion des déchets : Agence nationale de gestion des déchets, en Côte d&#039;Ivoire. Agence nationale de gestion des déchets, en Tunisie"
+   },
+   {
+    "titre": "Côte d'Ivoire",
+    "extrait": "« article de qualité » labellisé en 2008. Pour les articles homonymes, voir Côte d&#039;Ivoire (homonymie). République de Côte d’Ivoire La Côte d&#039;IvoireÉcouter"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia soubre",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Barrage de Soubré",
+    "extrait": "Barrage de Soubré Localisation sur la carte de Côte d&#039;Ivoire Le barrage de Soubré, inauguré le 2 novembre 2017, est un barrage hydroélectrique au fil de"
+   },
+   {
+    "titre": "Soubré",
+    "extrait": "2017, la ville de Soubré dispose d&#039;un barrage hydroélectrique construit sur une longueur de 4500 mètres. En 2021, sa population est de 272 773 habitants"
+   },
+   {
+    "titre": "Énergie en Côte d'Ivoire",
+    "extrait": "1 584 MW. Le barrage de Soubré (275 MW) a été construit par Sinohydro de 2013 à 2017 près de la ville de Soubré sur le fleuve Sassandra. Le barrage de Kossou"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia kossou",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Barrage de Kossou",
+    "extrait": "Barrage de Kossou Barrage de Kossou Localisation sur la carte de Côte d&#039;Ivoire Le barrage de Kossou se situe dans la circonscription de Yamoussoukro,"
+   },
+   {
+    "titre": "Kossou",
+    "extrait": "Yamoussoukro. Le barrage de Kossou est le plus grand barrage hydroélectrique et le plus grand centre de production d&#039;énergie du pays. Depuis 2005, Kossou est le"
+   },
+   {
+    "titre": "Lac de Kossou",
+    "extrait": "1973 par le barrage du fleuve Bandama à Kossou (le barrage de Kossou). Quelque 75 000 Baoulé ont été déplacés par le lac. Le lac Kossou s&#039;est formé après"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia sachets",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Sac plastique",
+    "extrait": "taxe sur les sacs en plastique dès 1994. Plusieurs régions telles que la Corse ont pris des mesures contre les sachets plastiques car, abandonnés dans"
+   },
+   {
+    "titre": "Bolloré",
+    "extrait": "sur les sachets de thé puis sort de sa longue tradition papetière pour devenir dans les années 1990 l&#039;un des leaders mondiaux du film plastique ultrafin"
+   },
+   {
+    "titre": "Matière plastique",
+    "extrait": "matières plastiques à l&#039;Antiquité, c&#039;est surtout à partir de la fin du XIXe siècle que leur utilisation se développe avec la mise au point de plastiques synthétiques"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia code-forestier",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia niani",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "INS ins-accueil",
+  "ok": false,
+  "detail": "URLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.ins.ci'. (_ssl.c:1011)\"))"
+ },
+ {
+  "etape": "INS ins-rgph",
+  "ok": false,
+  "detail": "URLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.ins.ci'. (_ssl.c:1011)\"))"
+ },
+ {
+  "etape": "Banque mondiale population",
+  "ok": true,
+  "detail": [
+   [
+    "2023",
+    31165654
+   ],
+   [
+    "2022",
+    30395002
+   ],
+   [
+    "2021",
+    29639736
+   ],
+   [
+    "2020",
+    28915449
+   ],
+   [
+    "2019",
+    28193009
+   ],
+   [
+    "2018",
+    27464173
+   ],
+   [
+    "2017",
+    26733372
+   ],
+   [
+    "2016",
+    25989405
+   ],
+   [
+    "2015",
+    25246342
+   ],
+   [
+    "2014",
+    24527395
+   ]
+  ]
+ },
+ {
+  "etape": "Banque mondiale urbain",
+  "ok": true,
+  "detail": [
+   [
+    "2023",
+    53.4075201638704
+   ],
+   [
+    "2022",
+    52.8492549676673
+   ],
+   [
+    "2021",
+    52.3183461956059
+   ],
+   [
+    "2020",
+    51.8357660823651
+   ],
+   [
+    "2019",
+    51.3514799771241
+   ],
+   [
+    "2018",
+    50.8718477756395
+   ],
+   [
+    "2017",
+    50.3977309654344
+   ],
+   [
+    "2016",
+    49.929991034032
+   ],
+   [
+    "2015",
+    49.4694894689553
+   ],
+   [
+    "2014",
+    49.0173144557368
+   ]
+  ]
+ }
+]
