@@ -157,3 +157,137 @@ FICHES['3e-h-t1-l2'] = {
  'valeurs': ["Patriotisme et mémoire des combattants de la liberté.", "Rôle des femmes dans la vie publique.",
              "Liens avec l'EDHC (citoyenneté, symboles de la nation) et le français (récit, témoignage)."],
 }
+
+# ------------------------------------------------------------------ T1-L3 (leçon alternante : Biafra)
+FICHES['3e-h-t1-l3'] = {
+ 'materiel': ["carte du Nigeria et du Biafra (carte 1)", "frise de 1960 à 1971 (frise 1)", "carte de l'Afrique de l'Ouest",
+              "extrait de la déclaration de Gowon « ni vainqueur ni vaincu » (janvier 1970)", "photographie du pont aérien d'Uli (choisie avec précaution)"],
+ 'contexte': "des élèves de 3e 3 du lycée moderne de Koumassi visitent le quartier Biafra, à Treichville, où habite un camarade d'origine biafraise.",
+ 'circonstance': "touchés par des témoignages parfois difficiles à comprendre, ils veulent connaître les causes et les conséquences de la guerre du Biafra.",
+ 'taches': ["définir la crise sociopolitique et en identifier les causes en Afrique", "localiser la zone de conflit et analyser la guerre du Biafra",
+            "apprécier les conséquences de la guerre et le processus de réconciliation"],
+ 'prerequis': ["La colonisation et la décolonisation de l'Afrique (leçons précédentes).", "La lecture d'une carte de l'Afrique de l'Ouest.", "La notion de droits humains (EDHC)."],
+ 'seances': [
+  {'titre': "La notion de crise, le cadre et les causes (I, II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation ; « Pourquoi un quartier d'Abidjan porte-t-il le nom d'une région du Nigeria ? »"], ["À cause d'une guerre au Nigeria et de l'accueil de réfugiés."], "Introduction."),
+   ("Développement · I et II. Notion, cadre et causes", 35, "Exposé dialogué, lecture de la carte 1",
+    ["Faire définir la crise sociopolitique et énumérer ses formes et ses causes en Afrique.", "Faire localiser le Biafra, les trois grands peuples et le pétrole ; expliquer les causes de la guerre."],
+    ["Troubles graves qui menacent la stabilité d'un État ; causes : héritage colonial, luttes pour le pouvoir, ethnicité manipulée, pauvreté, ressources, ingérences.",
+     "Biafra : ancienne région orientale, à l'est du Niger, peuplée surtout d'Igbo, riche en pétrole ; causes : rivalités, coups d'État de 1966, massacres d'Igbo, pétrole, sécession du 30 mai 1967."], "I et II."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application I et II."], ["Définition, trois causes, localisation."], None),
+  ]},
+  {'titre': "Le déroulement et les atteintes aux droits humains (III, IV)", 'etapes': [
+   (PRES, 5, "Rappel et question-problème", ["« Comment le gouvernement fédéral a-t-il réagi à la sécession ? »"], ["Par la guerre."], None),
+   ("Développement · III et IV. Déroulement, atteintes aux droits humains", 38, "Lecture de la frise 1, étude de documents",
+    ["Faire placer les étapes sur la frise ; présenter les soutiens extérieurs.", "Faire relever les atteintes aux droits humains (famine, massacres, bombardements, enfants soldats)."],
+    ["Offensive de juillet 1967, prise des villes, blocus et famine (1968 – 1969), capitulation le 15 janvier 1970 ; Grande-Bretagne et URSS pour Lagos ; Biafra reconnu par cinq États, dont la Côte d'Ivoire.",
+     "Famine utilisée comme arme, massacres de civils, bombardements de marchés, enrôlement d'enfants, déplacements forcés."], "III et IV."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application III et IV."], ["Trois dates ; deux atteintes aux droits humains."], None),
+  ]},
+  {'titre': "La résolution et les conséquences (V, VI)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Comment réconcilier un pays après une guerre civile ? »"], ["Par le pardon, la reconstruction, la justice."], None),
+   ("Développement · V et VI. Résolution et conséquences", 30, "Explication, tableau des conséquences",
+    ["Présenter les médiations de l'OUA et la fin de la guerre ; expliquer « ni vainqueur ni vaincu » et les « 3 R ».", "Construire le tableau des conséquences humaines, politiques, économiques et humanitaires."],
+    ["Échec des médiations ; victoire fédérale ; réconciliation, reconstruction, réhabilitation.",
+     "Plus d'un million de morts selon les estimations courantes ; unité maintenue ; ruine de l'Est ; naissance de Médecins sans frontières (1971)."], "V, VI, conclusion."),
+   (EVAL, 20, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Causes, déroulement et conséquences."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Le découpage du 27 mai 1967 en douze États enlève à la région orientale la côte et l'essentiel du pétrole : il précipite la sécession.",
+  "Le Biafra a été reconnu par la Tanzanie, le Gabon, la Côte d'Ivoire, la Zambie (1968) et Haïti (1969) ; la France l'a soutenu sans le reconnaître.",
+  "Les estimations du nombre de morts vont de 500 000 à plus de 2 millions ; la plupart sont des civils morts de faim et de maladie.",
+  "L'expérience du Biafra a contribué à l'idée d'une action humanitaire indépendante des États (Médecins sans frontières, 1971).",
+ ],
+ 'difficultes': [
+  ("Localisation erronée du Biafra.", "Carte 1 : sud-est du Nigeria, à l'est du Niger, jusqu'à la frontière camerounaise."),
+  ("Confusion entre les protagonistes.", "Tableau : Gowon (fédéral, Lagos) / Ojukwu (Biafra, Enugu)."),
+  ("Explication purement ethnique de la guerre.", "Rappeler le rôle des coups d'État, des choix politiques et du pétrole."),
+ ],
+ 'soutien': ["Carte muette du Nigeria à compléter (Biafra, Lagos, Enugu, Port Harcourt, Niger).", "Frise à compléter avec quatre dates données."],
+ 'approfondissement': ["Exposé sur la naissance de l'action humanitaire moderne.", "Comparer la guerre du Biafra et le génocide des Tutsi au Rwanda (leçon alternante)."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : crise sociopolitique ; sécession.", 2, "Crise sociopolitique : période de troubles graves qui menace la stabilité d'un État (1 pt) ; sécession : séparation d'une région qui veut former un État indépendant (1 pt)."),
+   ("Localise le Biafra et cite ses deux principales richesses ou caractéristiques.", 1.5, "Sud-est du Nigeria, à l'est du Niger (0,5 pt) ; peuplé surtout d'Igbo (0,5 pt) ; riche en pétrole (0,5 pt)."),
+   ("Range dans l'ordre : capitulation du Biafra ; coups d'État ; proclamation du Biafra ; indépendance du Nigeria.", 2, "Indépendance du Nigeria (1960) → coups d'État (1966) → proclamation du Biafra (30 mai 1967) → capitulation (15 janvier 1970). 0,5 pt par élément bien placé."),
+   ("Explique pourquoi la famine a fait plus de victimes que les combats.", 2.5, "Le blocus fédéral empêchait l'arrivée de vivres et de médicaments (1,5 pt) ; la population encerclée, surtout les enfants, est morte de faim et de maladie (1 pt)."),
+  ],
+  'situation': "Un camarade d'origine nigériane te dit que son grand-père a fui l'Est du Nigeria en 1968 et qu'il a été accueilli en Côte d'Ivoire.",
+  'consignes': [
+   ("Indique deux causes de la guerre du Biafra.", 2, "Les rivalités entre grands peuples aggravées par les coups d'État et les massacres de 1966 (1 pt) ; l'enjeu du pétrole du delta du Niger (1 pt)."),
+   ("Explique pourquoi des habitants de l'Est ont fui en 1968.", 4, "La guerre et la prise des villes par l'armée fédérale (2 pts) ; le blocus et la famine qui menaçaient leur vie (2 pts)."),
+   ("Montre que la Côte d'Ivoire a été concernée par cette guerre.", 4, "Elle a reconnu le Biafra en 1968 (1,5 pt) ; elle a accueilli Ojukwu en exil et des réfugiés (1,5 pt) ; le quartier Biafra de Treichville en garde la mémoire (1 pt)."),
+  ],
+ },
+ 'valeurs': ["Respect de la vie et de la dignité humaine.", "Tolérance, refus de la haine ethnique, solidarité avec les réfugiés.",
+             "Liens avec l'EDHC (droits humains, droit humanitaire) et la géographie (Nigeria, pétrole)."],
+}
+
+# ------------------------------------------------------------------ T1-L3b (leçon alternante : Rwanda)
+FICHES['3e-h-t1-l3b'] = {
+ 'materiel': ["carte du Rwanda et des Grands Lacs en 1994 (carte 1)", "frise de 1959 à 2015 (frise 1)", "article 2 de la Convention de l'ONU sur le génocide (1948)",
+              "photographie d'un mémorial (sans corps)", "court témoignage de rescapé adapté à l'âge des élèves"],
+ 'contexte': "des élèves de 3e 4 du collège moderne Nangui Abrogoua regardent à la télévision un documentaire sur la guerre du Rwanda.",
+ 'circonstance': "choqués, l'un d'eux s'écrie : « Ces gens étaient de véritables sauvages ! » ; les élèves décident de comprendre ce conflit.",
+ 'taches': ["définir la crise sociopolitique et identifier ses causes", "localiser les zones de conflit et analyser la guerre et le génocide",
+            "apprécier les conséquences et le processus de résolution"],
+ 'prerequis': ["La colonisation et la décolonisation de l'Afrique.", "La notion de droits humains (EDHC).", "La lecture d'une carte et d'une frise."],
+ 'seances': [
+  {'titre': "Notion, cadre et causes (I, II, III)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et débat court",
+    ["Lire la situation ; noter au tableau la phrase « de véritables sauvages ».", "« Cette affirmation est-elle juste ? Comment le vérifier ? »"], ["Il faut connaître les causes et l'organisation des massacres."], "Introduction."),
+   ("Développement · I, II et III. Notion, cadre et causes", 35, "Exposé dialogué, lecture de la carte 1",
+    ["Faire définir la crise sociopolitique ; localiser le Rwanda et ses voisins.", "Expliquer comment la colonisation a figé les catégories ; faire relever les causes de la guerre et du génocide."],
+    ["Petit pays enclavé des Grands Lacs, capitale Kigali ; même langue et même culture pour tous les Rwandais.",
+     "Carte d'identité ethnique (années 1930), discriminations depuis 1959, refus du retour des réfugiés, guerre de 1990, propagande, attentat du 6 avril 1994."], "I, II, III."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application I à III."], ["Définition, localisation, rôle de la colonisation."], None),
+  ]},
+  {'titre': "Le déroulement et les atteintes aux droits humains (IV, V)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Comment passe-t-on d'une guerre à un génocide ? »"], ["Par la propagande, l'organisation des tueurs, un prétexte."], None),
+   ("Développement · IV et V. Déroulement et génocide", 38, "Lecture de la frise 1 et du tableau, étude de la Convention de 1948",
+    ["Faire placer les étapes de 1990 à juillet 1994.", "Faire lire l'article 2 de la Convention et justifier l'emploi du mot génocide ; relever les preuves de la planification."],
+    ["FPR (1990), Arusha (1993), attentat (6 avril 1994), génocide (7 avril – juillet 1994), Kigali (4 juillet 1994).",
+     "Intention de détruire les Tutsi ; listes, barrages, distribution d'armes, milices, radio ; entre 800 000 et plus d'un million de morts."], "IV, V."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application IV et V."], ["Déroulement ; deux atteintes ; justification du terme génocide."], None),
+  ]},
+  {'titre': "La résolution et les conséquences (VI, VII)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Comment juger et réconcilier après un génocide ? »"], ["Par la justice, la mémoire, l'unité nationale."], None),
+   ("Développement · VI et VII. Résolution et conséquences", 30, "Explication, tableau des conséquences",
+    ["Présenter l'échec de la communauté internationale, la victoire du FPR, le TPIR et les gacaca.", "Construire le tableau des conséquences (humaines, politiques, régionales, juridiques)."],
+    ["MINUAR réduite ; FPR vainqueur ; TPIR (Arusha, 1994 – 2015) ; gacaca (2002 – 2012) ; suppression de la mention ethnique ; 7 avril.",
+     "Morts, orphelins, traumatismes ; réfugiés et guerres des Grands Lacs ; développement de la justice internationale."], "VI, VII, conclusion."),
+   (EVAL, 20, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Causes, génocide, conséquences."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "L'ONU parle du « génocide perpétré contre les Tutsi » ; des Hutu opposés au génocide ont aussi été tués, mais comme opposants.",
+  "Le général Dallaire avait alerté l'ONU dès janvier 1994 ; le 21 avril, le Conseil de sécurité réduit la MINUAR à environ 270 hommes.",
+  "Les estimations vont d'environ 800 000 victimes à plus d'un million (1 074 017 selon le recensement rwandais de 2002).",
+  "Le rapport Duclert (2021) conclut à des responsabilités « lourdes et accablantes » de la France, sans complicité de génocide.",
+ ],
+ 'difficultes': [
+  ("Idée d'une haine ancestrale entre Hutu et Tutsi.", "Rappeler la même langue, la même culture et le rôle de la colonisation."),
+  ("Confusion entre guerre civile et génocide.", "Définitions comparées : combats entre armées / extermination de civils."),
+  ("Réactions émotionnelles fortes.", "Choisir des documents adaptés ; laisser un temps de parole encadré."),
+ ],
+ 'soutien': ["Carte muette à compléter (Rwanda, Kigali, Ouganda, Zaïre, Tanzanie, Burundi).", "Frise à compléter avec cinq dates données."],
+ 'approfondissement': ["Exposé sur la justice gacaca.", "Recherche sur les « Justes » rwandais qui ont sauvé des Tutsi."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : génocide ; propagande.", 2, "Génocide : crime commis dans l'intention de détruire, en tout ou en partie, un groupe national, ethnique, racial ou religieux (1 pt) ; propagande : diffusion organisée d'idées pour influencer l'opinion (1 pt)."),
+   ("Situe le Rwanda et cite trois pays voisins.", 1.5, "Petit pays enclavé d'Afrique centrale, région des Grands Lacs (0,5 pt) ; trois voisins parmi l'Ouganda, la Tanzanie, le Burundi, la RD Congo (1 pt)."),
+   ("Associe chaque date à son évènement : 1er octobre 1990 ; 6 avril 1994 ; 4 juillet 1994 ; novembre 1994.", 2, "Attaque du FPR ; attentat contre l'avion du président ; prise de Kigali par le FPR ; création du TPIR. 0,5 pt par association."),
+   ("Explique le rôle de la radio dans le génocide.", 2.5, "La RTLM a diffusé la haine en présentant les Tutsi comme des ennemis (1,5 pt) et a appelé au meurtre pendant les massacres (1 pt)."),
+  ],
+  'situation': "Après un documentaire sur le Rwanda, un camarade affirme que « ces massacres sont arrivés tout seuls, à cause d'une haine très ancienne ».",
+  'consignes': [
+   ("Indique deux causes du génocide.", 2, "La division figée par la colonisation (carte d'identité ethnique) (1 pt) ; la propagande de haine et la volonté des extrémistes de garder le pouvoir (1 pt)."),
+   ("Montre, par deux arguments, que le génocide a été organisé.", 4, "Les listes de victimes, les barrages et la distribution d'armes (2 pts) ; la participation des autorités, de l'armée, des milices et les appels de la radio (2 pts)."),
+   ("Réponds à ton camarade en expliquant pourquoi son affirmation est fausse.", 4, "Les Rwandais partageaient la même langue et la même culture : la division a été construite par la colonisation et la politique (2 pts) ; le génocide a été préparé et organisé par des responsables politiques, il n'est pas « arrivé tout seul » (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Respect de la dignité humaine, refus du racisme et des discours de haine.", "Devoir de mémoire et vigilance citoyenne.",
+             "Liens avec l'EDHC (droits humains), le français (témoignage) et la géographie (Afrique centrale)."],
+}
