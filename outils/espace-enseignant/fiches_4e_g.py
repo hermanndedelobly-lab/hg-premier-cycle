@@ -76,3 +76,73 @@ FICHES['4e-g-t1-l1'] = {
  'valeurs': ["Respect des institutions et des autorités de l'État.", "Sens du service public et civisme.",
              "Liens avec l'EDHC (institutions, citoyenneté)."],
 }
+
+FICHES['4e-g-t1-l2'] = {
+ 'materiel': ["schéma de l'administration décentralisée (schéma 1)", "schéma des sources de financement (schéma 2)",
+              "budget simplifié d'une commune", "questionnaire d'enquête à la mairie"],
+ 'contexte': "les populations élisent les responsables des communes et des régions chargés du développement local.",
+ 'circonstance': "à l'occasion des élections locales, des élèves de 4e du lycée municipal d'Attécoubé s'interrogent sur le rôle des élus municipaux et régionaux et sur le financement des collectivités.",
+ 'taches': ["définir la décentralisation et identifier ses composantes", "décrire l'administration décentralisée et mener une enquête sur son rôle",
+            "relever les sources de financement des collectivités territoriales"],
+ 'prerequis': ["La déconcentration administrative (leçon 1).", "Le vote et la citoyenneté (EDHC)."],
+ 'seances': [
+  {'titre': "Présentation générale de la décentralisation (I)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation.", "« Que feront les élus municipaux et régionaux ? »"], ["Ils développeront la commune et la région."], "Introduction."),
+   ("Développement · I. Présentation générale", 37, "Construction des définitions, tableau comparatif",
+    ["Faire définir décentralisation et collectivité territoriale.", "Faire comparer déconcentration et décentralisation ; relever objectifs et étapes."],
+    ["Transfert de compétences et de moyens à des collectivités dotées de la personnalité morale et d'un budget, administrées par des élus.", "Nommés / élus ; participation, proximité, développement ; 1980, 2001, 2003, 2014."], "I. 1 à 4."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application I."], ["Nommé / élu."], None),
+  ]},
+  {'titre': "Les composantes (II)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Qui dirige la région et la commune ? »"], ["Le président du conseil régional, le maire."], None),
+   ("Développement · II. Les composantes", 40, "Lecture du schéma 1",
+    ["Faire identifier les organes délibérants et exécutifs.", "Présenter le statut particulier du district autonome."],
+    ["Région : conseil régional, président du conseil régional ; commune : conseil municipal, maire et adjoints ; district : ministre-gouverneur nommé."], "II."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application II."], ["Organes de la région et de la commune."], None),
+  ]},
+  {'titre': "Le rôle des collectivités (III)", 'etapes': [
+   (PRES, 5, "Retour sur l'enquête", ["« Qu'a réalisé la mairie dans notre localité ? »"], ["Le marché, l'éclairage, des salles de classe."], None),
+   ("Développement · III. Le rôle", 40, "Restitution de l'enquête, classement",
+    ["Faire classer les réalisations relevées par domaine de compétence."],
+    ["Urbanisme, voirie, assainissement, éducation, santé, hydraulique, action sociale, culture, sports, économie locale, état civil."], "III."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application III."], ["Quatre compétences."], None),
+  ]},
+  {'titre': "Le financement et la tutelle (IV et V)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Avec quel argent la mairie construit-elle ? »"], ["Avec les taxes, l'aide de l'État."], None),
+   ("Développement · IV. et V. Financement et tutelle", 35, "Lecture du schéma 2 et d'un budget",
+    ["Faire relever les cinq sources de financement.", "Faire expliquer la tutelle et le civisme fiscal."],
+    ["Ressources propres, impôts rétrocédés, dotations, emprunts, dons et coopération.", "Contrôle de légalité et du budget par le ministre de l'Intérieur et le préfet ; Cour des comptes."], "IV, V, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Organes, rôle, financement, civisme."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Collectivité territoriale : personnalité morale, autonomie financière, organes élus.",
+  "La région est à la fois circonscription (préfet de région) et collectivité (conseil régional).",
+  "Mode de désignation du maire et du président du conseil régional : vérifier les textes électoraux en vigueur.",
+  "Rester neutre : ne citer aucun parti ni candidat.",
+ ],
+ 'difficultes': [
+  ("Confusion entre préfet de région et président du conseil régional.", "Tableau nommé / élu."),
+  ("Confusion entre tutelle et autorité hiérarchique.", "Contrôler n'est pas commander."),
+  ("Difficulté à relier taxes et équipements.", "Partir du ticket de marché (schéma 2)."),
+ ],
+ 'soutien': ["Fiche-lexique : collectivité, conseil, maire, tutelle, dotation.", "Schéma 1 vierge à compléter."],
+ 'approfondissement': ["Interview d'un conseiller municipal.", "Analyse simplifiée du budget de la commune."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : décentralisation ; collectivité territoriale.", 2, "Décentralisation : transfert de compétences et de moyens de l'État à des collectivités administrées par des élus (1 pt) ; collectivité : portion du territoire dotée de la personnalité morale et d'un budget propre (1 pt)."),
+   ("Nomme l'organe délibérant et l'organe exécutif de la commune et de la région.", 2, "Commune : conseil municipal, maire (1 pt) ; région : conseil régional, président du conseil régional (1 pt)."),
+   ("Cite trois compétences transférées aux collectivités.", 1.5, "Voirie, assainissement, écoles, centres de santé, marchés, état civil… 0,5 pt par compétence."),
+   ("Cite cinq sources de financement des collectivités.", 2.5, "Ressources propres, impôts rétrocédés, dotations de l'État, emprunts, dons et coopération. 0,5 pt par source."),
+  ],
+  'situation': "Dans ta commune, des commerçants refusent de payer le ticket de marché en disant que « la mairie ne fait rien ».",
+  'consignes': [
+   ("Identifie la collectivité concernée et son responsable.", 2, "La commune (1 pt), dirigée par le maire et le conseil municipal (1 pt)."),
+   ("Explique le rôle de la commune dans le développement local.", 4, "Elle construit et entretient marchés, écoles, centres de santé (2 pts) ; voirie, éclairage, ordures, état civil (2 pts)."),
+   ("Montre aux commerçants l'importance du paiement des taxes locales.", 4, "Les taxes alimentent le budget communal (2 pts) ; elles financent l'entretien du marché et les équipements dont ils profitent : civisme fiscal (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Civisme fiscal et participation à la vie locale.", "Sens de l'intérêt général ; neutralité politique.",
+             "Liens avec l'EDHC (citoyenneté, élections)."],
+}
