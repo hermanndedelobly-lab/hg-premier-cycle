@@ -142,7 +142,7 @@ FICHES['5e-h-t1-l2'] = {
   "La civilisation s'emploie au pluriel et sans hiérarchie : chaque peuple a la sienne ; le sens ancien, au singulier, a servi à justifier la colonisation.",
   "Les aires culturelles sont des ensembles dominants, aux limites floues ; les traits circulent d'une aire à l'autre (le Goli des Baoulé, emprunté aux Wan).",
   "La règle matrilinéaire akan est très nette chez les Agni ; chez les Baoulé, le système de parenté est plus souple.",
-  "La Convention de l'UNESCO de 2003 définit le patrimoine culturel immatériel ; le Zaouli des Gouro a été inscrit en 2017.",
+  "La Convention de l'UNESCO de 2003 définit le patrimoine culturel immatériel ; cinq éléments ivoiriens sont inscrits : Gbofe d'Afounkaha (2008), Zaouli (2017), tissage du pagne (2023), balafon et kolintang (2024, élément commun), attiéké (2024).",
  ],
  'difficultes': [
   ("Confusion entre aire culturelle et région administrative.", "Comparer la carte des aires et la carte des régions : les aires débordent les limites administratives."),
