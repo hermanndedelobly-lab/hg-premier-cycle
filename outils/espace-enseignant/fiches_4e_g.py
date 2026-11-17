@@ -288,3 +288,74 @@ FICHES['4e-g-t2-l1'] = {
  'valeurs': ["Solidarité africaine et refus de la xénophobie.", "Paix et respect de la démocratie.",
              "Liens avec l'anglais (communication avec les pays voisins) et l'EDHC."],
 }
+
+FICHES['4e-g-t2-l2'] = {
+ 'materiel': ["carte de l'Union européenne et de la zone euro (carte 1)", "graphique de l'évolution du nombre de membres (graphique 1)",
+              "tableau des institutions de l'UE", "données statistiques (population, PIB, commerce)"],
+ 'contexte': "l'Union européenne est le regroupement régional le plus intégré du monde, mais elle traverse aussi des crises.",
+ 'circonstance': "des élèves de 4e du lycée moderne de Bondoukou apprennent au journal télévisé que des pays de l'UE connaissent une crise financière et veulent comprendre la construction et le fonctionnement de l'UE.",
+ 'taches': ["définir l'UE et localiser son espace", "décrire la construction européenne et identifier ses potentialités",
+            "schématiser son fonctionnement et apprécier les politiques communes"],
+ 'prerequis': ["La CEDEAO (leçon précédente).", "La Révolution industrielle en Europe (histoire)."],
+ 'seances': [
+  {'titre': "Définition et espace de l'UE (I)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation.", "« Qu'est-ce que l'UE ? »"], ["Une union de pays européens."], "Introduction."),
+   ("Développement · I. Définition et espace", 37, "Lecture de la carte 1",
+    ["Faire définir l'UE.", "Faire localiser les 27 membres et distinguer la zone euro."],
+    ["Union économique et politique d'États qui partagent une partie de leur souveraineté.", "27 membres, environ 450 millions d'habitants, 21 pays de la zone euro, espace Schengen."], "I."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application I."], ["27 membres ; 21 pays de la zone euro."], None),
+  ]},
+  {'titre': "La construction européenne (II)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Comment est-on passé de 6 à 27 ? »"], ["Par des élargissements."], None),
+   ("Développement · II. La construction", 40, "Tableau des étapes, lecture du graphique 1",
+    ["Faire relever les raisons et les étapes.", "Faire lire le graphique 1."],
+    ["Paix, reconstruction, poids face aux grandes puissances.", "CECA 1951, Rome 1957, Maastricht 1992, euro 1999 – 2002, 2004, Brexit 2020."], "II."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application II."], ["Ordre chronologique."], None),
+  ]},
+  {'titre': "Potentialités et fonctionnement (III et IV)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Quelles sont les forces de l'UE ? Qui décide ? »"], ["Industrie, agriculture ; Bruxelles."], None),
+   ("Développement · III. et IV. Potentialités et fonctionnement", 40, "Exploitation de données, schéma",
+    ["Faire identifier les potentialités à partir de données.", "Faire schématiser le fonctionnement des institutions."],
+    ["Grand marché, agriculture moderne, industries, services, ports.", "Conseil européen oriente ; Commission propose ; Parlement et Conseil de l'UE votent ; Commission exécute ; Cour de justice, BCE."], "III, IV."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application III et IV."], ["Potentialités ; qui propose, qui vote."], None),
+  ]},
+  {'titre': "Politiques communes, résultats et limites (V)", 'etapes': [
+   (PRES, 5, "Retour à la situation", ["« Pourquoi parle-t-on de crise ? »"], ["Des pays sont endettés."], None),
+   ("Développement · V. Politiques communes", 35, "Tableau, débat, comparaison avec la CEDEAO",
+    ["Faire relever les politiques communes.", "Faire apprécier résultats et limites ; comparer avec la CEDEAO."],
+    ["PAC, marché unique, Schengen, euro, politique régionale, Erasmus.", "Paix, niveau de vie ; Brexit, dette, désaccords, dépendance énergétique."], "V, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Construction, institutions, politiques, comparaison."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "27 membres depuis le Brexit (2020) ; 21 pays de la zone euro depuis l'entrée de la Bulgarie (1er janvier 2026).",
+  "Ne pas confondre Conseil européen, Conseil de l'UE et Conseil de l'Europe.",
+  "La « crise financière » de la situation renvoie surtout à la crise de la dette de la zone euro (Grèce, à partir de 2010).",
+  "Accord de partenariat économique Côte d'Ivoire – UE appliqué depuis 2016.",
+ ],
+ 'difficultes': [
+  ("Confusion entre Europe et Union européenne.", "Carte 1 : pays non membres."),
+  ("Confusion entre les trois « conseils ».", "Tableau comparatif."),
+  ("Difficulté à retenir les étapes.", "Graphique 1 et frise à compléter."),
+ ],
+ 'soutien': ["Fiche-lexique : marché unique, zone euro, élargissement, Brexit.", "Carte muette de l'Europe."],
+ 'approfondissement': ["Exposé sur le programme Erasmus.", "Tableau comparatif UE – CEDEAO."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : Union européenne.", 1, "Union économique et politique d'États européens qui partagent une partie de leur souveraineté (1 pt)."),
+   ("Range dans l'ordre chronologique : euro ; CECA ; Brexit ; traités de Rome ; traité de Maastricht.", 2.5, "CECA (1951) → traités de Rome (1957) → Maastricht (1992) → euro (1999 – 2002) → Brexit (2020). 0,5 pt par position exacte."),
+   ("Indique le nombre d'États membres et de pays de la zone euro en 2026.", 1, "27 membres (0,5 pt) ; 21 pays de la zone euro (0,5 pt)."),
+   ("Indique quelle institution propose les lois et lesquelles les votent.", 1.5, "La Commission propose (0,5 pt) ; le Parlement européen et le Conseil de l'UE votent (1 pt)."),
+   ("Cite deux politiques communes de l'UE.", 2, "PAC, marché unique, Schengen, euro, politique régionale, Erasmus. 1 pt par politique."),
+  ],
+  'situation': "Lors d'un débat, un camarade affirme que la CEDEAO devrait copier exactement l'Union européenne pour réussir.",
+  'consignes': [
+   ("Identifie deux étapes de la construction européenne.", 2, "CECA (1951), traités de Rome (1957), Maastricht (1992), euro (1999 – 2002)… 1 pt par étape."),
+   ("Montre que l'UE est un exemple d'intégration réussie.", 4, "Paix entre membres (1 pt), marché unique et euro (1 pt), politiques communes : PAC, politique régionale (1 pt), élévation du niveau de vie (1 pt)."),
+   ("Explique pourquoi la CEDEAO ne peut pas copier exactement l'UE.", 4, "Limites de l'UE elle-même : Brexit, crises (1 pt) ; différences de développement, faibles échanges, instabilité en Afrique de l'Ouest (2 pts) ; s'inspirer en adaptant (1 pt)."),
+  ],
+ },
+ 'valeurs': ["Paix, solidarité et coopération entre les peuples.", "Esprit critique face aux modèles étrangers.",
+             "Liens avec l'histoire (guerres mondiales, Révolution industrielle) et l'anglais."],
+}
