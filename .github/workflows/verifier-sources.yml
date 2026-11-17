@@ -23,7 +23,7 @@ jobs:
       - name: Outils
         run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils unzip
       - name: Récupérer les sources
-        run: python3 outils/verifier-sources.py
+        run: python3 "$(python3 -c "import json;print(json.load(open('sources/demande.json')).get('script','outils/verifier-sources.py'))")"
       - name: Déposer le résultat sur la branche
         run: |
           git config user.name "github-actions[bot]"
