@@ -226,3 +226,73 @@ FICHES['5e-g-t1-l3'] = {
  'valeurs': ["Responsabilité, solidarité et respect du bien commun dans l'usage de l'eau.", "Santé et hygiène.",
              "Liens avec les SVT (cycle de l'eau, maladies), les mathématiques (angles, calculs) et l'EDHC."],
 }
+
+# ------------------------------------------------------------------ T2-L1
+FICHES['5e-g-t2-l1'] = {
+ 'materiel': ["schémas du cycle du brûlis et de l'agroforesterie (schémas 1 et 2)", "photographies d'une plantation industrielle, d'un champ associé et de cacao sous ombrage",
+              "outils agricoles ou leurs images (daba, houe, machette, pulvérisateur)", "grande feuille pour le tableau des avantages et inconvénients"],
+ 'contexte': "un élève de 5e du Collège moderne de Koumassi passe ses vacances au village.",
+ 'circonstance': "son grand-père s'inquiète de l'insuffisance des récoltes ces dernières années ; de retour au collège, la classe décide de chercher des explications et des solutions.",
+ 'taches': ["définir méthode et technique agricoles ; identifier les méthodes et distinguer les techniques", "répertorier les outils ; relever avantages et inconvénients et construire un tableau",
+            "traiter une situation relative au choix des méthodes et techniques"],
+ 'prerequis': ["Les sols, le climat et la végétation (6e).", "La croissance démographique et la pression sur la terre (leçon 2 du thème 1)."],
+ 'seances': [
+  {'titre': "Définitions et méthodes agricoles (I et II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et hypothèses",
+    ["Lire la situation du grand-père.", "« Pourquoi les récoltes baissent-elles ? »"], ["Manque de pluie, sol fatigué, maladies."], "Introduction."),
+   ("Développement · I. Définitions", 10, "Construction des définitions par des exemples",
+    ["Faire définir méthode et technique ; classer quelques exemples."],
+    ["Méthode : organisation générale de la production ; technique : procédé concret pour travailler la terre."], "I. 1 et 2."),
+   ("Développement · II. Les méthodes", 27, "Étude du schéma 1 et de photographies",
+    ["Faire expliquer le cycle du brûlis et le rôle de la jachère.", "Faire décrire les autres méthodes à partir de photographies."],
+    ["Défrichement, brûlis, cultures, jachère ; si la jachère raccourcit, le sol s'épuise.", "Intensive, monoculture, polyculture et cultures associées, agroforesterie."], "II. 1 à 5."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application I et II."], ["Définitions ; agriculture itinérante."], None),
+  ]},
+  {'titre': "Techniques, outils, avantages et inconvénients (III et IV)", 'etapes': [
+   (PRES, 5, "Questionnement", ["« Avec quels outils travaillent vos parents ou vos grands-parents ? »"], ["Daba, machette, houe ; parfois tracteur, pulvérisateur."], None),
+   ("Développement · III. Techniques et outils", 15, "Inventaire et classement",
+    ["Faire lister les techniques ; faire classer les outils en traditionnels et modernes."],
+    ["Défrichement, brûlis, labour, billonnage, engrais, pesticides, irrigation, jachère, rotation, mécanisation.", "Traditionnels : daba, houe, machette ; modernes : tracteur, motopompe, pulvérisateur."], "III. 1 à 3."),
+   ("Développement · IV. Avantages et inconvénients", 25, "Construction du tableau en groupes ; exploitation du schéma 2",
+    ["Chaque groupe remplit une ligne du tableau.", "Faire comparer monoculture et agroforesterie (schéma 2)."],
+    ["Chaque pratique a des avantages (rendements, revenus) et des inconvénients (déforestation, sols épuisés, pollution).", "Agroforesterie : ombrage, humus, sol protégé ; sol nu : érosion."], "IV."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application III et IV."], ["Classement des outils ; avantage et inconvénient des engrais."], None),
+  ]},
+  {'titre': "Choisir des pratiques durables (V)", 'etapes': [
+   (PRES, 5, "Retour au problème", ["« Que conseiller au grand-père ? »"], ["Premières idées de solutions."], None),
+   ("Développement · V. Les pratiques durables", 30, "Recherche de solutions et rédaction d'une lettre de conseils",
+    ["Faire proposer des solutions et vérifier, pour chacune, qu'elle améliore la récolte et protège l'environnement.", "Faire rédiger une lettre de conseils au grand-père."],
+    ["Abandonner le brûlis répété, compost et fumier, rotation, agroforesterie, semences améliorées, engrais raisonnés, lutte contre les feux, conseils de l'ANADER."], "V, conclusion."),
+   (EVAL, 20, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Identifient méthode et technique, expliquent la baisse des récoltes, proposent des solutions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Le modèle ivoirien du cacao s'est construit sur l'avancée d'un front pionnier en forêt (la « rente forêt » analysée par François Ruf).",
+  "Les sols ferrallitiques tirent leur fertilité de l'humus forestier : sa destruction fait chuter rapidement les rendements.",
+  "Réponses actuelles : agroforesterie, intensification écologique, Code forestier de 2019, exigences des marchés contre la déforestation.",
+  "Les pratiques extensives étaient adaptées à de faibles densités : ne pas culpabiliser les paysans.",
+ ],
+ 'difficultes': [
+  ("Confusion entre méthode et technique.", "Classement d'exemples avec la question-test : organiser ou travailler la terre ?"),
+  ("Idée que le moderne est toujours meilleur.", "Relire le tableau : chaque pratique a des avantages et des inconvénients."),
+  ("Solutions irréalistes.", "Exiger des solutions applicables par un paysan de la région, avec leur effet sur la récolte et sur l'environnement."),
+ ],
+ 'soutien': ["Tableau à compléter avec une liste d'avantages et d'inconvénients à placer.", "Images d'outils à classer."],
+ 'approfondissement': ["Enquête auprès d'un agriculteur de la famille sur ses méthodes et ses difficultés.", "Exposé sur l'agroforesterie dans les plantations de cacao."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : méthode agricole ; technique agricole.", 2, "Méthode : manière générale d'organiser la production (1 pt) ; technique : procédé concret pour travailler la terre (1 pt)."),
+   ("Classe en outils traditionnels ou modernes : daba, tracteur, machette, pulvérisateur, houe, motoculteur.", 1.5, "Traditionnels : daba, machette, houe ; modernes : tracteur, pulvérisateur, motoculteur. 0,25 pt par outil."),
+   ("Dis si chaque élément est une méthode ou une technique : monoculture, irrigation, agriculture itinérante, labour.", 2, "Méthodes : monoculture, agriculture itinérante ; techniques : irrigation, labour. 0,5 pt par réponse."),
+   ("Donne un avantage et un inconvénient de la monoculture d'exportation et de l'agroforesterie.", 2.5, "Monoculture : revenus élevés / déforestation et sols épuisés ; agroforesterie : sol protégé et enrichi / rendements plus lents, formation nécessaire. 0,5 pt par élément ; 0,5 pt pour la cohérence."),
+  ],
+  'situation': "Ton grand-père pratique depuis trente ans la culture sur brûlis sur la même zone ; les jachères sont de plus en plus courtes et les récoltes baissent.",
+  'consignes': [
+   ("Identifie la méthode et la technique utilisées par ton grand-père.", 2, "Agriculture extensive itinérante (1 pt) ; culture sur brûlis (1 pt)."),
+   ("Explique pourquoi les récoltes baissent.", 4, "Le feu détruit l'humus et les êtres vivants du sol (2 pts) ; les jachères trop courtes ne laissent plus au sol le temps de se reconstituer : il s'épuise et s'érode (2 pts)."),
+   ("Propose deux solutions adaptées et justifie-les.", 4, "Utiliser du compost ou du fumier et pratiquer la rotation des cultures ; planter des arbres sur les parcelles (agroforesterie) et éviter les feux (2 pts par solution justifiée)."),
+  ],
+ },
+ 'valeurs': ["Respect de la terre nourricière et de la forêt.", "Valorisation du travail agricole et des savoirs paysans.",
+             "Liens avec les SVT (sol, humus, biodiversité) et l'EDHC (développement durable)."],
+}
