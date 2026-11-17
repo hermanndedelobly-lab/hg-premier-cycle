@@ -217,3 +217,74 @@ FICHES['4e-g-t1-l3'] = {
  'valeurs': ["Civisme fiscal, intégrité et sens de l'intérêt général.", "Participation citoyenne et responsabilité partagée.",
              "Liens avec l'EDHC (bonne gouvernance, citoyenneté)."],
 }
+
+FICHES['4e-g-t2-l1'] = {
+ 'materiel': ["carte de l'espace CEDEAO (carte 1)", "organigramme des institutions (schéma 1)",
+              "tableau statistique des États membres (population, productions)", "extrait du protocole de 1979 sur la libre circulation"],
+ 'contexte': "la CEDEAO intervient dans l'économie, la paix et la démocratie en Afrique de l'Ouest.",
+ 'circonstance': "des élèves de 4e du lycée Sainte-Marie de Cocody apprennent à la télévision l'implication de la CEDEAO dans le conflit malien et veulent comprendre son espace, ses potentialités et son fonctionnement.",
+ 'taches': ["définir la CEDEAO, localiser son espace et identifier ses potentialités", "expliquer et schématiser le fonctionnement de ses institutions et sa politique d'intégration",
+            "apprécier ses actions et initier des actions en faveur de l'intégration"],
+ 'prerequis': ["La carte politique de l'Afrique (6e).", "L'organisation administrative de la Côte d'Ivoire (thème 1)."],
+ 'seances': [
+  {'titre': "Présentation et potentialités (I et II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation.", "« Pourquoi la CEDEAO s'occupe-t-elle d'un conflit ? »"], ["Pour ramener la paix entre ses membres."], "Introduction."),
+   ("Développement · I. et II. Présentation et potentialités", 37, "Lecture de la carte 1 et d'un tableau statistique",
+    ["Faire définir la CEDEAO et retracer l'évolution des membres.", "Faire identifier les potentialités par pays."],
+    ["Organisation d'intégration créée à Lagos en 1975 ; 12 membres depuis janvier 2025 ; Commission à Abuja.", "Population, cacao (Côte d'Ivoire), pétrole (Nigeria), or (Ghana), bauxite (Guinée), phosphates (Togo), ports."], "I, II."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application I et II."], ["Création ; potentialités."], None),
+  ]},
+  {'titre': "Les institutions (III)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Qui décide à la CEDEAO ? »"], ["Les présidents."], None),
+   ("Développement · III. Les institutions", 40, "Lecture d'un tableau, construction du schéma 1",
+    ["Faire relever objectifs et principes.", "Faire construire le schéma des institutions."],
+    ["Libre circulation, union économique et monétaire, paix ; égalité, solidarité, démocratie.", "Conférence (décide), Conseil des ministres (prépare), Commission (exécute), Parlement, Cour de justice, BIDC."], "III."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application III."], ["Organe suprême ; rôle de la Commission."], None),
+  ]},
+  {'titre': "Politique d'intégration et succès (IV et V)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Comment la CEDEAO rapproche-t-elle ses membres ? »"], ["Par la libre circulation."], None),
+   ("Développement · IV. et V. Intégration et succès", 40, "Étude de documents, étude de cas",
+    ["Faire expliquer libre circulation, TEC, Eco, paix, infrastructures.", "Étudier le cas de la Gambie (2017)."],
+    ["Protocole de 1979, TEC de 2015, Eco reporté, mécanisme de 1999, corridor Abidjan – Lagos.", "ECOMOG au Libéria et en Sierra Leone ; Gambie 2017."], "IV, V."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application IV et V."], ["Protocole de 1979 ; succès pour la paix."], None),
+  ]},
+  {'titre': "Limites et actions pour l'intégration (VI et VII)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« La CEDEAO a-t-elle réussi ? »"], ["Oui et non."], None),
+   ("Développement · VI. et VII. Limites et actions", 35, "Débat argumenté, propositions",
+    ["Organiser un débat succès / limites.", "Faire proposer des actions d'élèves."],
+    ["Instabilité, retrait de l'AES, faibles échanges, tracasseries, retard de l'Eco, insécurité.", "Accueil, langues, consommation locale, échanges, refus de la xénophobie."], "VI, VII, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Institutions, succès, limites, actions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "12 États membres depuis le retrait du Mali, du Burkina Faso et du Niger (janvier 2025).",
+  "Ne pas confondre la CEDEAO (Abuja, 12 membres) et l'UEMOA (Ouagadougou, franc CFA).",
+  "Les présidences 2026 indiquées par le cours sont à vérifier sur le site officiel de la CEDEAO.",
+  "Traiter l'actualité (AES, coups d'État) avec neutralité.",
+ ],
+ 'difficultes': [
+  ("Confusion entre CEDEAO et UEMOA.", "Tableau comparatif membres, monnaie, sièges."),
+  ("Confusion entre Conférence et Commission.", "Schéma 1 : décider / exécuter."),
+  ("Difficulté à localiser les États membres.", "Carte 1 muette à compléter."),
+ ],
+ 'soutien': ["Fiche-lexique : intégration, libre circulation, TEC, monnaie unique.", "Carte muette de l'Afrique de l'Ouest."],
+ 'approfondissement': ["Exposé sur le corridor Abidjan – Lagos.", "Comparaison CEDEAO – UEMOA."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : CEDEAO.", 1, "Communauté économique des États de l'Afrique de l'Ouest, organisation régionale d'intégration créée en 1975 (1 pt)."),
+   ("Donne la date et le lieu de création de la CEDEAO et le siège de sa Commission.", 1.5, "28 mai 1975 (0,5 pt), Lagos (0,5 pt) ; Abuja (0,5 pt)."),
+   ("Cite trois potentialités économiques de la CEDEAO avec un pays pour chacune.", 1.5, "Cacao (Côte d'Ivoire), pétrole (Nigeria), bauxite (Guinée), or (Ghana), phosphates (Togo). 0,5 pt par couple."),
+   ("Indique le rôle de la Conférence des chefs d'État et de la Commission.", 2, "Conférence : organe suprême qui décide (1 pt) ; Commission : organe exécutif qui met en œuvre (1 pt)."),
+   ("Cite deux succès et deux limites de la CEDEAO.", 2, "Succès : libre circulation, TEC, ECOMOG, Gambie 2017 ; limites : instabilité, faibles échanges, tracasseries, retard de l'Eco. 0,5 pt par élément."),
+  ],
+  'situation': "Ton oncle, transporteur entre Abidjan et Accra, se plaint des contrôles routiers et affirme que « la CEDEAO ne sert à rien ».",
+  'consignes': [
+   ("Identifie le texte de la CEDEAO qui garantit la libre circulation des personnes.", 2, "Le protocole de 1979 sur la libre circulation (2 pts)."),
+   ("Montre que la CEDEAO a obtenu des succès.", 4, "Libre circulation sans visa (1 pt), TEC (1 pt), maintien de la paix : ECOMOG, Gambie (1 pt), infrastructures : corridor Abidjan – Lagos (1 pt)."),
+   ("Explique deux limites qui justifient en partie la plainte de ton oncle et propose une solution.", 4, "Tracasseries aux frontières, faibles échanges ou instabilité (2 pts) ; dénoncer les rackets, appliquer les protocoles, sensibiliser les agents (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Solidarité africaine et refus de la xénophobie.", "Paix et respect de la démocratie.",
+             "Liens avec l'anglais (communication avec les pays voisins) et l'EDHC."],
+}
