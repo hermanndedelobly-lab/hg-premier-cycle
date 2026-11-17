@@ -343,3 +343,72 @@ FICHES['4e-h-t2-l1'] = {
  'valeurs': ["Respect de la dignité humaine et refus du racisme.", "Devoir de mémoire.",
              "Liens avec l'EDHC (droits de l'homme) et le français (récit, argumentation)."],
 }
+
+FICHES['4e-h-t2-l2'] = {
+ 'materiel': ["schéma de la société d'ordres (schéma 1)", "frise de la Révolution française (frise 1)",
+              "texte de la DDHC (1789) et de la DUDH (1948)", "caricature de 1789 sur la société d'ordres"],
+ 'contexte': "les droits de l'homme proclamés en 1789 et en 1948 fondent aujourd'hui de nombreuses constitutions, dont celle de la Côte d'Ivoire.",
+ 'circonstance': "des élèves du lycée moderne de Korhogo assistent à une conférence sur la DUDH ; émus par l'article premier, ils veulent connaître l'origine de la DDHC et promouvoir les droits humains.",
+ 'taches': ["définir la Révolution française et identifier ses origines", "représenter sa chronologie, relever les valeurs de la DDHC et analyser ses conséquences politiques",
+            "établir les relations avec l'évolution des droits de l'homme et proposer des actions de promotion des droits humains"],
+ 'prerequis': ["Notions de pouvoir et de constitution (EDHC).", "La traite négrière et la révolution de Saint-Domingue (leçon précédente)."],
+ 'seances': [
+  {'titre': "Définition et origines (I)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et de l'article 1 de la DUDH",
+    ["Lire la situation et l'article 1 de la DUDH.", "« D'où vient cette idée d'égalité ? »"], ["De la Révolution française, de la DDHC de 1789."], "Introduction."),
+   ("Développement · I. Définition et origines", 37, "Lecture du schéma 1, étude de textes",
+    ["Faire définir la révolution.", "Faire identifier les origines politiques, sociales, financières et économiques."],
+    ["Révolution : changement brusque et profond.", "Monarchie absolue, Lumières, exemple américain ; société d'ordres (2 % de privilégiés) ; dette, refus des privilégiés, disette de 1788 ; convocation des États généraux."], "I. 1 à 4."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application I."], ["Trois ordres ; clergé et noblesse privilégiés."], None),
+  ]},
+  {'titre': "Les étapes et la DDHC (II et III)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Comment la monarchie absolue est-elle tombée ? »"], ["Par la révolte du tiers état et du peuple."], None),
+   ("Développement · II. Les étapes", 25, "Récit, construction d'une frise",
+    ["Raconter les étapes ; faire construire la frise 1 et repérer les régimes."],
+    ["1789 : États généraux, Bastille, 4 août, DDHC ; 1791 : Constitution ; 1792 : République ; 1793 – 1794 : Terreur ; 1795 : Directoire ; 1799 : Bonaparte."], "II."),
+   ("Développement · III. Les valeurs de la DDHC", 15, "Lecture d'articles, classement",
+    ["Faire classer des articles en valeurs de dignité, droits politiques, droits sociaux."],
+    ["Liberté et égalité (art. 1) ; souveraineté nationale (art. 3) ; loi, volonté générale (art. 6) ; présomption d'innocence (art. 9) ; séparation des pouvoirs (art. 16)."], "III."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application II et III."], ["Ordre chronologique ; valeurs de la DDHC."], None),
+  ]},
+  {'titre': "Conséquences, droits de l'homme et actions (IV à VI)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Que reste-t-il de la Révolution aujourd'hui ? »"], ["Les droits de l'homme, la République."], None),
+   ("Développement · IV. et V. Conséquences et droits de l'homme", 25, "Tableau comparatif DDHC – DUDH",
+    ["Faire analyser les conséquences politiques en France et dans le monde.", "Faire comparer la DDHC et la DUDH."],
+    ["Fin de la monarchie absolue et des privilèges ; changements de régime ; diffusion des idées ; Saint-Domingue.", "La DUDH reprend la DDHC et ajoute des droits économiques et sociaux ; Charte africaine (1981), Constitution ivoirienne."], "IV, V."),
+   ("Développement · VI. Actions", 10, "Projet de classe",
+    ["Faire proposer des actions de promotion des droits humains."],
+    ["Club des droits de l'homme, affiches, respect des autres, dénonciation des violations."], "VI, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Origines, valeurs, héritage, actions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "La société d'ordres : environ 2 % de privilégiés pour environ 28 millions d'habitants (ordres de grandeur).",
+  "La DDHC (26 août 1789) : un préambule et 17 articles ; la DUDH (10 décembre 1948) : 30 articles.",
+  "Limites de 1789 : suffrage censitaire en 1791, femmes exclues du vote, esclavage aboli en 1794 puis rétabli en 1802.",
+  "La situation officielle évoque une classe de 3e : texte conservé, à adapter à la 4e.",
+ ],
+ 'difficultes': [
+  ("Confusion entre DDHC et DUDH.", "Tableau comparatif (date, auteur, nombre d'articles, portée)."),
+  ("Difficulté à ordonner les évènements de 1789.", "Construction de la frise 1 graduée."),
+  ("Confusion entre monarchie constitutionnelle et République.", "Repérer sur la frise la présence ou l'absence du roi."),
+ ],
+ 'soutien': ["Fiche-lexique : révolution, privilège, souveraineté, constitution, République.", "Frise 1 à compléter."],
+ 'approfondissement': ["Exposé sur Olympe de Gouges.", "Comparer la DDHC et la Charte africaine des droits de l'homme et des peuples."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : Révolution française.", 1, "Période de 1789 à 1799 pendant laquelle les Français renversent la monarchie absolue et la société d'ordres (1 pt)."),
+   ("Cite deux origines de la Révolution française.", 2, "Monarchie absolue, idées des Lumières, inégalités de la société d'ordres, crise financière, mauvaises récoltes de 1788. 1 pt par origine."),
+   ("Range dans l'ordre chronologique : République ; prise de la Bastille ; DDHC ; coup d'État de Bonaparte.", 2, "Prise de la Bastille (1789) → DDHC (1789) → République (1792) → coup d'État de Bonaparte (1799). 2 pts si l'ordre est entièrement exact, 1 pt pour une erreur."),
+   ("Relève trois valeurs défendues par la DDHC.", 3, "Liberté, égalité, souveraineté nationale, présomption d'innocence, séparation des pouvoirs, liberté d'opinion et d'expression. 1 pt par valeur."),
+  ],
+  'situation': "Au cours d'un débat, un camarade affirme que la Révolution française est un évènement lointain qui n'a rien à voir avec les droits dont nous jouissons aujourd'hui en Côte d'Ivoire.",
+  'consignes': [
+   ("Identifie le texte adopté le 26 août 1789 et deux valeurs qu'il défend.", 3, "La Déclaration des droits de l'homme et du citoyen (1 pt) ; liberté, égalité, souveraineté nationale… (1 pt par valeur, 2 attendues)."),
+   ("Montre que ce texte a influencé l'évolution des droits de l'homme.", 4, "Il inspire la DUDH de 1948, dont l'article 1 reprend son principe (2 pts) ; ses principes se retrouvent dans la Charte africaine et la Constitution ivoirienne (2 pts)."),
+   ("Propose deux actions de promotion des droits humains dans ton établissement.", 3, "Club des droits de l'homme, affiches, respect des autres, dénonciation des violences (1,5 pt par action, 2 attendues)."),
+  ],
+ },
+ 'valeurs': ["Liberté, égalité, respect des droits humains.", "Esprit civique et participation pacifique.",
+             "Liens avec l'EDHC (Constitution, droits et devoirs) et le français (argumentation)."],
+}
