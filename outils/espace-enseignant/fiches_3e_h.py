@@ -291,3 +291,144 @@ FICHES['3e-h-t1-l3b'] = {
  'valeurs': ["Respect de la dignité humaine, refus du racisme et des discours de haine.", "Devoir de mémoire et vigilance citoyenne.",
              "Liens avec l'EDHC (droits humains), le français (témoignage) et la géographie (Afrique centrale)."],
 }
+
+# ------------------------------------------------------------------ T2-L1
+FICHES['3e-h-t2-l1'] = {
+ 'materiel': ["planisphère des deux camps (carte 1)", "frise de la guerre (frise 1)", "affiche de recrutement de tirailleurs ou photographie de tirailleurs",
+              "photographie de l'entrée du camp d'Auschwitz-Birkenau", "tableau des pertes humaines par pays (manuel)"],
+ 'contexte': "des élèves de 3e 2 du groupe scolaire Lavoisier se souviennent des récits d'un grand-père, ancien combattant de la guerre de 1939 à 1945.",
+ 'circonstance': "ils veulent comprendre les causes et les conséquences de cette guerre qui a tant marqué leur grand-père.",
+ 'taches': ["identifier les causes de la Deuxième Guerre mondiale et localiser les belligérants", "analyser les caractères de la guerre et caractériser l'Holocauste",
+            "apprécier les conséquences de la guerre, notamment pour l'Afrique"],
+ 'prerequis': ["La colonisation de la Côte d'Ivoire (thème 1).", "La lecture d'un planisphère.", "La notion de génocide (leçon sur le Rwanda, si elle a été traitée)."],
+ 'seances': [
+  {'titre': "Les causes de la guerre (I)", 'etapes': [
+   (PRES, 8, "Lecture de la situation, recueil de souvenirs familiaux",
+    ["Lire la situation ; « Que savez-vous des tirailleurs africains ? »"], ["Ils ont combattu pour la France pendant les guerres mondiales."], "Introduction."),
+   ("Développement · I. Les causes", 35, "Exposé dialogué, classement des causes",
+    ["Présenter les causes lointaines (Versailles, crise de 1929, totalitarismes, SDN) et les agressions des années 1930.", "Faire distinguer causes lointaines et cause immédiate."],
+    ["Lointaines : traité de Versailles, crise de 1929, montée du fascisme et du nazisme, faiblesse de la SDN.",
+     "Immédiate : invasion de la Pologne le 1er septembre 1939 ; déclarations de guerre du 3 septembre."], "I. 1 à 3."),
+   (EVAL, 12, "Travail individuel", ["Activité d'application I."], ["Classement des causes."], None),
+  ]},
+  {'titre': "Belligérants, régions touchées et caractères (II, III)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Pourquoi parle-t-on de guerre mondiale ? »"], ["Elle touche le monde entier."], None),
+   ("Développement · II et III. Belligérants et caractères", 38, "Lecture de la carte 1 et de la frise 1",
+    ["Faire identifier les deux camps et les six lieux de la carte.", "Faire dégager les deux phases et les caractères (mondiale, totale, idéologique, d'anéantissement)."],
+    ["Axe : Allemagne, Italie, Japon ; Alliés : Royaume-Uni, France libre, URSS, États-Unis, Chine ; l'Afrique fournit soldats et produits.",
+     "Victoires de l'Axe jusqu'en 1942 ; tournant de Midway, El-Alamein et Stalingrad ; victoires alliées jusqu'en 1945 ; civils pris pour cibles ; bombes atomiques."], "II et III."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application II et III."], ["Deux camps, deux régions ; guerre totale."], None),
+  ]},
+  {'titre': "L'Holocauste (IV)", 'etapes': [
+   (PRES, 5, "Lecture d'un document", ["Montrer la photographie d'Auschwitz-Birkenau ; « Qu'était ce lieu ? »"], ["Un camp d'extermination."], None),
+   ("Développement · IV. L'Holocauste", 35, "Exposé dialogué, frise des étapes de la persécution",
+    ["Présenter les étapes : exclusion (lois de Nuremberg, 1935), ghettos, fusillades, camps d'extermination.", "Faire définir le génocide et le crime contre l'humanité."],
+    ["Environ 6 millions de Juifs d'Europe exterminés par les nazis au nom d'une idéologie raciste.",
+     "Tsiganes, handicapés, opposants et prisonniers soviétiques aussi massacrés ; génocide et crime contre l'humanité."], "IV."),
+   (EVAL, 15, "Travail individuel", ["Activité d'application IV."], ["Définition et deux étapes."], None),
+  ]},
+  {'titre': "Les conséquences de la guerre (V)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Le monde de 1945 ressemble-t-il à celui de 1939 ? »"], ["Non : destructions, nouvelles puissances, ONU."], None),
+   ("Développement · V. Les conséquences", 30, "Tableau des conséquences",
+    ["Construire le tableau : humaines, matérielles, politiques, nouvelle organisation du monde, Afrique."],
+    ["50 à 60 millions de morts selon les estimations courantes ; Europe ruinée, plan Marshall ; États-Unis et URSS superpuissances ; ONU, Nuremberg, DUDH ; puissances coloniales affaiblies, réformes et nationalismes en Afrique."], "V, conclusion."),
+   (EVAL, 20, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Causes, caractères et conséquences pour l'Afrique."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "La guerre commence en Asie dès 1937 (invasion de la Chine par le Japon) ; la date de 1939 correspond au début de la guerre en Europe.",
+  "Les estimations du bilan humain vont de 50 à plus de 70 millions de morts selon la prise en compte des victimes chinoises et soviétiques.",
+  "L'AEF se rallie à la France libre dès août 1940 (Félix Éboué, au Tchad) ; l'AOF, fidèle à Vichy, rejoint les Alliés en novembre 1942.",
+  "Le 1er décembre 1944, à Thiaroye (Sénégal), des tirailleurs rapatriés qui réclamaient leurs soldes sont tués par l'armée française.",
+ ],
+ 'difficultes': [
+  ("Confusion entre les deux guerres mondiales.", "Frise comparée des deux conflits."),
+  ("Oubli de la participation africaine.", "Carte 1 et documents sur les tirailleurs."),
+  ("Confusion entre camps de concentration et d'extermination.", "Tableau comparatif."),
+ ],
+ 'soutien': ["Planisphère muet à colorier (Axe, Alliés).", "Frise à compléter avec six dates données."],
+ 'approfondissement': ["Exposé sur les tirailleurs africains et le massacre de Thiaroye.", "Recherche sur un « Juste parmi les nations »."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : guerre totale ; Shoah.", 2, "Guerre totale : guerre qui mobilise toutes les ressources d'un pays et frappe aussi les civils (1 pt) ; Shoah : extermination d'environ 6 millions de Juifs d'Europe par les nazis (1 pt)."),
+   ("Cite deux pays de l'Axe et deux pays alliés.", 1, "Axe : Allemagne, Italie ou Japon (0,5 pt) ; Alliés : Royaume-Uni, URSS, États-Unis, France ou Chine (0,5 pt)."),
+   ("Range dans l'ordre : Stalingrad ; invasion de la Pologne ; débarquement de Normandie ; Pearl Harbor ; capitulation du Japon.", 2.5, "Invasion de la Pologne (1939) → Pearl Harbor (1941) → Stalingrad (1943) → Normandie (1944) → capitulation du Japon (1945). 0,5 pt par élément bien placé."),
+   ("Explique une cause lointaine et la cause immédiate de la guerre.", 2.5, "Cause lointaine : le traité de Versailles, jugé injuste par les Allemands, ou la crise de 1929 qui favorise les nazis (1,5 pt) ; cause immédiate : l'invasion de la Pologne le 1er septembre 1939 (1 pt)."),
+  ],
+  'situation': "Ton grand-père, ancien tirailleur, te dit : « Nous, les Africains, nous avons aussi gagné cette guerre, et elle a changé notre pays. »",
+  'consignes': [
+   ("Montre que l'Afrique a participé à la Deuxième Guerre mondiale.", 2, "Elle a fourni des soldats, les tirailleurs (1 pt), et des produits ainsi que des bases militaires (1 pt)."),
+   ("Explique deux caractères de cette guerre.", 4, "Guerre mondiale : elle touche tous les continents et océans (2 pts) ; guerre totale : elle mobilise toutes les ressources et frappe les civils (2 pts)."),
+   ("Explique comment cette guerre « a changé » la Côte d'Ivoire.", 4, "Elle a affaibli la France et réveillé les revendications des colonisés (2 pts) ; elle a conduit aux réformes de 1944 – 1946 (Brazzaville, abolition du travail forcé), premières étapes vers l'indépendance (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Paix, respect de la vie et de la dignité humaine.", "Mémoire des combattants africains ; refus du racisme et de l'antisémitisme.",
+             "Liens avec l'EDHC (droits de l'homme), la géographie (planisphère) et le français (témoignage)."],
+}
+
+# ------------------------------------------------------------------ T2-L2
+FICHES['3e-h-t2-l2'] = {
+ 'materiel': ["organigramme de l'ONU (schéma 1)", "graphique du nombre d'États membres (graphique 1)", "extraits de la Charte (préambule, article 1)",
+              "articles 1 à 5 de la Déclaration universelle des droits de l'homme", "photographie d'une séance du Conseil de sécurité"],
+ 'contexte': "des élèves de 3e 7 du lycée moderne d'Angré discutent du rôle de l'ONU.",
+ 'circonstance': "certains affirment qu'elle n'a jamais servi à rien et reprennent le mot de De Gaulle, qui la traitait de « machin » en 1960 ; d'autres ne sont pas d'accord.",
+ 'taches': ["définir l'ONU et décrire sa création", "expliquer ses objectifs et principes, décrire ses organes et construire son organigramme",
+            "réaliser un tableau des succès et des échecs et apprécier ses actions"],
+ 'prerequis': ["La Deuxième Guerre mondiale et ses conséquences (leçon précédente).", "La notion de droits de l'homme (EDHC).", "La lecture d'un graphique."],
+ 'seances': [
+  {'titre': "Création, objectifs et principes (I, II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et débat court",
+    ["Lire la situation ; « L'ONU est-elle un “machin” inutile ? » ; noter les avis au tableau."], ["Avis partagés : utile pour la paix, inutile face aux guerres."], "Introduction."),
+   ("Développement · I et II. Création, objectifs et principes", 35, "Exposé dialogué, lecture du graphique 1 et d'extraits de la Charte",
+    ["Présenter les étapes de la création ; faire lire le graphique 1.", "Faire relever les objectifs et les principes dans l'article 1 de la Charte."],
+    ["Échec de la SDN ; Charte de l'Atlantique (1941) ; San Francisco (26 juin 1945) ; entrée en vigueur (24 octobre 1945) ; 51 puis 193 membres.",
+     "Paix et sécurité, relations amicales, coopération, droits de l'homme ; égalité souveraine, règlement pacifique, non-recours à la force, non-ingérence."], "I et II."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application I et II."], ["Définition, dates, siège, membres ; objectifs et principes."], None),
+  ]},
+  {'titre': "Les organes et l'organigramme (III, IV)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Qui décide à l'ONU ? »"], ["L'Assemblée générale et le Conseil de sécurité."], None),
+   ("Développement · III et IV. Organes et organigramme", 38, "Travail de groupes, construction de l'organigramme",
+    ["Chaque groupe présente un organe (composition, rôle).", "Construire l'organigramme au tableau à partir du schéma 1 ; rattacher les institutions à leur domaine."],
+    ["Assemblée générale (tous les États) ; Conseil de sécurité (15 membres, 5 permanents avec veto) ; Secrétariat ; CIJ (La Haye) ; ECOSOC (54 membres) ; Conseil de tutelle (suspendu).",
+     "UNESCO : éducation, science, culture ; OMS : santé ; FAO : alimentation ; UNICEF : enfance ; HCR : réfugiés."], "III et IV."),
+   (EVAL, 12, "Travail individuel", ["Activités d'application III et IV."], ["Rôle du Conseil de sécurité ; institutions et domaines."], None),
+  ]},
+  {'titre': "La DUDH et le bilan de l'ONU (V, VI)", 'etapes': [
+   (PRES, 5, "Lecture de l'article 1 de la DUDH", ["« Que signifie “libres et égaux en dignité et en droits” ? »"], ["Tous les êtres humains ont les mêmes droits."], None),
+   ("Développement · V et VI. DUDH, succès et échecs", 30, "Lecture de documents, tableau synoptique",
+    ["Présenter la DUDH (10 décembre 1948) et faire relever des droits.", "Construire le tableau des succès et des échecs ; revenir au débat de la situation."],
+    ["Droit à la vie, à la liberté, égalité devant la loi, interdiction de l'esclavage et de la torture, droit à l'éducation.",
+     "Succès : pas de guerre mondiale, décolonisation, ONUCI, santé ; échecs : Rwanda, veto, dépendance financière, pas de siège permanent africain."], "V, VI, conclusion."),
+   (EVAL, 20, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Organes, bilan nuancé."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "La Charte est signée le 26 juin 1945 par 50 États ; la Pologne la signe ensuite et compte parmi les 51 membres fondateurs.",
+  "Le Conseil de sécurité est passé de 11 à 15 membres en 1965 ; l'Afrique y dispose de trois sièges non permanents.",
+  "Les institutions spécialisées (UNESCO, OMS, FAO) sont autonomes ; les fonds et programmes (UNICEF, PNUD, PAM, HCR) dépendent de l'Assemblée générale.",
+  "António Guterres achève son mandat le 31 décembre 2026 ; vérifier le nom de son successeur avant d'en parler en classe.",
+ ],
+ 'difficultes': [
+  ("Confusion entre Assemblée générale et Conseil de sécurité.", "Tableau comparatif : composition, vote, pouvoirs."),
+  ("Croire que l'ONU possède sa propre armée.", "Les Casques bleus sont prêtés par les États."),
+  ("Jugement tout positif ou tout négatif.", "Tableau synoptique avec exemples précis."),
+ ],
+ 'soutien': ["Organigramme à compléter avec des étiquettes.", "Liste de sigles à associer à leur domaine."],
+ 'approfondissement': ["Exposé sur l'ONUCI en Côte d'Ivoire.", "Débat : faut-il donner un siège permanent à l'Afrique ?"],
+ 'evaluation': {
+  'activites': [
+   ("Définis : ONU ; droit de veto.", 2, "ONU : organisation internationale qui regroupe presque tous les États pour maintenir la paix et développer la coopération (1 pt) ; droit de veto : droit d'un membre permanent du Conseil de sécurité de bloquer une décision (1 pt)."),
+   ("Donne la date de signature de la Charte, le siège de l'ONU et le nombre de ses membres.", 1.5, "26 juin 1945 à San Francisco ; New York ; 193 États. 0,5 pt par élément."),
+   ("Associe chaque organisme à son domaine : OMS ; UNESCO ; FAO ; HCR ; UNICEF.", 2.5, "Santé ; éducation, science et culture ; alimentation et agriculture ; réfugiés ; enfance. 0,5 pt par association."),
+   ("Explique pourquoi le nombre d'États membres a beaucoup augmenté entre 1955 et 1975.", 2, "La décolonisation (1 pt) : de nombreux pays d'Afrique et d'Asie devenus indépendants, dont la Côte d'Ivoire en 1960, sont entrés à l'ONU (1 pt)."),
+  ],
+  'situation': "Ton cousin affirme : « L'ONU ne sert à rien, c'est un “machin”, comme disait De Gaulle. »",
+  'consignes': [
+   ("Cite deux organes principaux de l'ONU et leur rôle.", 2, "Assemblée générale : réunit tous les États, discute et vote le budget (1 pt) ; Conseil de sécurité : maintient la paix (1 pt) ; on accepte le Secrétariat, la CIJ ou l'ECOSOC."),
+   ("Présente deux succès de l'ONU, dont un en Afrique.", 4, "L'ONUCI a contribué au retour de la paix en Côte d'Ivoire (2 pts) ; l'ONU a soutenu la décolonisation ou éradiqué la variole (2 pts)."),
+   ("Réponds à ton cousin par une appréciation nuancée.", 4, "L'ONU a des limites : impuissance au Rwanda, blocage par le veto (2 pts) ; mais elle a évité une nouvelle guerre mondiale et agit pour la santé, l'éducation et les réfugiés : elle n'est pas inutile (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Paix, coopération entre les peuples, respect des droits de l'homme.", "Esprit critique et argumentation nuancée.",
+             "Liens avec l'EDHC (DUDH), la géographie (mondialisation) et le français (débat argumenté)."],
+}
