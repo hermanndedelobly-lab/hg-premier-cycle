@@ -146,3 +146,74 @@ FICHES['4e-g-t1-l2'] = {
  'valeurs': ["Civisme fiscal et participation à la vie locale.", "Sens de l'intérêt général ; neutralité politique.",
              "Liens avec l'EDHC (citoyenneté, élections)."],
 }
+
+FICHES['4e-g-t1-l3'] = {
+ 'materiel': ["schéma des obstacles et des conséquences (schéma 1)", "schéma du cercle vertueux du civisme (schéma 2)",
+              "article de presse sur une route dégradée", "tableau comparatif vierge déconcentration / décentralisation"],
+ 'contexte': "l'état des routes et des équipements révèle les insuffisances de l'organisation administrative dans certaines localités.",
+ 'circonstance': "les routes du département se dégradent ; des élèves de 4e du collège moderne de Béoumi s'interrogent sur le rôle de la sous-préfecture et du conseil régional et sur les obstacles au fonctionnement de l'administration.",
+ 'taches': ["définir l'organisation administrative et expliquer son rôle dans le développement", "identifier les obstacles et réaliser un tableau comparatif",
+            "proposer des solutions et initier des actions de développement"],
+ 'prerequis': ["La déconcentration (leçon 1).", "La décentralisation (leçon 2)."],
+ 'seances': [
+  {'titre': "L'organisation administrative et son rôle (I)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation.", "« Qui doit réparer nos routes ? »"], ["L'État, le conseil régional, la mairie."], "Introduction."),
+   ("Développement · I. Organisation et rôle", 37, "Rappel des leçons 1 et 2, tableau comparatif",
+    ["Faire définir l'organisation administrative.", "Faire expliquer les rôles et réaliser le tableau comparatif."],
+    ["Administration centrale, déconcentrée, décentralisée.", "Nommés / élus ; État / populations ; sans budget propre / autonomie financière ; hiérarchie / tutelle."], "I. 1 à 4."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application I."], ["Un rôle de chaque administration."], None),
+  ]},
+  {'titre': "Les obstacles (II)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Pourquoi les routes restent-elles dégradées ? »"], ["Manque d'argent, mauvaise gestion."], None),
+   ("Développement · II. Les obstacles", 40, "Travail de groupes sur documents",
+    ["Chaque groupe étudie un type d'obstacle et présente des exemples."],
+    ["Financiers, humains et matériels, institutionnels, de gouvernance, liés aux populations."], "II. 1 à 5."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application II."], ["Classement des obstacles."], None),
+  ]},
+  {'titre': "Conséquences et solutions (III et IV)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Quelles conséquences pour nous ? »"], ["Routes impraticables, écoles insuffisantes."], None),
+   ("Développement · III. et IV. Conséquences et solutions", 40, "Lecture du schéma 1, propositions",
+    ["Faire relier obstacles et conséquences.", "Faire proposer des solutions pour l'État, les collectivités et les citoyens."],
+    ["Routes dégradées, équipements insuffisants, projets inachevés, inégalités, méfiance.", "Transfert des moyens, formation, numérisation, lutte contre la corruption ; collecte des taxes ; civisme fiscal."], "III, IV."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application III et IV."], ["Conséquences ; solutions à trois niveaux."], None),
+  ]},
+  {'titre': "Des actions de développement (V)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Que pouvons-nous faire ? »"], ["Sensibiliser, nettoyer, proposer."], None),
+   ("Développement · V. Actions de développement", 35, "Lecture du schéma 2, atelier",
+    ["Faire expliquer le cercle vertueux.", "Faire concevoir des slogans et un projet de club de développement."],
+    ["Civisme → budget → équipements → développement → confiance.", "Journées de salubrité, slogans, enquête, club de développement."], "V, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Rôle, obstacles, solutions, actions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Cinq familles d'obstacles : financiers, humains et matériels, institutionnels, de gouvernance, liés aux populations.",
+  "Le transfert des compétences a été plus rapide que le transfert des ressources.",
+  "La Haute Autorité pour la Bonne Gouvernance (2013) et la Cour des comptes contrôlent l'usage des fonds publics.",
+  "Évoquer la corruption sans mettre en cause de personne ni d'institution précise.",
+ ],
+ 'difficultes': [
+  ("Confusion entre obstacle et conséquence.", "Tableau cause / effet."),
+  ("Tendance à tout attribuer à l'État.", "Schéma 2 et rôle des citoyens."),
+  ("Solutions trop vagues.", "Grille acteur – action – résultat."),
+ ],
+ 'soutien': ["Fiche-lexique : gouvernance, corruption, incivisme fiscal, disparités.", "Tableau comparatif à compléter."],
+ 'approfondissement': ["Enquête sur un projet inachevé de la localité.", "Projet de budget participatif simulé en classe."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : organisation administrative.", 1, "Ensemble des structures, règles et personnes par lesquelles l'État et les collectivités administrent le territoire (1 pt)."),
+   ("Complète le tableau : responsables et relation avec l'État de l'administration déconcentrée et de l'administration décentralisée.", 2, "Déconcentrée : nommés, autorité hiérarchique (1 pt) ; décentralisée : élus, tutelle (1 pt)."),
+   ("Cite trois obstacles au fonctionnement de l'administration.", 1.5, "Ressources faibles, manque de personnel, chevauchement des compétences, corruption, incivisme fiscal. 0,5 pt par obstacle."),
+   ("Donne deux conséquences de ces obstacles sur le développement.", 2, "Routes dégradées, équipements insuffisants, projets inachevés, inégalités régionales. 1 pt par conséquence."),
+   ("Propose une solution au niveau de l'État et une au niveau des citoyens.", 1.5, "État : transférer les moyens, lutter contre la corruption (0,75 pt) ; citoyens : payer ses taxes, respecter les biens publics (0,75 pt)."),
+  ],
+  'situation': "Dans ta localité, le centre de santé construit par le conseil régional est inachevé depuis trois ans et les habitants accusent l'administration de ne rien faire.",
+  'consignes': [
+   ("Identifie la structure responsable du projet et le type d'administration auquel elle appartient.", 2, "Le conseil régional (1 pt) ; l'administration décentralisée (1 pt)."),
+   ("Explique deux obstacles qui peuvent expliquer l'inachèvement du projet.", 4, "Manque de ressources ou retard des dotations (2 pts) ; mauvaise gestion, manque de personnel ou incivisme fiscal (2 pts)."),
+   ("Propose deux actions que les habitants et les élèves peuvent mener.", 4, "Payer les taxes, participer aux réunions et suivre le projet, sensibiliser, proposer un comité de suivi (2 pts par action, 2 attendues)."),
+  ],
+ },
+ 'valeurs': ["Civisme fiscal, intégrité et sens de l'intérêt général.", "Participation citoyenne et responsabilité partagée.",
+             "Liens avec l'EDHC (bonne gouvernance, citoyenneté)."],
+}
