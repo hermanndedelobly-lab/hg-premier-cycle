@@ -1,0 +1,429 @@
+[
+ {
+  "etape": "Open Library weiskel-1980",
+  "ok": false,
+  "detail": "URLError(ConnectionResetError(104, 'Connection reset by peer'))"
+ },
+ {
+  "etape": "Open Library brunschwig-1971",
+  "ok": false,
+  "detail": []
+ },
+ {
+  "etape": "Open Library grah-mel",
+  "ok": false,
+  "detail": []
+ },
+ {
+  "etape": "Open Library morgenthau-1964",
+  "ok": true,
+  "detail": [
+   {
+    "author_name": [
+     "R. S. Morgenthau"
+    ],
+    "first_publish_year": 1964,
+    "publisher": [
+     "O.U.P."
+    ],
+    "title": "Political parties in French-speaking West Africa"
+   },
+   {
+    "author_name": [
+     "Ruth Schachter Morgenthau"
+    ],
+    "first_publish_year": 1964,
+    "publisher": [
+     "Clarendon Press",
+     "L'Harmattan"
+    ],
+    "title": "Political parties in French-speaking West Africa"
+   }
+  ]
+ },
+ {
+  "etape": "Open Library stremlau-1977",
+  "ok": false,
+  "detail": "URLError(ConnectionResetError(104, 'Connection reset by peer'))"
+ },
+ {
+  "etape": "Open Library achebe-2012",
+  "ok": true,
+  "detail": [
+   {
+    "author_name": [
+     "Chinua Achebe"
+    ],
+    "first_publish_year": 2012,
+    "publisher": [
+     "Penguin Books Ltd",
+     " Chinua Achebe",
+     "Penguin Press",
+     "Penguin Books"
+    ],
+    "title": "There Was a Country"
+   },
+   {
+    "author_name": [
+     "Ann Charters",
+     "Chinua Achebe",
+     "Margaret Atwood",
+     "Ambrose Bierce",
+     "Jorge Luis Borges",
+     "Ray Bradbury",
+     "Антон Павлович Чехов",
+     "Kate Chopin",
+     "William Faulkner",
+     "Gabriel García Márquez",
+     "Nathaniel Hawthorne",
+     "Shirley Jackson",
+     "James Joyce",
+     "Herman Melville",
+     "Alice Munro",
+     "Edgar Allan Poe",
+     "Annie Proulx",
+     "Alice Walker",
+     "Richard Wright"
+    ],
+    "first_publish_year": 2010,
+    "publisher": [
+     "Bedford/St. Martin's"
+    ],
+    "title": "The Story and Its Writer -- Compact Eighth Edition"
+   }
+  ]
+ },
+ {
+  "etape": "Open Library des-forges-1999",
+  "ok": false,
+  "detail": "URLError(ConnectionResetError(104, 'Connection reset by peer'))"
+ },
+ {
+  "etape": "Open Library prunier-1995",
+  "ok": true,
+  "detail": [
+   {
+    "author_name": [
+     "Gérard Prunier"
+    ],
+    "first_publish_year": 1995,
+    "publisher": [
+     "Columbia University Press",
+     "Fountain Publishers Ltd",
+     "Hurst"
+    ],
+    "title": "The Rwanda Crisis"
+   },
+   {
+    "author_name": [
+     "Gérard Prunier"
+    ],
+    "first_publish_year": 1995,
+    "publisher": [
+     "Columbia University Press"
+    ],
+    "title": "The Rwanda crisis"
+   }
+  ]
+ },
+ {
+  "etape": "Open Library wieviorka-2023",
+  "ok": false,
+  "detail": "URLError(ConnectionResetError(104, 'Connection reset by peer'))"
+ },
+ {
+  "etape": "Open Library hilberg",
+  "ok": false,
+  "detail": []
+ },
+ {
+  "etape": "Open Library echenberg-1991",
+  "ok": true,
+  "detail": [
+   {
+    "author_name": [
+     "Myron J. Echenberg"
+    ],
+    "first_publish_year": 1990,
+    "publisher": [
+     "Heinemann",
+     "J. Currey",
+     "Heinemann (Txt)"
+    ],
+    "title": "Colonial conscripts"
+   },
+   {
+    "author_name": [
+     "Myron Echenberg"
+    ],
+    "first_publish_year": 1990,
+    "publisher": [
+     "Heinemann"
+    ],
+    "title": "Colonial Conscripts"
+   }
+  ]
+ },
+ {
+  "etape": "Open Library maurel-2015",
+  "ok": true,
+  "detail": [
+   {
+    "author_name": [
+     "Classiques Garnier"
+    ],
+    "first_publish_year": 2023,
+    "publisher": [
+     "Classiques Garnier"
+    ],
+    "title": "Bulletin de la Societe Paul Claudel"
+   },
+   {
+    "author_name": [
+     "Maximillien de Lafayette"
+    ],
+    "first_publish_year": 2016,
+    "publisher": [
+     "Times Square Press New York"
+    ],
+    "title": "GUIDE OFFICIEL DE LA VOYANCE ET DES ARTS DIVINATOIRES"
+   }
+  ]
+ },
+ {
+  "etape": "Open Library ruf-1995",
+  "ok": true,
+  "detail": [
+   {
+    "author_name": [
+     "François Ruf"
+    ],
+    "first_publish_year": 1995,
+    "publisher": [
+     "Karthala",
+     "CIRAD-SAR",
+     "Ministère de la coopération"
+    ],
+    "title": "Booms et crises du cacao"
+   }
+  ]
+ },
+ {
+  "etape": "Open Library carroue",
+  "ok": true,
+  "detail": [
+   {
+    "author_name": [
+     "Laurent Carroué",
+     "Aurélie Boissière"
+    ],
+    "first_publish_year": 2018,
+    "publisher": [
+     "Autrement"
+    ],
+    "title": "Atlas de la mondialisation"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia aof",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia abidjan-niger",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia biafra-reconnaissance",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia msf",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia rwanda-carte",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia rwanda-victimes",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia thiaroye",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia charte-onu",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia sg-onu-2027",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia cadhp",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia zlecaf",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Zone de libre-échange continentale africaine",
+    "extrait": "La zone de libre-échange continentale africaine (ZLECAf, ZLECA ou ZLEC) est un projet de zone de libre-échange en cours de création sur l&#039;ensemble du"
+   },
+   {
+    "titre": "Union africaine",
+    "extrait": "monétaire africaine), établissant ainsi une union économique et monétaire. En juillet 2021, l&#039;Union Africaine a lancé la Zone de Libre-Echange Continentale Africaine"
+   },
+   {
+    "titre": "Communauté économique africaine",
+    "extrait": "sensibles à couvrir à partir de 2012. Article détaillé : Zone de libre-échange continentale africaine. La Zone de libre-échange africaine (Zleca) a été annoncée"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia cua-2025",
+  "ok": true,
+  "detail": [
+   {
+    "titre": "Mahamoud Ali Youssouf",
+    "extrait": "et de la coopération internationale. Mahamoud Ali Youssouf est candidat à la présidence de la Commission de l&#039;Union africaine lors de l&#039;élection de février"
+   },
+   {
+    "titre": "Selma Malika Haddadi",
+    "extrait": "renouvellement de la direction de la Commission de l’Union africaine sous la présidence de Mahmoud Ali Youssouf. Plusieurs médias africains analysent cette"
+   },
+   {
+    "titre": "Afrique",
+    "extrait": "de l’unité africaine », Jeune Afrique,‎ 18 juillet 2016 (lire en ligne). « Le Maroc fait son retour au sein de l&#039;Union africaine », RFI. « De l’OUA à l’UA :"
+   }
+  ]
+ },
+ {
+  "etape": "Wikipédia ua-g20",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia baleine",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia rgph-2021",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia foret-ci",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia vih-ci",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia soubre",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia brvm",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia omc-okonjo",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page fr Union africaine",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page fr Charte africaine des droits de l'homme et des peuples",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page en Member states of the United Nations",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page fr Secrétaire général des Nations unies",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page en 2026 United Nations Secretary-General selection",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page fr Génocide des Tutsi au Rwanda",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page fr Guerre du Biafra",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page fr Afrique-Occidentale française",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page en Demographics of Africa",
+  "ok": false,
+  "detail": "<HTTPError 429: 'Too Many Requests'>"
+ },
+ {
+  "etape": "Wikipédia page fr Gisement Baleine",
+  "ok": false,
+  "detail": 0
+ },
+ {
+  "etape": "Site onu-membres",
+  "ok": true,
+  "detail": " Growth in United Nations membership | United Nations (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id"
+ },
+ {
+  "etape": "Site ua-membres",
+  "ok": true,
+  "detail": " Member States | African Union {\"path\":{\"baseUrl\":\"\\/\",\"pathPrefix\":\"en\\/\",\"currentPath\":\"node\\/3678\",\"currentPathIsAdmin\":false,\"isFront\":false,\"currentLanguage\":\"en\"},\"pluralDelimiter\":\"\\u0003\",\"suppressDeprecationErrors\":true,\"ajaxPageState\":{\"libraries\":\"eJxdkFFuAyEMRC9EwpFWs6yDaM16i2FTcvoSIFHUH"
+ },
+ {
+  "etape": "Site cadhp",
+  "ok": true,
+  "detail": " window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};gtag(\"js\", new Date());gtag(\"set\", \"developer_id.dMDhkMT\", true);gtag(\"config\", \"G-9BSF4F316P\", {\"groups\":\"default\",\"page_placeholder\":\"PLACEHOLDER_page_location\",\"allow_ad_personalization_signals\":false}); African"
+ },
+ {
+  "etape": "Site dge",
+  "ok": true,
+  "detail": " window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};gtag(\"js\", new Date());gtag(\"set\", \"developer_id.dMDhkMT\", true);gtag(\"config\", \"UA-127707684-1\", {\"groups\":\"default\",\"anonymize_ip\":true,\"page_placeholder\":\"PLACEHOLDER_page_path\",\"allow_ad_personalization_signals"
+ },
+ {
+  "etape": "Site onusida-ci",
+  "ok": false,
+  "detail": "<HTTPError 404: 'Not Found'>"
+ }
+]
