@@ -173,9 +173,11 @@ def main():
             l['texteBanque'] = texte(l['banque'])
             l['nbBanque'] = l['banque'].count('<section class="exo">')
         l['v11'] = lot['meta']
-        l['texte'] = texte(l['situation'] + ' ' + l['cours'] + ' ' + l['evaluation'])
-        l['texteEns'] = texte(l['enseignant'] + ' ' + l['preparation'])
-        l['texteCult'] = texte(l['culture'])
+        # textes de recherche reconstitués par l'application au chargement (app.js, completerTextes) depuis la 1.18.0 :
+        # vides ici pour alléger data/contenu.json (téléphones encore sur un ancien code de mise à jour, stockage en clair)
+        l['texte'] = ''
+        l['texteEns'] = ''
+        l['texteCult'] = ''
     with open(CONTENU, 'w', encoding='utf-8') as fh:
         fh.write(json.dumps(d, ensure_ascii=False, separators=(',', ':')))
     print('data/contenu.json mis à jour.')

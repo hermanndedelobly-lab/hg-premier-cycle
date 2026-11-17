@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<script>(function(){var V="1.17.1";setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V){localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>
+<script>(function(){var V="1.18.0";setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V){localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>
 <meta charset="utf-8">
 <title>GNOMBLESSON · Histoire &amp; Géographie</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -569,7 +569,7 @@ window.HGStock = window.HGStock || (function () {
     emballer: emballer, deballer: deballer, CLE: CLE };
 })();
 </script>
-<script>window.HG_MODE="apk";window.HG_VERSION="1.17.1";window.HG_MAJ=true;(function(){var W=window;function L(k){try{return localStorage.getItem('hg1c.'+k)}catch(e){return null}}function retablir(r){try{localStorage.setItem('hg1c.maj-incident',JSON.stringify({version:W.HG_VERSION,quand:Date.now(),raison:String(r)}));localStorage.removeItem('hg1c.contenu-maj');localStorage.removeItem('hg1c.contenu-gz')}catch(e){}location.replace(location.href.split('#')[0])}if(W.HG_DATA_PROPRE){W.HG_DATA=W.HG_DATA_PROPRE;W.HG_DATA_PROMESSE=Promise.resolve(W.HG_DATA);return}var d=null;try{d=JSON.parse(L('contenu-maj'))}catch(e){}if(d&&d.classes&&!d.stub){W.HG_DATA=d;W.HG_DATA_PROMESSE=Promise.resolve(d);return}W.HG_DATA=null;W.HG_DATA_PROMESSE=(d&&d.version&&W.HGStock?W.HGStock.lire(d.version):Promise.reject(new Error('contenu absent'))).then(function(x){W.HG_DATA=x;try{localStorage.setItem('hg1c.code-ok',W.HG_VERSION)}catch(e){}return x},function(e){retablir(e&&e.message);return new Promise(function(){})})})();</script>
+<script>window.HG_MODE="apk";window.HG_VERSION="1.18.0";window.HG_MAJ=true;(function(){var W=window;function L(k){try{return localStorage.getItem('hg1c.'+k)}catch(e){return null}}function retablir(r){try{localStorage.setItem('hg1c.maj-incident',JSON.stringify({version:W.HG_VERSION,quand:Date.now(),raison:String(r)}));localStorage.removeItem('hg1c.contenu-maj');localStorage.removeItem('hg1c.contenu-gz')}catch(e){}location.replace(location.href.split('#')[0])}if(W.HG_DATA_PROPRE){W.HG_DATA=W.HG_DATA_PROPRE;W.HG_DATA_PROMESSE=Promise.resolve(W.HG_DATA);return}var d=null;try{d=JSON.parse(L('contenu-maj'))}catch(e){}if(d&&d.classes&&!d.stub){W.HG_DATA=d;W.HG_DATA_PROMESSE=Promise.resolve(d);return}W.HG_DATA=null;W.HG_DATA_PROMESSE=(d&&d.version&&W.HGStock?W.HGStock.lire(d.version):Promise.reject(new Error('contenu absent'))).then(function(x){W.HG_DATA=x;try{localStorage.setItem('hg1c.code-ok',W.HG_VERSION)}catch(e){}return x},function(e){retablir(e&&e.message);return new Promise(function(){})})})();</script>
 <script>/* GNOMBLESSON · Histoire & Géographie (ex-« Histoire géographie premier cycle ») — application hors ligne */
 (function () {
   'use strict';
@@ -632,7 +632,34 @@ window.HGStock = window.HGStock || (function () {
     return fetch('data/contenu.json').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
   }
 
+  // Textes de recherche des leçons enrichies et des fiches enseignant : depuis la 1.18.0, ils ne sont plus stockés dans
+  // data/contenu.json (gain de place pour les téléphones encore sur un ancien code de mise à jour) ; on les reconstitue ici
+  // à partir du HTML, comme le faisait outils/integrer-pedagogie.py (balises retirées, entités décodées, espaces réduits).
+  var ENTITES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0' };
+  function texteDe(h) {
+    return String(h || '').replace(/<[^>]+>/g, ' ').replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, function (m, e) {
+      if (e.charAt(0) === '#') { var n = e.charAt(1).toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10); return isNaN(n) ? m : String.fromCharCode(n); }
+      return ENTITES.hasOwnProperty(e.toLowerCase()) ? ENTITES[e.toLowerCase()] : m;
+    }).replace(/\s+/g, ' ').trim();
+  }
+  function completerTextes() {
+    D.classes.forEach(function (c) {
+      c.disciplines.forEach(function (d) {
+        d.themes.forEach(function (t) {
+          t.lecons.forEach(function (l) {
+            if (!l.enseignant) return;
+            if (!l.texte) l.texte = texteDe((l.situation || '') + ' ' + (l.cours || '') + ' ' + (l.evaluation || ''));
+            if (!l.texteEns) l.texteEns = texteDe((l.enseignant || '') + ' ' + (l.preparation || ''));
+            if (!l.texteCult && l.culture) l.texteCult = texteDe(l.culture);
+          });
+        });
+      });
+      (c.annexes || []).forEach(function (a) { if (!a.texte && a.html) a.texte = texteDe(a.html); });
+    });
+  }
+
   function indexer() {
+    completerTextes();
     D.classes.forEach(function (c) {
       ORDRE[c.id] = []; ORDRE_X[c.id] = [];
       c.disciplines.forEach(function (d) {

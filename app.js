@@ -60,7 +60,34 @@
     return fetch('data/contenu.json').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
   }
 
+  // Textes de recherche des leçons enrichies et des fiches enseignant : depuis la 1.18.0, ils ne sont plus stockés dans
+  // data/contenu.json (gain de place pour les téléphones encore sur un ancien code de mise à jour) ; on les reconstitue ici
+  // à partir du HTML, comme le faisait outils/integrer-pedagogie.py (balises retirées, entités décodées, espaces réduits).
+  var ENTITES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: '\u00a0' };
+  function texteDe(h) {
+    return String(h || '').replace(/<[^>]+>/g, ' ').replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, function (m, e) {
+      if (e.charAt(0) === '#') { var n = e.charAt(1).toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10); return isNaN(n) ? m : String.fromCharCode(n); }
+      return ENTITES.hasOwnProperty(e.toLowerCase()) ? ENTITES[e.toLowerCase()] : m;
+    }).replace(/\s+/g, ' ').trim();
+  }
+  function completerTextes() {
+    D.classes.forEach(function (c) {
+      c.disciplines.forEach(function (d) {
+        d.themes.forEach(function (t) {
+          t.lecons.forEach(function (l) {
+            if (!l.enseignant) return;
+            if (!l.texte) l.texte = texteDe((l.situation || '') + ' ' + (l.cours || '') + ' ' + (l.evaluation || ''));
+            if (!l.texteEns) l.texteEns = texteDe((l.enseignant || '') + ' ' + (l.preparation || ''));
+            if (!l.texteCult && l.culture) l.texteCult = texteDe(l.culture);
+          });
+        });
+      });
+      (c.annexes || []).forEach(function (a) { if (!a.texte && a.html) a.texte = texteDe(a.html); });
+    });
+  }
+
   function indexer() {
+    completerTextes();
     D.classes.forEach(function (c) {
       ORDRE[c.id] = []; ORDRE_X[c.id] = [];
       c.disciplines.forEach(function (d) {

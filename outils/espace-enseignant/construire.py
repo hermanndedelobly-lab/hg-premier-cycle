@@ -133,6 +133,7 @@ def fiche(classe, disc, theme, l, F):
         'Remarques sur les supports utilisés (à garder, à changer, à compléter).'])
     return h
 
+# 'texte' vide : reconstitué par l'application au chargement (app.js, completerTextes) depuis la 1.18.0
 def main(chemin):
     D = json.load(open(chemin, encoding='utf-8'))
     for c in D['classes']:
@@ -143,7 +144,7 @@ def main(chemin):
         c['annexes'] = [a for a in c['annexes'] if not a.get('enseignant')]
         nouvelles = []
         g = guide_html(c)
-        nouvelles.append({'id': K + '-ens-guide', 'titre': 'Guide de l\'enseignant de ' + K, 'enseignant': True, 'html': g, 'texte': txt(g)})
+        nouvelles.append({'id': K + '-ens-guide', 'titre': 'Guide de l\'enseignant de ' + K, 'enseignant': True, 'html': g, 'texte': ''})
         manque = []
         for d in c['disciplines']:
             for t in d['themes']:
@@ -153,7 +154,7 @@ def main(chemin):
                         manque.append(l['id']); continue
                     hh = fiche(c, d, t, l, F)
                     nouvelles.append({'id': K + '-ens-' + l['id'][3:], 'titre': 'Fiche enseignant · ' + d['nom'] + ' T' + str(t['n']) + '-L' + str(l['n']) + ' · ' + l['titre'],
-                                      'enseignant': True, 'lecon': l['id'], 'disc': d['id'], 'html': hh, 'texte': txt(hh)})
+                                      'enseignant': True, 'lecon': l['id'], 'disc': d['id'], 'html': hh, 'texte': ''})
         if manque:
             print(K, ': fiches manquantes', manque)
         c['annexes'] = c['annexes'] + nouvelles
