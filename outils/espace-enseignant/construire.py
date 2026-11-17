@@ -9,10 +9,12 @@ from fiches_5e_h import FICHES as F5H
 from fiches_5e_g import FICHES as F5G
 from fiches_4e_h import FICHES as F4H
 from fiches_4e_g import FICHES as F4G
+from fiches_3e_h import FICHES as F3H
+from fiches_3e_g import FICHES as F3G
 from guide import guide_html
 
 FICHES = {}
-FICHES.update(FH); FICHES.update(FG); FICHES.update(F5H); FICHES.update(F5G); FICHES.update(F4H); FICHES.update(F4G)
+FICHES.update(FH); FICHES.update(FG); FICHES.update(F5H); FICHES.update(F5G); FICHES.update(F4H); FICHES.update(F4G); FICHES.update(F3H); FICHES.update(F3G)
 
 def txt(s):
     return re.sub(r'\s+', ' ', H.unescape(re.sub(r'<[^>]+>', ' ', s))).strip()
@@ -137,6 +139,40 @@ def fiche(classe, disc, theme, l, F):
 
 REMPLACEMENT = '<p><em>Fiche disponible après la mise à jour de l\'application.</em></p>'
 COMPLET = {}   # HTML de référence de chaque fiche (pour outils/verifier-fiches.py)
+# depuis la 1.20.0 : préparation et évaluation des leçons enrichies reconstituées par l'application (app.js, completerEP)
+REMPLACEMENT_EP = '<p><em>Contenu disponible après la mise à jour de l\'application.</em></p>'
+COMPLET_EP = {}   # HTML de référence (clé : identifiant de leçon + '/evaluation' ou '/preparation')
+
+
+def _generateur():
+    import importlib.util
+    chemin = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'generer-evaluation-preparation.py')
+    spec = importlib.util.spec_from_file_location('generer_ep', chemin)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+def alleger_ep(c, d, t, l, F):
+    """Remplace evaluation et preparation par REMPLACEMENT_EP lorsqu'elles sont exactement celles que produit
+    outils/generer-evaluation-preparation.py (pas de retouche à la main) ; stocke alors les questions de compréhension (qc)."""
+    if not l.get('enseignant'):
+        return 0
+    q = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'pedagogie', l['id'], 'questions.json')
+    if not os.path.isfile(q):
+        return 0
+    G = _generateur()
+    Q = json.load(open(q, encoding='utf-8'))
+    gain = 0
+    gen = {'evaluation': G.evaluation(l, F, Q), 'preparation': G.preparation(c, d, t, l, F, Q, l['cours'])}
+    for k, h in gen.items():
+        if l.get(k) in (h, REMPLACEMENT_EP):   # REMPLACEMENT_EP : contenu déjà allégé (nouveau passage)
+            COMPLET_EP[l['id'] + '/' + k] = h
+            gain += len(h)
+            l[k] = REMPLACEMENT_EP
+    if gain:
+        l['qc'] = Q['comprehension']
+    return gain
 
 
 # 'texte' vide : reconstitué par l'application au chargement (app.js, completerTextes) depuis la 1.18.0
@@ -165,6 +201,9 @@ def main(chemin):
                     # visible que si un ancien code affichait ce contenu.
                     nouvelles.append({'id': K + '-ens-' + l['id'][3:], 'titre': 'Fiche enseignant · ' + d['nom'] + ' T' + str(t['n']) + '-L' + str(l['n']) + ' · ' + l['titre'],
                                       'enseignant': True, 'lecon': l['id'], 'disc': d['id'], 'html': REMPLACEMENT, 'texte': '', 'fiche': F})
+        gain = sum(alleger_ep(c, d, t, l, FICHES[l['id']]) for d in c['disciplines'] for t in d['themes'] for l in t['lecons'] if l['id'] in FICHES)
+        if gain:
+            print(K, ': préparations et évaluations reconstituées par l\'application,', gain, 'caractères économisés')
         if manque:
             print(K, ': fiches manquantes', manque)
         c['annexes'] = c['annexes'] + nouvelles

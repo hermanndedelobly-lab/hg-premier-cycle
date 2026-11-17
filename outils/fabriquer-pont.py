@@ -102,7 +102,7 @@ def squelette(x, cle=''):
     if isinstance(x, list):
         return [] if cle == 'quiz' else [squelette(y) for y in x]
     if isinstance(x, dict):   # données compactes des fiches enseignant (1.19.0) : inutiles dans le squelette
-        return {k: squelette(v, k) for k, v in x.items() if k != 'fiche'}
+        return {k: squelette(v, k) for k, v in x.items() if k not in ('fiche', 'qc')}
     return x
 d = squelette(d)
 d['stub'] = True

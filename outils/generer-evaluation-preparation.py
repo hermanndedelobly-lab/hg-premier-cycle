@@ -4,7 +4,7 @@ pedagogie/<id>/evaluation.html et pedagogie/<id>/preparation.html au format de l
 
 Sources :
   - la fiche de préparation de la leçon (outils/espace-enseignant/fiches_h.py et fiches_g.py pour la 6e,
-    fiches_5e_h.py et fiches_5e_g.py pour la 5e) : situation analysée, séances, activités du professeur et réponses attendues,
+    fiches_5e_h.py et fiches_5e_g.py pour la 5e, fiches_4e_*.py et fiches_3e_*.py pour la 4e et la 3e) : situation analysée, séances, activités du professeur et réponses attendues,
     difficultés, différenciation, évaluation sur 20 avec corrigés et barèmes, valeurs ;
   - la leçon dans data/contenu.json (compétence, exemple de situation, habiletés et contenus) ;
   - pedagogie/<id>/questions.json : questions de compréhension et réponses attendues (rédigées pour la leçon) ;
@@ -26,8 +26,10 @@ from fiches_5e_h import FICHES as F5H  # noqa: E402
 from fiches_5e_g import FICHES as F5G  # noqa: E402
 from fiches_4e_h import FICHES as F4H  # noqa: E402
 from fiches_4e_g import FICHES as F4G  # noqa: E402
+from fiches_3e_h import FICHES as F3H  # noqa: E402
+from fiches_3e_g import FICHES as F3G  # noqa: E402
 
-FICHES = dict(FH, **FG, **F5H, **F5G, **F4H, **F4G)
+FICHES = dict(FH, **FG, **F5H, **F5G, **F4H, **F4G, **F3H, **F3G)
 
 
 def pts(x):
