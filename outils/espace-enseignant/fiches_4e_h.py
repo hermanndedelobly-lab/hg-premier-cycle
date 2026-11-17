@@ -141,3 +141,70 @@ FICHES['4e-h-t1-l2'] = {
  'valeurs': ["Respect des autorités traditionnelles et administratives.", "Dialogue, consensus et paix sociale.",
              "Liens avec l'EDHC (institutions) et le français (compte rendu d'entretien)."],
 }
+
+# ------------------------------------------------------------------ T1-L3
+FICHES['4e-h-t1-l3'] = {
+ 'materiel': ["schéma des mécanismes de prévention (schéma 1)", "schéma des instances de règlement (schéma 2)", "schéma du déroulement d'une palabre (5e)",
+              "fiches de rôles pour le jeu de la palabre"],
+ 'contexte': "la Côte d'Ivoire sort d'une crise sociopolitique qui a gravement perturbé la population.",
+ 'circonstance': "des élèves de 4e du Lycée moderne 2 d'Abobo décident d'apporter leur appui au président de la Commission Dialogue, Vérité et Réconciliation (CDVR).",
+ 'taches': ["définir la notion de mécanisme de prévention", "identifier et expliquer les mécanismes de prévention et les moyens de résolution des conflits",
+            "proposer des activités de promotion de la paix"],
+ 'prerequis': ["Les codes de règlementation des conflits et le DIH (5e).", "L'organisation sociopolitique des peuples (leçon 2)."],
+ 'seances': [
+  {'titre': "Les notions et la prévention des conflits (I et II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation (CDVR).", "« Comment nos ancêtres évitaient-ils et réglaient-ils les conflits ? »"], ["Par le dialogue, les anciens, les alliances."], "Introduction."),
+   ("Développement · I. Les notions", 12, "Construction des définitions à partir d'exemples",
+    ["Faire définir conflit, prévention, mécanisme de prévention, résolution."],
+    ["Conflit : opposition grave ; prévenir : empêcher le conflit de naître ou de s'aggraver ; résoudre : y mettre fin par le dialogue, la médiation ou une décision acceptée."], "I. 1 à 3."),
+   ("Développement · II. La prévention", 25, "Travail de groupes, construction du schéma 1",
+    ["Chaque groupe explique un mécanisme : alliances à plaisanterie, mariages, éducation et initiation, terre et tutorat, solidarité."],
+    ["Pacte de non-agression et d'entraide (Dida – Abbey) ; liens de parenté ; maîtrise de soi et serments ; règles foncières et accueil des étrangers ; entraide."], "II. 1 à 5."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application I et II."], ["Définitions ; rôle de l'alliance à plaisanterie."], None),
+  ]},
+  {'titre': "La résolution des conflits (III)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Et lorsque le conflit a éclaté ? »"], ["On va voir le chef, les anciens."], None),
+   ("Développement · III. La résolution", 40, "Lecture du schéma 2, jeu de rôle d'une palabre",
+    ["Faire placer des litiges au bon niveau d'instance.", "Organiser le jeu de rôle d'une palabre ; présenter médiateurs, sanctions, rites, traités."],
+    ["Lignage, village et conseil (ou classes d'âge), roi et conseil.", "Exposé des parties, témoins, délibération, décision, réconciliation publique ; amendes, réparation, cola, libations ; traités et pactes."], "III. 1 à 5."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application III."], ["Étapes de la palabre."], None),
+  ]},
+  {'titre': "La promotion de la paix (IV)", 'etapes': [
+   (PRES, 5, "Retour à la situation", ["« Que peut faire la CDVR ? Que pouvons-nous faire ? »"], ["Dialoguer, écouter les victimes, réconcilier."], None),
+   ("Développement · IV. La promotion de la paix", 35, "Présentation, projet de classe, atelier",
+    ["Présenter la CDVR (2011) et la CONARIV ; rôle des chefs et des guides religieux.", "Faire concevoir un club de paix, des slogans et une saynète."],
+    ["Institutions de réconciliation inspirées du dialogue traditionnel.", "Clubs de paix, activités intercommunautaires, slogans sur la tolérance et la dignité humaine."], "IV, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Mécanismes, palabre, propositions pour la paix."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Les mécanismes traditionnels relèvent d'une justice restauratrice : réparer le tort et réconcilier plutôt que punir.",
+  "Les listes d'alliances à plaisanterie varient selon les sources : le cours ne cite que l'alliance Dida – Abbey, attestée par le programme de 5e.",
+  "CDVR créée en 2011 après la crise postélectorale ; CONARIV chargée de l'indemnisation des victimes.",
+  "Médiation (le tiers propose) et arbitrage (le chef décide) sont deux modes distincts.",
+ ],
+ 'difficultes': [
+  ("Confusion entre prévention et résolution.", "Classer dix exemples en « avant » et « après » le conflit."),
+  ("Confusion entre médiation et arbitrage.", "Jeu de rôle : un médiateur propose, un chef décide."),
+  ("Difficulté à placer un litige au bon niveau d'instance.", "Exercice avec le schéma 2 et trois litiges concrets."),
+ ],
+ 'soutien': ["Fiche-lexique : palabre, médiation, alliance, libation, réconciliation.", "Schéma 1 à compléter."],
+ 'approfondissement': ["Interroger un sage sur les alliances et les rites de réconciliation de la région.", "Exposé sur une commission vérité dans un autre pays africain."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : conflit ; mécanisme de prévention des conflits.", 2, "Conflit : opposition grave entre personnes ou groupes (1 pt) ; mécanisme de prévention : règles, pratiques et institutions pour éviter les conflits (1 pt)."),
+   ("Cite trois mécanismes de prévention des conflits.", 1.5, "Alliances à plaisanterie, alliances matrimoniales, éducation et initiation, règles de la terre et tutorat, solidarité. 0,5 pt par mécanisme."),
+   ("Décris les étapes de la palabre.", 2.5, "Exposé des parties par un porte-parole, audition des témoins, délibération des anciens, décision du chef, réconciliation publique. 0,5 pt par étape."),
+   ("Explique la différence entre médiation et arbitrage.", 2, "Dans la médiation, un tiers rapproche les parties et propose des solutions (1 pt) ; dans l'arbitrage, un tiers (le chef, le conseil) décide et sa décision s'impose (1 pt)."),
+  ],
+  'situation': "Deux familles de ton village se disputent un héritage ; les jeunes des deux camps s'insultent et menacent d'en venir aux mains.",
+  'consignes': [
+   ("Identifie le type de conflit et l'instance traditionnelle qui doit le régler.", 2, "Un conflit entre familles lié à l'héritage (1 pt) ; il relève du chef de village et du conseil des anciens (1 pt)."),
+   ("Explique comment les mécanismes traditionnels permettraient de le régler.", 4.5, "Une médiation par des personnes respectées (anciens, alliés, femmes) (1,5 pt) ; une palabre où chaque famille expose sa version et où les anciens délibèrent (1,5 pt) ; une décision suivie d'un rite de réconciliation : cola, repas, libation (1,5 pt)."),
+   ("Propose deux activités pour promouvoir la paix entre les jeunes du village.", 3.5, "Une rencontre sportive ou culturelle commune ; un club de paix ou une causerie avec les sages ; une saynète sur le pardon (1,75 pt par activité, 2 attendues)."),
+  ],
+ },
+ 'valeurs': ["Paix, dialogue, pardon et réconciliation.", "Respect des aînés et des institutions.",
+             "Liens avec l'EDHC (paix, droits de l'homme) et le français (jeu de rôle, argumentation)."],
+}
