@@ -78,3 +78,80 @@ FICHES['5e-g-t1-l1'] = {
  'valeurs': ["Connaissance et respect du territoire national.", "Protection des aires protégées.",
              "Liens avec les mathématiques (calculs, pourcentages) et les SVT (milieux naturels)."],
 }
+
+# ------------------------------------------------------------------ T1-L2
+FICHES['5e-g-t1-l2'] = {
+ 'materiel': ["tableau des recensements (INS)", "papier millimétré, règle, crayons de couleur", "tableau officiel de la population par âge et par sexe (INS)",
+              "photographies d'une forêt défrichée et d'un quartier précaire", "calculatrice"],
+ 'contexte': "des élèves de 5e du Collège moderne de Toupa suivent, au foyer de l'établissement, l'allocution de la ministre de la Famille pour la Journée mondiale de la population.",
+ 'circonstance': "ils apprennent que le rythme de croissance de la population ivoirienne est l'un des plus élevés du monde et s'en inquiètent.",
+ 'taches': ["définir la démographie et décrire la croissance et la structure de la population", "construire une courbe et une pyramide des âges ; effectuer des calculs",
+            "identifier les facteurs, expliquer les conséquences sur le milieu et mener des actions de gestion de l'environnement"],
+ 'prerequis': ["La densité et la répartition de la population (leçon 1).", "La construction d'un graphique simple (6e).", "Le calcul d'un pourcentage (mathématiques)."],
+ 'seances': [
+  {'titre': "Démographie, recensement et croissance (I, II. 1 et 2)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation (Journée mondiale de la population).", "« La population augmente-t-elle vraiment très vite ? Comment le savoir ? »"],
+    ["En comptant la population à plusieurs dates : les recensements."], "Introduction."),
+   ("Développement · I. Démographie et recensement", 12, "Questionnement",
+    ["Faire définir la démographie et le recensement ; présenter l'INS et l'utilité du recensement."],
+    ["Démographie : science des populations ; recensement : dénombrement complet ; utile pour prévoir écoles, santé, emplois, logements."], "I. 1 et 2."),
+   ("Développement · II. 1 et 2. L'évolution de la population", 25, "Lecture d'un tableau et calculs",
+    ["Faire lire le tableau des recensements.", "Faire calculer augmentations et facteur de multiplication."],
+    ["6,7 millions en 1975, 29,4 millions en 2021 ; multipliée par 4,4 ; environ 3 % par an."], "II. 1 et 2."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application I et II."], ["Définition du recensement ; calcul d'augmentation."], None),
+  ]},
+  {'titre': "Construire la courbe et calculer (II. 3 et 4)", 'etapes': [
+   (PRES, 5, "Rappel", ["Faire rappeler les chiffres des recensements."], ["Les cinq recensements et leurs populations."], None),
+   ("Développement · II. 3 et 4. Courbe et calculs", 40, "Construction individuelle sur papier millimétré, exercices de calcul",
+    ["Faire construire la courbe en respectant les intervalles entre années.", "Faire calculer un pourcentage d'augmentation et un taux d'accroissement naturel."],
+    ["Courbe croissante avec titre et source ; intervalles de 13, 10, 16 et 7 ans.", "(29 389 150 − 22 671 331) ÷ 22 671 331 × 100 ≈ 29,6 % ; 35 ‰ − 10 ‰ = 25 ‰."], "II. 3 et 4."),
+   (EVAL, 10, "Correction collective", ["Correction de la courbe avec le graphique 1 ; calcul de contrôle."], ["Courbes corrigées."], None),
+  ]},
+  {'titre': "Facteurs de la croissance et structure de la population (III et IV)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Pourquoi la population augmente-t-elle si vite ? »"], ["Beaucoup de naissances, moins de décès, arrivée de migrants."], None),
+   ("Développement · III et IV. Facteurs et structure", 40, "Travail de groupes ; lecture et construction d'une pyramide",
+    ["Chaque groupe explique un facteur (natalité, mortalité, immigration).", "Faire décrire puis construire une pyramide des âges à partir des données officielles."],
+    ["Forte natalité ; baisse de la mortalité ; immigration (environ un habitant sur cinq de nationalité étrangère en 2021).",
+     "Population jeune (75,6 % de moins de 35 ans) ; pyramide à base large et sommet étroit ; hommes à gauche, femmes à droite."], "III, IV."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application III et IV."], ["Facteurs ; description de la pyramide."], None),
+  ]},
+  {'titre': "Conséquences sur le milieu et actions (V et VI)", 'etapes': [
+   (PRES, 5, "Observation de photographies", ["Montrer une forêt défrichée et un quartier précaire : « Quel lien avec la croissance de la population ? »"], ["Plus d'habitants, plus de terres et de maisons."], None),
+   ("Développement · V et VI. Conséquences et actions", 30, "Chaîne de causes au tableau, propositions d'actions",
+    ["Faire construire la chaîne : plus d'habitants → plus de terres, de bois, d'eau → déforestation, pollution, sols appauvris.", "Faire proposer des actions et un projet de classe."],
+    ["Déforestation, biodiversité menacée, quartiers précaires, déchets, besoins en bois et en eau, jachères réduites.",
+     "Planification familiale, reboisement, agriculture intensive, gestion des déchets, foyers améliorés, club environnement."], "V, VI, conclusion."),
+   (EVAL, 20, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Réinvestissent facteurs, conséquences et actions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "La Côte d'Ivoire est dans la phase de transition démographique où la mortalité a baissé avant la natalité, d'où une croissance rapide.",
+  "Croissance moyenne d'environ 3 % par an entre 1975 et 2021, calculée à partir des recensements ; éviter de comparer les taux d'une période à l'autre.",
+  "L'immigration, liée à l'économie de plantation, est un facteur ancien ; selon le RGPH 2021, environ un habitant sur cinq est de nationalité étrangère.",
+  "Selon l'INS (RGPH 2021) : 75,6 % de moins de 35 ans, 52,5 % d'urbains.",
+ ],
+ 'difficultes': [
+  ("Axe des années mal gradué (intervalles égaux entre recensements).", "Graduer l'axe tous les 5 ans, puis placer chaque année à sa place exacte."),
+  ("Confusion entre ‰ et %.", "Exercices de conversion (25 ‰ = 2,5 %)."),
+  ("Pyramide inversée ou sans légende.", "Convention hommes à gauche, femmes à droite ; liste de vérification."),
+ ],
+ 'soutien': ["Repère gradué fourni pour la courbe.", "Pyramide à compléter : barres déjà tracées pour la moitié des tranches."],
+ 'approfondissement': ["Calculer le temps de doublement avec la règle de 70.", "Comparer la pyramide ivoirienne et celle d'un pays vieillissant."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : démographie ; recensement.", 2, "Démographie : science qui étudie les populations humaines (effectif, structure, évolution) (1 pt) ; recensement : dénombrement complet de la population à une date donnée (1 pt)."),
+   ("Calcule le pourcentage d'augmentation de la population entre 2014 (22 671 331) et 2021 (29 389 150).", 2, "(29 389 150 − 22 671 331) ÷ 22 671 331 × 100 ≈ 29,6 % (opération 1 pt, résultat 1 pt)."),
+   ("Dans une région, le taux de natalité est de 35 ‰ et le taux de mortalité de 10 ‰ (données d'exercice). Calcule le taux d'accroissement naturel et exprime-le en %.", 2, "35 − 10 = 25 ‰ (1 pt), soit 2,5 % (1 pt)."),
+   ("Cite les trois facteurs de la croissance démographique ivoirienne.", 2, "Forte natalité, baisse de la mortalité, immigration (0,5 pt chacun ; 0,5 pt si les trois sont exacts)."),
+  ],
+  'situation': "Dans ton village, la forêt a presque disparu en vingt ans et les familles cherchent de nouvelles terres. Ton oncle pense que « c'est la faute du climat ».",
+  'consignes': [
+   ("Définis la démographie et décris la forme de la pyramide des âges ivoirienne.", 3, "Science des populations humaines (1 pt) ; base large et sommet étroit (1 pt) : population jeune (1 pt)."),
+   ("Explique à ton oncle le lien entre la croissance de la population et la disparition de la forêt.", 4, "La population augmente vite (1 pt) ; il faut plus de terres à cultiver, de bois et d'espace pour construire (2 pts) ; la forêt est donc défrichée et les jachères réduites (1 pt)."),
+   ("Propose deux actions pour une gestion rationnelle de l'environnement.", 3, "Reboiser les terres dégradées ; pratiquer une agriculture plus productive sur moins d'espace ; utiliser des foyers améliorés ; planification familiale (1,5 pt par action, 2 attendues)."),
+  ],
+ },
+ 'valeurs': ["Responsabilité envers l'environnement et les générations futures.", "Santé et éducation des filles.",
+             "Liens avec les mathématiques (pourcentages, graphiques), les SVT et l'EDHC."],
+}

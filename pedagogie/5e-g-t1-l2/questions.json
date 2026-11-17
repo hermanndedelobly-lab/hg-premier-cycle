@@ -1,0 +1,10 @@
+{
+  "comprehension": [
+    ["Pourquoi les recensements sont-ils indispensables à l'État ?", "Parce qu'ils donnent le nombre exact d'habitants et leurs caractéristiques, ce qui permet de prévoir les besoins (écoles, santé, emplois, logements) et de planifier le développement."],
+    ["Pourquoi faut-il respecter les intervalles entre les années sur l'axe horizontal de la courbe ?", "Parce que les recensements ne sont pas réguliers (13, 10, 16 puis 7 ans d'écart) : sans intervalles exacts, la courbe déformerait le rythme de la croissance."],
+    ["Pourquoi la baisse de la mortalité fait-elle augmenter la population ?", "Parce que les naissances restent nombreuses alors que les décès diminuent : l'écart entre naissances et décès, l'accroissement naturel, augmente."],
+    ["Que montre une pyramide des âges à base large et à sommet étroit ?", "Une population jeune : beaucoup d'enfants et de jeunes grâce à une forte natalité, et peu de personnes âgées."],
+    ["Pourquoi la croissance démographique menace-t-elle la forêt ?", "Parce qu'il faut toujours plus de terres à cultiver, de bois et d'espace pour construire : la forêt est défrichée et les forêts classées sont infiltrées."],
+    ["Pourquoi la croissance démographique peut-elle aussi être une chance ?", "Parce qu'elle apporte une main-d'œuvre jeune et nombreuse et un grand marché de consommateurs, à condition que l'éducation, l'emploi et la gestion de l'environnement suivent."]
+  ]
+}
