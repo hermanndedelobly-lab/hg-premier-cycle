@@ -1,0 +1,10 @@
+{
+  "comprehension": [
+    ["Qu'est-ce qui distingue le secteur primaire du secteur secondaire ?", "Le primaire tire sa production directement de la nature (agriculture, pêche, forêt) ; le secondaire transforme les matières premières (industries, mines, énergie, BTP)."],
+    ["Pourquoi dit-on que le primaire reste le pilier de l'économie alors qu'il pèse moins dans le PIB ?", "Parce qu'il emploie une grande partie des actifs et fournit l'essentiel des recettes d'exportation (cacao, anacarde, hévéa)."],
+    ["Comment calcule-t-on l'angle d'un secteur dans un diagramme circulaire ?", "On multiplie le pourcentage par 3,6 (car 100 % = 360°) : 16,8 % donne environ 60°."],
+    ["Pourquoi l'industrie ivoirienne est-elle surtout concentrée à Abidjan ?", "Parce qu'Abidjan possède le principal port, l'énergie, la main-d'œuvre, les banques et le grand marché de consommateurs."],
+    ["Quel est le principal problème du secteur secondaire ?", "La faible transformation locale des matières premières, qui sont surtout exportées brutes ; on accepte aussi le coût de l'énergie ou la concentration à Abidjan."],
+    ["Pourquoi le tertiaire est-il appelé « moteur de la croissance » ?", "Parce qu'il produit la plus grande part des richesses et progresse vite : commerce, transports, télécommunications, banques, paiement mobile."]
+  ]
+}
