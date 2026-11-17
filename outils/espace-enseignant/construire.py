@@ -7,10 +7,12 @@ from fiches_h import FICHES as FH
 from fiches_g import FICHES as FG
 from fiches_5e_h import FICHES as F5H
 from fiches_5e_g import FICHES as F5G
+from fiches_4e_h import FICHES as F4H
+from fiches_4e_g import FICHES as F4G
 from guide import guide_html
 
 FICHES = {}
-FICHES.update(FH); FICHES.update(FG); FICHES.update(F5H); FICHES.update(F5G)
+FICHES.update(FH); FICHES.update(FG); FICHES.update(F5H); FICHES.update(F5G); FICHES.update(F4H); FICHES.update(F4G)
 
 def txt(s):
     return re.sub(r'\s+', ' ', H.unescape(re.sub(r'<[^>]+>', ' ', s))).strip()

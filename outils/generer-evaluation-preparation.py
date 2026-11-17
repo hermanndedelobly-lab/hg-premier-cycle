@@ -24,8 +24,10 @@ from fiches_h import FICHES as FH  # noqa: E402
 from fiches_g import FICHES as FG  # noqa: E402
 from fiches_5e_h import FICHES as F5H  # noqa: E402
 from fiches_5e_g import FICHES as F5G  # noqa: E402
+from fiches_4e_h import FICHES as F4H  # noqa: E402
+from fiches_4e_g import FICHES as F4G  # noqa: E402
 
-FICHES = dict(FH, **FG, **F5H, **F5G)
+FICHES = dict(FH, **FG, **F5H, **F5G, **F4H, **F4G)
 
 
 def pts(x):
