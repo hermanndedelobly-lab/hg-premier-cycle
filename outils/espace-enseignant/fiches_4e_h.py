@@ -412,3 +412,73 @@ FICHES['4e-h-t2-l2'] = {
  'valeurs': ["Liberté, égalité, respect des droits humains.", "Esprit civique et participation pacifique.",
              "Liens avec l'EDHC (Constitution, droits et devoirs) et le français (argumentation)."],
 }
+
+FICHES['4e-h-t2-l3'] = {
+ 'materiel': ["schéma des facteurs et des conséquences (schéma 1)", "carte des foyers industriels européens (carte 1)",
+              "gravures d'un atelier artisanal et d'une usine textile", "témoignage sur le travail des enfants"],
+ 'contexte': "l'Europe occidentale doit sa puissance industrielle à un processus commencé au XVIIIe siècle.",
+ 'circonstance': "après une conférence, des élèves de 4e du Lycée Mamie Faitai de Bingerville veulent comprendre la Révolution industrielle et son impact sur les progrès d'aujourd'hui.",
+ 'taches': ["définir la Révolution industrielle et identifier ses facteurs", "élaborer un tableau des inventions et localiser les foyers",
+            "analyser les conséquences et établir des relations avec les progrès d'aujourd'hui"],
+ 'prerequis': ["La traite négrière et le commerce triangulaire (leçon 1).", "Notions d'énergie (sciences physiques)."],
+ 'seances': [
+  {'titre': "Définition, contexte et facteurs (I et II)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation.", "« Comment l'Europe est-elle devenue industrielle ? »"], ["Grâce aux machines, au charbon, aux usines."], "Introduction."),
+   ("Développement · I. Définition et contexte", 12, "Comparaison d'images",
+    ["Faire comparer un atelier artisanal et une usine.", "Présenter les deux phases."],
+    ["Passage de la main à la machine, de l'atelier à l'usine, grâce à la vapeur ; charbon et vapeur puis électricité et pétrole."], "I."),
+   ("Développement · II. Les facteurs", 25, "Travail de groupes, schéma 1",
+    ["Chaque groupe explique un facteur ; construire la partie haute du schéma 1."],
+    ["Révolution agricole, croissance démographique, capitaux, charbon et fer, inventions, conditions politiques et libéralisme."], "II."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application I et II."], ["Définition ; rôle de la révolution agricole."], None),
+  ]},
+  {'titre': "Inventions et foyers (III)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Quelles machines et où ? »"], ["Machine à vapeur, locomotive ; Angleterre."], None),
+   ("Développement · III. Inventions et foyers", 40, "Élaboration d'un tableau, lecture de la carte 1",
+    ["Faire élaborer le tableau des principales inventions (date, inventeur, invention, domaine).", "Faire localiser les foyers et les relier au charbon."],
+    ["Watt (1769), Stephenson (1814), Bessemer (1856), Bell (1876), Edison (1879), Benz (1886)…", "Lancashire, Midlands, Sambre-Meuse, Nord, Lorraine, Ruhr ; foyers sur les bassins houillers."], "III."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application III."], ["Association inventeurs – inventions."], None),
+  ]},
+  {'titre': "Conséquences et progrès d'aujourd'hui (IV et V)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Qu'est-ce que cela a changé pour les hommes ? »"], ["Les villes, les usines, les ouvriers."], None),
+   ("Développement · IV. Les conséquences", 20, "Étude d'un témoignage, tableau",
+    ["Faire classer les conséquences économiques, sociales, démographiques, politiques."],
+    ["Capitalisme, transports, commerce mondial ; exode rural, bourgeoisie et prolétariat, syndicats ; émigration, pollution ; domination de l'Europe, colonisation."], "IV."),
+   ("Développement · V. Les progrès d'aujourd'hui", 15, "Tableau de correspondance",
+    ["Faire élaborer le tableau de correspondance inventions – technologies actuelles ; débattre des avantages et des limites."],
+    ["Vapeur → turbines ; télégraphe → Internet ; locomotive → TGV ; avantages (confort, rapidité) et limites (pollution, climat)."], "V, conclusion."),
+   (EVAL, 15, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Facteurs, foyers, conséquences, héritage."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Watt a perfectionné la machine de Newcomen (1712) ; Trevithick a construit la première locomotive (1804), avant Stephenson.",
+  "Les foyers se situent sur les bassins houillers : le charbon est l'énergie de la vapeur et de la sidérurgie.",
+  "Les premières lois sur le travail des enfants : 1833 au Royaume-Uni (textile), 1841 en France.",
+  "Le rôle des profits de la traite dans le financement de l'industrie est réel mais débattu quant à son ampleur.",
+ ],
+ 'difficultes': [
+  ("Confusion entre artisanat et industrie.", "Tableau comparatif main / machine, atelier / usine."),
+  ("Difficulté à mémoriser les inventions.", "Tableau à compléter et jeu d'association."),
+  ("Difficulté à localiser les foyers.", "Carte 1 muette à compléter avec les bassins houillers."),
+ ],
+ 'soutien': ["Fiche-lexique : usine, capitalisme, prolétariat, exode rural, syndicat.", "Tableau des inventions à trous."],
+ 'approfondissement': ["Exposé sur le travail des enfants au XIXe siècle et aujourd'hui.", "Recherche sur une industrie ivoirienne de transformation."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : Révolution industrielle.", 1, "Passage de la production artisanale à la production en usine, avec des machines et de nouvelles énergies (1 pt)."),
+   ("Cite trois facteurs de la Révolution industrielle.", 1.5, "Révolution agricole, croissance démographique, capitaux, charbon et fer, inventions, libéralisme. 0,5 pt par facteur."),
+   ("Associe chaque inventeur à son invention : Watt, Stephenson, Bell, Edison.", 2, "Watt : machine à vapeur ; Stephenson : locomotive ; Bell : téléphone ; Edison : lampe électrique. 0,5 pt par association."),
+   ("Localise deux foyers de la Révolution industrielle en Europe.", 1.5, "Lancashire (Manchester), Midlands (Birmingham), Sambre-Meuse, Nord de la France, Lorraine, Ruhr… 0,75 pt par foyer."),
+   ("Donne deux conséquences sociales de la Révolution industrielle.", 2, "Exode rural et urbanisation, naissance de la bourgeoisie industrielle et du prolétariat, misère ouvrière, syndicats. 1 pt par conséquence."),
+  ],
+  'situation': "Ton petit frère affirme que le téléphone portable et le train sont des inventions récentes qui n'ont rien à voir avec l'histoire.",
+  'consignes': [
+   ("Identifie les inventions du XIXe siècle à l'origine du téléphone portable et du train moderne.", 2, "Le télégraphe (Morse) et le téléphone (Bell) (1 pt) ; la locomotive à vapeur et le chemin de fer (Stephenson) (1 pt)."),
+   ("Explique dans quelles conditions ces inventions sont apparues en Europe.", 4, "Révolution industrielle née en Angleterre (1 pt) ; facteurs : révolution agricole, capitaux, charbon, inventions (2 pts) ; diffusion en Europe au XIXe siècle (1 pt)."),
+   ("Montre les avantages et les limites des progrès techniques aujourd'hui.", 4, "Avantages : rapidité, communication, confort (2 pts) ; limites : pollution, réchauffement climatique, épuisement des ressources (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Esprit d'innovation et goût de l'effort.", "Responsabilité envers l'environnement ; justice sociale.",
+             "Liens avec les sciences physiques (énergie) et la géographie (industrie, environnement)."],
+}
