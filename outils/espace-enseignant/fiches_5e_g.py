@@ -155,3 +155,74 @@ FICHES['5e-g-t1-l2'] = {
  'valeurs': ["Responsabilité envers l'environnement et les générations futures.", "Santé et éducation des filles.",
              "Liens avec les mathématiques (pourcentages, graphiques), les SVT et l'EDHC."],
 }
+
+# ------------------------------------------------------------------ T1-L3
+FICHES['5e-g-t1-l3'] = {
+ 'materiel': ["carte des ressources en eau (carte 1)", "rapporteur, compas, crayons de couleur", "document sur la pollution de la lagune Ébrié ou sur l'orpaillage",
+              "verre doseur et montre (mesure d'une fuite)", "papier et feutres pour les affiches"],
+ 'contexte': "après une visite des sanitaires du Lycée municipal d'Attécoubé, le proviseur constate que beaucoup de robinets restent ouverts.",
+ 'circonstance': "il réunit les élèves et leur recommande une utilisation rationnelle de l'eau, « source de vie et de développement » ; des élèves de 5e décident de faire des recherches.",
+ 'taches': ["identifier et localiser les ressources en eau", "expliquer l'importance de l'eau ; construire un diagramme et effectuer des calculs",
+            "identifier les problèmes liés à l'eau ; produire des supports et proposer des actions de gestion rationnelle"],
+ 'prerequis': ["Le cycle de l'eau (6e).", "Le relief et l'hydrographie (leçon 1).", "La mesure d'un angle au rapporteur (mathématiques)."],
+ 'seances': [
+  {'titre': "Les ressources en eau et leurs usages (I, II. 1 et 2)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation d'Attécoubé.", "« L'eau est-elle vraiment source de vie et de développement ? »"], ["On en a besoin pour boire, se laver, cultiver, produire de l'électricité."], "Introduction."),
+   ("Développement · I. Les ressources en eau", 25, "Exploitation de la carte 1",
+    ["Faire classer les ressources (marines, de surface, souterraines).", "Faire localiser fleuves, lagunes, lacs de barrage et ports ; rappeler le régime des cours d'eau."],
+    ["Océan Atlantique ; Comoé, Bandama, Cavally, Sassandra ; lagunes Ébrié, Aby, Grand-Lahou ; lacs Kossou, Taabo, Buyo, Soubré, Ayamé ; nappes.", "Hautes eaux en saison des pluies, basses eaux en saison sèche."], "I. 1 à 4."),
+   ("Développement · II. 1 et 2. L'importance de l'eau", 12, "Brainstorming et classement",
+    ["Faire citer les usages de l'eau et les classer en usages quotidiens et économiques."],
+    ["Boire, cuisiner, se laver ; irrigation, hydroélectricité, pêche, transports, industrie, tourisme."], "II. 1 et 2."),
+   (EVAL, 10, "Travail individuel", ["Activité d'application I."], ["Fleuves et lacs de barrage."], None),
+  ]},
+  {'titre': "Diagramme, calculs et problèmes liés à l'eau (II. 3 et 4, III)", 'etapes': [
+   (PRES, 5, "Rappel", ["Faire rappeler les usages de l'eau."], ["Usages quotidiens et économiques."], None),
+   ("Développement · II. 3 et 4. Diagramme et calculs", 30, "Construction individuelle au rapporteur ; calculs",
+    ["Faire construire un diagramme circulaire (60 %, 25 %, 15 %).", "Faire calculer consommation et pertes dues à une fuite."],
+    ["Angles : 216°, 90°, 54° ; total 360° ; titre, légende, source.", "10 L/h → 240 L/jour → 87 600 L/an."], "II. 3 et 4."),
+   ("Développement · III. Les problèmes liés à l'eau", 10, "Étude d'un document",
+    ["Faire relever dans un document les problèmes liés à l'eau."],
+    ["Pollution (déchets, engrais, orpaillage), gaspillage, inégal accès, maladies hydriques, végétaux envahissants."], "III."),
+   (EVAL, 10, "Travail individuel", ["Activités d'application II et III."], ["Angle d'un secteur ; causes de pollution."], None),
+  ]},
+  {'titre': "La gestion rationnelle de l'eau (IV)", 'etapes': [
+   (PRES, 5, "Retour à la situation", ["« Que faire dans notre établissement ? »"], ["Fermer les robinets, réparer les fuites, sensibiliser."], None),
+   ("Développement · IV. La gestion rationnelle", 30, "Questionnement puis production en groupes",
+    ["Faire relier chaque action à une valeur.", "Faire produire affiches et slogans pour les sanitaires."],
+    ["Actions : fermer les robinets, réparer les fuites, récupérer l'eau de pluie, protéger les puits, ne pas polluer, traiter l'eau.",
+     "Valeurs : responsabilité, solidarité et partage, respect du bien commun ; slogan « Ferme le robinet, l'eau est précieuse »."], "IV, conclusion."),
+   (EVAL, 20, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Identifient un problème, ses conséquences et des actions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Le principal défi ivoirien est la qualité de l'eau et l'inégal accès, plus que la quantité.",
+  "Loi n° 98-755 du 23 décembre 1998 portant Code de l'eau ; droit à l'eau reconnu par l'ONU en 2010 ; ODD 6.",
+  "Barrages : Ayamé (Bia), Kossou et Taabo (Bandama), Buyo et Soubré (Sassandra, Soubré mis en service en 2017).",
+  "Le diagramme circulaire du cours est construit avec des données d'exercice.",
+ ],
+ 'difficultes': [
+  ("Confusion entre lagune et lac.", "La lagune communique avec la mer (eau saumâtre) ; le lac est entouré de terre."),
+  ("Erreurs d'angles dans le diagramme circulaire.", "Vérifier que la somme fait 360° ; exercice guidé au rapporteur."),
+  ("Erreurs d'unités dans les calculs de pertes.", "Écrire systématiquement l'unité à chaque étape (L/h, L/jour, L/an)."),
+ ],
+ 'soutien': ["Carte muette à compléter avec une liste de noms.", "Diagramme circulaire pré-gradué tous les 10 %."],
+ 'approfondissement': ["Faire l'inventaire des fuites de l'établissement avec le club environnement.", "Exposé sur un barrage hydroélectrique ivoirien."],
+ 'evaluation': {
+  'activites': [
+   ("Cite les quatre grands fleuves de Côte d'Ivoire, d'ouest en est.", 2, "Cavally, Sassandra, Bandama, Comoé. 0,5 pt par fleuve bien placé."),
+   ("L'eau d'une région est utilisée ainsi : agriculture 60 %, usages domestiques 25 %, industrie 15 % (données d'exercice). Calcule les angles du diagramme circulaire.", 3, "Agriculture 216° ; domestique 90° ; industrie 54°. 1 pt par angle."),
+   ("Relie chaque plan d'eau à une activité : a) océan Atlantique ; b) lac de Kossou ; c) lagune Ébrié — 1) production d'électricité ; 2) transport lagunaire ; 3) pêche industrielle et commerce maritime.", 1.5, "a-3 ; b-1 ; c-2. 0,5 pt par association."),
+   ("Un robinet fuit de 6 litres par heure. Calcule la perte en une semaine.", 1.5, "6 × 24 × 7 = 1 008 litres (opération 1 pt, résultat 0,5 pt)."),
+  ],
+  'situation': "Dans ton village, des orpailleurs lavent leur minerai dans la rivière, et les habitants qui y puisent leur eau tombent malades.",
+  'consignes': [
+   ("Identifie le problème lié à l'eau.", 2, "La pollution de la rivière par l'orpaillage clandestin (mercure, boue) (2 pts)."),
+   ("Montre deux conséquences pour la population.", 4, "Des maladies (diarrhées, intoxications) (2 pts) ; la disparition des poissons et la perte d'une source d'eau pour les cultures et le bétail (2 pts)."),
+   ("Propose deux actions de gestion rationnelle de l'eau et la valeur liée à chacune.", 4, "Signaler l'orpaillage illégal aux autorités et sensibiliser (respect du bien commun) ; installer un forage, faire bouillir et filtrer l'eau (responsabilité, solidarité) (2 pts par action avec sa valeur)."),
+  ],
+ },
+ 'valeurs': ["Responsabilité, solidarité et respect du bien commun dans l'usage de l'eau.", "Santé et hygiène.",
+             "Liens avec les SVT (cycle de l'eau, maladies), les mathématiques (angles, calculs) et l'EDHC."],
+}
