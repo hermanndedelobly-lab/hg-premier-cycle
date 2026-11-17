@@ -228,3 +228,152 @@ FICHES['3e-g-t1-l3'] = {
  'valeurs': ["Civisme fiscal et refus de la corruption.", "Solidarité, lutte contre la stigmatisation des malades, protection de l'environnement.",
              "Liens avec l'EDHC (citoyenneté), les SVT (VIH, forêt) et les mathématiques (pourcentages)."],
 }
+
+# ------------------------------------------------------------------ T2-L1
+FICHES['3e-g-t2-l1'] = {
+ 'materiel': ["carte des ressources de l'Afrique (carte 1)", "courbe de la population de l'Afrique (graphique 1)", "carte politique de l'Afrique",
+              "tableau de la production de cacao des principaux pays producteurs", "papier millimétré"],
+ 'contexte': "des élèves de 3e 5 du lycée de Korhogo écoutent la radio ONUCI-FM.",
+ 'circonstance': "ils apprennent que la majorité des pays d'Afrique sont pauvres et endettés et veulent en connaître les raisons et les solutions.",
+ 'taches': ["identifier les atouts naturels et humains de l'Afrique", "caractériser les secteurs d'activités et construire des graphiques",
+            "analyser les problèmes de développement et proposer des solutions"],
+ 'prerequis': ["L'étude économique de la Côte d'Ivoire (thème 1).", "La carte politique de l'Afrique.", "La construction d'un graphique (barres, courbe)."],
+ 'seances': [
+  {'titre': "Les atouts naturels et humains (I)", 'etapes': [
+   (PRES, 8, "Lecture de la situation et questionnement",
+    ["Lire la situation ; « L'Afrique est-elle pauvre en ressources ? »"], ["Non : elle a du pétrole, de l'or, du cacao…"], "Introduction."),
+   ("Développement · I. Les atouts", 35, "Lecture de la carte 1 et du graphique 1",
+    ["Faire relever les ressources et les pays producteurs sur la carte 1.", "Faire lire le graphique 1 et calculer le coefficient multiplicateur."],
+    ["Pétrole et gaz (Nigeria, Angola, Algérie), or (Afrique du Sud, Ghana, Mali), cobalt et cuivre (RD Congo, Zambie), diamants, bauxite, uranium, phosphates ; terres cultivables.",
+     "Environ 230 millions d'habitants en 1950 et 1,5 milliard aujourd'hui : multipliée par plus de six ; population la plus jeune du monde."], "I. 1 et 2."),
+   (EVAL, 12, "Travail individuel", ["Activité d'application I."], ["Trois atouts naturels, un atout humain."], None),
+  ]},
+  {'titre': "Les secteurs d'activités et les graphiques (II)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Que deviennent les ressources africaines ? »"], ["Elles sont souvent exportées brutes."], None),
+   ("Développement · II. Les secteurs d'activités", 38, "Exposé dialogué, construction d'un graphique",
+    ["Faire caractériser les trois secteurs.", "Faire construire un diagramme en barres de la production de cacao à partir d'un tableau."],
+    ["Primaire dominant (agriculture traditionnelle, cultures d'exportation) ; secondaire faible, dominé par les mines ; tertiaire en croissance mais informel.",
+     "Diagramme en barres : axe gradué, une barre par pays, titre, légende, source."], "II. 1 à 4."),
+   (EVAL, 12, "Travail individuel", ["Activité d'application II."], ["Caractéristiques des trois secteurs."], None),
+  ]},
+  {'titre': "Les problèmes de développement (III)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Pourquoi un continent riche a-t-il des populations pauvres ? »"], ["Produits exportés bruts, conflits, corruption…"], None),
+   ("Développement · III. Les problèmes", 35, "Travail de groupes, tableau de synthèse",
+    ["Chaque groupe étudie une famille de problèmes (économiques, politiques, sociaux, environnementaux).", "Mise en commun dans un tableau."],
+    ["Économies extraverties, faible commerce intra-africain (environ 15 %), infrastructures insuffisantes, dette.",
+     "Instabilité, terrorisme, corruption ; pauvreté, chômage, fuite des cerveaux ; désertification, déforestation, changement climatique."], "III. 1 à 4."),
+   (EVAL, 15, "Travail individuel", ["Activité d'application III."], ["Deux problèmes expliqués."], None),
+  ]},
+  {'titre': "Les solutions et l'évaluation (IV)", 'etapes': [
+   (PRES, 5, "Retour à la situation", ["« Que peuvent faire les Africains pour se développer ? »"], ["Transformer, s'unir, former, bien gérer."], None),
+   ("Développement · IV. Les solutions", 25, "Exposé dialogué",
+    ["Distinguer les solutions continentales et nationales.", "Relier chaque solution à un problème."],
+    ["Continentales : Agenda 2063, ZLECAf, infrastructures, BAD ; nationales : transformation locale, agriculture modernisée, éducation, bonne gouvernance, paix, énergies renouvelables."], "IV, conclusion."),
+   (EVAL, 25, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Atouts, problèmes, solutions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Les ordres de grandeur du graphique 1 (230, 420, 820 et 1 520 millions d'habitants) sont arrondis à partir de l'ONU (World Population Prospects) ; ils restent à vérifier.",
+  "L'ONU compte 54 États africains ; l'Union africaine en compte 55 avec la République arabe sahraouie démocratique.",
+  "Le commerce intra-africain représente environ 15 % du commerce des pays africains (CNUCED).",
+  "La RD Congo fournit la majorité du cobalt mondial, indispensable aux batteries.",
+ ],
+ 'difficultes': [
+  ("Idée d'une Afrique pauvre en ressources.", "Carte 1."),
+  ("Explication de la pauvreté par une seule cause.", "Tableau des quatre familles de problèmes."),
+  ("Erreurs de construction des graphiques.", "Grille de vérification : titre, échelle, légende, source."),
+ ],
+ 'soutien': ["Carte muette de l'Afrique à compléter avec cinq ressources.", "Tableau problèmes / solutions à relier."],
+ 'approfondissement': ["Exposé sur un pays africain qui réussit (Botswana, Rwanda, Maroc).", "Recherche sur le cobalt et les batteries."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : économie extravertie ; commerce intra-africain.", 2, "Économie extravertie : tournée vers l'exportation de produits bruts et dépendante de l'extérieur (1 pt) ; commerce intra-africain : échanges entre pays africains (1 pt)."),
+   ("Associe chaque ressource à un pays producteur : cobalt ; pétrole ; phosphates ; cacao.", 2, "RD Congo ; Nigeria (ou Angola, Algérie) ; Maroc ; Côte d'Ivoire (ou Ghana). 0,5 pt par association."),
+   ("Calcule par combien la population de l'Afrique a été multipliée entre 1950 (230 millions) et 2025 (1 520 millions).", 2, "1 520 ÷ 230 ≈ 6,6 (1 pt pour le calcul, 1 pt pour le résultat et la phrase)."),
+   ("Cite deux problèmes économiques du développement de l'Afrique.", 2, "Économies extraverties, dépendantes des prix mondiaux (1 pt) ; faible commerce intra-africain ou infrastructures insuffisantes (1 pt)."),
+  ],
+  'situation': "Ton cousin pense que « l'Afrique est pauvre parce qu'elle n'a pas de richesses ».",
+  'consignes': [
+   ("Cite trois richesses naturelles de l'Afrique et un pays producteur pour chacune.", 2, "Pétrole (Nigeria), or (Afrique du Sud ou Ghana), cobalt (RD Congo) ; on accepte d'autres associations justes (0,5 pt chacune, 0,5 pt pour la présentation)."),
+   ("Explique deux raisons de la pauvreté de nombreux pays africains.", 4, "Les ressources sont exportées brutes, avec peu de valeur ajoutée (2 pts) ; l'instabilité politique, la corruption ou le manque d'infrastructures freinent le développement (2 pts)."),
+   ("Propose deux solutions pour que l'Afrique profite mieux de ses richesses.", 4, "Transformer les matières premières sur place (2 pts) ; développer le commerce entre pays africains grâce à la ZLECAf (ou former la jeunesse, bonne gouvernance) (2 pts)."),
+  ],
+ },
+ 'valeurs': ["Fierté africaine et esprit d'initiative.", "Solidarité et intégration entre les peuples africains ; gestion responsable des ressources.",
+             "Liens avec l'histoire (UA, colonisation), les mathématiques (graphiques) et l'EDHC (bonne gouvernance)."],
+}
+
+# ------------------------------------------------------------------ T2-L2
+FICHES['3e-g-t2-l2'] = {
+ 'materiel': ["carte des échanges de l'Afrique (carte 1)", "graphique du poids de l'Afrique dans le monde (graphique 1)", "planisphère",
+              "étiquettes de produits courants indiquant leur pays d'origine", "tableau des principaux partenaires commerciaux de l'Afrique"],
+ 'contexte': "des élèves de 3e 2 suivent à la télévision un sommet du G8, où aucun État africain n'est présent.",
+ 'circonstance': "surpris, ils s'interrogent sur la place de l'Afrique dans les échanges mondiaux et décident de mener des recherches sur la mondialisation.",
+ 'taches': ["définir la mondialisation, identifier ses facteurs et décrire son fonctionnement", "apprécier la place de l'Afrique dans les échanges et construire des graphiques",
+            "expliquer les opportunités et proposer des solutions pour améliorer la place de l'Afrique"],
+ 'prerequis': ["L'étude économique de l'Afrique (leçon précédente).", "La lecture d'un planisphère.", "La construction d'un diagramme."],
+ 'seances': [
+  {'titre': "Définition et facteurs de la mondialisation (I)", 'etapes': [
+   (PRES, 8, "Observation d'objets du quotidien",
+    ["Faire lire l'origine de quelques produits (téléphone, vêtement, riz).", "« Pourquoi ces produits viennent-ils de si loin ? »"], ["Parce que les pays échangent dans le monde entier."], "Introduction."),
+   ("Développement · I. Définition et facteurs", 35, "Exposé dialogué",
+    ["Faire définir la mondialisation.", "Faire relever les facteurs."],
+    ["Intégration de toutes les régions du monde dans un espace unique d'échanges.",
+     "Facteurs : Grandes Découvertes, révolution industrielle, transports (conteneurs), NTIC, OMC (1995), fin de la guerre froide (1991)."], "I. 1 et 2."),
+   (EVAL, 12, "Travail individuel", ["Activité d'application I."], ["Définition et trois facteurs."], None),
+  ]},
+  {'titre': "Le fonctionnement de la mondialisation (II)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« Qui organise les échanges mondiaux ? »"], ["Les États, les entreprises, les organisations internationales."], None),
+   ("Développement · II. Le fonctionnement", 38, "Lecture d'un planisphère, tableau acteurs – flux – espaces",
+    ["Faire classer acteurs, flux et espaces.", "Faire localiser les pôles dominants et les espaces en marge."],
+    ["Acteurs : États, firmes multinationales, OMC, FMI, Banque mondiale, regroupements régionaux, ONG.",
+     "Flux : marchandises, capitaux, informations, personnes ; pôles : Amérique du Nord, Europe, Asie orientale ; émergents ; marges."], "II. 1 à 3."),
+   (EVAL, 12, "Travail individuel", ["Activité d'application II."], ["Trois acteurs, trois pôles."], None),
+  ]},
+  {'titre': "La place de l'Afrique dans les échanges (III)", 'etapes': [
+   (PRES, 5, "Retour à la situation", ["« Pourquoi aucun État africain n'était-il au G8 ? »"], ["Parce que leur poids économique est faible."], None),
+   ("Développement · III. La place de l'Afrique", 38, "Lecture de la carte 1 et du graphique 1, construction d'un graphique",
+    ["Faire relever ce que l'Afrique exporte et importe, et ses partenaires.", "Faire construire un diagramme à partir d'un tableau (partenaires ou part des continents)."],
+    ["Environ 3 % du commerce mondial pour près d'un habitant sur cinq ; exportations de matières premières, importations de produits manufacturés ; UE, Chine, États-Unis, Inde.",
+     "Diagramme avec titre, légende, source."], "III. 1 à 5."),
+   (EVAL, 12, "Travail individuel", ["Activité d'application III."], ["Place marginale, échange inégal."], None),
+  ]},
+  {'titre': "Opportunités, solutions et évaluation (IV, V)", 'etapes': [
+   (PRES, 5, "Question-problème", ["« La mondialisation peut-elle aider l'Afrique ? »"], ["Oui, si elle transforme ses produits et s'unit."], None),
+   ("Développement · IV et V. Opportunités et solutions", 25, "Tableau à deux colonnes",
+    ["Faire relever les opportunités.", "Faire proposer des solutions et les justifier."],
+    ["Nouveaux partenaires, investissements, mobile et Internet, diaspora, UA au G20.",
+     "Transformer sur place, ZLECAf, infrastructures, formation, bonne gouvernance, parler d'une seule voix."], "IV, V, conclusion."),
+   (EVAL, 25, "Travail individuel", ["Situation d'évaluation de la leçon."], ["Place de l'Afrique, opportunités, solutions."], None),
+  ]},
+ ],
+ 'eclairage': [
+  "Le G8 (G7 + Russie) n'existe plus depuis 2014 ; l'Afrique du Sud et, depuis 2023, l'Union africaine sont membres du G20.",
+  "La part de l'Afrique dans le commerce mondial se situe autour de 2 à 3 % selon les années et les sources (OMC, CNUCED).",
+  "La Chine est devenue, dans les années 2000, l'un des premiers partenaires commerciaux du continent.",
+  "Ngozi Okonjo-Iweala (Nigeria) dirige l'OMC depuis 2021 : première femme et première Africaine à ce poste.",
+ ],
+ 'difficultes': [
+  ("Confusion entre G7, G8 et G20.", "Tableau comparatif."),
+  ("Idée que l'Afrique est hors de la mondialisation.", "Carte 1 : elle y participe, en position dépendante."),
+  ("Confusion entre acteurs et flux.", "Exemples à classer."),
+ ],
+ 'soutien': ["Planisphère à compléter (pôles, Afrique, flèches).", "Liste de mots à classer : acteurs, flux, espaces."],
+ 'approfondissement': ["Enquête : d'où viennent les produits du marché le plus proche ?", "Exposé sur la ZLECAf ou sur les relations Chine – Afrique."],
+ 'evaluation': {
+  'activites': [
+   ("Définis : mondialisation ; firme multinationale.", 2, "Mondialisation : intégration de toutes les régions du monde dans un espace unique d'échanges (1 pt) ; firme multinationale : entreprise qui a des filiales dans plusieurs pays (1 pt)."),
+   ("Cite trois facteurs de la mondialisation.", 1.5, "Révolution des transports, NTIC, libéralisation des échanges (OMC) ou fin de la guerre froide. 0,5 pt par facteur."),
+   ("Cite les trois pôles dominants de la mondialisation.", 1.5, "Amérique du Nord, Europe occidentale, Asie orientale. 0,5 pt par pôle."),
+   ("Explique pourquoi on parle d'échange inégal pour l'Afrique.", 3, "Elle exporte surtout des matières premières, aux prix bas et variables (1,5 pt) ; elle importe des produits manufacturés plus chers, ce qui la rend dépendante (1,5 pt)."),
+  ],
+  'situation': "Un camarade affirme : « La mondialisation, ce n'est que pour les pays riches ; l'Afrique n'a rien à y gagner. »",
+  'consignes': [
+   ("Indique la place de l'Afrique dans le commerce mondial.", 2, "Environ 3 % des échanges mondiaux (1 pt) pour près d'un habitant sur cinq de la planète (1 pt)."),
+   ("Montre que la mondialisation offre des opportunités à l'Afrique.", 4, "Nouveaux partenaires et investissements (Chine, Inde) (2 pts) ; diffusion du téléphone mobile, d'Internet et du paiement mobile, ou entrée de l'UA au G20 (2 pts)."),
+   ("Propose deux solutions pour améliorer la place de l'Afrique et réponds à ton camarade.", 4, "Transformer sur place les matières premières (1,5 pt) ; développer le commerce intra-africain grâce à la ZLECAf (1,5 pt) ; conclusion : l'Afrique peut y gagner si elle change sa place (1 pt)."),
+  ],
+ },
+ 'valeurs': ["Ouverture au monde et esprit critique face à la consommation.", "Solidarité africaine et fierté de produire et transformer localement.",
+             "Liens avec l'histoire (colonisation, ONU, UA), les mathématiques (graphiques) et l'anglais (vocabulaire du commerce)."],
+}
