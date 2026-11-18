@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<script>(function(){var V="1.19.0";setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V){localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>
+<script>(function(){var V="1.20.0";setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V){localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>
 <meta charset="utf-8">
 <title>GNOMBLESSON · Histoire &amp; Géographie</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -569,7 +569,7 @@ window.HGStock = window.HGStock || (function () {
     emballer: emballer, deballer: deballer, CLE: CLE };
 })();
 </script>
-<script>window.HG_MODE="apk";window.HG_VERSION="1.19.0";window.HG_MAJ=true;(function(){var W=window;function L(k){try{return localStorage.getItem('hg1c.'+k)}catch(e){return null}}function retablir(r){try{localStorage.setItem('hg1c.maj-incident',JSON.stringify({version:W.HG_VERSION,quand:Date.now(),raison:String(r)}));localStorage.removeItem('hg1c.contenu-maj');localStorage.removeItem('hg1c.contenu-gz')}catch(e){}location.replace(location.href.split('#')[0])}if(W.HG_DATA_PROPRE){W.HG_DATA=W.HG_DATA_PROPRE;W.HG_DATA_PROMESSE=Promise.resolve(W.HG_DATA);return}var d=null;try{d=JSON.parse(L('contenu-maj'))}catch(e){}if(d&&d.classes&&!d.stub){W.HG_DATA=d;W.HG_DATA_PROMESSE=Promise.resolve(d);return}W.HG_DATA=null;W.HG_DATA_PROMESSE=(d&&d.version&&W.HGStock?W.HGStock.lire(d.version):Promise.reject(new Error('contenu absent'))).then(function(x){W.HG_DATA=x;try{localStorage.setItem('hg1c.code-ok',W.HG_VERSION)}catch(e){}return x},function(e){retablir(e&&e.message);return new Promise(function(){})})})();</script>
+<script>window.HG_MODE="apk";window.HG_VERSION="1.20.0";window.HG_MAJ=true;(function(){var W=window;function L(k){try{return localStorage.getItem('hg1c.'+k)}catch(e){return null}}function retablir(r){try{localStorage.setItem('hg1c.maj-incident',JSON.stringify({version:W.HG_VERSION,quand:Date.now(),raison:String(r)}));localStorage.removeItem('hg1c.contenu-maj');localStorage.removeItem('hg1c.contenu-gz')}catch(e){}location.replace(location.href.split('#')[0])}if(W.HG_DATA_PROPRE){W.HG_DATA=W.HG_DATA_PROPRE;W.HG_DATA_PROMESSE=Promise.resolve(W.HG_DATA);return}var d=null;try{d=JSON.parse(L('contenu-maj'))}catch(e){}if(d&&d.classes&&!d.stub){W.HG_DATA=d;W.HG_DATA_PROMESSE=Promise.resolve(d);return}W.HG_DATA=null;W.HG_DATA_PROMESSE=(d&&d.version&&W.HGStock?W.HGStock.lire(d.version):Promise.reject(new Error('contenu absent'))).then(function(x){W.HG_DATA=x;try{localStorage.setItem('hg1c.code-ok',W.HG_VERSION)}catch(e){}return x},function(e){retablir(e&&e.message);return new Promise(function(){})})})();</script>
 <script>/* GNOMBLESSON · Histoire & Géographie (ex-« Histoire géographie premier cycle ») — application hors ligne */
 (function () {
   'use strict';
@@ -746,8 +746,117 @@ window.HGStock = window.HGStock || (function () {
     });
   }
 
+  // Préparation de séance et évaluation des leçons enrichies : depuis la 1.20.0, data/contenu.json ne les stocke plus quand
+  // elles sont produites telles quelles par outils/generer-evaluation-preparation.py ; l'application les reconstitue ici, à
+  // l'identique, depuis la fiche compacte de la leçon (annexe enseignant, champ « fiche »), les questions de compréhension
+  // (champ « qc ») et la leçon elle-même (contrôle d'égalité exacte : outils/verifier-fiches.py).
+  function ptsEP(x) { return String(x).replace('.', ',') + ' point' + (x >= 2 ? 's' : ''); }
+  function tableauEP(entetes, lignes) {
+    return '<div class="tbl"><table><thead><tr>' + entetes.map(function (e) { return '<th>' + e + '</th>'; }).join('') + '</tr></thead><tbody>\n' +
+      lignes.map(function (l) { return '<tr>' + l.map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>\n'; }).join('') + '</tbody></table></div>\n';
+  }
+  function corrigeEP(contenu, titre) { return '<details class="corrige"><summary>' + (titre || 'Corrigé et barème') + '</summary><div class="corrige-body">' + contenu + '</div></details>'; }
+  function majF(x) { return x.charAt(0).toUpperCase() + x.slice(1); }
+  function evaluationHTML(F, Q) {
+    var E = F.evaluation;
+    var h = '<p class="chapo-bloc">Évaluation sur 20 points, conforme à la méthodologie APC : activités d\'application sur 8 points et ' +
+      'situation d\'évaluation sur 12 points. Durée conseillée : 40 minutes. Les questions de compréhension servent à vérifier ' +
+      'les acquis pendant ou après la séance et ne sont pas notées.</p>\n\n';
+    h += '<h4>Questions de compréhension <span class="badge">non notées</span></h4>\n<ol>\n' + Q.map(function (q) { return '<li>' + q[0] + '</li>\n'; }).join('') + '</ol>\n';
+    h += corrigeEP('\n<ol>\n' + Q.map(function (q) { return '<li>' + q[1] + '</li>\n'; }).join('') + '</ol>', 'Réponses attendues') + '\n\n';
+    h += '<h4>Activités d\'application <span class="badge">8 points</span></h4>\n';
+    E.activites.forEach(function (a, k) {
+      h += '<section class="exo"><div class="enonce"><p><strong>Exercice ' + (k + 1) + ' (' + ptsEP(a[1]) + ').</strong> ' + a[0] + '</p></div>' + corrigeEP('<p>' + a[2] + '</p>') + '</section>\n';
+    });
+    h += '\n<h4>Situation d\'évaluation <span class="badge">12 points</span></h4>\n';
+    h += '<div class="situation"><div class="texte"><p>' + E.situation + '</p></div></div>\n<p><strong>Consignes :</strong></p>\n<ol>\n';
+    h += E.consignes.map(function (c) { return '<li>' + c[0] + ' <em>(' + ptsEP(c[1]) + ')</em></li>\n'; }).join('') + '</ol>\n';
+    h += corrigeEP(E.consignes.map(function (c, k) { return '<p><strong>Consigne ' + (k + 1) + ' (' + ptsEP(c[1]) + ') :</strong> ' + c[2] + '</p>'; }).join(''), 'Corrigé de la situation d\'évaluation') + '\n';
+    h += '<h5>Comment attribuer les points</h5>\n' + tableauEP(['Critère', 'Ce que l\'on vérifie', 'Points'], [
+      ['CM1 – Pertinence', 'Chaque réponse correspond à la consigne posée.', 'compris dans les consignes'],
+      ['CM2 – Utilisation correcte des outils de la discipline', 'Notions, dates, lieux, vocabulaire et calculs exacts.', 'compris dans les consignes'],
+      ['CM3 – Cohérence de la production', 'Réponses logiques, ordonnées, sans contradiction.', '1'],
+      ['CP – Critère de perfectionnement', 'Présentation soignée, orthographe correcte, originalité de la proposition.', '1'],
+      ['<strong>Total</strong>', 'Consignes 10 points + cohérence 1 point + perfectionnement 1 point.', '<strong>12</strong>']]);
+    h += '<p class="conseil">Barème : on accorde les points dès que l\'idée juste est exprimée, même maladroitement ; une réponse fausse ou ' +
+      'absente vaut 0 (pas de point négatif). Les corrigés indiquent les réponses attendues, pas la seule formulation acceptée.</p>\n';
+    return h;
+  }
+  function preparationHTML(c, d, t, l, F, Q) {
+    var sit = l.situation, nb = F.seances.length, m;
+    var comp = /<strong>(Compétence[^<]*?) ?:?<\/strong>\s*:?\s*([\s\S]*?)<\/p>/.exec(sit);
+    var exemple = /<strong>Exemple de situation ?:<\/strong>\s*([\s\S]*?)<\/p>/.exec(sit);
+    var hab = [], re = /<tr>\s*<td>([\s\S]*?)<\/td>\s*<td>([\s\S]*?)<\/td>\s*<\/tr>/g;
+    while ((m = re.exec(sit))) hab.push([m[1].trim(), m[2].trim()]);
+    var h = '<div class="tbl"><table><tbody>\n' + [
+      ['Discipline', 'Histoire-Géographie (' + d.nom + ')'], ['Classe', c.id],
+      [t.n ? 'Thème ' + t.n : 'Thème', t.titre], ['Leçon ' + l.n, l.titre],
+      ['Durée', l.duree + ' heure' + (l.duree > 1 ? 's' : '') + ' : ' + nb + ' séance' + (nb > 1 ? 's' : '') + ' de 1 heure (55 minutes utiles chacune)'],
+      ['Compétence', comp ? comp[1].trim() + ' : ' + comp[2].trim() : '—']].map(function (r) { return '<tr><th>' + r[0] + '</th><td>' + r[1] + '</td></tr>\n'; }).join('') + '</tbody></table></div>\n\n';
+    h += '<h4>Habiletés et contenus</h4>\n' + tableauEP(['Habiletés', 'Contenus'], hab) + '\n';
+    h += '<h4>Situation d\'apprentissage</h4>\n<p>' + (exemple ? exemple[1].trim() : '') + '</p>\n';
+    h += '<p><strong>Analyse de la situation.</strong> Contexte : ' + F.contexte + ' Circonstance : ' + F.circonstance + ' Tâches des élèves : ' + F.taches.join(' ; ') + '.</p>\n';
+    h += '<p class="conseil"><strong>Adaptation conseillée :</strong> remplacer les noms de lieux et d\'établissement par ceux de votre localité ; la situation fonctionne mieux lorsque les élèves s\'y reconnaissent.</p>\n\n';
+    h += '<h4>Prérequis à vérifier</h4>\n' + ulF(F.prerequis);
+    h += '<h4>Matériel didactique</h4>\n' + ulF(F.materiel.map(function (x) { return majF(x) + '.'; }));
+    var strategies = [];
+    F.seances.forEach(function (s) { s.etapes.forEach(function (e) { var x = e[2].charAt(0).toLowerCase() + e[2].slice(1); if (strategies.indexOf(x) < 0) strategies.push(x); }); });
+    h += '<h4>Stratégie pédagogique</h4>\n<p>Démarche active : les élèves découvrent les notions à partir de la situation, de documents et ' +
+      'd\'exemples proches de leur vie, avant que l\'enseignant ne les formalise dans la trace écrite. Techniques utilisées : ' + strategies.join(' ; ') + '.</p>\n\n';
+    h += '<h4>Déroulement de la séance</h4>\n';
+    h += '<p class="conseil">' + nb + ' séance' + (nb > 1 ? 's' : '') + ' de 1 heure (55 minutes utiles). Le tableau donne la vue d\'ensemble ; ' +
+      'le déroulé détaillé qui suit donne, étape par étape, les consignes de l\'enseignant et les réponses attendues des élèves.</p>\n';
+    var lignes = [];
+    F.seances.forEach(function (s, i) {
+      s.etapes.forEach(function (e) { lignes.push(['<strong>' + (nb > 1 ? 'Séance ' + (i + 1) + ' · ' : '') + e[0] + '</strong><br>' + e[1] + ' min', majF(e[2]) + '.', e[3].join(' '), e[5] || '—']); });
+    });
+    h += tableauEP(['Moment et durée', 'Stratégie', 'Activités de l\'enseignant', 'Trace écrite'], lignes) + '\n';
+    h += '<h4>Déroulé détaillé, avec les réponses attendues</h4>\n';
+    h += '<p class="conseil">Les réponses attendues sont des repères : on accepte toute formulation juste des élèves.</p>\n';
+    F.seances.forEach(function (s, i) {
+      h += '<h5>Séance ' + (i + 1) + ' · ' + s.titre + ' (55 min)</h5>\n';
+      h += tableauEP(['Étape et durée', 'Ce que fait l\'enseignant', 'Réponses attendues des élèves'], s.etapes.map(function (e) {
+        return ['<strong>' + e[0] + '</strong><br>' + e[1] + ' min<br><small>' + majF(e[2]) + '</small>', e[3].join(' '), e[4].join(' ')];
+      }));
+    });
+    h += '\n<h4>Questions de vérification (au fil de la séance)</h4>\n<ol>\n' + Q.map(function (q) { return '<li>' + q[0] + '</li>\n'; }).join('') + '</ol>\n';
+    h += '<p class="conseil">Les réponses attendues sont données dans l\'espace Élève, rubrique « Évaluation », sous « Questions de compréhension ».</p>\n\n';
+    var concl = /<h3>Conclusion<\/h3>\s*(<p>[\s\S]*?<\/p>)/.exec(l.cours);
+    h += '<h4>Synthèse</h4>\n' + (concl ? concl[1] : '') + '\n\n';
+    h += '<h4>Évaluation</h4>\n<p>Évaluation formative pendant la séance (activités d\'application de la trace écrite, questions de vérification) ; ' +
+      'évaluation sommative sur 20 points proposée dans l\'espace Élève, rubrique « Évaluation » (activités d\'application sur 8 points, ' +
+      'situation d\'évaluation sur 12 points, avec corrigés et barème). Le quiz de la leçon (8 questions) peut servir de révision.</p>\n\n';
+    h += '<h4>Remédiation</h4>\n' + tableauEP(['Difficulté constatée', 'Activité de remédiation'], F.difficultes);
+    h += '<h4>Différenciation pédagogique</h4>\n<p><strong>Pour les élèves en difficulté :</strong></p>\n' + ulF(F.soutien);
+    h += '<p><strong>Pour les élèves avancés :</strong></p>\n' + ulF(F.approfondissement);
+    h += '<h4>Éducation aux valeurs et liens avec les autres disciplines</h4>\n' + ulF(F.valeurs);
+    h += '<p class="conseil"><strong>Source :</strong> déroulement, réponses attendues, remédiation et évaluation repris de la fiche de préparation ' +
+      'de l\'espace enseignant de la ' + c.id + ' (2026) et harmonisés avec la trace écrite de la leçon.</p>\n';
+    return h;
+  }
+  function completerEP() {
+    D.classes.forEach(function (c) {
+      var fiches = {};
+      (c.annexes || []).forEach(function (a) { if (a.fiche && a.lecon) fiches[a.lecon] = a.fiche; });
+      c.disciplines.forEach(function (d) {
+        d.themes.forEach(function (t) {
+          t.lecons.forEach(function (l) {
+            var F = fiches[l.id];
+            if (!l.qc || !F) return;
+            try {
+              if (l.evaluation === REMPLACEMENT_EP) l.evaluation = evaluationHTML(F, l.qc);
+              if (l.preparation === REMPLACEMENT_EP) l.preparation = preparationHTML(c, d, t, l, F, l.qc);
+            } catch (e) { /* le texte de remplacement reste affiché */ }
+          });
+        });
+      });
+    });
+  }
+  var REMPLACEMENT_EP = '<p><em>Contenu disponible après la mise à jour de l\'application.</em></p>';
+
   function completerTextes() {
     completerFiches();
+    completerEP();
     D.classes.forEach(function (c) {
       c.disciplines.forEach(function (d) {
         d.themes.forEach(function (t) {

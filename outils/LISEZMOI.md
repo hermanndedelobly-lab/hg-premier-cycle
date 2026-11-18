@@ -104,12 +104,12 @@ et dans le lanceur de la passerelle par `fabriquer-pont.py`).
 - Limite connue : un téléphone resté sur un code antérieur à 1.17.0 télécharge encore l'ancien format (en clair) ; il doit
   passer par la 1.17.0 avant une version dont le contenu dépasserait environ 5 millions de caractères.
 
-## Contenu allégé : textes de recherche et fiches enseignant reconstitués (1.18.0, 1.19.0)
+## Contenu allégé : textes de recherche, fiches enseignant, préparations et évaluations reconstitués (1.18.0 à 1.20.0)
 
 `data/contenu.json` doit rester assez léger pour le chemin le plus exigeant : après une version écartée (démarrage non
 confirmé), le code de l'APK 1.14.0 reprend la main alors que le contenu compressé (≈ 0,6 million de caractères) et la page
 de code (≈ 0,35 million) sont encore rangés ; il enregistre la nouvelle version **en clair**. Avec la limite du stockage
-(≈ 5,24 millions de caractères), le contenu doit rester sous ≈ 4,25 millions de caractères (1.19.0 : 4,21 millions ; contrôle :
+(≈ 5,24 millions de caractères), le contenu doit rester sous ≈ 4,25 millions de caractères (1.19.0 : 4,21 millions ; 1.20.0 : 4,04 millions avec les 53 leçons enrichies ; contrôle :
 `test-stockage-apk`, étape « version cassée » puis « nouvelle version saine »). Pour cela :
 - Textes de recherche (`texte`, `texteBanque`, `texteEns`, `texteCult` des leçons, `texte` des annexes et des schémas) :
   laissés vides par `integrer-pedagogie.py` et `construire.py` ; reconstitués au chargement par `app.js` (`completerTextes`).
@@ -117,6 +117,10 @@ de code (≈ 0,35 million) sont encore rangés ; il enregistre la nouvelle versi
   remplacement dans `html` ; `app.js` (`completerFiches`) reconstitue le HTML à l'identique. Après toute modification de
   `construire.py` ou de `completerFiches` : `python3 outils/verifier-fiches.py` (égalité exacte des fiches, 41 sur 41 en 1.19.0).
 - Le squelette de la passerelle (`fabriquer-pont.py`) n'emporte pas les données des fiches.
-- Le lot suivant (3e) dépassera de nouveau cette limite si rien d'autre n'est allégé : prévoir avant lui une solution
-  (par exemple, la même reconstitution pour les champs `preparation` et `evaluation` des leçons, eux aussi produits à partir
-  des fiches, ≈ 0,8 million de caractères).
+- Préparation de séance et évaluation des leçons enrichies (1.20.0) : quand `preparation.html` et `evaluation.html` sont
+  exactement ceux que produit `generer-evaluation-preparation.py`, `construire.py` range une phrase de remplacement dans
+  `preparation` / `evaluation` et les questions de compréhension dans `qc` ; `app.js` (`completerEP`) reconstitue le HTML à
+  l'identique depuis la fiche compacte. Une préparation ou une évaluation retouchée à la main reste stockée telle quelle.
+  `verifier-fiches.py` contrôle aussi ces champs (155 sur 155 en 1.20.0 : 53 fiches, 102 préparations et évaluations).
+- Marge restante en 1.20.0 : ≈ 0,2 million de caractères. Toute nouvelle illustration lourde (carte) doit rester légère
+  (fond 110m, coordonnées arrondies au pixel).
