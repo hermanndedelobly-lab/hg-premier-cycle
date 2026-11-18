@@ -52,7 +52,15 @@ CHARGEUR_MAJ = (
     "var d=null;try{d=JSON.parse(L('contenu-maj'))}catch(e){}"
     "if(d&&d.classes&&!d.stub){W.HG_DATA=d;W.HG_DATA_PROMESSE=Promise.resolve(d);return}"
     "W.HG_DATA=null;W.HG_DATA_PROMESSE=(d&&d.version&&W.HGStock?W.HGStock.lire(d.version):Promise.reject(new Error('contenu absent')))"
-    ".then(function(x){W.HG_DATA=x;try{localStorage.setItem('hg1c.code-ok',W.HG_VERSION)}catch(e){}return x},function(e){retablir(e&&e.message);return new Promise(function(){})})})()"
+    # 1.20.1 : APK 1.14.0 réglé sur l'adresse de la passerelle (« …/pont ») : il n'a rangé que le squelette (stub) ;
+    # on lit alors le contenu complet à l'adresse « source », on le range compressé, puis on démarre (pendant le
+    # téléchargement, W.HG_TELECHARGE prolonge la surveillance de démarrage)
+    ".catch(function(e){if(!(d&&d.stub&&d.source))throw e;var b='';try{b=(JSON.parse(L('reglages'))||{}).adresse||''}catch(x){}"
+    "b=b.replace(/\\/+$/,'');if(!b)throw e;W.HG_TELECHARGE=true;"
+    "return fetch(new URL(d.source,b+'/').href,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('contenu complet : '+r.status);return r.text()})"
+    ".then(function(t){var x=JSON.parse(t);if(!x.classes||x.version!==d.version)throw new Error('contenu complet invalide');"
+    "if(!W.HGStock||!W.HGStock.dispo())return x;return W.HGStock.enregistrer(x,t,null,d).then(function(){return x},function(){return x})})})"
+    ".then(function(x){W.HG_TELECHARGE=false;W.HG_DATA=x;try{localStorage.setItem('hg1c.code-ok',W.HG_VERSION)}catch(e){}return x},function(e){retablir(e&&e.message);return new Promise(function(){})})})()"
 )
 import argparse
 import base64
@@ -102,8 +110,9 @@ def main():
     if a.mode == 'maj':
         # surveillance : sans confirmation de démarrage (code-ok) en 12 s, la version téléchargée s'écarte
         # d'elle-même (code-echec) et l'application redémarre sur la version de l'APK
-        garde = ('<script>(function(){var V="' + version + '";setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V)'
-                 '{localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000);})();</script>\n')
+        # (1.20.1 : délai prolongé, jusqu'à 2 minutes, tant que le contenu complet se télécharge — window.HG_TELECHARGE)
+        garde = ('<script>(function(){var V="' + version + '";function g(n){setTimeout(function(){try{if(localStorage.getItem("hg1c.code-ok")!==V)'
+                 '{if(window.HG_TELECHARGE&&n<9){g(n+1);return}localStorage.setItem("hg1c.code-echec",V);location.reload();}}catch(e){}},12000)}g(0);})();</script>\n')
         # (insérée après le découpage de la page ci-dessous : les positions de « mode » restent justes)
         # HG_DATA_PROPRE : données nettoyées transmises par la passerelle de l'APK 1.10.0 (outils/fabriquer-pont.py)
         donnees_js = "window.HG_MAJ=true;" + CHARGEUR_MAJ

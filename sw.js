@@ -1,7 +1,7 @@
 /* Service worker — GNOMBLESSON · Histoire & Géographie
    Chaque nouvelle version publiée change VERSION : le navigateur télécharge alors
    le nouveau contenu en arrière-plan, puis l'application propose « Mettre à jour ». */
-var VERSION = '1.20.0';
+var VERSION = '1.20.1';
 var CACHE = 'hg1c-' + VERSION;
 var PRECACHE = ["./","index.html","app.css","app.js","data/contenu.json","manifest.webmanifest","fonts/literata-latin-400-normal.woff2","fonts/literata-latin-400-italic.woff2","fonts/literata-latin-700-normal.woff2","fonts/archivo-latin-500-normal.woff2","fonts/archivo-latin-700-normal.woff2","fonts/archivo-latin-800-normal.woff2","icons/icon-180.png","icons/icon-192.png","icons/icon-512.png","icons/icon-maskable-512.png","lib/pdfmake.min.js","lib/vfs_fonts.js","img/6e-h-t1-l1/fouille-yagala.jpg","img/6e-h-t1-l1/grand-bassam.jpg","img/6e-h-t1-l1/griot-gravure.jpg","img/6e-h-t1-l1/herodote.jpg","img/6e-h-t1-l1/koras.jpg","img/6e-h-t1-l1/manuscrits-tombouctou.jpg","img/6e-h-t1-l1/masque-dan.jpg","img/6e-h-t1-l1/mosquee-kong-1892.jpg","img/6e-h-t1-l1/mosquee-kong.jpg","img/6e-h-t1-l1/pierre-palerme.jpg","img/6e-h-t1-l1/poids-akan.jpg","img/pdf-images.js"];
 

@@ -1,7 +1,8 @@
 {
-  "version": "1.20.0",
-  "date": "2026-11-17",
+  "version": "1.20.1",
+  "date": "2026-11-18",
   "notes": [
+    "Version 1.20.1 : correction de la mise à jour sur l'APK 1.14.0 réglé sur l'adresse de la passerelle (« …/pont ») : la version téléchargée ne pouvait pas démarrer ; contenu identique à la 1.20.0",
     "Version 1.20.0 : les 12 leçons de 3e ont désormais trois espaces (Élève, Enseignant, Culture générale), 24 illustrations et un onglet Enseignant (guide et 12 fiches) ; corrections du cours ; exercices, banque et quiz conservés ; en attente du contrôle pédagogique",
     "Version 1.19.0 : les 12 leçons de 4e ont désormais trois espaces (Élève, Enseignant, Culture générale), 24 illustrations et un onglet Enseignant (guide et 12 fiches) ; corrections du cours ; exercices, banque et quiz conservés ; en attente du contrôle pédagogique",
     "Version 1.18.0 : lot 2 (5e) de la généralisation du modèle pédagogique validé : les 12 leçons de 5e ont désormais trois espaces (Élève : trace écrite enrichie, illustrations, cartes sur fond Natural Earth, activités et évaluation sur 20 ; Enseignant : cours approfondi et préparation de séance APC avec réponses attendues ; Culture générale : approfondissements et références vérifiées) ; 26 illustrations ; onglet Enseignant de la 5e (guide et 12 fiches) ; exercices, banque et quiz conservés ; en attente du contrôle pédagogique",

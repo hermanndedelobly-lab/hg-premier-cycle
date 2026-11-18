@@ -117,6 +117,10 @@ de code (≈ 0,35 million) sont encore rangés ; il enregistre la nouvelle versi
   remplacement dans `html` ; `app.js` (`completerFiches`) reconstitue le HTML à l'identique. Après toute modification de
   `construire.py` ou de `completerFiches` : `python3 outils/verifier-fiches.py` (égalité exacte des fiches, 41 sur 41 en 1.19.0).
 - Le squelette de la passerelle (`fabriquer-pont.py`) n'emporte pas les données des fiches.
+- APK 1.14.0 réglé sur l'adresse de la passerelle (`…/pont`) : il ne range que le squelette. Depuis la 1.20.1, le chargeur de
+  `maj/page.html` (`fichier-unique.py`, `CHARGEUR_MAJ`) lit alors le contenu complet à l'adresse `source`, le range compressé
+  et démarre ; la surveillance de démarrage (12 s) est prolongée jusqu'à 2 minutes pendant ce téléchargement
+  (`window.HG_TELECHARGE`). Avant la 1.20.1, ce cas échouait (« La version … n'a pas pu démarrer »).
 - Préparation de séance et évaluation des leçons enrichies (1.20.0) : quand `preparation.html` et `evaluation.html` sont
   exactement ceux que produit `generer-evaluation-preparation.py`, `construire.py` range une phrase de remplacement dans
   `preparation` / `evaluation` et les questions de compréhension dans `qc` ; `app.js` (`completerEP`) reconstitue le HTML à
